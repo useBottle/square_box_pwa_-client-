@@ -1,0 +1,71 @@
+@use "./_color-set.scss" as colors;
+
+// Abel - text (EN, KO)
+// Barlow Condensed - Menu
+// Poiret One - Title
+
+body {
+  background: colors.$global-back;
+  color: #fff;
+  font-family: "TAEBAEKmilkyway";
+  font-weight: 600;
+}
+
+.logo {
+  font-family: "Poiret One";
+  font-size: 40px;
+  font-weight: 800;
+  position: absolute;
+  color: colors.$global-font;
+  padding: 30px;
+}
+
+.navbar {
+  position: absolute;
+  right: 0;
+  width: 150px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: right;
+  color: colors.$global-font;
+  padding: 0 20px;
+
+  & ul {
+    display: flex;
+    flex-direction: column;
+
+    & li {
+      font-family: "Barlow Condensed";
+      font-weight: 100;
+      position: relative;
+      margin: 30px 0;
+      font-size: 20px;
+      display: flex;
+      flex-direction: column;
+      transition: color 0.5s ease;
+      cursor: pointer;
+    }
+
+    & li:hover {
+      color: colors.$pointed-font;
+    }
+
+    & li::after {
+      content: '';
+      position: absolute;
+      width: 150%;
+      height: 1px;
+      bottom: -10px;
+      right: 0;
+      background: linear-gradient(to left, colors.$pointed-font 30%, #ffffff00);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    & li:hover::after {
+      opacity: 1;
+    }
+  }
+}

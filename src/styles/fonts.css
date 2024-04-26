@@ -1,0 +1,26 @@
+/* Title */
+@font-face {
+  font-family: "Poiret One";
+  font-style: normal;
+  src: url("../../public/fonts/PoiretOne/PoiretOne-Regular.woff") format("woff"),
+    url("../../public/fonts/PoiretOne/PoiretOne-Regular.ttf") format("truetype"),
+    url("../../public/fonts/PoiretOne/PoiretOne-Regular.svg") format("svg");
+}
+
+/* Menu */
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  src: url("../../public/fonts/BarlowCondensed/BarlowCondensed-Regular.woff") format("woff"),
+    url("../../public/fonts/BarlowCondensed/BarlowCondensed-Regular.ttf") format("truetype"),
+    url("../../public/fonts/BarlowCondensed/BarlowCondensed-Regular.svg") format("svg");
+}
+
+/* Regular Text */
+@font-face {
+  font-family: "TAEBAEKmilkyway";
+  font-style: normal;
+  src: url("../../public/fonts/TAEBAEKmilkyway/TAEBAEKmilkyway.woff2") format("woff2"),
+    url("../../public/fonts/TAEBAEKmilkyway/TAEBAEKmilkyway.ttf") format("truetype"),
+    url("../../public/fonts/TAEBAEKmilkyway/TAEBAEKmilkyway.svg") format("svg");
+}

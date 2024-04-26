@@ -1,0 +1,60 @@
+body {
+  background: #0e0e0e;
+  color: #fff;
+  font-family: "TAEBAEKmilkyway";
+  font-weight: 600;
+}
+
+.logo {
+  font-family: "Poiret One";
+  font-size: 40px;
+  font-weight: 800;
+  position: absolute;
+  color: #fff;
+  padding: 30px;
+}
+
+.navbar {
+  position: absolute;
+  right: 0;
+  width: 150px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: right;
+  color: #fff;
+  padding: 0 20px;
+}
+.navbar ul {
+  display: flex;
+  flex-direction: column;
+}
+.navbar ul li {
+  font-family: "Barlow Condensed";
+  font-weight: 100;
+  position: relative;
+  margin: 30px 0;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: color 0.5s ease;
+  cursor: pointer;
+}
+.navbar ul li:hover {
+  color: #a8a8a8;
+}
+.navbar ul li::after {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 1px;
+  bottom: -10px;
+  right: 0;
+  background: linear-gradient(to left, #a8a8a8 30%, rgba(255, 255, 255, 0));
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.navbar ul li:hover::after {
+  opacity: 1;
+}
