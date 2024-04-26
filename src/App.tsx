@@ -1,7 +1,7 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 import styles from "../src/styles/App.module.css";
-import News from "./routes/news";
-import { Link } from "react-router-dom";
+import Home from "./routes/Home";
+import News from "./routes/News";
 
 function App(): JSX.Element {
   return (
@@ -22,6 +22,7 @@ function App(): JSX.Element {
       </nav>
 
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/news" element={<News />} />
         <Route path="/schedules" element={"sample"} />
       </Routes>

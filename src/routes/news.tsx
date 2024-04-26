@@ -24,6 +24,7 @@ export default function News(): JSX.Element {
         console.error("Error fetching data: ", error);
       }
     };
+    fetchData();
   };
 
   return (
