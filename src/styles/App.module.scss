@@ -29,7 +29,6 @@ body {
   justify-content: center;
   align-items: center;
   text-align: right;
-  color: colors.$global-font;
   padding: 0 20px;
 
   & ul {
@@ -39,13 +38,13 @@ body {
     & li {
       font-family: "Barlow Condensed";
       font-weight: 100;
+      font-size: 20px;
+      color: colors.$global-font;
       position: relative;
       margin: 30px 0;
-      font-size: 20px;
       display: flex;
       flex-direction: column;
       transition: color 0.5s ease;
-      cursor: pointer;
     }
 
     & li:hover {
