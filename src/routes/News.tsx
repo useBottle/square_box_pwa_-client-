@@ -1,7 +1,15 @@
 import { useState } from "react";
 
 export default function News(): JSX.Element {
+  interface Article {
+    title: string;
+    description: string;
+    pubDate: string;
+    originallink: string;
+  }
+
   const [inputValue, setInputValue] = useState<string>("");
+  const [data, setData] = useState<Article[]>([]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInputValue(e.target.value);
@@ -11,7 +19,7 @@ export default function News(): JSX.Element {
     e.preventDefault();
     const fetchData = async (): Promise<void> => {
       try {
-        const response = await fetch(process.env.REACT_APP_GET_API_URL as string, {
+        const response = await fetch(process.env.REACT_APP_GET_NEWS_API_URL as string, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -19,7 +27,8 @@ export default function News(): JSX.Element {
           body: JSON.stringify({ inputValue }),
         });
         const result = await response.json();
-        console.log(result);
+        setData(result);
+        // console.log(data);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
@@ -32,6 +41,9 @@ export default function News(): JSX.Element {
       <form onSubmit={onSubmit}>
         <input onChange={onChange} value={inputValue} />
         <button type="submit">Search</button>
+        {data.map((item, index) => {
+          return <div key={index}>{item.title}</div>;
+        })}
       </form>
     </div>
   );
