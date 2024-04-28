@@ -11,6 +11,12 @@ export default function News(): JSX.Element {
   const [inputValue, setInputValue] = useState<string>("");
   const [data, setData] = useState<Article[]>([]);
 
+  const stripHtml = (html: string): string => {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = html;
+    return tempDiv.innerText;
+  };
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInputValue(e.target.value);
   };
@@ -27,8 +33,17 @@ export default function News(): JSX.Element {
           body: JSON.stringify({ inputValue }),
         });
         const result = await response.json();
-        setData(result);
-        // console.log(data);
+
+        const textData = result.map(
+          (item: Article): Article => ({
+            title: stripHtml(item.title),
+            description: stripHtml(item.description),
+            pubDate: stripHtml(item.pubDate),
+            originallink: stripHtml(item.originallink),
+          }),
+        );
+
+        setData(textData);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
@@ -41,10 +56,18 @@ export default function News(): JSX.Element {
       <form onSubmit={onSubmit}>
         <input onChange={onChange} value={inputValue} />
         <button type="submit">Search</button>
-        {data.map((item, index) => {
-          return <div key={index}>{item.title}</div>;
-        })}
       </form>
+      {data.map((item, index) => {
+        return (
+          <div key={index}>
+            <a href={item.originallink} target="_blank" rel="noreferrer">
+              <h3>{item.title}</h3>
+            </a>
+            <p>{item.pubDate}</p>
+            <p>{item.description}</p>
+          </div>
+        );
+      })}
     </div>
   );
 }
