@@ -18,9 +18,9 @@
 
 /* Regular Text */
 @font-face {
-  font-family: "TAEBAEKmilkyway";
+  font-family: "S-CoreDream-1Thin";
   font-style: normal;
-  src: url("../../public/fonts/TAEBAEKmilkyway/TAEBAEKmilkyway.woff2") format("woff2"),
-    url("../../public/fonts/TAEBAEKmilkyway/TAEBAEKmilkyway.ttf") format("truetype"),
-    url("../../public/fonts/TAEBAEKmilkyway/TAEBAEKmilkyway.svg") format("svg");
+  src: url("../../public/fonts/S-Core_Dream/SCDream1.woff") format("woff"),
+    url("../../public/fonts/S-Core_Dream/SCDream1.ttf") format("truetype"),
+    url("../../public/fonts/S-Core_Dream/SCDream1.svg") format("svg");
 }

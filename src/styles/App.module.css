@@ -1,7 +1,7 @@
 body {
   background: #0e0e0e;
   color: #fff;
-  font-family: "TAEBAEKmilkyway";
+  font-family: "S-CoreDream-1Thin";
   font-weight: 600;
 }
 
@@ -25,10 +25,12 @@ body {
   text-align: right;
   padding: 0 20px;
 }
+
 .navbar ul {
   display: flex;
   flex-direction: column;
 }
+
 .navbar ul li {
   font-family: "Barlow Condensed";
   font-weight: 100;
@@ -40,9 +42,11 @@ body {
   flex-direction: column;
   transition: color 0.5s ease;
 }
+
 .navbar ul li:hover {
   color: #a8a8a8;
 }
+
 .navbar ul li::after {
   content: "";
   position: absolute;
@@ -54,6 +58,7 @@ body {
   opacity: 0;
   transition: opacity 0.5s ease;
 }
+
 .navbar ul li:hover::after {
   opacity: 1;
 }
