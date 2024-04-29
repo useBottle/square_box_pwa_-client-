@@ -1,8 +1,17 @@
+/*
+$global-back: #0e0e0e;
+$module-back: #202124;
+$pure-black: #000;
+$pure-white: #fff;
+$pointed-font: #a8a8a8;
+$card-border: #9d9d9d;
+*/
 body {
   background: #0e0e0e;
   color: #fff;
   font-family: "S-CoreDream-1Thin";
   font-weight: 600;
+  max-width: 100%;
 }
 
 .logo {
@@ -25,12 +34,10 @@ body {
   text-align: right;
   padding: 0 20px;
 }
-
 .navbar ul {
   display: flex;
   flex-direction: column;
 }
-
 .navbar ul li {
   font-family: "Barlow Condensed";
   font-weight: 100;
@@ -42,11 +49,9 @@ body {
   flex-direction: column;
   transition: color 0.5s ease;
 }
-
 .navbar ul li:hover {
   color: #a8a8a8;
 }
-
 .navbar ul li::after {
   content: "";
   position: absolute;
@@ -58,7 +63,6 @@ body {
   opacity: 0;
   transition: opacity 0.5s ease;
 }
-
 .navbar ul li:hover::after {
   opacity: 1;
 }

@@ -1,15 +1,12 @@
 import { useState } from "react";
+import styles from "../styles/News.module.css";
+import NewsCard from "../components/NewsCard";
+import { Article } from "../types/types";
 
 export default function News(): JSX.Element {
-  interface Article {
-    title: string;
-    description: string;
-    pubDate: string;
-    originallink: string;
-  }
-
   const [inputValue, setInputValue] = useState<string>("");
   const [data, setData] = useState<Article[]>([]);
+  const [amount, setAmount] = useState<string[]>(["class0", "class1", "class2"]);
 
   const stripHtml = (html: string): string => {
     const tempDiv = document.createElement("div");
@@ -40,6 +37,7 @@ export default function News(): JSX.Element {
             description: stripHtml(item.description),
             pubDate: stripHtml(item.pubDate),
             originallink: stripHtml(item.originallink),
+            imageUrls: item.imageUrls,
           }),
         );
 
@@ -51,23 +49,31 @@ export default function News(): JSX.Element {
     fetchData();
   };
 
+  console.log(data[0]);
+
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <input onChange={onChange} value={inputValue} />
-        <button type="submit">Search</button>
-      </form>
-      {data.map((item, index) => {
-        return (
-          <div key={index}>
-            <a href={item.originallink} target="_blank" rel="noreferrer">
-              <h3>{item.title}</h3>
-            </a>
-            <p>{item.pubDate}</p>
-            <p>{item.description}</p>
-          </div>
-        );
-      })}
+    <div className={styles.newsContainer}>
+      <div className={styles.cardSet}>
+        {amount.map((item, index) => {
+          return <NewsCard data={data[index]} unique={item} />;
+        })}
+      </div>
+      <div className={styles.titleList}>
+        <form onSubmit={onSubmit}>
+          <input onChange={onChange} value={inputValue} />
+          <button type="submit">Search</button>
+        </form>
+        {data.map((item, index) => {
+          return (
+            <div key={index}>
+              <a href={item.originallink} target="_blank" rel="noreferrer">
+                <h3>{item.title}</h3>
+              </a>
+              <p>{item.pubDate}</p>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

@@ -1,0 +1,25 @@
+@use "./_color-set.scss" as colors;
+
+// color-set
+/*
+$global-back: #0e0e0e;
+$module-back: #202124;
+$pure-black: #000;
+$pure-white: #fff;
+$pointed-font: #a8a8a8;
+$card-border: #9d9d9d;
+*/
+
+.newsContainer {
+  // display: flex;
+  // position: relative;
+  // width: 100%;
+
+  & .titleList {
+    position: absolute;
+    right: 200px;
+    width: 400px;
+    height: 600px;
+    border: 1px solid colors.$pure-white;
+  }
+}
