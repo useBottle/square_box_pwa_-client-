@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "../styles/News.module.css";
 import NewsCard from "../components/NewsCard";
 import { Article } from "../types/types";
+import { IoSearch } from "react-icons/io5";
 
 export default function News(): JSX.Element {
   const [inputValue, setInputValue] = useState<string>("");
@@ -49,27 +50,45 @@ export default function News(): JSX.Element {
     fetchData();
   };
 
-  console.log(data[0]);
-
   return (
-    <div className={styles.newsContainer}>
-      <div className={styles.cardSet}>
+    <div>
+      <div>
         {amount.map((item, index) => {
-          return <NewsCard data={data[index]} cardClass={item} />;
+          return <NewsCard data={data[index]} cardClass={item} key={index} />;
         })}
       </div>
-      <div className={styles.titleList}>
+      <div className={styles.articleList}>
         <form onSubmit={onSubmit}>
-          <input onChange={onChange} value={inputValue} />
-          <button type="submit">Search</button>
+          <div className={styles.searchBar}>
+            <input onChange={onChange} value={inputValue} />
+            <button type="submit">
+              <IoSearch />
+            </button>
+          </div>
         </form>
         {data.map((item, index) => {
+          // 날짜 포맷 변경하기
+          const dateString = item.pubDate;
+          const date = new Date(dateString);
+
+          function formatDate(d: Date): string {
+            const year = d.getFullYear();
+            const month = d.getMonth() + 1;
+            const day = d.getDate();
+            const hours = d.getHours();
+            const minutes = d.getMinutes();
+
+            const pad = (num: number) => num.toString().padStart(2, "0");
+
+            return `${year}년 ${pad(month)}월 ${pad(day)}일 ${pad(hours)}:${pad(minutes)}`;
+          }
+          const changedDate = formatDate(date);
           return (
-            <div key={index}>
+            <div key={index} className={styles.article}>
               <a href={item.originallink} target="_blank" rel="noreferrer">
                 <h3>{item.title}</h3>
               </a>
-              <p>{item.pubDate}</p>
+              <p>{changedDate}</p>
             </div>
           );
         })}
