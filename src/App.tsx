@@ -5,7 +5,7 @@ import News from "./routes/News";
 
 function App(): JSX.Element {
   return (
-    <div>
+    <div className={styles.mainContainer}>
       <Link to="/">
         <h1 className={styles.logo}>Custom Board</h1>
       </Link>
