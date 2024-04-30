@@ -55,7 +55,7 @@ export default function News(): JSX.Element {
     <div className={styles.newsContainer}>
       <div className={styles.cardSet}>
         {amount.map((item, index) => {
-          return <NewsCard data={data[index]} unique={item} />;
+          return <NewsCard data={data[index]} cardClass={item} />;
         })}
       </div>
       <div className={styles.titleList}>
