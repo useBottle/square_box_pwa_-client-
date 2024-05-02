@@ -1,10 +1,5 @@
-import { Article } from "../types/types";
+import { NewsCardProps } from "../types/types";
 import styles from "../styles/NewsCard.module.css";
-
-interface NewsCardProps {
-  data: Article;
-  cardClass: string;
-}
 
 export default function NewsCard({ data, cardClass }: NewsCardProps): JSX.Element {
   if (data) {

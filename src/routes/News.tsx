@@ -1,13 +1,19 @@
-import { useState } from "react";
 import styles from "../styles/News.module.css";
 import NewsCard from "../components/NewsCard";
 import { Article } from "../types/types";
 import { IoSearch } from "react-icons/io5";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../store/store";
+import { setInputValue } from "../store/inputValueSlice";
+import { setData } from "../store/dataSlice";
 
 export default function News(): JSX.Element {
-  const [inputValue, setInputValue] = useState<string>("");
-  const [data, setData] = useState<Article[]>([]);
-  const [amount, setAmount] = useState<string[]>(["class0", "class1", "class2"]);
+  const dispatch = useDispatch<AppDispatch>();
+  const inputValue = useSelector((state: RootState) => state.inputValue);
+
+  const data = useSelector((state: RootState) => state.data);
+
+  const amount = useSelector((state: RootState) => state.amount);
 
   const stripHtml = (html: string): string => {
     const tempDiv = document.createElement("div");
@@ -16,7 +22,7 @@ export default function News(): JSX.Element {
   };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setInputValue(e.target.value);
+    dispatch(setInputValue(e.target.value));
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -42,7 +48,7 @@ export default function News(): JSX.Element {
           }),
         );
 
-        setData(textData);
+        dispatch(setData(textData));
       } catch (error) {
         console.error("Error fetching data: ", error);
       }

@@ -5,3 +5,8 @@ export interface Article {
   originallink: string;
   imageUrls: string[];
 }
+
+export interface NewsCardProps {
+  data: Article;
+  cardClass: string;
+}
