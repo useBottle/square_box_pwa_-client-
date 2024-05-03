@@ -1,3 +1,5 @@
+@use "./_color-set.scss" as colors;
+
 /*
 [achromatic color set]
 
@@ -16,66 +18,63 @@ $bright-blue: #4c94d7;
 $deep-blue: #3363b7;
 $dark-blue: #23418d;
 */
+
 .card {
-  position: relative;
+  position: absolute;
+  top: 230px;
+  left: 206px;
   width: 450px;
   height: 350px;
-  border-left: 1px solid #5d606e;
+  border-left: 1px solid colors.$module-back;
   border-radius: 10px;
   transform-origin: 100%;
   text-overflow: ellipsis;
-  background: #fff;
-  margin-top: -360px;
+  background: colors.$pure-white;
   overflow: hidden;
-}
-.card .articleImage {
-  position: relative;
-  width: 100%;
-  height: 220px;
-}
-.card h3 {
-  margin-top: 20px;
-  font-family: "S-CoreDream-4Regular";
-  color: #000;
-  font-weight: 1000;
-  font-size: 20px;
-  padding: 0 20px;
-  line-height: 1.3;
-}
-.card p {
-  display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-top: 20px;
-  padding: 0 20px;
-  color: #000;
+
+  & .articleImage {
+    position: relative;
+    width: 100%;
+    height: 220px;
+  }
+
+  & h3 {
+    margin-top: 20px;
+    font-family: "S-CoreDream-4Regular";
+    color: colors.$pure-black;
+    font-weight: 1000;
+    font-size: 20px;
+    padding: 0 20px;
+    line-height: 1.3;
+  }
+
+  & p {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 20px;
+    padding: 0 20px;
+    color: colors.$pure-black;
+  }
 }
 
-.card2 {
+.class2 {
   transform: perspective(300px) rotateY(10deg) translate(-30px, -30px);
-  transition: all 0.3s ease;
-  box-shadow: -30px 0 30px 20px rgba(0, 0, 0, 0.4196078431);
-  z-index: 8;
+  z-index: 1;
   opacity: 0.5;
-  filter: blur(2px);
   -webkit-box-reflect: below 70px linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.08));
 }
 
-.card1 {
+.class1 {
   transform: perspective(300px) rotateY(10deg) translate(-15px, -15px);
-  transition: all 0.3s ease;
-  box-shadow: -20px 0 20px 10px rgba(0, 0, 0, 0.4745098039);
-  z-index: 9;
+  z-index: 2;
   opacity: 0.8;
-  filter: blur(1.5px);
   -webkit-box-reflect: below 40px linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
 }
 
-.card0 {
+.class0 {
   transform: perspective(300px) rotateY(10deg);
-  transition: all 0.3s ease;
-  box-shadow: -10px 0 10px 10px rgba(0, 0, 0, 0.2039215686);
-  z-index: 10;
+  z-index: 3;
   -webkit-box-reflect: below 5px linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
 }

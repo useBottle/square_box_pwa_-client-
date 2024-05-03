@@ -1,22 +1,18 @@
-import { NewsCardProps } from "../types/types";
 import styles from "../styles/NewsCard.module.css";
+import { NewsCardProps } from "../types/types";
 
-export default function NewsCard({ data, cardClass }: NewsCardProps): JSX.Element {
-  if (data) {
-    return (
-      <div className={`${styles.card} ${styles[cardClass]}`}>
-        <img src={data.imageUrls[0]} alt="articleImage" className={styles.articleImage} />
-        <h3>{data.title}</h3>
-        <p>{data.description}</p>
-      </div>
-    );
-  } else {
-    return (
-      <div className={`${styles.card} ${styles[cardClass]}`}>
-        <img src={`/images/news_image_${cardClass}.jpg`} alt="123" className={styles.articleImage} />
-        <h3>News</h3>
-        <p>Please search for the news...</p>
-      </div>
-    );
-  }
+export default function NewsCard({ article, index }: NewsCardProps): JSX.Element {
+  const styleValue = `card${index}`;
+  const isHttps = article.imageUrls[0].startsWith("https://");
+  return (
+    <div className={`${styles.card} ${styles[styleValue]}`}>
+      <img
+        src={isHttps ? article.imageUrls[0] : "/images/news_image_class0.jpg"}
+        alt="articleImage"
+        className={styles.articleImage}
+      />
+      <h3>{article.title}</h3>
+      <p>{article.description}</p>
+    </div>
+  );
 }

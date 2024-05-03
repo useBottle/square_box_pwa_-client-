@@ -6,14 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
 import { setInputValue } from "../store/inputValueSlice";
 import { setData } from "../store/dataSlice";
+import { setId } from "../store/idSlice";
+import DefaultCard from "../components/DefaultCard";
+import { setVisibilityRange } from "../store/visibilitySlice";
 
 export default function News(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const inputValue = useSelector((state: RootState) => state.inputValue);
-
   const data = useSelector((state: RootState) => state.data);
-
-  const amount = useSelector((state: RootState) => state.amount);
+  const { start, end } = useSelector((state: RootState) => state.visibility);
 
   const stripHtml = (html: string): string => {
     const tempDiv = document.createElement("div");
@@ -58,11 +59,15 @@ export default function News(): JSX.Element {
 
   return (
     <div>
-      <div>
-        {amount.map((item, index) => {
-          return <NewsCard data={data[index]} cardClass={item} key={index} />;
-        })}
-      </div>
+      {data.length !== 0 ? (
+        <div className={styles.cardSet}>
+          {data.slice(start, end).map((item, index) => (
+            <NewsCard article={item} index={index} key={index} />
+          ))}
+        </div>
+      ) : (
+        <DefaultCard />
+      )}
       <div className={styles.articleContainer}>
         <form onSubmit={onSubmit}>
           <div className={styles.searchBar}>
@@ -90,9 +95,23 @@ export default function News(): JSX.Element {
               return `${year}년 ${pad(month)}월 ${pad(day)}일 ${pad(hours)}:${pad(minutes)}`;
             }
             const changedDate = formatDate(date);
+
+            // JSX에서 이벤트 핸들러 사용
             return (
-              <div key={index} className={styles.article}>
+              <div
+                key={index}
+                className={styles.article}
+                onMouseOver={() => {
+                  dispatch(setId(index));
+                  dispatch(setVisibilityRange({ start: index, end: index + 3 }));
+                }}
+                onFocus={() => {
+                  dispatch(setId(index));
+                  dispatch(setVisibilityRange({ start: index, end: index + 3 }));
+                }}
+              >
                 <a href={item.originallink} target="_blank" rel="noreferrer">
+                  <span style={{ display: "none" }}>{index}</span>
                   <h3>{item.title}</h3>
                   <p>{changedDate}</p>
                 </a>

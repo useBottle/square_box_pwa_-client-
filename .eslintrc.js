@@ -37,7 +37,7 @@ module.exports = {
 			{ extensions: [".js", ".jsx", ".ts", ".tsx"] },
 		],
 		// 화살표 함수의 파라미터가 하나일때 괄호 생략
-		"arrow-parens": ["warn", "as-needed"],
+		"arrow-parens": ["off"],
 		// 사용하지 않는 변수가 있을 때 발생하는 경고 비활성화
 		"no-unused-vars": ["off"],
 		// 콘솔 사용 시 발생하는 경고 비활성화

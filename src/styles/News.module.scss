@@ -18,12 +18,18 @@ $bright-blue: #4c94d7;
 $deep-blue: #3363b7;
 $dark-blue: #23418d;
 */
+.cardSet {
+  position: relative;
+  left: -220px;
+  bottom: -500px;
+  transition: all 0.3s ease-in-out;
+}
 
 .articleContainer {
   position: relative;
   width: 400px;
   height: 600px;
-  right: -300px;
+  right: -320px;
   display: flex;
   flex-direction: column;
 

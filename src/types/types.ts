@@ -7,6 +7,6 @@ export interface Article {
 }
 
 export interface NewsCardProps {
-  data: Article;
-  cardClass: string;
+  article: Article;
+  index: number;
 }
