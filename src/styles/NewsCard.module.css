@@ -46,6 +46,7 @@ $dark-blue: #23418d;
   display: block;
   white-space: nowrap;
   overflow: hidden;
+  line-height: 1.1;
   text-overflow: ellipsis;
   margin-top: 20px;
   padding: 0 20px;

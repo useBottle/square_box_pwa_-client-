@@ -21,8 +21,6 @@ $dark-blue: #23418d;
 
 .card {
   position: relative;
-  // top: 580px;
-  // left: 406px;
   width: 450px;
   height: 350px;
   border-left: 1px solid colors.$module-back;
@@ -53,6 +51,7 @@ $dark-blue: #23418d;
     display: block;
     white-space: nowrap;
     overflow: hidden;
+    line-height: 1.1;
     text-overflow: ellipsis;
     margin-top: 20px;
     padding: 0 20px;

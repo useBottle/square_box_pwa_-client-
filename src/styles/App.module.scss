@@ -38,6 +38,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  // background: #eee;
 
 
   & .logo {
@@ -46,10 +47,54 @@ body {
     font-weight: 800;
     position: absolute;
     top: 0;
-    left: 0;
+    left: 40px;
     margin: 30px 0;
     color: colors.$pure-white;
     z-index: 999;
+  }
+
+  & .searchBar {
+    display: flex;
+    position: absolute;
+    top: 0;
+    margin: 30px 0;
+    right: 165px;
+    padding: 0 10px;
+
+    & input {
+      width: 280px;
+      height: 50px;
+      padding: 0 10px;
+      border: none;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      list-style: none;
+      outline: none;
+      background: colors.$module-back;
+      color: colors.$aqua-blue;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    & button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 70px;
+      border: none;
+      background: colors.$aqua-blue;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      color: colors.$pure-black;
+      font-size: 30px;
+      transform: translate(5px);
+      transition: background 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    & button:hover {
+      background: colors.$point-beige;
+    }
   }
 
   & .navbar {

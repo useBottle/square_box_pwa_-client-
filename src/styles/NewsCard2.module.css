@@ -1,9 +1,0 @@
-.cardSet {
-  position: relative;
-  width: 1000px;
-  height: 1000px;
-  background: #575757;
-}
-.cardSet .card {
-  position: absolute;
-}

@@ -18,62 +18,14 @@ $bright-blue: #4c94d7;
 $deep-blue: #3363b7;
 $dark-blue: #23418d;
 */
-.cardSet {
-  position: relative;
-  left: -180px;
-  bottom: -400px;
-  transition: all 0.3s ease-in-out;
-}
 
 .articleContainer {
   position: relative;
   width: 400px;
-  height: 600px;
+  height: 500px;
   right: -320px;
   display: flex;
   flex-direction: column;
-
-  & .searchBar {
-    display: flex;
-    position: relative;
-    margin-bottom: 50px;
-    padding: 0 10px;
-
-    & input {
-      width: 280px;
-      height: 50px;
-      padding: 0 10px;
-      border: none;
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
-      list-style: none;
-      outline: none;
-      background: colors.$module-back;
-      color: colors.$aqua-blue;
-      font-size: 20px;
-      font-weight: 600;
-    }
-
-    & button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 70px;
-      border: none;
-      background: colors.$aqua-blue;
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
-      color: colors.$pure-black;
-      font-size: 30px;
-      transform: translate(5px);
-      transition: background 0.3s ease-in-out;
-      cursor: pointer;
-    }
-
-    & button:hover {
-      background: colors.$point-beige;
-    }
-  }
 
   & .articleList {
     position: relative;

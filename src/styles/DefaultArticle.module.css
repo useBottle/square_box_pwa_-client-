@@ -1,0 +1,30 @@
+/*
+[achromatic color set]
+
+$global-back: #202124;
+$pure-black: #000;
+$pure-white: #fff;
+$pointed-font: #a8a8a8;
+$module-back: #5d606e;
+
+[point color set]
+
+$point-beige: #f8d17c;
+$aqua-blue: #71f1fc;
+$sky-blue: #61cdf9;
+$bright-blue: #4c94d7;
+$deep-blue: #3363b7;
+$dark-blue: #23418d;
+*/
+.articleContainer {
+  position: relative;
+  font-family: "S-CoreDream-4Regular";
+  width: 400px;
+  height: 500px;
+  right: -320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #fff;
+}

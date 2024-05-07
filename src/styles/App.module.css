@@ -42,10 +42,50 @@ body {
   font-weight: 800;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 40px;
   margin: 30px 0;
   color: #fff;
   z-index: 999;
+}
+.mainContainer .searchBar {
+  display: flex;
+  position: absolute;
+  top: 0;
+  margin: 30px 0;
+  right: 165px;
+  padding: 0 10px;
+}
+.mainContainer .searchBar input {
+  width: 280px;
+  height: 50px;
+  padding: 0 10px;
+  border: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  list-style: none;
+  outline: none;
+  background: #5d606e;
+  color: #71f1fc;
+  font-size: 20px;
+  font-weight: 600;
+}
+.mainContainer .searchBar button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  border: none;
+  background: #71f1fc;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: #000;
+  font-size: 30px;
+  transform: translate(5px);
+  transition: background 0.3s ease-in-out;
+  cursor: pointer;
+}
+.mainContainer .searchBar button:hover {
+  background: #f8d17c;
 }
 .mainContainer .navbar {
   position: absolute;
