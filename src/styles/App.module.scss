@@ -7,7 +7,8 @@ $global-back: #202124;
 $pure-black: #000;
 $pure-white: #fff;
 $pointed-font: #a8a8a8;
-$module-back: #5d606e;
+$searchbar-back: #5d606e;
+$module-back: #1e1f21;
 
 [point color set]
 
@@ -70,7 +71,7 @@ body {
       border-bottom-left-radius: 10px;
       list-style: none;
       outline: none;
-      background: colors.$module-back;
+      background: colors.$searchbar-back;
       color: colors.$aqua-blue;
       font-size: 20px;
       font-weight: 600;

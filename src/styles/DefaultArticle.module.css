@@ -5,7 +5,8 @@ $global-back: #202124;
 $pure-black: #000;
 $pure-white: #fff;
 $pointed-font: #a8a8a8;
-$module-back: #5d606e;
+$searchbar-back: #5d606e;
+$module-back: #1e1f21;
 
 [point color set]
 
@@ -19,6 +20,7 @@ $dark-blue: #23418d;
 .articleContainer {
   position: relative;
   font-family: "S-CoreDream-4Regular";
+  font-size: 50px;
   width: 400px;
   height: 500px;
   right: -320px;
@@ -26,5 +28,36 @@ $dark-blue: #23418d;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 1px solid #fff;
+  --borderWidth: 3px;
+  background: #1e1f21;
+  border-radius: var(--borderWidth);
+}
+.articleContainer .text {
+  font-size: 20px;
+}
+
+.articleContainer:after {
+  content: "";
+  position: absolute;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2);
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  animation: animatedgradient 3s ease alternate infinite;
+  background-size: 300% 300%;
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
