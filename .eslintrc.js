@@ -21,6 +21,7 @@ module.exports = {
 		"plugin:prettier/recommended",
 	],
 	rules: {
+		"jsx-a11y/mouse-events-have-key-events": "off",
 		// 사용하지 않는 변수, import 문 경고
 		"@typescript-eslint/no-unused-vars": "warn",
 		// var 금지

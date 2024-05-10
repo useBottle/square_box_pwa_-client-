@@ -1,25 +1,42 @@
 import styles from "../styles/News.module.css";
-import NewsCard from "../components/NewsCard";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import DefaultCard from "../components/DefaultCard";
 import ArticleContainer from "../components/ArticleContainer";
-import DefaultArticle from "../components/DefaultArticle";
+import { useEffect, useState } from "react";
+import NewsPreview from "../components/NewsPrivew";
 
 export default function News(): JSX.Element {
   const data = useSelector((state: RootState) => state.data);
-  const { start, end } = useSelector((state: RootState) => state.visibility);
+  const current = useSelector((state: RootState) => state.visibility);
+  const [toggle, setToggle] = useState<boolean>(true);
+  useEffect(() => {
+    if (data.length !== 0) {
+      setToggle(false);
+    } else {
+      setToggle(true);
+    }
+  }, [data]);
 
   return (
-    <div>
-      <div className={styles.cardSet}>
+    <div className={styles.newsContainer}>
+      <div className={styles.previewContainer}>
+        <div className={styles.previewTitle}>Preview</div>
         {data.length !== 0 ? (
-          data.slice(start, end).map((item, index) => <NewsCard article={item} index={index} key={index} />)
+          data.slice(current, current + 1).map((item) => <NewsPreview article={item} key={current} />)
         ) : (
-          <DefaultCard />
+          <div className={styles.defaultPreview}>
+            <img src="images/news_image_class0.jpg" alt="replacement" />
+            <h3>News</h3>
+            <p>Please search for the news...</p>
+          </div>
         )}
       </div>
-      {data.length !== 0 ? <ArticleContainer /> : <DefaultArticle />}
+      <div className={styles.contentsContainer}>
+        <div className={styles.contentsTitle}>Contents</div>
+        <div className={`${styles.articleList} ${toggle ? styles.borderEffect : null}`}>
+          {data.length !== 0 ? <ArticleContainer /> : <div className={styles.text}>Search for your interests.</div>}
+        </div>
+      </div>
     </div>
   );
 }

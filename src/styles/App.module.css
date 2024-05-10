@@ -1,24 +1,7 @@
-/*
-[achromatic color set]
-
-$global-back: #202124;
-$pure-black: #000;
-$pure-white: #fff;
-$pointed-font: #a8a8a8;
-$searchbar-back: #5d606e;
-$module-back: #1e1f21;
-
-[point color set]
-
-$point-beige: #f8d17c;
-$aqua-blue: #71f1fc;
-$sky-blue: #61cdf9;
-$bright-blue: #4c94d7;
-$deep-blue: #3363b7;
-$dark-blue: #23418d;
-*/
 body {
-  background: #202124;
+  background: linear-gradient(180deg, #17ead9, #6078ea);
+  width: 100vw;
+  height: 100vh;
   color: #fff;
   font-family: "S-CoreDream-1Thin";
   font-weight: 600;
@@ -28,106 +11,258 @@ body {
   overflow: hidden;
 }
 
-.mainContainer {
-  position: relative;
-  width: 1300px;
-  height: 800px;
-  padding: 30px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+:root {
+  --box-shadow: 0 0 50px #0000008f;
+  --object-width: 2000px;
+  --object-height: 2000px;
+  --circle1-gradient: linear-gradient(90deg, #5c2774 10%, #335cc5 60%, #637ffd 100%);
+  --circle2-gradient: linear-gradient(70deg, #274b74, #8233c5, #e963fd);
+  --circle3-gradient: linear-gradient(40deg, #274b74, #8233c5, #2963fd);
+  --circle-radius: 43%;
+  --left: -50%;
+  --main-container-width: 1300px;
+  --main-container-height: 750px;
+  --header-height: 750px;
 }
-.mainContainer .logo {
+
+.circle1 {
+  position: absolute;
+  width: var(--object-width);
+  height: var(--object-height);
+  background: var(--circle1-gradient);
+  border-radius: var(--circle-radius);
+  bottom: 300px;
+  left: var(--left);
+  box-shadow: var(--box-shadow);
+  animation: wave 20s infinite linear;
+  z-index: 3;
+}
+
+.circle2 {
+  position: absolute;
+  width: var(--object-width);
+  height: var(--object-height);
+  background: var(--circle2-gradient);
+  border-radius: var(--circle-radius);
+  bottom: 200px;
+  left: var(--left);
+  box-shadow: var(--box-shadow);
+  animation: wave 30s infinite linear;
+  z-index: 2;
+}
+
+.circle3 {
+  position: absolute;
+  width: var(--object-width);
+  height: var(--object-height);
+  background: var(--circle3-gradient);
+  border-radius: var(--circle-radius);
+  bottom: 100px;
+  left: var(--left);
+  box-shadow: var(--box-shadow);
+  animation: wave 40s infinite linear;
+  z-index: 1;
+}
+
+@keyframes wave {
+  from {
+    transform: rotate(0deg);
+  }
+  from {
+    transform: rotate(360deg);
+  }
+}
+.mainContainer {
+  background: rgba(16, 18, 27, 0.4);
+  position: relative;
+  width: var(--main-container-width);
+  height: var(--main-container-height);
+  border-radius: 10px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.5568627451);
+  overflow: hidden;
+  z-index: 999;
+}
+.mainContainer .header {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  border-bottom: 0.5px solid rgba(113, 119, 144, 0.431372549);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+.mainContainer .header .logo {
   font-family: "Poiret One";
   font-size: 40px;
   font-weight: 800;
-  position: absolute;
-  top: 0;
-  left: 40px;
+  position: relative;
   margin: 30px 0;
   color: #fff;
   z-index: 999;
 }
-.mainContainer .searchBar {
-  display: flex;
-  position: absolute;
-  top: 0;
-  margin: 30px 0;
-  right: 165px;
-  padding: 0 10px;
+.mainContainer .header .searchBar {
+  position: relative;
+  right: 130px;
+  box-sizing: border-box;
 }
-.mainContainer .searchBar input {
+.mainContainer .header .searchBar input {
   width: 280px;
   height: 50px;
-  padding: 0 10px;
+  padding-left: 55px;
   border: none;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-radius: 5px;
   list-style: none;
   outline: none;
-  background: #5d606e;
+  background: rgba(16, 18, 27, 0.4);
   color: #71f1fc;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 400;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid transparent;
 }
-.mainContainer .searchBar button {
+.mainContainer .header .searchBar input::placeholder {
+  color: #8c8c8c;
+}
+.mainContainer .header .searchBar input:focus {
+  border: 1px solid #fff;
+}
+.mainContainer .header .searchBar button {
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70px;
+  height: 50px;
+  top: 0;
+  left: 10px;
+  padding: 0;
   border: none;
-  background: #71f1fc;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  color: #000;
+  background: transparent;
+  color: #fff;
   font-size: 30px;
-  transform: translate(5px);
-  transition: background 0.3s ease-in-out;
   cursor: pointer;
 }
-.mainContainer .searchBar button:hover {
-  background: #f8d17c;
+.mainContainer .header .darkmode {
+  position: absolute;
+  font-size: 30px;
+  right: 85px;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.mainContainer .header .darkmode .darkModeIcon {
+  display: flex;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+.mainContainer .header .darkmode:hover {
+  background: rgba(16, 18, 27, 0.4);
+}
+.mainContainer .header .darkmode:hover .darkModeIcon {
+  transform: rotate(90deg);
+  color: #f8d17c;
+}
+.mainContainer .header .signInBtn {
+  position: absolute;
+  right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 30px;
+  padding: 0;
+  cursor: pointer;
+}
+.mainContainer .header .signInBtn .icon {
+  position: absolute;
+  transition: transform 0.5s ease;
+  display: flex;
+  justify-content: center;
+}
+.mainContainer .header .signInBtn span {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  width: 40px;
+  height: 50px;
+  background: rgba(16, 18, 27, 0.4);
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.mainContainer .header .signInBtn:hover .icon {
+  transform: translateX(-60px);
+}
+.mainContainer .header .signInBtn:hover span {
+  color: #f8d17c;
+  opacity: 1;
 }
 .mainContainer .navbar {
   position: absolute;
-  top: -30px;
-  right: 0;
+  bottom: 0;
   width: 100px;
-  height: 100%;
+  height: calc(var(--main-container-height) - 100px);
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  text-align: right;
+  border-right: 0.5px solid rgba(113, 119, 144, 0.431372549);
+  box-sizing: border-box;
 }
 .mainContainer .navbar ul {
   display: flex;
+  align-items: center;
   flex-direction: column;
 }
 .mainContainer .navbar ul li {
   font-family: "Barlow Condensed";
   font-weight: 100;
-  font-size: 20px;
+  font-size: 25px;
+  background: transparent;
+  border-radius: 5px;
+  width: 60px;
+  height: 60px;
   color: #fff;
   position: relative;
-  margin: 30px 0;
   display: flex;
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  transition: color 0.5s ease;
+  transition: all 0.3s ease;
+}
+.mainContainer .navbar ul li div {
+  position: relative;
+  top: -10px;
+}
+.mainContainer .navbar ul li span {
+  position: absolute;
+  margin-top: 30px;
+  font-size: 15px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+.mainContainer .navbar ul li:first-child {
+  margin-top: 0;
 }
 .mainContainer .navbar ul li:hover {
-  color: #a8a8a8;
+  background: rgba(16, 18, 27, 0.4);
 }
-.mainContainer .navbar ul li::after {
-  content: "";
-  position: absolute;
-  width: 150%;
-  height: 1px;
-  bottom: -10px;
-  right: 0;
-  background: linear-gradient(to left, #a8a8a8 30%, rgba(255, 255, 255, 0));
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-.mainContainer .navbar ul li:hover::after {
+.mainContainer .navbar ul li:hover span {
   opacity: 1;
 }

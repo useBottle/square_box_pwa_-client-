@@ -6,7 +6,6 @@ export interface Article {
   imageUrls: string[];
 }
 
-export interface NewsCardProps {
+export interface NewsProps {
   article: Article;
-  index: number;
 }
