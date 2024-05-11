@@ -2,34 +2,34 @@
 @font-face {
   font-family: "Poiret One";
   font-style: normal;
-  src: url("../../public/fonts/PoiretOne/PoiretOne-Regular.woff") format("woff"),
-    url("../../public/fonts/PoiretOne/PoiretOne-Regular.ttf") format("truetype"),
-    url("../../public/fonts/PoiretOne/PoiretOne-Regular.svg") format("svg");
+  src: url("/public/fonts/PoiretOne/PoiretOne-Regular.woff") format("woff"),
+    url("/public/fonts/PoiretOne/PoiretOne-Regular.ttf") format("truetype"),
+    url("/public/fonts/PoiretOne/PoiretOne-Regular.svg") format("svg");
 }
 
 /* Menu */
 @font-face {
   font-family: "Barlow Condensed";
   font-style: normal;
-  src: url("../../public/fonts/BarlowCondensed/BarlowCondensed-Regular.woff") format("woff"),
-    url("../../public/fonts/BarlowCondensed/BarlowCondensed-Regular.ttf") format("truetype"),
-    url("../../public/fonts/BarlowCondensed/BarlowCondensed-Regular.svg") format("svg");
+  src: url("/public/fonts/BarlowCondensed/BarlowCondensed-Regular.woff") format("woff"),
+    url("/public/fonts/BarlowCondensed/BarlowCondensed-Regular.ttf") format("truetype"),
+    url("/public/fonts/BarlowCondensed/BarlowCondensed-Regular.svg") format("svg");
 }
 
 /* Text-Thin */
 @font-face {
   font-family: "S-CoreDream-1Thin";
   font-style: normal;
-  src: url("../../public/fonts/S-Core_Dream/SCDream1-thin.woff") format("woff"),
-    url("../../public/fonts/S-Core_Dream/SCDream1-thin.ttf") format("truetype"),
-    url("../../public/fonts/S-Core_Dream/SCDream1-thin.svg") format("svg");
+  src: url("/public/fonts/S-Core_Dream/SCDream1-thin.woff") format("woff"),
+    url("/public/fonts/S-Core_Dream/SCDream1-thin.ttf") format("truetype"),
+    url("/public/fonts/S-Core_Dream/SCDream1-thin.svg") format("svg");
 }
 
 /* Text-Regular */
 @font-face {
   font-family: "S-CoreDream-4Regular";
   font-style: normal;
-  src: url("../../public/fonts/S-Core_Dream/SCDream4-regular.woff") format("woff"),
-    url("../../public/fonts/S-Core_Dream/SCDream4-regular.ttf") format("truetype"),
-    url("../../public/fonts/S-Core_Dream/SCDream4-regular.svg") format("svg");
+  src: url("/public/fonts/S-Core_Dream/SCDream4-regular.woff") format("woff"),
+    url("/public/fonts/S-Core_Dream/SCDream4-regular.ttf") format("truetype"),
+    url("/public/fonts/S-Core_Dream/SCDream4-regular.svg") format("svg");
 }
