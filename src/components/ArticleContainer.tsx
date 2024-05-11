@@ -2,6 +2,7 @@ import { AppDispatch, RootState } from "../store/store";
 import styles from "../styles/ArticleContainer.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setVisibility } from "../store/visibilitySlice";
+import { Link } from "react-router-dom";
 
 export default function ArticleContainer(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -39,11 +40,11 @@ export default function ArticleContainer(): JSX.Element {
               dispatch(setVisibility(index));
             }}
           >
-            <a href={item.originallink} target="_blank" rel="noreferrer">
+            <Link to={`/news/${index}`}>
               <span style={{ display: "none" }}>{index}</span>
               <h3>{item.title}</h3>
               <p>{changedDate}</p>
-            </a>
+            </Link>
           </div>
         );
       })}

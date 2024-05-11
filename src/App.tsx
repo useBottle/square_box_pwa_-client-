@@ -16,6 +16,7 @@ import { setInputValue } from "./store/inputValueSlice";
 import { Article } from "./types/types";
 import { setData } from "./store/dataSlice";
 import { useState } from "react";
+import NewsDetail from "./routes/NewsDetail";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -139,7 +140,7 @@ function App(): JSX.Element {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/news" element={<News />} />
-          <Route path="/schedules" element={"sample"} />
+          <Route path="/news/:id" element={<NewsDetail />} />
         </Routes>
       </div>
     </div>
