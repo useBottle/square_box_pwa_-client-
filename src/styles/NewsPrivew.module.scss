@@ -1,0 +1,35 @@
+@use "./_color-set.scss" as colors;
+
+.newsPreview {
+  position: absolute;
+  top: 75px;
+  width: 550px;
+  height: 500px;
+  border-radius: 10px;
+  overflow: scroll;
+
+  & img {
+    position: relative;
+    width: 550px;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  & h3 {
+    margin-top: 30px;
+    font-size: 30px;
+    line-height: 1.2;
+    color: colors.$point-beige;
+  }
+
+  & p {
+    margin-top: 20px;
+    font-weight: 100;
+    line-height: 1.3;
+    // margin-bottom: 75px;
+  }
+}
+
+.newsPreview::-webkit-scrollbar {
+  display: none;
+}
