@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import inputValueReducer from "./inputValueSlice";
-import dataReducer from "./dataSlice";
+import newsDataReducer from "./newsDataSlice";
 import amountReducer from "./amountSlice";
 import positionReducer from "./positionSlice";
 import visibilityReducer from "./visibilitySlice";
@@ -8,7 +8,7 @@ import visibilityReducer from "./visibilitySlice";
 const store = configureStore({
   reducer: {
     inputValue: inputValueReducer,
-    data: dataReducer,
+    newsData: newsDataReducer,
     amount: amountReducer,
     position: positionReducer,
     visibility: visibilityReducer,

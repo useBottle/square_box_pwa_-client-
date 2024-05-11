@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 
 export default function ArticleContainer(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
-  const data = useSelector((state: RootState) => state.data);
+  const newsData = useSelector((state: RootState) => state.newsData);
 
   return (
     <div className={styles.articleList}>
-      {data.map((item, index) => {
+      {newsData.map((item, index) => {
         // 날짜 포맷 변경하기
         const dateString = item.pubDate;
         const date = new Date(dateString);
@@ -40,7 +40,7 @@ export default function ArticleContainer(): JSX.Element {
               dispatch(setVisibility(index));
             }}
           >
-            <Link to={`/news/${index}`}>
+            <Link to={`/news/${index}`} onClick={() => console.log(1)}>
               <span style={{ display: "none" }}>{index}</span>
               <h3>{item.title}</h3>
               <p>{changedDate}</p>

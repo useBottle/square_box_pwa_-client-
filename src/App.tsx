@@ -14,9 +14,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { setInputValue } from "./store/inputValueSlice";
 import { Article } from "./types/types";
-import { setData } from "./store/dataSlice";
 import { useState } from "react";
 import NewsDetail from "./routes/NewsDetail";
+import { setNewsData } from "./store/newsDataSlice";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -56,7 +56,7 @@ function App(): JSX.Element {
           }),
         );
 
-        dispatch(setData(textData));
+        dispatch(setNewsData(textData));
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
