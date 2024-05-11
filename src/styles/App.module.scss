@@ -1,5 +1,17 @@
 @use "./_color-set.scss" as colors;
 
+$box-shadow: 0 0 50px #0000008f;
+$object-width: 2000px;
+$object-height: 2000px;
+$circle1-gradient: linear-gradient(90deg, #5c2774 10%, #335cc5 60%, #637ffd 100%);
+$circle2-gradient: linear-gradient(70deg, #274b74, #8233c5, #e963fd);
+$circle3-gradient: linear-gradient(40deg, #274b74, #8233c5, #2963fd);
+$circle-radius: 43%;
+$left: -50%;
+$main-container-width: 1300px;
+$main-container-height: 750px;
+$header-height: 750px;
+
 body {
   background: linear-gradient(180deg, #17ead9, #6078ea);
   width: 100vw;
@@ -13,55 +25,41 @@ body {
   overflow: hidden;
 }
 
-:root {
-  --box-shadow: 0 0 50px #0000008f;
-  --object-width: 2000px;
-  --object-height: 2000px;
-  --circle1-gradient: linear-gradient(90deg, #5c2774 10%, #335cc5 60%, #637ffd 100%);
-  --circle2-gradient: linear-gradient(70deg, #274b74, #8233c5, #e963fd);
-  --circle3-gradient: linear-gradient(40deg, #274b74, #8233c5, #2963fd);
-  --circle-radius: 43%;
-  --left: -50%;
-  --main-container-width: 1300px;
-  --main-container-height: 750px;
-  --header-height: 750px;
-}
-
 .circle1 {
   position: absolute;
-  width: var(--object-width);
-  height: var(--object-height);
-  background: var(--circle1-gradient);
-  border-radius: var(--circle-radius);
+  width: $object-width;
+  height: $object-height;
+  background: $circle1-gradient;
+  border-radius: $circle-radius;
   bottom: 300px;
-  left: var(--left);
-  box-shadow: var(--box-shadow);
+  left: $left;
+  box-shadow: $box-shadow;
   animation: wave 20s infinite linear;
   z-index: 3;
 }
 
 .circle2 {
   position: absolute;
-  width: var(--object-width);
-  height: var(--object-height);
-  background: var(--circle2-gradient);
-  border-radius: var(--circle-radius);
+  width: $object-width;
+  height: $object-height;
+  background: $circle2-gradient;
+  border-radius: $circle-radius;
   bottom: 200px;
-  left: var(--left);
-  box-shadow: var(--box-shadow);
+  left: $left;
+  box-shadow: $box-shadow;
   animation: wave 30s infinite linear;
   z-index: 2;
 }
 
 .circle3 {
   position: absolute;
-  width: var(--object-width);
-  height: var(--object-height);
-  background: var(--circle3-gradient);
-  border-radius: var(--circle-radius);
+  width: $object-width;
+  height: $object-height;
+  background: $circle3-gradient;
+  border-radius: $circle-radius;
   bottom: 100px;
-  left: var(--left);
-  box-shadow: var(--box-shadow);
+  left: $left;
+  box-shadow: $box-shadow;
   animation: wave 40s infinite linear;
   z-index: 1;
 }
@@ -79,8 +77,8 @@ body {
 .mainContainer {
   background: colors.$container-back;
   position: relative;
-  width: var(--main-container-width);
-  height: var(--main-container-height);
+  width: $main-container-width;
+  height: $main-container-height;
   border-radius: 10px;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -239,7 +237,7 @@ body {
     position: absolute;
     bottom: 0;
     width: 100px;
-    height: calc(var(--main-container-height) - 100px);
+    height: calc(($main-container-height) - 100px);
     display: flex;
     justify-content: center;
     align-items: center;

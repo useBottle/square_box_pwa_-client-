@@ -26,6 +26,9 @@
 .articleList .article:hover {
   background: rgba(16, 18, 27, 0.4);
 }
-.articleList .article:hover p {
+.articleList .article:hover h3 {
   color: #f8d17c;
+}
+.articleList .article:hover p {
+  color: #71f1fc;
 }

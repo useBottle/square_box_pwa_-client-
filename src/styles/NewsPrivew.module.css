@@ -15,10 +15,13 @@
 .newsPreview h3 {
   margin-top: 30px;
   font-size: 30px;
+  line-height: 1.2;
+  color: #f8d17c;
 }
 .newsPreview p {
-  margin-top: 30px;
+  margin-top: 20px;
   font-weight: 100;
+  line-height: 1.3;
 }
 
 .newsPreview::-webkit-scrollbar {

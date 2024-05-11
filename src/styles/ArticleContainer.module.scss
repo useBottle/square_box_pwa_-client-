@@ -32,8 +32,12 @@
   & .article:hover {
     background: colors.$container-back;
 
-    & p {
+    & h3 {
       color: colors.$point-beige;
+    }
+
+    & p {
+      color: colors.$aqua-blue;
     }
   }
 }
