@@ -2,6 +2,7 @@ import { AppDispatch, RootState } from "../store/store";
 import styles from "../styles/ArticleContainer.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setVisibility } from "../store/visibilitySlice";
+import { setCurrentNews } from "../store/currentNewsSlice";
 import { Link } from "react-router-dom";
 
 export default function ArticleContainer(): JSX.Element {
@@ -28,6 +29,10 @@ export default function ArticleContainer(): JSX.Element {
         }
         const changedDate = formatDate(date);
 
+        const onClick = (): void => {
+          dispatch(setCurrentNews(item));
+        };
+
         // JSX에서 이벤트 핸들러 사용
         return (
           <div
@@ -40,11 +45,11 @@ export default function ArticleContainer(): JSX.Element {
               dispatch(setVisibility(index));
             }}
           >
-            <Link to={`/news/${index}`} onClick={() => console.log(1)}>
+            <div role="button" tabIndex={0} onClick={onClick} onKeyDown={onClick}>
               <span style={{ display: "none" }}>{index}</span>
               <h3>{item.title}</h3>
               <p>{changedDate}</p>
-            </Link>
+            </div>
           </div>
         );
       })}

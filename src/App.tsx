@@ -3,19 +3,14 @@ import styles from "../src/styles/App.module.css";
 import Home from "./routes/Home";
 import News from "./routes/News";
 import { IoSearch } from "react-icons/io5";
-import { GoSun } from "react-icons/go";
-import { GoSignIn } from "react-icons/go";
-import { FaNewspaper } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
+import { GoSun, GoSignIn } from "react-icons/go";
+import { FaNewspaper, FaYoutube, FaInstagram, FaBookmark } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { FaBookmark } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { setInputValue } from "./store/inputValueSlice";
 import { Article } from "./types/types";
 import { useState } from "react";
-import NewsDetail from "./routes/NewsDetail";
 import { setNewsData } from "./store/newsDataSlice";
 
 function App(): JSX.Element {
@@ -53,6 +48,7 @@ function App(): JSX.Element {
             pubDate: stripHtml(item.pubDate),
             originallink: stripHtml(item.originallink),
             imageUrls: item.imageUrls,
+            articleText: stripHtml(item.articleText),
           }),
         );
 
@@ -140,7 +136,6 @@ function App(): JSX.Element {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/news" element={<News />} />
-          <Route path="/news/:id" element={<NewsDetail />} />
         </Routes>
       </div>
     </div>

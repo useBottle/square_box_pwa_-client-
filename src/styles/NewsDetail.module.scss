@@ -1,0 +1,77 @@
+@use "./_color-set.scss" as colors;
+
+.newsDetailContainer {
+  font-family: "S-CoreDream-4Regular";
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: colors.$container-back;
+  padding: 0 30px;
+  top: 100px;
+  left: 100px;
+  width: 1200px;
+  height: 650px;
+  box-sizing: border-box;
+
+  & .leftContainer {
+    position: absolute;
+    top: 80px;
+    left: 50px;
+    width: 550px;
+    height: 490px;
+    line-height: 1.2;
+
+    & img {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 550px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    & .articleTitle {
+      position: relative;
+      margin-top: 30px;
+      font-size: 30px;
+      line-height: 1.2;
+      color: colors.$point-beige;
+    }
+  }
+
+  & .backArrow {
+    position: absolute;
+    top: 15px;
+    left: 50px;
+    font-size: 30px;
+    transition: all 0.3s ease-in-out;
+    color: colors.$pure-white;
+    border-radius: 5px;
+    padding: 10px 10px;
+  }
+
+  & .backArrow:hover {
+    color: colors.$point-beige;
+    background: colors.$container-back;
+  }
+
+  & .rightContainer {
+    position: absolute;
+    top: 80px;
+    right: 50px;
+    width: 500px;
+    height: 490px;
+    background: colors.$container-back;
+    border-radius: 10px;
+    overflow: scroll;
+
+    & .articleText {
+      position: relative;
+      height: auto;
+      padding: 40px 30px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+  }
+}
