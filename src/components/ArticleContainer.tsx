@@ -12,23 +12,6 @@ export default function ArticleContainer(): JSX.Element {
   return (
     <div className={styles.articleList}>
       {newsData.map((item, index) => {
-        // 날짜 포맷 변경하기
-        const dateString = item.pubDate;
-        const date = new Date(dateString);
-
-        function formatDate(d: Date): string {
-          const year = d.getFullYear();
-          const month = d.getMonth() + 1;
-          const day = d.getDate();
-          const hours = d.getHours();
-          const minutes = d.getMinutes();
-
-          const pad = (num: number) => num.toString().padStart(2, "0");
-
-          return `${year}년 ${pad(month)}월 ${pad(day)}일 ${pad(hours)}:${pad(minutes)}`;
-        }
-        const changedDate = formatDate(date);
-
         const onClick = (): void => {
           dispatch(setCurrentNews(item));
         };
@@ -48,7 +31,7 @@ export default function ArticleContainer(): JSX.Element {
             <div role="button" tabIndex={0} onClick={onClick} onKeyDown={onClick}>
               <span style={{ display: "none" }}>{index}</span>
               <h3>{item.title}</h3>
-              <p>{changedDate}</p>
+              <p>{item.pubDate}</p>
             </div>
           </div>
         );

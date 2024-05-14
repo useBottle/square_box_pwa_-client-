@@ -1,5 +1,8 @@
 .newsPreview {
   position: absolute;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
   top: 75px;
   width: 550px;
   height: 500px;
@@ -17,9 +20,15 @@
   line-height: 1.2;
   color: #f8d17c;
 }
+.newsPreview .articleDate {
+  margin-top: 20px;
+  color: #3363b7;
+  background: rgba(16, 18, 27, 0.4);
+  padding: 10px 10px;
+  border-radius: 5px;
+}
 .newsPreview .originalLink {
-  position: relative;
-  top: 40px;
+  margin-top: 20px;
   color: #fff;
   background: #61cdf9;
   padding: 10px;
@@ -30,7 +39,7 @@
   background: #3363b7;
 }
 .newsPreview p {
-  margin-top: 80px;
+  margin-top: 40px;
   font-weight: 100;
   line-height: 1.3;
   white-space: pre-wrap;
