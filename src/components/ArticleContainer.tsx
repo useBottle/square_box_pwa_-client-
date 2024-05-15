@@ -3,7 +3,7 @@ import styles from "../styles/ArticleContainer.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setVisibility } from "../store/visibilitySlice";
 import { setCurrentNews } from "../store/currentNewsSlice";
-import { Link } from "react-router-dom";
+import { setCurrentImg } from "../store/currentImgSlice";
 
 export default function ArticleContainer(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -12,8 +12,9 @@ export default function ArticleContainer(): JSX.Element {
   return (
     <div className={styles.articleList}>
       {newsData.map((item, index) => {
-        const onClick = (): void => {
+        const onMouseEnter = (): void => {
           dispatch(setCurrentNews(item));
+          dispatch(setCurrentImg(0));
         };
 
         // JSX에서 이벤트 핸들러 사용
@@ -21,14 +22,14 @@ export default function ArticleContainer(): JSX.Element {
           <div
             key={index}
             className={styles.article}
-            onMouseOver={() => {
+            onMouseEnter={() => {
               dispatch(setVisibility(index));
             }}
             onFocus={() => {
               dispatch(setVisibility(index));
             }}
           >
-            <div role="button" tabIndex={0} onClick={onClick} onKeyDown={onClick}>
+            <div role="button" tabIndex={0} onMouseEnter={onMouseEnter} onFocus={onMouseEnter}>
               <span style={{ display: "none" }}>{index}</span>
               <h3>{item.title}</h3>
               <p>{item.pubDate}</p>

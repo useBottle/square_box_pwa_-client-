@@ -1,7 +1,17 @@
 import { NewsProps } from "../types/types";
 import styles from "../styles/NewsPrivew.module.css";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../store/store";
+import { setCurrentNews } from "../store/currentNewsSlice";
 
 export default function NewsPreview({ article }: NewsProps): JSX.Element {
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    article ? dispatch(setCurrentNews(article)) : null;
+  }, []);
+
   const imageUrl = article.imageUrls?.[0]?.startsWith("https://")
     ? article.imageUrls[0]
     : process.env.REACT_APP_DEFAULT_NEWS_IMAGE;
