@@ -2,9 +2,9 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const currentImgSlice = createSlice({
   name: "currentImg",
-  initialState: 0,
+  initialState: "",
   reducers: {
-    setCurrentImg(state, action: PayloadAction<number>) {
+    setCurrentImg(state, action: PayloadAction<string>) {
       return action.payload;
     },
   },

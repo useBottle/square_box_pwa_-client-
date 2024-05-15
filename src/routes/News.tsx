@@ -5,13 +5,13 @@ import ArticleContainer from "../components/ArticleContainer";
 import { useEffect, useState } from "react";
 import NewsPreview from "../components/NewsPrivew";
 import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
-import { setCurrentImg } from "../store/currentImgSlice";
+import { setImgIndex } from "../store/imgIndexSlice";
 
 export default function News(): JSX.Element {
   const newsData = useSelector((state: RootState) => state.newsData);
   const current = useSelector((state: RootState) => state.visibility);
   const currentNews = useSelector((state: RootState) => state.currentNews);
-  const currentImg = useSelector((state: RootState) => state.currentImg);
+  const imgIndex = useSelector((state: RootState) => state.imgIndex);
   const [borderToggle, setBorderToggle] = useState<boolean>(true);
   const dispatch = useDispatch<AppDispatch>();
 
@@ -24,18 +24,16 @@ export default function News(): JSX.Element {
   }, [newsData]);
 
   const onLeftClick = () => {
-    if (currentImg === 0) {
+    if (imgIndex === 0) {
       return;
-    } else if (currentImg < currentNews.imageUrls.length) {
-      dispatch(setCurrentImg(currentImg - 1));
+    } else if (imgIndex < currentNews.imageUrls.length) {
+      dispatch(setImgIndex(imgIndex - 1));
     }
   };
 
   const onRightClick = () => {
-    currentImg < currentNews.imageUrls.length - 1 ? dispatch(setCurrentImg(currentImg + 1)) : null;
+    imgIndex < currentNews.imageUrls.length - 1 ? dispatch(setImgIndex(imgIndex + 1)) : null;
   };
-
-  console.log(currentImg);
 
   return (
     <div>

@@ -3,7 +3,7 @@ import styles from "../styles/ArticleContainer.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setVisibility } from "../store/visibilitySlice";
 import { setCurrentNews } from "../store/currentNewsSlice";
-import { setCurrentImg } from "../store/currentImgSlice";
+import { setImgIndex } from "../store/imgIndexSlice";
 
 export default function ArticleContainer(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -14,7 +14,7 @@ export default function ArticleContainer(): JSX.Element {
       {newsData.map((item, index) => {
         const onMouseEnter = (): void => {
           dispatch(setCurrentNews(item));
-          dispatch(setCurrentImg(0));
+          dispatch(setImgIndex(0));
         };
 
         // JSX에서 이벤트 핸들러 사용
