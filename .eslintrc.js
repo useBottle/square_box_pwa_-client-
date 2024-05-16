@@ -10,6 +10,8 @@ module.exports = {
 		"@typescript-eslint",
 		"eslint-plugin-prettier",
 		"react-hooks",
+		"jsx-a11y",
+		"import",
 	],
 	extends: [
 		"plugin:react/recommended",
@@ -22,6 +24,8 @@ module.exports = {
 	],
 	rules: {
 		"jsx-a11y/mouse-events-have-key-events": "off",
+		"jsx-a11y/click-events-have-key-events": "off",
+		"jsx-a11y/interactive-supports-focus": "off",
 		// 사용하지 않는 변수, import 문 경고
 		"@typescript-eslint/no-unused-vars": "warn",
 		// var 금지

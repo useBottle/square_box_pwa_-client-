@@ -10,7 +10,7 @@ export default function NewsPreview({ article }: NewsProps): JSX.Element {
 
   useEffect(() => {
     article ? dispatch(setCurrentNews(article)) : null;
-  }, []);
+  }, [article, dispatch]);
 
   const imageUrl = article.imageUrls?.[0]?.startsWith("https://")
     ? article.imageUrls[0]

@@ -68,7 +68,7 @@ body {
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.5568627451);
   overflow: hidden;
-  z-index: 999;
+  z-index: 99;
 }
 .mainContainer .header {
   position: absolute;
@@ -292,4 +292,24 @@ body {
 }
 .mainContainer .navbar ul li:hover span {
   opacity: 1;
+}
+.mainContainer .navbar ul .menuIcon {
+  background: rgba(16, 18, 27, 0.4);
+}
+.mainContainer .navbar ul .menuIcon .menuText {
+  opacity: 1;
+}
+
+.modalSet {
+  display: none;
+}
+.modalSet .overlay {
+  z-index: 998;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.14);
+  backdrop-filter: blur(5px);
 }

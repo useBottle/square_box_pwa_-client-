@@ -12,11 +12,16 @@ import { setInputValue } from "./store/inputValueSlice";
 import { Article } from "./types/types";
 import { useState } from "react";
 import { setNewsData } from "./store/newsDataSlice";
+import { setIconIndex } from "./store/iconIndexSlice";
+import SearchModal from "./components/SearchModal";
+import { setSearchModalTrigger } from "./store/searchModalTriggerSlice";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const inputValue = useSelector((state: RootState) => state.inputValue);
   const [toggle, setToggle] = useState<number>(1);
+  const iconIndex = useSelector((state: RootState) => state.iconIndex);
+  const searchModalTrigger = useSelector((state: RootState) => state.searchModalTrigger);
 
   const stripHtml = (html: string): string => {
     const tempDiv = document.createElement("div");
@@ -29,6 +34,7 @@ function App(): JSX.Element {
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    iconIndex === -1 ? dispatch(setSearchModalTrigger("block")) : null;
     e.preventDefault();
     const fetchData = async (): Promise<void> => {
       try {
@@ -70,57 +76,73 @@ function App(): JSX.Element {
 
   return (
     <div>
+      <div className={styles.modalSet} style={{ display: `${searchModalTrigger}` }}>
+        <SearchModal />
+        <div className={styles.overlay} />
+      </div>
       <div className={styles.circle1} />
       <div className={styles.circle2} />
       <div className={styles.circle3} />
       <div className={styles.mainContainer}>
         <div className={styles.header}>
-          <Link to="/">
+          <Link to="/" onClick={() => dispatch(setIconIndex(-1))}>
             <h1 className={styles.logo}>Custom Board</h1>
           </Link>
+
           <form onSubmit={onSubmit}>
             <div className={styles.searchBar}>
-              <input type="text" onChange={onChange} value={inputValue} placeholder="Search" />
-              <button
+              <input
+                type="text"
+                onChange={onChange}
+                value={inputValue}
+                placeholder="Search"
+                spellCheck="false"
+                autoComplete="off"
+              />
+              <div
+                role="button"
                 className={styles.clearBtn}
                 onClick={() => dispatch(setInputValue(""))}
-                onFocus={() => dispatch(setInputValue(""))}
                 style={inputValue === "" ? { opacity: 0 } : { opacity: 1 }}
               >
                 <span className={`${styles.part1} ${styles.iconSet}`}></span>
                 <span className={`${styles.part2} ${styles.iconSet}`}></span>
-              </button>
+              </div>
               <button className={styles.searchIcon} type="submit">
                 <IoSearch />
               </button>
             </div>
           </form>
+
           <div className={styles.darkmode} style={{ opacity: `${toggle}` }}>
             <span className={styles.darkModeIcon}>
               <GoSun />
             </span>
           </div>
-          <button
-            className={styles.signInBtn}
-            onMouseOver={() => setToggle(0)}
-            onFocus={() => setToggle(0)}
-            onMouseOut={() => setToggle(1)}
-            onBlur={() => setToggle(1)}
-          >
+
+          <button className={styles.signInBtn} onMouseOver={() => setToggle(0)} onMouseOut={() => setToggle(1)}>
             <div className={styles.icon}>
               <GoSignIn />
             </div>
             <span>Sign in</span>
           </button>
         </div>
+
         <nav className={styles.navbar}>
           <ul>
             {navItem.map((item, index) => {
               return (
-                <Link to={item.path} key={index} className={styles.navIcon}>
-                  <li>
+                <Link
+                  to={item.path}
+                  key={index}
+                  className={styles.navIcon}
+                  onClick={() => {
+                    dispatch(setIconIndex(index));
+                  }}
+                >
+                  <li className={iconIndex === index ? `${styles.menuIcon}` : ""}>
                     <div>{item.icon}</div>
-                    <span>{item.label}</span>
+                    <span className={iconIndex === index ? `${styles.menuText}` : ""}>{item.label}</span>
                   </li>
                 </Link>
               );

@@ -5,6 +5,8 @@ import amountReducer from "./amountSlice";
 import positionReducer from "./positionSlice";
 import visibilityReducer from "./visibilitySlice";
 import currentNewsReducer from "./currentNewsSlice";
+import iconIndexReducer from "./iconIndexSlice";
+import searchModalTriggerReducer from "./searchModalTriggerSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +16,8 @@ const store = configureStore({
     amount: amountReducer,
     position: positionReducer,
     visibility: visibilityReducer,
+    iconIndex: iconIndexReducer,
+    searchModalTrigger: searchModalTriggerReducer,
   },
 });
 

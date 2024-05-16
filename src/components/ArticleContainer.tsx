@@ -23,12 +23,8 @@ export default function ArticleContainer(): JSX.Element {
             onMouseEnter={() => {
               dispatch(setVisibility(index));
             }}
-            onFocus={() => {
-              dispatch(setVisibility(index));
-            }}
           >
-            <div role="button" tabIndex={0} onMouseEnter={onMouseEnter} onFocus={onMouseEnter}>
-              <span style={{ display: "none" }}>{index}</span>
+            <div onMouseEnter={onMouseEnter}>
               <h3>{item.title}</h3>
               <p>{item.pubDate}</p>
             </div>
