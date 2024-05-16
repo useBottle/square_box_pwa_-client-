@@ -293,6 +293,15 @@ body {
       align-items: center;
       flex-direction: column;
 
+      & .navIcon {
+        position: relative;
+        margin-top: 30px;
+      }
+
+      & .navIcon:first-child {
+        margin-top: 0;
+      }
+
       & li {
         font-family: "Barlow Condensed";
         font-weight: 100;
@@ -304,7 +313,6 @@ body {
         color: colors.$pure-white;
         position: relative;
         display: flex;
-        margin-top: 30px;
         justify-content: center;
         align-items: center;
         flex-direction: column;
@@ -323,10 +331,6 @@ body {
           transition: opacity 0.3s ease-in-out;
           pointer-events: none;
         }
-      }
-
-      & li:first-child {
-        margin-top: 0;
       }
 
       & li:hover {

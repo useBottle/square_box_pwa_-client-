@@ -60,6 +60,14 @@ function App(): JSX.Element {
     fetchData();
   };
 
+  const navItem = [
+    { path: "/news", icon: <FaNewspaper />, label: "News" },
+    { path: "/youtube", icon: <FaYoutube />, label: "Youtube" },
+    { path: "/instagram", icon: <FaInstagram />, label: "Instagram" },
+    { path: "/x", icon: <FaXTwitter />, label: "X" },
+    { path: "/bookmark", icon: <FaBookmark />, label: "Bookmark" },
+  ];
+
   return (
     <div>
       <div className={styles.circle1} />
@@ -107,38 +115,16 @@ function App(): JSX.Element {
         </div>
         <nav className={styles.navbar}>
           <ul>
-            <Link to="/news">
-              <li>
-                <div>
-                  <FaNewspaper />
-                </div>
-                <span>News</span>
-              </li>
-            </Link>
-            <li>
-              <div>
-                <FaYoutube />
-              </div>
-              <span>Youtube</span>
-            </li>
-            <li>
-              <div>
-                <FaInstagram />
-              </div>
-              <span>Instagram</span>
-            </li>
-            <li>
-              <div>
-                <FaXTwitter />
-              </div>
-              <span>X</span>
-            </li>
-            <li>
-              <div>
-                <FaBookmark />
-              </div>
-              <span>Bookmark</span>
-            </li>
+            {navItem.map((item, index) => {
+              return (
+                <Link to={item.path} key={index} className={styles.navIcon}>
+                  <li>
+                    <div>{item.icon}</div>
+                    <span>{item.label}</span>
+                  </li>
+                </Link>
+              );
+            })}
           </ul>
         </nav>
 

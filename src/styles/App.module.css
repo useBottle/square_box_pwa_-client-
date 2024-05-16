@@ -252,6 +252,13 @@ body {
   align-items: center;
   flex-direction: column;
 }
+.mainContainer .navbar ul .navIcon {
+  position: relative;
+  margin-top: 30px;
+}
+.mainContainer .navbar ul .navIcon:first-child {
+  margin-top: 0;
+}
 .mainContainer .navbar ul li {
   font-family: "Barlow Condensed";
   font-weight: 100;
@@ -263,7 +270,6 @@ body {
   color: #fff;
   position: relative;
   display: flex;
-  margin-top: 30px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -280,9 +286,6 @@ body {
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   pointer-events: none;
-}
-.mainContainer .navbar ul li:first-child {
-  margin-top: 0;
 }
 .mainContainer .navbar ul li:hover {
   background: rgba(16, 18, 27, 0.4);
