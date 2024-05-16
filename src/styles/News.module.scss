@@ -22,114 +22,84 @@
     height: 600px;
     box-sizing: border-box;
 
-    & .topBar {
+    & .previewTitle {
       position: relative;
-      display: flex;
-      justify-content: space-between;
-
-      & .previewTitle {
-        position: relative;
-        top: 50px;
-        left: 0;
-        color: colors.$pointed-font;
-      }
-
-      & .imgSeletor {
-        position: relative;
-        top: 50px;
-
-        & .btn {
-          background: colors.$container-back;
-          border-radius: 5px;
-          font-size: 20px;
-          padding: 2px;
-          cursor: pointer;
-          user-select: none;
-          box-sizing: border-box;
-        }
-
-        & .btn:hover {
-          border: 1px solid colors.$pure-white;
-          color: colors.$point-beige;
-        }
-
-        & .rightBtn {
-          margin-left: 5px;
-        }
-      }
-    }
-
-    & .defaultPreview {
-      position: absolute;
-      top: 75px;
-
-      & img {
-        position: relative;
-        width: 550px;
-        height: auto;
-        border-radius: 10px;
-        user-select: none;
-      }
-
-      & h3 {
-        margin-top: 30px;
-        font-size: 30px;
-      }
-
-      & p {
-        margin-top: 30px;
-        font-weight: 100;
-      }
-    }
-  }
-
-  & .contentsContainer {
-    position: absolute;
-    top: 0;
-    right: 100px;
-    width: 400px;
-    height: 650px;
-    box-sizing: border-box;
-
-    & .contentsTitle {
-      position: absolute;
       top: 50px;
       left: 0;
       color: colors.$pointed-font;
     }
+  }
 
-    & .articleList {
-      position: absolute;
-      font-family: "S-CoreDream-4Regular";
-      font-size: 20px;
-      font-weight: 400;
-      width: 400px;
-      height: 500px;
-      top: 75px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: colors.$container-back;
+  & .defaultPreview {
+    position: absolute;
+    top: 75px;
+
+    & img {
+      position: relative;
+      width: 550px;
+      height: auto;
       border-radius: 10px;
-      box-sizing: border-box;
-
-      & .text {
-        pointer-events: none;
-      }
+      user-select: none;
     }
 
-    & .borderEffect {
-      animation: blink 3s infinite alternate ease-in-out;
+    & h3 {
+      margin-top: 30px;
+      font-size: 30px;
     }
 
-    @keyframes blink {
-      0% {
-        border: 3px solid transparent;
-      }
+    & p {
+      margin-top: 30px;
+      font-weight: 100;
+    }
+  }
+}
 
-      100% {
-        border: 3px solid colors.$pure-white;
-      }
+& .contentsContainer {
+  position: absolute;
+  top: 0;
+  right: 100px;
+  width: 400px;
+  height: 650px;
+  box-sizing: border-box;
+
+  & .contentsTitle {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    color: colors.$pointed-font;
+  }
+
+  & .articleList {
+    position: absolute;
+    font-family: "S-CoreDream-4Regular";
+    font-size: 20px;
+    font-weight: 400;
+    width: 400px;
+    height: 500px;
+    top: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: colors.$container-back;
+    border-radius: 10px;
+    box-sizing: border-box;
+
+    & .text {
+      pointer-events: none;
+    }
+  }
+
+  & .borderEffect {
+    animation: blink 3s infinite alternate ease-in-out;
+  }
+
+  @keyframes blink {
+    0% {
+      border: 3px solid transparent;
+    }
+
+    100% {
+      border: 3px solid colors.$pure-white;
     }
   }
 }
