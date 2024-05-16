@@ -72,8 +72,17 @@ function App(): JSX.Element {
           </Link>
           <form onSubmit={onSubmit}>
             <div className={styles.searchBar}>
-              <input onChange={onChange} value={inputValue} placeholder="Search" />
-              <button type="submit">
+              <input type="text" onChange={onChange} value={inputValue} placeholder="Search" />
+              <button
+                className={styles.clearBtn}
+                onClick={() => dispatch(setInputValue(""))}
+                onFocus={() => dispatch(setInputValue(""))}
+                style={inputValue === "" ? { opacity: 0 } : { opacity: 1 }}
+              >
+                <span className={`${styles.part1} ${styles.iconSet}`}></span>
+                <span className={`${styles.part2} ${styles.iconSet}`}></span>
+              </button>
+              <button className={styles.searchIcon} type="submit">
                 <IoSearch />
               </button>
             </div>

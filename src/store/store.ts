@@ -5,8 +5,6 @@ import amountReducer from "./amountSlice";
 import positionReducer from "./positionSlice";
 import visibilityReducer from "./visibilitySlice";
 import currentNewsReducer from "./currentNewsSlice";
-import imgIndexReducer from "./imgIndexSlice";
-import currentImgReducer from "./currentImgSlice";
 
 const store = configureStore({
   reducer: {
@@ -16,8 +14,6 @@ const store = configureStore({
     amount: amountReducer,
     position: positionReducer,
     visibility: visibilityReducer,
-    imgIndex: imgIndexReducer,
-    currentImage: currentImgReducer,
   },
 });
 

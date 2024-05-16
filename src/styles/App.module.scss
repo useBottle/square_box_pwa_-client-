@@ -111,8 +111,12 @@ body {
       position: relative;
       right: 130px;
       box-sizing: border-box;
+      display: flex;
+      align-items: center;
 
       & input {
+        position: relative;
+        right: -30px;
         width: 280px;
         height: 50px;
         padding-left: 55px;
@@ -137,8 +141,48 @@ body {
         border: 1px solid #fff;
       }
 
-      & button {
+      & .clearBtn {
+        position: relative;
+        transform: translateX(-10px);
+        font-size: 20px;
+        font-weight: 400;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: none;
+        background: transparent;
+
+        & .iconSet {
+          position: absolute;
+          width: 15px;
+          height: 2px;
+          background: colors.$pure-white;
+        }
+
+        & .part1 {
+          transform: rotateZ(45deg);
+        }
+
+        & .part2 {
+          transform: rotateZ(-45deg);
+        }
+      }
+
+      & .clearBtn:hover {
+        background: colors.$container-back;
+
+        & .iconSet {
+          background: colors.$pointed-font;
+        }
+      }
+
+      & .searchIcon {
         position: absolute;
+        transform: translateX(35px);
         display: flex;
         justify-content: center;
         align-items: center;

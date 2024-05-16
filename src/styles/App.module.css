@@ -94,8 +94,12 @@ body {
   position: relative;
   right: 130px;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
 }
 .mainContainer .header .searchBar input {
+  position: relative;
+  right: -30px;
   width: 280px;
   height: 50px;
   padding-left: 55px;
@@ -117,8 +121,42 @@ body {
 .mainContainer .header .searchBar input:focus {
   border: 1px solid #fff;
 }
-.mainContainer .header .searchBar button {
+.mainContainer .header .searchBar .clearBtn {
+  position: relative;
+  transform: translateX(-10px);
+  font-size: 20px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+}
+.mainContainer .header .searchBar .clearBtn .iconSet {
   position: absolute;
+  width: 15px;
+  height: 2px;
+  background: #fff;
+}
+.mainContainer .header .searchBar .clearBtn .part1 {
+  transform: rotateZ(45deg);
+}
+.mainContainer .header .searchBar .clearBtn .part2 {
+  transform: rotateZ(-45deg);
+}
+.mainContainer .header .searchBar .clearBtn:hover {
+  background: rgba(16, 18, 27, 0.4);
+}
+.mainContainer .header .searchBar .clearBtn:hover .iconSet {
+  background: #8c8c8c;
+}
+.mainContainer .header .searchBar .searchIcon {
+  position: absolute;
+  transform: translateX(35px);
   display: flex;
   justify-content: center;
   align-items: center;
