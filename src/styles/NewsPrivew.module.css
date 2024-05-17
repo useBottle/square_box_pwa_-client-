@@ -32,7 +32,9 @@
   color: #fff;
   background: #61cdf9;
   padding: 10px;
+  border: none;
   border-radius: 5px;
+  cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 .newsPreview .originalLink:hover {

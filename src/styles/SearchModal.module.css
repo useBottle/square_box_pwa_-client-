@@ -49,6 +49,7 @@
   font-weight: 800;
   width: 400px;
   height: 55px;
+  cursor: pointer;
 }
 .modalContainer li .itemContainer {
   position: relative;

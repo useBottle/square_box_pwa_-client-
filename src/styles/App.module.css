@@ -88,6 +88,7 @@ body {
   position: relative;
   margin: 30px 0;
   color: #fff;
+  cursor: pointer;
   z-index: 999;
 }
 .mainContainer .header .searchBar {
@@ -252,14 +253,8 @@ body {
   align-items: center;
   flex-direction: column;
 }
-.mainContainer .navbar ul .navIcon {
-  position: relative;
-  margin-top: 30px;
-}
-.mainContainer .navbar ul .navIcon:first-child {
-  margin-top: 0;
-}
 .mainContainer .navbar ul li {
+  margin-top: 30px;
   font-family: "Barlow Condensed";
   font-weight: 100;
   font-size: 25px;
@@ -274,6 +269,7 @@ body {
   align-items: center;
   flex-direction: column;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 .mainContainer .navbar ul li div {
   position: relative;
@@ -292,6 +288,9 @@ body {
 }
 .mainContainer .navbar ul li:hover span {
   opacity: 1;
+}
+.mainContainer .navbar ul li:first-child {
+  margin-top: 0;
 }
 .mainContainer .navbar ul .menuIcon {
   background: rgba(16, 18, 27, 0.4);

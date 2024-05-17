@@ -1,4 +1,4 @@
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes, Link, useNavigate } from "react-router-dom";
 import styles from "../src/styles/App.module.css";
 import Home from "./routes/Home";
 import News from "./routes/News";
@@ -18,6 +18,7 @@ import { setSearchModalTrigger } from "./store/searchModalTriggerSlice";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
   const inputValue = useSelector((state: RootState) => state.inputValue);
   const [toggle, setToggle] = useState<number>(1);
   const iconIndex = useSelector((state: RootState) => state.iconIndex);
@@ -85,9 +86,15 @@ function App(): JSX.Element {
       <div className={styles.circle3} />
       <div className={styles.mainContainer}>
         <div className={styles.header}>
-          <Link to="/" onClick={() => dispatch(setIconIndex(-1))}>
-            <h1 className={styles.logo}>Custom Board</h1>
-          </Link>
+          <h1
+            className={styles.logo}
+            onClick={() => {
+              dispatch(setIconIndex(-1));
+              navigate("/");
+            }}
+          >
+            Custom Board
+          </h1>
 
           <form onSubmit={onSubmit}>
             <div className={styles.searchBar}>
@@ -132,19 +139,17 @@ function App(): JSX.Element {
           <ul>
             {navItem.map((item, index) => {
               return (
-                <Link
-                  to={item.path}
+                <li
+                  className={iconIndex === index ? `${styles.menuIcon}` : ""}
                   key={index}
-                  className={styles.navIcon}
                   onClick={() => {
                     dispatch(setIconIndex(index));
+                    navigate(`${item.path}`);
                   }}
                 >
-                  <li className={iconIndex === index ? `${styles.menuIcon}` : ""}>
-                    <div>{item.icon}</div>
-                    <span className={iconIndex === index ? `${styles.menuText}` : ""}>{item.label}</span>
-                  </li>
-                </Link>
+                  <div>{item.icon}</div>
+                  <span className={iconIndex === index ? `${styles.menuText}` : ""}>{item.label}</span>
+                </li>
               );
             })}
           </ul>
