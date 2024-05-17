@@ -58,3 +58,19 @@
 .newsPreview::-webkit-scrollbar {
   display: none;
 }
+
+.lightMode {
+  & .newsPreview {
+    & h3 {
+      color: colors.$black-font-light; // 추후 색상 정하면 교체하기.
+    }
+
+    & .articleDate {
+      background: colors.$container-back-light;
+    }
+
+    & .originalLink {
+      background: colors.$deep-blue; // 추후 색상 정하면 교체하기.
+    }
+  }
+}

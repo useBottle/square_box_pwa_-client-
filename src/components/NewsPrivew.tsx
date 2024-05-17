@@ -1,12 +1,13 @@
 import { NewsProps } from "../types/types";
 import styles from "../styles/NewsPrivew.module.css";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../store/store";
 import { setCurrentNews } from "../store/currentNewsSlice";
 
 export default function NewsPreview({ article }: NewsProps): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
+  const darkLightToggle = useSelector((state: RootState) => state.darkLight);
 
   useEffect(() => {
     article ? dispatch(setCurrentNews(article)) : null;
@@ -43,14 +44,16 @@ export default function NewsPreview({ article }: NewsProps): JSX.Element {
   };
 
   return (
-    <div className={styles.newsPreview}>
-      <img src={imageUrl} alt="articleImage" />
-      <h3>{article.title}</h3>
-      <p className={styles.articleDate}>{article.pubDate}</p>
-      <button className={styles.originalLink} onClick={() => openNewTab(article.originallink)}>
-        원문 링크
-      </button>
-      <p>{editedText ? editedText : process.env.REACT_APP_NO_ARTICLE_MESSAGE}</p>
+    <div className={darkLightToggle === "dark" ? "" : styles.lightMode}>
+      <div className={styles.newsPreview}>
+        <img src={imageUrl} alt="articleImage" />
+        <h3>{article.title}</h3>
+        <p className={styles.articleDate}>{article.pubDate}</p>
+        <button className={styles.originalLink} onClick={() => openNewTab(article.originallink)}>
+          원문 링크
+        </button>
+        <p>{editedText ? editedText : process.env.REACT_APP_NO_ARTICLE_MESSAGE}</p>
+      </div>
     </div>
   );
 }

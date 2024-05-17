@@ -1,13 +1,14 @@
 @use "./_color-set.scss" as colors;
 
 .articleList {
-  position: absolute;
+  position: relative;
   top: 0;
   width: 400px;
   height: 500px;
   overflow: scroll;
 
   & .article {
+    left: 0;
     padding: 10px 15px;
     border-radius: 10px;
 
@@ -38,6 +39,28 @@
 
     & p {
       color: colors.$aqua-blue;
+    }
+  }
+}
+
+.lightMode {
+  & .articleList {
+    & .article {
+      & p {
+        color: colors.$dark-blue; // 추후 색상 정하면 변경하기.
+      }
+    }
+
+    & .article:hover {
+      background: colors.$container-back-light;
+
+      & h3 {
+        color: colors.$deep-blue; // 추후 색상 정하면 변경하기.
+      }
+
+      & p {
+        color: colors.$sky-blue; // 추후 색상 정하면 변경하기.
+      }
     }
   }
 }

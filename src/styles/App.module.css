@@ -87,7 +87,6 @@ body {
   font-weight: 800;
   position: relative;
   margin: 30px 0;
-  color: #fff;
   cursor: pointer;
   z-index: 999;
 }
@@ -113,11 +112,11 @@ body {
   font-size: 20px;
   font-weight: 400;
   box-sizing: border-box;
-  transition: all 0.3s ease-in-out;
+  transition: border 0.3s ease-in-out;
   border: 1px solid transparent;
 }
 .mainContainer .header .searchBar input::placeholder {
-  color: #8c8c8c;
+  color: #565656;
 }
 .mainContainer .header .searchBar input:focus {
   border: 1px solid #fff;
@@ -153,9 +152,9 @@ body {
   background: rgba(16, 18, 27, 0.4);
 }
 .mainContainer .header .searchBar .clearBtn:hover .iconSet {
-  background: #8c8c8c;
+  background: #565656;
 }
-.mainContainer .header .searchBar .searchIcon {
+.mainContainer .header .searchBar .searchIconBox {
   position: absolute;
   transform: translateX(35px);
   display: flex;
@@ -167,11 +166,14 @@ body {
   padding: 0;
   border: none;
   background: transparent;
-  color: #fff;
+  color: #000;
   font-size: 30px;
   cursor: pointer;
 }
-.mainContainer .header .darkmode {
+.mainContainer .header .searchBar .searchIconBox .searchIcon {
+  color: #fff;
+}
+.mainContainer .header .darkModeBtn {
   position: absolute;
   font-size: 30px;
   right: 85px;
@@ -181,20 +183,23 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: transparent;
+  border: none;
   color: #fff;
   padding: 0;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
-.mainContainer .header .darkmode .darkModeIcon {
+.mainContainer .header .darkModeBtn .darkModeIcon {
   display: flex;
   justify-content: center;
-  transition: all 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
-.mainContainer .header .darkmode:hover {
+.mainContainer .header .darkModeBtn:hover {
   background: rgba(16, 18, 27, 0.4);
 }
-.mainContainer .header .darkmode:hover .darkModeIcon {
+.mainContainer .header .darkModeBtn:hover .darkModeIcon {
   transform: rotate(90deg);
   color: #f8d17c;
 }
@@ -211,7 +216,7 @@ body {
   padding: 0;
   cursor: pointer;
 }
-.mainContainer .header .signInBtn .icon {
+.mainContainer .header .signInBtn .signInIcon {
   position: absolute;
   transition: transform 0.5s ease;
   display: flex;
@@ -230,7 +235,7 @@ body {
   opacity: 0;
   transition: opacity 0.5s ease;
 }
-.mainContainer .header .signInBtn:hover .icon {
+.mainContainer .header .signInBtn:hover .signInIcon {
   transform: translateX(-60px);
 }
 .mainContainer .header .signInBtn:hover span {
@@ -311,4 +316,58 @@ body {
   left: 0;
   background: rgba(0, 0, 0, 0.14);
   backdrop-filter: blur(5px);
+}
+
+.lightMode {
+  color: #1e1e1e;
+}
+.lightMode .mainContainer {
+  background: rgba(255, 255, 255, 0.3098039216);
+}
+.lightMode .mainContainer .header {
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.3490196078);
+}
+.lightMode .mainContainer .header .searchBar input {
+  background: rgba(255, 255, 255, 0.3098039216);
+  color: #3363b7;
+}
+.lightMode .mainContainer .header .searchBar input:focus {
+  border: 1px solid #1e1e1e;
+}
+.lightMode .mainContainer .header .searchBar .searchIconBox .searchIcon {
+  color: #1e1e1e;
+}
+.lightMode .mainContainer .header .searchBar .clearBtn .iconSet {
+  background: #1e1e1e;
+}
+.lightMode .mainContainer .header .searchBar .clearBtn:hover {
+  background: rgba(255, 255, 255, 0.3098039216);
+}
+.lightMode .mainContainer .header .darkModeBtn .darkModeIcon {
+  color: #1e1e1e;
+}
+.lightMode .mainContainer .header .darkModeBtn .darkModeIcon:hover {
+  color: #3363b7;
+}
+.lightMode .mainContainer .header .darkModeBtn:hover {
+  background: rgba(255, 255, 255, 0.3098039216);
+}
+.lightMode .mainContainer .header .signInBtn .signInIcon {
+  color: #1e1e1e;
+}
+.lightMode .mainContainer .header .signInBtn span {
+  color: #1e1e1e;
+  background: rgba(255, 255, 255, 0.3098039216);
+}
+.lightMode .mainContainer .header .signInBtn:hover span {
+  color: #3363b7;
+}
+.lightMode .mainContainer .navbar ul li {
+  color: #1e1e1e;
+}
+.lightMode .mainContainer .navbar ul li:hover {
+  background: rgba(255, 255, 255, 0.3098039216);
+}
+.lightMode .mainContainer .navbar ul .menuIcon {
+  background: rgba(255, 255, 255, 0.3098039216);
 }

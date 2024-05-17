@@ -50,3 +50,13 @@
 .newsPreview::-webkit-scrollbar {
   display: none;
 }
+
+.lightMode .newsPreview h3 {
+  color: #1e1e1e;
+}
+.lightMode .newsPreview .articleDate {
+  background: rgba(255, 255, 255, 0.3098039216);
+}
+.lightMode .newsPreview .originalLink {
+  background: #3363b7;
+}

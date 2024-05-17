@@ -103,7 +103,6 @@ body {
       font-weight: 800;
       position: relative;
       margin: 30px 0;
-      color: colors.$pure-white;
       cursor: pointer;
       z-index: 999;
     }
@@ -125,12 +124,12 @@ body {
         border-radius: 5px;
         list-style: none;
         outline: none;
-        background: colors.$searchbar-back;
+        background: colors.$container-back;
         color: colors.$aqua-blue;
         font-size: 20px;
         font-weight: 400;
         box-sizing: border-box;
-        transition: all 0.3s ease-in-out;
+        transition: border 0.3s ease-in-out;
         border: 1px solid transparent;
       }
 
@@ -139,7 +138,7 @@ body {
       }
 
       & input:focus {
-        border: 1px solid #fff;
+        border: 1px solid colors.$pure-white;
       }
 
       & .clearBtn {
@@ -181,7 +180,7 @@ body {
         }
       }
 
-      & .searchIcon {
+      & .searchIconBox {
         position: absolute;
         transform: translateX(35px);
         display: flex;
@@ -193,13 +192,17 @@ body {
         padding: 0;
         border: none;
         background: transparent;
-        color: colors.$pure-white;
+        color: #000;
         font-size: 30px;
         cursor: pointer;
+
+        & .searchIcon {
+          color: colors.$pure-white;
+        }
       }
     }
 
-    & .darkmode {
+    & .darkModeBtn {
       position: absolute;
       font-size: 30px;
       right: 85px;
@@ -209,19 +212,22 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
+      background: transparent;
+      border: none;
       color: colors.$pure-white;
       padding: 0;
       cursor: pointer;
-      transition: all 0.3s ease-in-out;
+      transition: background 0.3s ease-in-out;
+      transition: opacity 0.3s ease-in-out;
 
       & .darkModeIcon {
         display: flex;
         justify-content: center;
-        transition: all 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out;
       }
     }
 
-    & .darkmode:hover {
+    & .darkModeBtn:hover {
       background: colors.$container-back;
 
       & .darkModeIcon {
@@ -244,7 +250,7 @@ body {
       padding: 0;
       cursor: pointer;
 
-      & .icon {
+      & .signInIcon {
         position: absolute;
         transition: transform 0.5s ease;
         display: flex;
@@ -267,7 +273,7 @@ body {
     }
 
     & .signInBtn:hover {
-      & .icon {
+      & .signInIcon {
         transform: translateX(-60px);
       }
 
@@ -362,5 +368,95 @@ body {
     left: 0;
     background: rgba(0, 0, 0, 0.14);
     backdrop-filter: blur(5px);
+  }
+}
+
+.lightMode {
+  color: colors.$black-font-light;
+
+  & .mainContainer {
+    background: colors.$container-back-light;
+
+    & .header {
+      border-bottom: 0.5px solid colors.$border-light;
+
+      & .searchBar {
+
+        & input {
+          background: colors.$container-back-light;
+          color: colors.$deep-blue; // 추후 색상 정하면 교체하기.
+        }
+
+        & input:focus {
+          border: 1px solid colors.$black-font-light;
+        }
+
+        & .searchIconBox {
+
+          & .searchIcon {
+            color: colors.$black-font-light;
+          }
+        }
+
+        & .clearBtn {
+          & .iconSet {
+            background: colors.$black-font-light;
+          }
+        }
+
+        & .clearBtn:hover {
+          background: colors.$container-back-light;
+        }
+      }
+
+      & .darkModeBtn {
+
+        & .darkModeIcon {
+          color: colors.$black-font-light;
+        }
+
+        & .darkModeIcon:hover {
+          color: colors.$deep-blue; // 추후 색상 정하면 교체하기.
+        }
+      }
+
+      & .darkModeBtn:hover {
+        background: colors.$container-back-light;
+      }
+
+      & .signInBtn {
+
+        & .signInIcon {
+          color: colors.$black-font-light;
+        }
+
+        & span {
+          color: colors.$black-font-light;
+          background: colors.$container-back-light;
+        }
+      }
+
+      & .signInBtn:hover {
+        & span {
+          color: colors.$deep-blue; // 추후 색상 정하면 교체하기.
+        }
+      }
+    }
+
+    & .navbar {
+      & ul {
+        & li {
+          color: colors.$black-font-light;
+        }
+
+        & li:hover {
+          background: colors.$container-back-light;
+        }
+
+        & .menuIcon {
+          background: colors.$container-back-light;
+        }
+      }
+    }
   }
 }

@@ -1,11 +1,12 @@
 .articleList {
-  position: absolute;
+  position: relative;
   top: 0;
   width: 400px;
   height: 500px;
   overflow: scroll;
 }
 .articleList .article {
+  left: 0;
   padding: 10px 15px;
   border-radius: 10px;
 }
@@ -31,4 +32,17 @@
 }
 .articleList .article:hover p {
   color: #71f1fc;
+}
+
+.lightMode .articleList .article p {
+  color: #23418d;
+}
+.lightMode .articleList .article:hover {
+  background: rgba(255, 255, 255, 0.3098039216);
+}
+.lightMode .articleList .article:hover h3 {
+  color: #3363b7;
+}
+.lightMode .articleList .article:hover p {
+  color: #61cdf9;
 }

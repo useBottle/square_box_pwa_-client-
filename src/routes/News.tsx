@@ -9,6 +9,7 @@ export default function News(): JSX.Element {
   const newsData = useSelector((state: RootState) => state.newsData);
   const current = useSelector((state: RootState) => state.visibility);
   const [borderToggle, setBorderToggle] = useState<boolean>(true);
+  const darkLightToggle = useSelector((state: RootState) => state.darkLight);
 
   useEffect(() => {
     if (newsData.length !== 0) {
@@ -19,7 +20,7 @@ export default function News(): JSX.Element {
   }, [newsData]);
 
   return (
-    <div>
+    <div className={darkLightToggle === "dark" ? "" : styles.lightMode}>
       <div className={styles.newsContainer}>
         <div className={styles.previewContainer}>
           <div className={styles.previewTitle}>Preview</div>

@@ -1,4 +1,4 @@
-import { Route, Routes, Link, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import styles from "../src/styles/App.module.css";
 import Home from "./routes/Home";
 import News from "./routes/News";
@@ -10,11 +10,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { setInputValue } from "./store/inputValueSlice";
 import { Article } from "./types/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { setNewsData } from "./store/newsDataSlice";
 import { setIconIndex } from "./store/iconIndexSlice";
 import SearchModal from "./components/SearchModal";
 import { setSearchModalTrigger } from "./store/searchModalTriggerSlice";
+import { setDarkLight } from "./store/darkLightSlice";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -23,6 +24,7 @@ function App(): JSX.Element {
   const [toggle, setToggle] = useState<number>(1);
   const iconIndex = useSelector((state: RootState) => state.iconIndex);
   const searchModalTrigger = useSelector((state: RootState) => state.searchModalTrigger);
+  const darkLightToggle = useSelector((state: RootState) => state.darkLight);
 
   const stripHtml = (html: string): string => {
     const tempDiv = document.createElement("div");
@@ -75,8 +77,16 @@ function App(): JSX.Element {
     { path: "/bookmark", icon: <FaBookmark />, label: "Bookmark" },
   ];
 
+  useEffect(() => {
+    console.log(darkLightToggle);
+  }, [darkLightToggle]);
+
+  const themeExchange = () => {
+    darkLightToggle === "dark" ? dispatch(setDarkLight("light")) : dispatch(setDarkLight("dark"));
+  };
+
   return (
-    <div>
+    <div className={darkLightToggle === "dark" ? "" : styles.lightMode}>
       <div className={styles.modalSet} style={{ display: `${searchModalTrigger}` }}>
         <SearchModal />
         <div className={styles.overlay} />
@@ -85,7 +95,7 @@ function App(): JSX.Element {
       <div className={styles.circle2} />
       <div className={styles.circle3} />
       <div className={styles.mainContainer}>
-        <div className={styles.header}>
+        <header className={styles.header}>
           <h1
             className={styles.logo}
             onClick={() => {
@@ -115,25 +125,21 @@ function App(): JSX.Element {
                 <span className={`${styles.part1} ${styles.iconSet}`}></span>
                 <span className={`${styles.part2} ${styles.iconSet}`}></span>
               </div>
-              <button className={styles.searchIcon} type="submit">
-                <IoSearch />
+              <button className={styles.searchIconBox} type="submit">
+                <IoSearch className={styles.searchIcon} />
               </button>
             </div>
           </form>
 
-          <div className={styles.darkmode} style={{ opacity: `${toggle}` }}>
-            <span className={styles.darkModeIcon}>
-              <GoSun />
-            </span>
-          </div>
+          <button className={styles.darkModeBtn} style={{ opacity: `${toggle}` }} onClick={themeExchange}>
+            <GoSun className={styles.darkModeIcon} />
+          </button>
 
           <button className={styles.signInBtn} onMouseOver={() => setToggle(0)} onMouseOut={() => setToggle(1)}>
-            <div className={styles.icon}>
-              <GoSignIn />
-            </div>
+            <GoSignIn className={styles.signInIcon} />
             <span>Sign in</span>
           </button>
-        </div>
+        </header>
 
         <nav className={styles.navbar}>
           <ul>
