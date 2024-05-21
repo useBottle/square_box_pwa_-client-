@@ -2,7 +2,7 @@ import styles from "../styles/SearchModal.module.css";
 import { FaNewspaper, FaYoutube, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { setSearchModalTrigger } from "../store/searchModalTriggerSlice";
 import { setIconIndex } from "../store/iconIndexSlice";
 import { AppDispatch } from "../store/store";
