@@ -106,7 +106,7 @@ function App(): JSX.Element {
             Custom Board
           </h1>
 
-          <form onSubmit={onSubmit}>
+          <form onSubmit={inputValue ? onSubmit : (e) => e.preventDefault()}>
             <div className={styles.searchBar}>
               <input
                 type="text"
