@@ -13,6 +13,7 @@
   width: 1200px;
   height: 650px;
   box-sizing: border-box;
+  transition: background 0.3s ease-in-out;
 
   & .previewContainer {
     position: absolute;
@@ -82,6 +83,7 @@
       background: colors.$container-back;
       border-radius: 10px;
       box-sizing: border-box;
+      transition: background 0.3s ease-in-out;
 
       & .text {
         pointer-events: none;
@@ -89,10 +91,10 @@
     }
 
     & .borderEffect {
-      animation: blink 3s infinite alternate ease-in-out;
+      animation: blink-darkMode 3s infinite alternate ease-in-out;
     }
 
-    @keyframes blink {
+    @keyframes blink-darkMode {
       0% {
         border: 3px solid transparent;
       }
@@ -116,10 +118,10 @@
       }
 
       & .borderEffect {
-        animation: blink 3s infinite alternate ease-in-out;
+        animation: blink-lightMode 3s infinite alternate ease-in-out;
       }
 
-      @keyframes blink {
+      @keyframes blink-lightMode {
         0% {
           border: 3px solid transparent;
         }

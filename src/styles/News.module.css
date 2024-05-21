@@ -11,6 +11,7 @@
   width: 1200px;
   height: 650px;
   box-sizing: border-box;
+  transition: background 0.3s ease-in-out;
 }
 .newsContainer .previewContainer {
   position: absolute;
@@ -73,14 +74,15 @@
   background: rgba(16, 18, 27, 0.4);
   border-radius: 10px;
   box-sizing: border-box;
+  transition: background 0.3s ease-in-out;
 }
 .newsContainer .contentsContainer .articleList .text {
   pointer-events: none;
 }
 .newsContainer .contentsContainer .borderEffect {
-  animation: blink 3s infinite alternate ease-in-out;
+  animation: blink-darkMode 3s infinite alternate ease-in-out;
 }
-@keyframes blink {
+@keyframes blink-darkMode {
   0% {
     border: 3px solid transparent;
   }
@@ -96,9 +98,9 @@
   background: rgba(255, 255, 255, 0.3098039216);
 }
 .lightMode .newsContainer .contentsContainer .borderEffect {
-  animation: blink 3s infinite alternate ease-in-out;
+  animation: blink-lightMode 3s infinite alternate ease-in-out;
 }
-@keyframes blink {
+@keyframes blink-lightMode {
   0% {
     border: 3px solid transparent;
   }

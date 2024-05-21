@@ -19,6 +19,7 @@
   font-size: 30px;
   line-height: 1.2;
   color: #f8d17c;
+  transition: color 0.3s ease-in-out;
 }
 .newsPreview .articleDate {
   margin-top: 20px;
@@ -26,6 +27,7 @@
   background: rgba(16, 18, 27, 0.4);
   padding: 10px 10px;
   border-radius: 5px;
+  transition: color 0.3s ease-in-out;
 }
 .newsPreview .originalLink {
   margin-top: 20px;
@@ -35,7 +37,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
 }
 .newsPreview .originalLink:hover {
   background: #3363b7;
@@ -52,11 +54,15 @@
 }
 
 .lightMode .newsPreview h3 {
-  color: #1e1e1e;
+  color: #8463ef;
 }
 .lightMode .newsPreview .articleDate {
   background: rgba(255, 255, 255, 0.3098039216);
+  color: #c94961;
 }
 .lightMode .newsPreview .originalLink {
-  background: #3363b7;
+  background: #f36265;
+}
+.lightMode .newsPreview .originalLink:hover {
+  background: #c94961;
 }

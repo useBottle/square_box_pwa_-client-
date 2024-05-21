@@ -6,6 +6,7 @@
   width: 400px;
   height: 500px;
   overflow: scroll;
+  transition: background 0.3s ease-in-out;
 
   & .article {
     left: 0;
@@ -21,12 +22,14 @@
       font-family: "S-CoreDream-4Regular";
       font-size: 20px;
       line-height: 1.3;
+      cursor: default;
     }
 
     & p {
       margin-top: 10px;
       font-size: 12px;
       color: colors.$bright-blue;
+      transition: color 0.3s ease-in-out;
     }
   }
 
@@ -47,7 +50,7 @@
   & .articleList {
     & .article {
       & p {
-        color: colors.$dark-blue; // 추후 색상 정하면 변경하기.
+        color: colors.$point-plum; // 추후 색상 정하면 변경하기.
       }
     }
 
@@ -55,11 +58,11 @@
       background: colors.$container-back-light;
 
       & h3 {
-        color: colors.$deep-blue; // 추후 색상 정하면 변경하기.
+        color: colors.$point-purple; // 추후 색상 정하면 변경하기.
       }
 
       & p {
-        color: colors.$sky-blue; // 추후 색상 정하면 변경하기.
+        color: colors.$point-pink1; // 추후 색상 정하면 변경하기.
       }
     }
   }

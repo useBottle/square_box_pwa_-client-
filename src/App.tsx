@@ -3,7 +3,7 @@ import styles from "../src/styles/App.module.css";
 import Home from "./routes/Home";
 import News from "./routes/News";
 import { IoSearch } from "react-icons/io5";
-import { GoSun, GoSignIn } from "react-icons/go";
+import { GoSun, GoMoon, GoSignIn } from "react-icons/go";
 import { FaNewspaper, FaYoutube, FaInstagram, FaBookmark } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
@@ -133,7 +133,11 @@ function App(): JSX.Element {
           </form>
 
           <button className={styles.darkModeBtn} style={{ opacity: `${toggle}` }} onClick={themeExchange}>
-            <GoSun className={styles.darkModeIcon} />
+            {darkLightToggle === "dark" ? (
+              <GoSun className={styles.darkModeIcon} onClick={() => {}} />
+            ) : (
+              <GoMoon className={styles.darkModeIcon} />
+            )}
           </button>
 
           <button className={styles.signInBtn} onMouseOver={() => setToggle(0)} onMouseOut={() => setToggle(1)}>

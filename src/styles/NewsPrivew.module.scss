@@ -22,6 +22,7 @@
     font-size: 30px;
     line-height: 1.2;
     color: colors.$point-beige;
+    transition: color 0.3s ease-in-out;
   }
 
   & .articleDate {
@@ -30,6 +31,7 @@
     background: colors.$container-back;
     padding: 10px 10px;
     border-radius: 5px;
+    transition: color 0.3s ease-in-out;
   }
 
   & .originalLink {
@@ -40,7 +42,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out;
   }
 
   & .originalLink:hover {
@@ -62,15 +64,20 @@
 .lightMode {
   & .newsPreview {
     & h3 {
-      color: colors.$black-font-light; // 추후 색상 정하면 교체하기.
+      color: colors.$point-purple;
     }
 
     & .articleDate {
       background: colors.$container-back-light;
+      color: colors.$point-plum;
     }
 
     & .originalLink {
-      background: colors.$deep-blue; // 추후 색상 정하면 교체하기.
+      background: colors.$point-pink1;
+    }
+
+    & .originalLink:hover {
+      background: colors.$point-plum;
     }
   }
 }
