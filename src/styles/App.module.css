@@ -12,8 +12,8 @@ body {
 
 .circle1 {
   position: absolute;
-  width: 2000px;
-  height: 2000px;
+  width: 140vw;
+  height: 240vh;
   background: linear-gradient(90deg, #362774 10%, #335cc5 60%, #637ffd 100%);
   border-radius: 43%;
   bottom: 300px;
@@ -26,8 +26,8 @@ body {
 
 .circle2 {
   position: absolute;
-  width: 2000px;
-  height: 2000px;
+  width: 140vw;
+  height: 240vh;
   background: linear-gradient(70deg, #274b74, #382aa2, #8365d7);
   border-radius: 43%;
   bottom: 200px;
@@ -40,8 +40,8 @@ body {
 
 .circle3 {
   position: absolute;
-  width: 2000px;
-  height: 2000px;
+  width: 140vw;
+  height: 240vh;
   background: linear-gradient(40deg, #274b74, #3533c5, #2963fd);
   border-radius: 43%;
   bottom: 100px;
@@ -54,13 +54,13 @@ body {
 
 .circle4 {
   position: absolute;
-  width: 6000px;
-  height: 6000px;
+  width: 800vw;
+  height: 1300vh;
   border-radius: 50%;
   background: linear-gradient(180deg, #17caea, #4182b4, #6078ea);
-  animation: wave 20s infinite linear;
-  right: -2000px;
-  bottom: -200px;
+  animation: wave 10s infinite linear;
+  right: -9000px;
+  bottom: -5000px;
   z-index: 1;
   transition: background 0.3s ease-in-out;
 }
@@ -115,7 +115,7 @@ body {
 }
 .mainContainer .header .searchBar input {
   position: relative;
-  right: -30px;
+  right: 0;
   width: 280px;
   height: 50px;
   padding-left: 55px;
@@ -130,7 +130,7 @@ body {
   box-sizing: border-box;
   transition: border 0.3s ease-in-out;
   border: 1px solid transparent;
-  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
 }
 .mainContainer .header .searchBar input::placeholder {
   color: #565656;
@@ -139,32 +139,47 @@ body {
   border: 1px solid #fff;
 }
 .mainContainer .header .searchBar .clearBtn {
-  position: relative;
-  transform: translateX(-10px);
-  font-size: 20px;
-  font-weight: 400;
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: translateX(-10px);
+  font-size: 20px;
+  font-weight: 400;
   cursor: pointer;
   width: 25px;
   height: 25px;
+  right: 0;
   border-radius: 50%;
   border: none;
   background: transparent;
-  transition: color 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
 }
 .mainContainer .header .searchBar .clearBtn .iconSet {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
   width: 15px;
   height: 2px;
   background: #fff;
+  transition: background 0.3s ease-in-out;
+}
+.mainContainer .header .searchBar .clearBtn .part1, .mainContainer .header .searchBar .clearBtn .part2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 2px;
+  background: #fff;
+  transform-origin: center;
 }
 .mainContainer .header .searchBar .clearBtn .part1 {
-  transform: rotateZ(45deg);
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 .mainContainer .header .searchBar .clearBtn .part2 {
-  transform: rotateZ(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 .mainContainer .header .searchBar .clearBtn:hover {
   background: rgba(16, 18, 27, 0.4);
@@ -180,7 +195,7 @@ body {
   align-items: center;
   height: 50px;
   top: 0;
-  left: 10px;
+  left: -20px;
   padding: 0;
   border: none;
   background: transparent;
@@ -373,6 +388,9 @@ body {
 }
 .lightMode .mainContainer .header .searchBar .clearBtn:hover {
   background: rgba(255, 255, 255, 0.3098039216);
+}
+.lightMode .mainContainer .header .searchBar .clearBtn:hover .iconSet {
+  background: #565656;
 }
 .lightMode .mainContainer .header .darkModeBtn .darkModeIcon {
   color: #1e1e1e;

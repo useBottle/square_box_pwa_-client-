@@ -121,10 +121,10 @@ function App(): JSX.Element {
                 role="button"
                 className={styles.clearBtn}
                 onClick={() => dispatch(setInputValue(""))}
-                style={inputValue === "" ? { opacity: 0 } : { opacity: 1 }}
+                style={inputValue === "" ? { display: "none" } : { display: "block" }}
               >
-                <span className={`${styles.part1} ${styles.iconSet}`}></span>
-                <span className={`${styles.part2} ${styles.iconSet}`}></span>
+                <span className={`${styles.iconSet} ${styles.part1}`}></span>
+                <span className={`${styles.iconSet} ${styles.part2}`}></span>
               </div>
               <button className={styles.searchIconBox} type="submit">
                 <IoSearch className={styles.searchIcon} />
