@@ -72,3 +72,17 @@
   background: rgba(16, 18, 27, 0.4);
   color: #71f1fc;
 }
+
+.lightMode .modalContainer {
+  background: rgba(255, 255, 255, 0.3098039216);
+}
+.lightMode .modalContainer h2 {
+  background: rgba(255, 255, 255, 0.3098039216);
+}
+.lightMode .modalContainer ul li {
+  color: #1e1e1e;
+}
+.lightMode .modalContainer ul li:hover {
+  background: rgba(255, 255, 255, 0.3098039216);
+  color: #3363b7;
+}

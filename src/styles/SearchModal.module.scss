@@ -38,7 +38,6 @@
     width: 400px;
     height: 220px;
     display: flex;
-    // justify-content: center;
     align-items: center;
     flex-direction: column;
     box-sizing: border-box;
@@ -81,6 +80,25 @@
     background: colors.$container-back;
     color: colors.$aqua-blue;
   }
+}
 
+.lightMode {
+  & .modalContainer {
+    background: colors.$container-back-light;
 
+    & h2 {
+      background: colors.$container-back-light;
+    }
+
+    & ul {
+      & li {
+        color: colors.$black-font-light;
+      }
+
+      & li:hover {
+        background: colors.$container-back-light;
+        color: colors.$deep-blue; // 추후 색상 정하면 변경하기.
+      }
+    }
+  }
 }
