@@ -3,9 +3,10 @@
 $box-shadow: 0 0 50px #0000008f;
 $object-width: 2000px;
 $object-height: 2000px;
-$circle1-gradient: linear-gradient(90deg, #5c2774 10%, #335cc5 60%, #637ffd 100%);
-$circle2-gradient: linear-gradient(70deg, #274b74, #8233c5, #e963fd);
-$circle3-gradient: linear-gradient(40deg, #274b74, #8233c5, #2963fd);
+$circle1-gradient: linear-gradient(90deg, #362774 10%, #335cc5 60%, #637ffd 100%);
+$circle2-gradient: linear-gradient(70deg, #274b74, #382aa2, #8365d7);
+$circle3-gradient: linear-gradient(40deg, #274b74, #3533c5, #2963fd);
+$circle4-gradient: linear-gradient(180deg, #17caea, #4182b4, #6078ea);
 $circle-radius: 43%;
 $left: -50%;
 $main-container-width: 1300px;
@@ -13,7 +14,6 @@ $main-container-height: 750px;
 $header-height: 750px;
 
 body {
-  background: linear-gradient(180deg, #17ead9, #6078ea);
   width: 100vw;
   height: 100vh;
   color: colors.$pure-white;
@@ -35,7 +35,7 @@ body {
   left: $left;
   box-shadow: $box-shadow;
   animation: wave 20s infinite linear;
-  z-index: 3;
+  z-index: 4;
 }
 
 .circle2 {
@@ -48,7 +48,7 @@ body {
   left: $left;
   box-shadow: $box-shadow;
   animation: wave 30s infinite linear;
-  z-index: 2;
+  z-index: 3;
 }
 
 .circle3 {
@@ -61,6 +61,18 @@ body {
   left: $left;
   box-shadow: $box-shadow;
   animation: wave 40s infinite linear;
+  z-index: 2;
+}
+
+.circle4 {
+  position: absolute;
+  width: 6000px;
+  height: 6000px;
+  border-radius: 50%;
+  background: $circle4-gradient;
+  animation: wave 20s infinite linear;
+  right: -2000px;
+  bottom: -200px;
   z-index: 1;
 }
 

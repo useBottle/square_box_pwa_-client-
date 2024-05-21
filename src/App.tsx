@@ -94,6 +94,7 @@ function App(): JSX.Element {
       <div className={styles.circle1} />
       <div className={styles.circle2} />
       <div className={styles.circle3} />
+      <div className={styles.circle4} />
       <div className={styles.mainContainer}>
         <header className={styles.header}>
           <h1
