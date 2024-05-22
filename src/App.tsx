@@ -91,6 +91,8 @@ function App(): JSX.Element {
     localStorage.getItem("theme") === "dark" ? dispatch(setDarkLight("dark")) : dispatch(setDarkLight("light"));
   }, [dispatch]);
 
+  console.log(darkLightToggle);
+
   return (
     <div
       className={darkLightToggle === "dark" ? "" : styles.lightMode}

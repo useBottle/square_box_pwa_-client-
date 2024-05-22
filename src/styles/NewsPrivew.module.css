@@ -55,7 +55,7 @@
 }
 
 .lightMode[data-theme=light] .newsPreview h3 {
-  color: var(--point-color2);
+  color: var(--point-color1);
 }
 .lightMode[data-theme=light] .newsPreview .articleDate {
   background: var(--container-color);
