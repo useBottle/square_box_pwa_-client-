@@ -1,3 +1,4 @@
+@import "./color-set.css";
 .articleList {
   position: relative;
   top: 0;
@@ -12,7 +13,7 @@
   border-radius: 10px;
 }
 .articleList .article a {
-  color: #fff;
+  color: var(--font-color);
   background: transparent;
 }
 .articleList .article h3 {
@@ -24,28 +25,28 @@
 .articleList .article p {
   margin-top: 10px;
   font-size: 12px;
-  color: #4c94d7;
+  color: var(--point-color3);
   transition: color 0.3s ease-in-out;
 }
 .articleList .article:hover {
-  background: rgba(16, 18, 27, 0.4);
+  background: var(--container-color);
 }
 .articleList .article:hover h3 {
-  color: #f8d17c;
+  color: var(--point-color1);
 }
 .articleList .article:hover p {
-  color: #71f1fc;
+  color: var(--point-color2);
 }
 
-.lightMode .articleList .article p {
-  color: #c94961;
+.lightMode[data-theme=light] .articleList .article p {
+  color: var(--point-color3);
 }
-.lightMode .articleList .article:hover {
-  background: rgba(255, 255, 255, 0.3098039216);
+.lightMode[data-theme=light] .articleList .article:hover {
+  background: var(--container-color);
 }
-.lightMode .articleList .article:hover h3 {
-  color: #8463ef;
+.lightMode[data-theme=light] .articleList .article:hover h3 {
+  color: var(--point-color1);
 }
-.lightMode .articleList .article:hover p {
-  color: #f36265;
+.lightMode[data-theme=light] .articleList .article:hover p {
+  color: var(--point-color2);
 }

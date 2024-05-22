@@ -1,4 +1,4 @@
-@use "./_color-set.scss" as colors;
+@import "./color-set.css";
 
 .newsContainer {
   font-family: "S-CoreDream-4Regular";
@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: colors.$container-back;
+  background: var(--container-color);
   padding: 0 30px;
   top: 100px;
   left: 100px;
@@ -27,7 +27,7 @@
       position: relative;
       top: 50px;
       left: 0;
-      color: colors.$pointed-font;
+      color: var(--sub-title);
     }
 
     & .defaultPreview {
@@ -66,7 +66,7 @@
       position: absolute;
       top: 50px;
       left: 0;
-      color: colors.$pointed-font;
+      color: var(--sub-title);
     }
 
     & .articleList {
@@ -80,7 +80,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: colors.$container-back;
+      background: var(--container-color);
       border-radius: 10px;
       box-sizing: border-box;
       transition: background 0.3s ease-in-out;
@@ -100,21 +100,21 @@
       }
 
       100% {
-        border: 3px solid colors.$pure-white;
+        border: 3px solid var(--font-color);
       }
     }
   }
 }
 
-.lightMode {
+.lightMode[data-theme="light"] {
 
   & .newsContainer {
-    background: colors.$container-back-light;
+    background: var(--container-color);
 
     & .contentsContainer {
 
       & .articleList {
-        background: colors.$container-back-light;
+        background: var(--container-color);
       }
 
       & .borderEffect {
@@ -127,7 +127,7 @@
         }
 
         100% {
-          border: 3px solid colors.$black-font-light;
+          border: 3px solid var(--font-color);
         }
       }
     }

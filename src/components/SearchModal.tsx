@@ -19,7 +19,10 @@ export default function SearchModal(): JSX.Element {
   ];
 
   return (
-    <div className={darkLightToggle === "dark" ? "" : `${styles.lightMode}`}>
+    <div
+      className={darkLightToggle === "dark" ? "" : `${styles.lightMode}`}
+      data-theme={darkLightToggle === "dark" ? "" : "light"}
+    >
       <div className={styles.modalContainer}>
         <h2>검색에 사용할 플랫폼을 선택해주세요</h2>
         <ul>

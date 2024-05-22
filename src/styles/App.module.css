@@ -1,7 +1,8 @@
+@import "./color-set.css";
 body {
   width: 100vw;
   height: 100vh;
-  color: #fff;
+  color: var(--font-color);
   font-family: "S-CoreDream-1Thin";
   font-weight: 600;
   display: flex;
@@ -11,10 +12,10 @@ body {
 }
 
 .circle1 {
-  position: fixed;
+  position: absolute;
   width: 140vw;
   height: 240vh;
-  background: linear-gradient(90deg, #362774 10%, #335cc5 60%, #637ffd 100%);
+  background: var(--circle1-gradient);
   border-radius: 43%;
   bottom: 300px;
   left: -50%;
@@ -25,10 +26,10 @@ body {
 }
 
 .circle2 {
-  position: fixed;
+  position: absolute;
   width: 140vw;
   height: 240vh;
-  background: linear-gradient(70deg, #274b74, #382aa2, #8365d7);
+  background: var(--circle2-gradient);
   border-radius: 43%;
   bottom: 200px;
   left: -50%;
@@ -39,10 +40,10 @@ body {
 }
 
 .circle3 {
-  position: fixed;
+  position: absolute;
   width: 140vw;
   height: 240vh;
-  background: linear-gradient(40deg, #274b74, #3533c5, #2963fd);
+  background: var(--circle3-gradient);
   border-radius: 43%;
   bottom: 100px;
   left: -50%;
@@ -53,11 +54,11 @@ body {
 }
 
 .circle4 {
-  position: fixed;
+  position: absolute;
   width: 800vw;
   height: 1300vh;
   border-radius: 50%;
-  background: linear-gradient(180deg, #17caea, #4182b4, #6078ea);
+  background: var(--circle4-gradient);
   animation: wave 10s infinite linear;
   right: -9000px;
   bottom: -5000px;
@@ -74,7 +75,7 @@ body {
   }
 }
 .mainContainer {
-  background: rgba(16, 18, 27, 0.4);
+  background: var(--container-color);
   position: relative;
   width: 1300px;
   height: 750px;
@@ -90,7 +91,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100px;
-  border-bottom: 0.5px solid rgba(113, 119, 144, 0.431372549);
+  border-bottom: 0.5px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -123,8 +124,8 @@ body {
   border-radius: 5px;
   list-style: none;
   outline: none;
-  background: rgba(16, 18, 27, 0.4);
-  color: #71f1fc;
+  background: var(--container-color);
+  color: var(--point-color2);
   font-size: 20px;
   font-weight: 400;
   box-sizing: border-box;
@@ -133,10 +134,10 @@ body {
   transition: background 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
 }
 .mainContainer .header .searchBar input::placeholder {
-  color: #565656;
+  color: var(--sub-title);
 }
 .mainContainer .header .searchBar input:focus {
-  border: 1px solid #fff;
+  border: 1px solid var(--font-color);
 }
 .mainContainer .header .searchBar .clearBtn {
   position: absolute;
@@ -163,7 +164,7 @@ body {
   display: flex;
   width: 15px;
   height: 2px;
-  background: #fff;
+  background: var(--font-color);
   transition: background 0.3s ease-in-out;
 }
 .mainContainer .header .searchBar .clearBtn .part1, .mainContainer .header .searchBar .clearBtn .part2 {
@@ -172,7 +173,7 @@ body {
   left: 50%;
   width: 15px;
   height: 2px;
-  background: #fff;
+  background: var(--font-color);
   transform-origin: center;
 }
 .mainContainer .header .searchBar .clearBtn .part1 {
@@ -182,10 +183,10 @@ body {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 .mainContainer .header .searchBar .clearBtn:hover {
-  background: rgba(16, 18, 27, 0.4);
+  background: var(--container-color);
 }
 .mainContainer .header .searchBar .clearBtn:hover .iconSet {
-  background: #565656;
+  background: var(--sub-title);
 }
 .mainContainer .header .searchBar .searchIconBox {
   position: absolute;
@@ -203,7 +204,7 @@ body {
   cursor: pointer;
 }
 .mainContainer .header .searchBar .searchIconBox .searchIcon {
-  color: #fff;
+  color: var(--font-color);
   transition: color 0.3s ease-in-out;
 }
 .mainContainer .header .darkModeBtn {
@@ -218,7 +219,7 @@ body {
   align-items: center;
   background: transparent;
   border: none;
-  color: #fff;
+  color: var(--font-color);
   padding: 0;
   cursor: pointer;
   overflow: hidden;
@@ -230,11 +231,11 @@ body {
   transition: transform 0.3s ease-in-out;
 }
 .mainContainer .header .darkModeBtn:hover {
-  background: rgba(16, 18, 27, 0.4);
+  background: var(--container-color);
 }
 .mainContainer .header .darkModeBtn:hover .darkModeIcon {
   transform: rotate(90deg);
-  color: #f8d17c;
+  color: var(--point-color1);
 }
 .mainContainer .header .signInBtn {
   position: absolute;
@@ -244,7 +245,7 @@ body {
   align-items: center;
   background: transparent;
   border: none;
-  color: #fff;
+  color: var(--font-color);
   font-size: 30px;
   padding: 0;
   cursor: pointer;
@@ -263,7 +264,7 @@ body {
   font-size: 15px;
   width: 40px;
   height: 50px;
-  background: rgba(16, 18, 27, 0.4);
+  background: var(--container-color);
   border-radius: 5px;
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -272,7 +273,7 @@ body {
   transform: translateX(-60px);
 }
 .mainContainer .header .signInBtn:hover span {
-  color: #f8d17c;
+  color: var(--point-color1);
   opacity: 1;
 }
 .mainContainer .navbar {
@@ -283,7 +284,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 0.5px solid rgba(113, 119, 144, 0.431372549);
+  border-right: 0.5px solid var(--border-color);
   box-sizing: border-box;
 }
 .mainContainer .navbar ul {
@@ -300,7 +301,7 @@ body {
   border-radius: 5px;
   width: 60px;
   height: 60px;
-  color: #fff;
+  color: var(--font-color);
   position: relative;
   display: flex;
   justify-content: center;
@@ -322,7 +323,7 @@ body {
   pointer-events: none;
 }
 .mainContainer .navbar ul li:hover {
-  background: rgba(16, 18, 27, 0.4);
+  background: var(--container-color);
 }
 .mainContainer .navbar ul li:hover span {
   opacity: 1;
@@ -331,8 +332,8 @@ body {
   margin-top: 0;
 }
 .mainContainer .navbar ul .menuIcon {
-  background: rgba(16, 18, 27, 0.4);
-  color: #71f1fc;
+  background: var(--container-color);
+  color: var(--point-color2);
 }
 .mainContainer .navbar ul .menuIcon .menuText {
   opacity: 1;
@@ -342,7 +343,7 @@ body {
   display: none;
 }
 .modalSet .overlay {
-  z-index: 9998;
+  z-index: 998;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -352,75 +353,75 @@ body {
   backdrop-filter: blur(5px);
 }
 
-.lightMode {
-  color: #1e1e1e;
+.lightMode[data-theme=light] {
+  color: var(--font-color);
 }
-.lightMode .circle1 {
-  background: linear-gradient(90deg, #fad961, #f76b1c);
+.lightMode[data-theme=light] .circle1 {
+  background: var(--circle1-gradient);
 }
-.lightMode .circle2 {
-  background: linear-gradient(70deg, #f2d50f, #da0641);
+.lightMode[data-theme=light] .circle2 {
+  background: var(--circle2-gradient);
 }
-.lightMode .circle3 {
-  background: linear-gradient(40deg, #f5515f, #a1051d);
+.lightMode[data-theme=light] .circle3 {
+  background: var(--circle3-gradient);
 }
-.lightMode .circle4 {
-  background: linear-gradient(180deg, #f36265, #961276);
+.lightMode[data-theme=light] .circle4 {
+  background: var(--circle4-gradient);
 }
-.lightMode .mainContainer {
-  background: rgba(255, 255, 255, 0.3098039216);
+.lightMode[data-theme=light] .mainContainer {
+  background: var(--container-color);
 }
-.lightMode .mainContainer .header {
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.3490196078);
+.lightMode[data-theme=light] .mainContainer .header {
+  border-bottom: 0.5px solid var(--border-color);
 }
-.lightMode .mainContainer .header .searchBar input {
-  background: rgba(255, 255, 255, 0.3098039216);
-  color: #f5515f;
+.lightMode[data-theme=light] .mainContainer .header .searchBar input {
+  background: var(--container-color);
+  color: var(--point-color2);
 }
-.lightMode .mainContainer .header .searchBar input:focus {
-  border: 1px solid #1e1e1e;
+.lightMode[data-theme=light] .mainContainer .header .searchBar input:focus {
+  border: 1px solid var(--font-color);
 }
-.lightMode .mainContainer .header .searchBar .searchIconBox .searchIcon {
-  color: #1e1e1e;
+.lightMode[data-theme=light] .mainContainer .header .searchBar .searchIconBox .searchIcon {
+  color: var(--font-color);
 }
-.lightMode .mainContainer .header .searchBar .clearBtn .iconSet {
-  background: #1e1e1e;
+.lightMode[data-theme=light] .mainContainer .header .searchBar .clearBtn .iconSet {
+  background: var(--font-color);
 }
-.lightMode .mainContainer .header .searchBar .clearBtn:hover {
-  background: rgba(255, 255, 255, 0.3098039216);
+.lightMode[data-theme=light] .mainContainer .header .searchBar .clearBtn:hover {
+  background: var(--container-color);
 }
-.lightMode .mainContainer .header .searchBar .clearBtn:hover .iconSet {
-  background: #565656;
+.lightMode[data-theme=light] .mainContainer .header .searchBar .clearBtn:hover .iconSet {
+  background: var(--sub-title);
 }
-.lightMode .mainContainer .header .darkModeBtn .darkModeIcon {
-  color: #1e1e1e;
+.lightMode[data-theme=light] .mainContainer .header .darkModeBtn .darkModeIcon {
+  color: var(--font-color);
 }
-.lightMode .mainContainer .header .darkModeBtn:hover {
-  background: rgba(255, 255, 255, 0.3098039216);
+.lightMode[data-theme=light] .mainContainer .header .darkModeBtn:hover {
+  background: var(--container-color);
 }
-.lightMode .mainContainer .header .darkModeBtn:hover .darkModeIcon {
-  color: #8463ef;
+.lightMode[data-theme=light] .mainContainer .header .darkModeBtn:hover .darkModeIcon {
+  color: var(--point-color1);
 }
-.lightMode .mainContainer .header .signInBtn .signInIcon {
-  color: #1e1e1e;
+.lightMode[data-theme=light] .mainContainer .header .signInBtn .signInIcon {
+  color: var(--font-color);
 }
-.lightMode .mainContainer .header .signInBtn span {
-  color: #1e1e1e;
-  background: rgba(255, 255, 255, 0.3098039216);
+.lightMode[data-theme=light] .mainContainer .header .signInBtn span {
+  color: var(--font-color);
+  background: var(--container-color);
 }
-.lightMode .mainContainer .header .signInBtn:hover span {
-  color: #8463ef;
+.lightMode[data-theme=light] .mainContainer .header .signInBtn:hover span {
+  color: var(--point-color1);
 }
-.lightMode .mainContainer .navbar {
-  border-right: 0.5px solid rgba(255, 255, 255, 0.3490196078);
+.lightMode[data-theme=light] .mainContainer .navbar {
+  border-right: 0.5px solid var(--container-color);
 }
-.lightMode .mainContainer .navbar ul li {
-  color: #1e1e1e;
+.lightMode[data-theme=light] .mainContainer .navbar ul li {
+  color: var(--font-color);
 }
-.lightMode .mainContainer .navbar ul li:hover {
-  background: rgba(255, 255, 255, 0.3098039216);
+.lightMode[data-theme=light] .mainContainer .navbar ul li:hover {
+  background: var(--container-color);
 }
-.lightMode .mainContainer .navbar ul .menuIcon {
-  background: rgba(255, 255, 255, 0.3098039216);
-  color: #f36265;
+.lightMode[data-theme=light] .mainContainer .navbar ul .menuIcon {
+  background: var(--container-color);
+  color: var(--point-color2);
 }

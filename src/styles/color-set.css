@@ -1,0 +1,33 @@
+:root {
+  --font-color: #fff;
+  --sub-title: #8c8c8c;
+  --point-color1: #f8d17c;
+  --point-color2: #71f1fc;
+  --point-color3: #4c94d7;
+  --link-btn: #61cdf9;
+  --link-btn-hover: #3363b7;
+  --border-color: #7177906e;
+  --container-color: #10121b66;
+  --modal-color: #10121ba6;
+  --circle1-gradient: linear-gradient(90deg, #362774 10%, #335cc5 60%, #637ffd 100%);
+  --circle2-gradient: linear-gradient(70deg, #274b74, #382aa2, #8365d7);
+  --circle3-gradient: linear-gradient(40deg, #274b74, #3533c5, #2963fd);
+  --circle4-gradient: linear-gradient(180deg, #17caea, #4182b4, #6078ea);
+}
+
+[data-theme="light"] {
+  --font-color: #000;
+  --sub-title: #565656;
+  --point-color1: #8463ef;
+  --point-color2: #f5515f;
+  --point-color3: #c94961;
+  --link-btn: #f5515f;
+  --link-btn-hover: #c94961;
+  --border-color: #ffffff59;
+  --container-color: #ffffff4f;
+  --modal-color: #ffffff4f;
+  --circle1-gradient: linear-gradient(90deg, #fad961, #f76b1c);
+  --circle2-gradient: linear-gradient(70deg, #f2d50f, #da0641);
+  --circle3-gradient: linear-gradient(40deg, #f5515f, #a1051d);
+  --circle4-gradient: linear-gradient(180deg, #f36265, #961276);
+}

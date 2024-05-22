@@ -1,4 +1,4 @@
-@use "./_color-set.scss" as colors;
+@import "./color-set.css";
 
 .articleList {
   position: relative;
@@ -14,7 +14,7 @@
     border-radius: 10px;
 
     & a {
-      color: colors.$pure-white;
+      color: var(--font-color);
       background: transparent;
     }
 
@@ -28,41 +28,41 @@
     & p {
       margin-top: 10px;
       font-size: 12px;
-      color: colors.$bright-blue;
+      color: var(--point-color3);
       transition: color 0.3s ease-in-out;
     }
   }
 
   & .article:hover {
-    background: colors.$container-back;
+    background: var(--container-color);
 
     & h3 {
-      color: colors.$point-beige;
+      color: var(--point-color1);
     }
 
     & p {
-      color: colors.$aqua-blue;
+      color: var(--point-color2);
     }
   }
 }
 
-.lightMode {
+.lightMode[data-theme="light"] {
   & .articleList {
     & .article {
       & p {
-        color: colors.$point-plum; // 추후 색상 정하면 변경하기.
+        color: var(--point-color3);
       }
     }
 
     & .article:hover {
-      background: colors.$container-back-light;
+      background: var(--container-color);
 
       & h3 {
-        color: colors.$point-purple; // 추후 색상 정하면 변경하기.
+        color: var(--point-color1);
       }
 
       & p {
-        color: colors.$point-pink1; // 추후 색상 정하면 변경하기.
+        color: var(--point-color2);
       }
     }
   }

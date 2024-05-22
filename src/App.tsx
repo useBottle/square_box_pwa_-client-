@@ -78,11 +78,24 @@ function App(): JSX.Element {
   ];
 
   const themeExchange = () => {
-    darkLightToggle === "dark" ? dispatch(setDarkLight("light")) : dispatch(setDarkLight("dark"));
+    if (darkLightToggle === "dark") {
+      dispatch(setDarkLight("light"));
+      localStorage.setItem("theme", "light");
+    } else {
+      dispatch(setDarkLight("dark"));
+      localStorage.setItem("theme", "dark");
+    }
   };
 
+  useEffect(() => {
+    localStorage.getItem("theme") === "dark" ? dispatch(setDarkLight("dark")) : dispatch(setDarkLight("light"));
+  }, [dispatch]);
+
   return (
-    <div className={darkLightToggle === "dark" ? "" : styles.lightMode}>
+    <div
+      className={darkLightToggle === "dark" ? "" : styles.lightMode}
+      data-theme={darkLightToggle === "dark" ? "" : "light"}
+    >
       <div className={styles.modalSet} style={searchModalTrigger === true ? { display: "block" } : {}}>
         <SearchModal />
         <div className={styles.overlay} role="button" onClick={() => dispatch(setSearchModalTrigger(false))} />
