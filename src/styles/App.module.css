@@ -11,7 +11,7 @@ body {
 }
 
 .circle1 {
-  position: absolute;
+  position: fixed;
   width: 140vw;
   height: 240vh;
   background: linear-gradient(90deg, #362774 10%, #335cc5 60%, #637ffd 100%);
@@ -25,7 +25,7 @@ body {
 }
 
 .circle2 {
-  position: absolute;
+  position: fixed;
   width: 140vw;
   height: 240vh;
   background: linear-gradient(70deg, #274b74, #382aa2, #8365d7);
@@ -39,7 +39,7 @@ body {
 }
 
 .circle3 {
-  position: absolute;
+  position: fixed;
   width: 140vw;
   height: 240vh;
   background: linear-gradient(40deg, #274b74, #3533c5, #2963fd);
@@ -53,7 +53,7 @@ body {
 }
 
 .circle4 {
-  position: absolute;
+  position: fixed;
   width: 800vw;
   height: 1300vh;
   border-radius: 50%;
@@ -342,7 +342,7 @@ body {
   display: none;
 }
 .modalSet .overlay {
-  z-index: 998;
+  z-index: 9998;
   position: fixed;
   width: 100%;
   height: 100%;

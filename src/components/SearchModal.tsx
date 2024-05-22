@@ -28,7 +28,7 @@ export default function SearchModal(): JSX.Element {
               <li
                 key={index}
                 onClick={() => {
-                  dispatch(setSearchModalTrigger("none"));
+                  dispatch(setSearchModalTrigger(false));
                   dispatch(setIconIndex(index));
                   navigate(`${item.path}`);
                 }}

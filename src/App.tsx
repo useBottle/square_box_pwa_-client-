@@ -37,7 +37,7 @@ function App(): JSX.Element {
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    iconIndex === -1 ? dispatch(setSearchModalTrigger("block")) : null;
+    iconIndex === -1 ? dispatch(setSearchModalTrigger(true)) : null;
     e.preventDefault();
     const fetchData = async (): Promise<void> => {
       try {
@@ -77,19 +77,15 @@ function App(): JSX.Element {
     { path: "/bookmark", icon: <FaBookmark />, label: "Bookmark" },
   ];
 
-  useEffect(() => {
-    console.log(darkLightToggle);
-  }, [darkLightToggle]);
-
   const themeExchange = () => {
     darkLightToggle === "dark" ? dispatch(setDarkLight("light")) : dispatch(setDarkLight("dark"));
   };
 
   return (
     <div className={darkLightToggle === "dark" ? "" : styles.lightMode}>
-      <div className={styles.modalSet} style={{ display: `${searchModalTrigger}` }}>
+      <div className={styles.modalSet} style={searchModalTrigger === true ? { display: "block" } : {}}>
         <SearchModal />
-        <div className={styles.overlay} />
+        <div className={styles.overlay} role="button" onClick={() => dispatch(setSearchModalTrigger(false))} />
       </div>
       <div className={styles.circle1} />
       <div className={styles.circle2} />
