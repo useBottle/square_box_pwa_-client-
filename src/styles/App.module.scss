@@ -286,7 +286,7 @@ body {
 
       & .signInIcon {
         position: absolute;
-        transition: transform 0.5s ease;
+        transition: opacity 0.3s ease;
         display: flex;
         justify-content: center;
       }
@@ -299,20 +299,20 @@ body {
         font-size: 15px;
         width: 40px;
         height: 50px;
+        color: var(--point-color1);
         background: var(--container-color);
         border-radius: 5px;
         opacity: 0;
-        transition: opacity 0.5s ease;
+        transition: opacity 0.3s ease;
       }
     }
 
     & .signInBtn:hover {
       & .signInIcon {
-        transform: translateX(-60px);
+        opacity: 0;
       }
 
       & span {
-        color: var(--point-color1);
         opacity: 1;
       }
     }
@@ -486,14 +486,8 @@ body {
         }
 
         & span {
-          color: var(--font-color);
-          background: var(--container-color);
-        }
-      }
-
-      & .signInBtn:hover {
-        & span {
           color: var(--point-color1);
+          background: var(--container-color);
         }
       }
     }

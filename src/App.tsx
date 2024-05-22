@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { setInputValue } from "./store/inputValueSlice";
 import { Article } from "./types/types";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { setNewsData } from "./store/newsDataSlice";
 import { setIconIndex } from "./store/iconIndexSlice";
 import SearchModal from "./components/SearchModal";
@@ -21,7 +21,6 @@ function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const inputValue = useSelector((state: RootState) => state.inputValue);
-  const [toggle, setToggle] = useState<number>(1);
   const iconIndex = useSelector((state: RootState) => state.iconIndex);
   const searchModalTrigger = useSelector((state: RootState) => state.searchModalTrigger);
   const darkLightToggle = useSelector((state: RootState) => state.darkLight);
@@ -143,7 +142,7 @@ function App(): JSX.Element {
             </div>
           </form>
 
-          <button className={styles.darkModeBtn} style={{ opacity: `${toggle}` }} onClick={themeExchange}>
+          <button className={styles.darkModeBtn} onClick={themeExchange}>
             {darkLightToggle === "dark" ? (
               <GoSun className={styles.darkModeIcon} onClick={() => {}} />
             ) : (
@@ -151,7 +150,7 @@ function App(): JSX.Element {
             )}
           </button>
 
-          <button className={styles.signInBtn} onMouseOver={() => setToggle(0)} onMouseOut={() => setToggle(1)}>
+          <button className={styles.signInBtn}>
             <GoSignIn className={styles.signInIcon} />
             <span>Sign in</span>
           </button>
