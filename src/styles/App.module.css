@@ -14,12 +14,12 @@ body {
 .circle1 {
   position: absolute;
   width: 140vw;
-  height: 240vh;
+  height: 245vh;
   background: var(--circle1-gradient);
-  border-radius: 43%;
+  border-radius: 48%;
   bottom: 300px;
   left: -50%;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5607843137);
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5607843137);
   animation: wave 20s infinite linear;
   z-index: 4;
   transition: background 0.3s ease-in-out;
@@ -28,12 +28,12 @@ body {
 .circle2 {
   position: absolute;
   width: 140vw;
-  height: 240vh;
+  height: 245vh;
   background: var(--circle2-gradient);
-  border-radius: 43%;
+  border-radius: 48%;
   bottom: 200px;
   left: -50%;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5607843137);
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5607843137);
   animation: wave 30s infinite linear;
   z-index: 3;
   transition: background 0.3s ease-in-out;
@@ -42,12 +42,12 @@ body {
 .circle3 {
   position: absolute;
   width: 140vw;
-  height: 240vh;
+  height: 245vh;
   background: var(--circle3-gradient);
-  border-radius: 43%;
+  border-radius: 48%;
   bottom: 100px;
   left: -50%;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5607843137);
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5607843137);
   animation: wave 40s infinite linear;
   z-index: 2;
   transition: background 0.3s ease-in-out;
