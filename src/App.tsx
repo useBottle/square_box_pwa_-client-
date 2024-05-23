@@ -9,13 +9,13 @@ import { FaXTwitter } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { setInputValue } from "./store/inputValueSlice";
-import { Article } from "./types/types";
 import { useEffect } from "react";
 import { setNewsData } from "./store/newsDataSlice";
 import { setIconIndex } from "./store/iconIndexSlice";
 import SearchModal from "./components/SearchModal";
 import { setSearchModalTrigger } from "./store/searchModalTriggerSlice";
 import { setDarkLight } from "./store/darkLightSlice";
+import axios from "axios";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -24,12 +24,6 @@ function App(): JSX.Element {
   const iconIndex = useSelector((state: RootState) => state.iconIndex);
   const searchModalTrigger = useSelector((state: RootState) => state.searchModalTrigger);
   const darkLightToggle = useSelector((state: RootState) => state.darkLight);
-
-  const stripHtml = (html: string): string => {
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = html;
-    return tempDiv.innerText;
-  };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     dispatch(setInputValue(e.target.value));
@@ -40,27 +34,18 @@ function App(): JSX.Element {
     e.preventDefault();
     const fetchData = async (): Promise<void> => {
       try {
-        const response = await fetch(process.env.REACT_APP_GET_NEWS_API_URL as string, {
-          headers: {
-            "Content-Type": "application/json",
+        const response = await axios.put(
+          process.env.REACT_APP_GET_NEWS_API_URL as string,
+          { inputValue },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
           },
-          method: "PUT",
-          body: JSON.stringify({ inputValue }),
-        });
-        const result = await response.json();
-
-        const textData = result.map(
-          (item: Article): Article => ({
-            title: stripHtml(item.title),
-            description: stripHtml(item.description),
-            pubDate: stripHtml(item.pubDate),
-            originallink: stripHtml(item.originallink),
-            imageUrls: item.imageUrls,
-            articleText: stripHtml(item.articleText),
-          }),
         );
+        const result = response.data;
 
-        dispatch(setNewsData(textData));
+        dispatch(setNewsData(result));
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
