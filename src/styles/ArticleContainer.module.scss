@@ -1,18 +1,20 @@
-@use "./_color-set.scss" as colors;
+@import "./color-set.css";
 
 .articleList {
-  position: absolute;
+  position: relative;
   top: 0;
   width: 400px;
   height: 500px;
   overflow: scroll;
+  transition: background 0.3s ease-in-out;
 
   & .article {
+    left: 0;
     padding: 10px 15px;
     border-radius: 10px;
 
     & a {
-      color: colors.$pure-white;
+      color: var(--font-color);
       background: transparent;
     }
 
@@ -20,24 +22,49 @@
       font-family: "S-CoreDream-4Regular";
       font-size: 20px;
       line-height: 1.3;
+      cursor: default;
+      transition: color 0.3s ease-in-out;
     }
 
     & p {
       margin-top: 10px;
       font-size: 12px;
-      color: colors.$bright-blue;
+      color: var(--point-color3);
+      transition: color 0.3s ease-in-out;
     }
   }
 
   & .article:hover {
-    background: colors.$container-back;
+    background: var(--container-color);
 
     & h3 {
-      color: colors.$point-beige;
+      color: var(--point-color1);
     }
 
     & p {
-      color: colors.$aqua-blue;
+      color: var(--point-color2);
+    }
+  }
+}
+
+.lightMode[data-theme="light"] {
+  & .articleList {
+    & .article {
+      & p {
+        color: var(--point-color3);
+      }
+    }
+
+    & .article:hover {
+      background: var(--container-color);
+
+      & h3 {
+        color: var(--point-color1);
+      }
+
+      & p {
+        color: var(--point-color2);
+      }
     }
   }
 }

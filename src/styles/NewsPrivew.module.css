@@ -1,3 +1,4 @@
+@import "./color-set.css";
 .newsPreview {
   position: absolute;
   display: flex;
@@ -18,27 +19,29 @@
   margin-top: 30px;
   font-size: 30px;
   line-height: 1.2;
-  color: #f8d17c;
+  color: var(--point-color1);
+  transition: color 0.3s ease-in-out;
 }
 .newsPreview .articleDate {
   margin-top: 20px;
-  color: #3363b7;
-  background: rgba(16, 18, 27, 0.4);
+  color: var(--link-btn-hover);
+  background: var(--container-color);
   padding: 10px 10px;
   border-radius: 5px;
+  transition: color 0.3s ease-in-out;
 }
 .newsPreview .originalLink {
   margin-top: 20px;
-  color: #fff;
-  background: #61cdf9;
+  color: var(--font-color);
+  background: var(--lint-btn);
   padding: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
 }
 .newsPreview .originalLink:hover {
-  background: #3363b7;
+  background: var(--point-color3);
 }
 .newsPreview p {
   margin-top: 40px;
@@ -49,4 +52,18 @@
 
 .newsPreview::-webkit-scrollbar {
   display: none;
+}
+
+.lightMode[data-theme=light] .newsPreview h3 {
+  color: var(--point-color1);
+}
+.lightMode[data-theme=light] .newsPreview .articleDate {
+  background: var(--container-color);
+  color: var(--point-color3);
+}
+.lightMode[data-theme=light] .newsPreview .originalLink {
+  background: var(--point-color2);
+}
+.lightMode[data-theme=light] .newsPreview .originalLink:hover {
+  background: var(--point-color3);
 }

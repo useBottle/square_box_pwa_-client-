@@ -1,4 +1,4 @@
-@use "./_color-set.scss" as colors;
+@import "./color-set.css";
 
 .modalContainer {
   position: absolute;
@@ -6,7 +6,7 @@
   z-index: 9999;
   width: 400px;
   height: 300px;
-  background: colors.$modal-back;
+  background: var(--modal-color);
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -26,10 +26,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid colors.$border;
+    border-bottom: 1px solid var(--border-color);
     font-size: 20px;
     font-weight: 800;
-    background: colors.$container-back;
+    background: var(--container-color);
     box-sizing: border-box;
   }
 
@@ -38,7 +38,6 @@
     width: 400px;
     height: 220px;
     display: flex;
-    // justify-content: center;
     align-items: center;
     flex-direction: column;
     box-sizing: border-box;
@@ -47,7 +46,7 @@
   & li {
     position: relative;
     font-family: "Barlow Condensed";
-    color: colors.$pure-white;
+    color: var(--font-color);
     display: flex;
     align-items: center;
     font-size: 18px;
@@ -78,9 +77,28 @@
   }
 
   & li:hover {
-    background: colors.$container-back;
-    color: colors.$aqua-blue;
+    background: var(--container-color);
+    color: var(--point-color2);
   }
+}
 
+.lightMode[data-theme="light"] {
+  & .modalContainer {
+    background: var(--container-color);
 
+    & h2 {
+      background: var(--container-color);
+    }
+
+    & ul {
+      & li {
+        color: var(--font-color);
+      }
+
+      & li:hover {
+        background: var(--container-color);
+        color: var(--point-color2);
+      }
+    }
+  }
 }

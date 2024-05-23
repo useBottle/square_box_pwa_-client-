@@ -1,4 +1,4 @@
-@use "./_color-set.scss" as colors;
+@import "./color-set.css";
 
 .newsContainer {
   font-family: "S-CoreDream-4Regular";
@@ -6,13 +6,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: colors.$container-back;
+  background: var(--container-color);
   padding: 0 30px;
   top: 100px;
   left: 100px;
   width: 1200px;
   height: 650px;
   box-sizing: border-box;
+  transition: background 0.3s ease-in-out;
 
   & .previewContainer {
     position: absolute;
@@ -26,80 +27,109 @@
       position: relative;
       top: 50px;
       left: 0;
-      color: colors.$pointed-font;
+      color: var(--sub-title);
+    }
+
+    & .defaultPreview {
+      position: absolute;
+      top: 75px;
+
+      & img {
+        position: relative;
+        width: 550px;
+        height: auto;
+        border-radius: 10px;
+        user-select: none;
+      }
+
+      & h3 {
+        margin-top: 30px;
+        font-size: 30px;
+      }
+
+      & p {
+        margin-top: 30px;
+        font-weight: 100;
+      }
     }
   }
 
-  & .defaultPreview {
+  & .contentsContainer {
     position: absolute;
-    top: 75px;
+    top: 0;
+    right: 100px;
+    width: 400px;
+    height: 650px;
+    box-sizing: border-box;
 
-    & img {
-      position: relative;
-      width: 550px;
-      height: auto;
+    & .contentsTitle {
+      position: absolute;
+      top: 50px;
+      left: 0;
+      color: var(--sub-title);
+    }
+
+    & .articleList {
+      position: absolute;
+      font-family: "S-CoreDream-4Regular";
+      font-size: 20px;
+      font-weight: 400;
+      width: 400px;
+      height: 500px;
+      top: 75px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--container-color);
       border-radius: 10px;
-      user-select: none;
+      box-sizing: border-box;
+      transition: background 0.3s ease-in-out;
+
+      & .text {
+        pointer-events: none;
+      }
     }
 
-    & h3 {
-      margin-top: 30px;
-      font-size: 30px;
+    & .borderEffect {
+      animation: blink-darkMode 3s infinite alternate ease-in-out;
     }
 
-    & p {
-      margin-top: 30px;
-      font-weight: 100;
+    @keyframes blink-darkMode {
+      0% {
+        border: 3px solid transparent;
+      }
+
+      100% {
+        border: 3px solid var(--font-color);
+      }
     }
   }
 }
 
-& .contentsContainer {
-  position: absolute;
-  top: 0;
-  right: 100px;
-  width: 400px;
-  height: 650px;
-  box-sizing: border-box;
+.lightMode[data-theme="light"] {
 
-  & .contentsTitle {
-    position: absolute;
-    top: 50px;
-    left: 0;
-    color: colors.$pointed-font;
-  }
+  & .newsContainer {
+    background: var(--container-color);
 
-  & .articleList {
-    position: absolute;
-    font-family: "S-CoreDream-4Regular";
-    font-size: 20px;
-    font-weight: 400;
-    width: 400px;
-    height: 500px;
-    top: 75px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: colors.$container-back;
-    border-radius: 10px;
-    box-sizing: border-box;
+    & .contentsContainer {
 
-    & .text {
-      pointer-events: none;
-    }
-  }
+      & .articleList {
+        background: var(--container-color);
+      }
 
-  & .borderEffect {
-    animation: blink 3s infinite alternate ease-in-out;
-  }
+      & .borderEffect {
+        animation: blink-lightMode 3s infinite alternate ease-in-out;
+      }
 
-  @keyframes blink {
-    0% {
-      border: 3px solid transparent;
-    }
+      @keyframes blink-lightMode {
+        0% {
+          border: 3px solid transparent;
+        }
 
-    100% {
-      border: 3px solid colors.$pure-white;
+        100% {
+          border: 3px solid var(--font-color);
+        }
+      }
     }
   }
 }

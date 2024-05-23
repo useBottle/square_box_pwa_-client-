@@ -2,9 +2,9 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const searchModalTriggerSlice = createSlice({
   name: "searchModalTrigger",
-  initialState: "none",
+  initialState: false,
   reducers: {
-    setSearchModalTrigger(state, action: PayloadAction<string>) {
+    setSearchModalTrigger(state, action: PayloadAction<boolean>) {
       return action.payload;
     },
   },

@@ -1,8 +1,8 @@
+@import "./color-set.css";
 body {
-  background: linear-gradient(180deg, #17ead9, #6078ea);
   width: 100vw;
   height: 100vh;
-  color: #fff;
+  color: var(--font-color);
   font-family: "S-CoreDream-1Thin";
   font-weight: 600;
   display: flex;
@@ -13,41 +13,57 @@ body {
 
 .circle1 {
   position: absolute;
-  width: 2000px;
-  height: 2000px;
-  background: linear-gradient(90deg, #5c2774 10%, #335cc5 60%, #637ffd 100%);
+  width: 140vw;
+  height: 240vh;
+  background: var(--circle1-gradient);
   border-radius: 43%;
   bottom: 300px;
   left: -50%;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.5607843137);
   animation: wave 20s infinite linear;
-  z-index: 3;
+  z-index: 4;
+  transition: background 0.3s ease-in-out;
 }
 
 .circle2 {
   position: absolute;
-  width: 2000px;
-  height: 2000px;
-  background: linear-gradient(70deg, #274b74, #8233c5, #e963fd);
+  width: 140vw;
+  height: 240vh;
+  background: var(--circle2-gradient);
   border-radius: 43%;
   bottom: 200px;
   left: -50%;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.5607843137);
   animation: wave 30s infinite linear;
-  z-index: 2;
+  z-index: 3;
+  transition: background 0.3s ease-in-out;
 }
 
 .circle3 {
   position: absolute;
-  width: 2000px;
-  height: 2000px;
-  background: linear-gradient(40deg, #274b74, #8233c5, #2963fd);
+  width: 140vw;
+  height: 240vh;
+  background: var(--circle3-gradient);
   border-radius: 43%;
   bottom: 100px;
   left: -50%;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.5607843137);
   animation: wave 40s infinite linear;
+  z-index: 2;
+  transition: background 0.3s ease-in-out;
+}
+
+.circle4 {
+  position: absolute;
+  width: 800vw;
+  height: 1300vh;
+  border-radius: 50%;
+  background: var(--circle4-gradient);
+  animation: wave 10s infinite linear;
+  right: -9000px;
+  bottom: -5000px;
   z-index: 1;
+  transition: background 0.3s ease-in-out;
 }
 
 @keyframes wave {
@@ -59,7 +75,7 @@ body {
   }
 }
 .mainContainer {
-  background: rgba(16, 18, 27, 0.4);
+  background: var(--container-color);
   position: relative;
   width: 1300px;
   height: 750px;
@@ -69,12 +85,13 @@ body {
   box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.5568627451);
   overflow: hidden;
   z-index: 99;
+  transition: background 0.3s ease-in-out;
 }
 .mainContainer .header {
   position: absolute;
   width: 100%;
   height: 100px;
-  border-bottom: 0.5px solid rgba(113, 119, 144, 0.431372549);
+  border-bottom: 0.5px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -87,7 +104,6 @@ body {
   font-weight: 800;
   position: relative;
   margin: 30px 0;
-  color: #fff;
   cursor: pointer;
   z-index: 999;
 }
@@ -100,7 +116,7 @@ body {
 }
 .mainContainer .header .searchBar input {
   position: relative;
-  right: -30px;
+  right: 0;
   width: 280px;
   height: 50px;
   padding-left: 55px;
@@ -108,54 +124,71 @@ body {
   border-radius: 5px;
   list-style: none;
   outline: none;
-  background: rgba(16, 18, 27, 0.4);
-  color: #71f1fc;
+  background: var(--container-color);
+  color: var(--point-color2);
   font-size: 20px;
   font-weight: 400;
   box-sizing: border-box;
-  transition: all 0.3s ease-in-out;
+  transition: border 0.3s ease-in-out;
   border: 1px solid transparent;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
 }
 .mainContainer .header .searchBar input::placeholder {
-  color: #8c8c8c;
+  color: var(--sub-title);
 }
 .mainContainer .header .searchBar input:focus {
-  border: 1px solid #fff;
+  border: 1px solid var(--font-color);
 }
 .mainContainer .header .searchBar .clearBtn {
-  position: relative;
-  transform: translateX(-10px);
-  font-size: 20px;
-  font-weight: 400;
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: translateX(-10px);
+  font-size: 20px;
+  font-weight: 400;
   cursor: pointer;
   width: 25px;
   height: 25px;
+  right: 0;
   border-radius: 50%;
   border: none;
   background: transparent;
+  transition: background 0.3s ease-in-out;
 }
 .mainContainer .header .searchBar .clearBtn .iconSet {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
   width: 15px;
   height: 2px;
-  background: #fff;
+  background: var(--font-color);
+  transition: background 0.3s ease-in-out;
+}
+.mainContainer .header .searchBar .clearBtn .part1, .mainContainer .header .searchBar .clearBtn .part2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 2px;
+  background: var(--font-color);
+  transform-origin: center;
 }
 .mainContainer .header .searchBar .clearBtn .part1 {
-  transform: rotateZ(45deg);
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 .mainContainer .header .searchBar .clearBtn .part2 {
-  transform: rotateZ(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 .mainContainer .header .searchBar .clearBtn:hover {
-  background: rgba(16, 18, 27, 0.4);
+  background: var(--container-color);
 }
 .mainContainer .header .searchBar .clearBtn:hover .iconSet {
-  background: #8c8c8c;
+  background: var(--sub-title);
 }
-.mainContainer .header .searchBar .searchIcon {
+.mainContainer .header .searchBar .searchIconBox {
   position: absolute;
   transform: translateX(35px);
   display: flex;
@@ -163,15 +196,18 @@ body {
   align-items: center;
   height: 50px;
   top: 0;
-  left: 10px;
+  left: -20px;
   padding: 0;
   border: none;
   background: transparent;
-  color: #fff;
   font-size: 30px;
   cursor: pointer;
 }
-.mainContainer .header .darkmode {
+.mainContainer .header .searchBar .searchIconBox .searchIcon {
+  color: var(--font-color);
+  transition: color 0.3s ease-in-out;
+}
+.mainContainer .header .darkModeBtn {
   position: absolute;
   font-size: 30px;
   right: 85px;
@@ -181,22 +217,25 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  background: transparent;
+  border: none;
+  color: var(--font-color);
   padding: 0;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  transition: background 0.3s ease-in-out;
 }
-.mainContainer .header .darkmode .darkModeIcon {
+.mainContainer .header .darkModeBtn .darkModeIcon {
   display: flex;
   justify-content: center;
-  transition: all 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
-.mainContainer .header .darkmode:hover {
-  background: rgba(16, 18, 27, 0.4);
+.mainContainer .header .darkModeBtn:hover {
+  background: var(--container-color);
 }
-.mainContainer .header .darkmode:hover .darkModeIcon {
+.mainContainer .header .darkModeBtn:hover .darkModeIcon {
   transform: rotate(90deg);
-  color: #f8d17c;
+  color: var(--point-color1);
 }
 .mainContainer .header .signInBtn {
   position: absolute;
@@ -206,14 +245,14 @@ body {
   align-items: center;
   background: transparent;
   border: none;
-  color: #fff;
+  color: var(--font-color);
   font-size: 30px;
   padding: 0;
   cursor: pointer;
 }
-.mainContainer .header .signInBtn .icon {
+.mainContainer .header .signInBtn .signInIcon {
   position: absolute;
-  transition: transform 0.5s ease;
+  transition: opacity 0.3s ease;
   display: flex;
   justify-content: center;
 }
@@ -225,16 +264,16 @@ body {
   font-size: 15px;
   width: 40px;
   height: 50px;
-  background: rgba(16, 18, 27, 0.4);
+  color: var(--point-color1);
+  background: var(--container-color);
   border-radius: 5px;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.3s ease;
 }
-.mainContainer .header .signInBtn:hover .icon {
-  transform: translateX(-60px);
+.mainContainer .header .signInBtn:hover .signInIcon {
+  opacity: 0;
 }
 .mainContainer .header .signInBtn:hover span {
-  color: #f8d17c;
   opacity: 1;
 }
 .mainContainer .navbar {
@@ -245,7 +284,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 0.5px solid rgba(113, 119, 144, 0.431372549);
+  border-right: 0.5px solid var(--border-color);
   box-sizing: border-box;
 }
 .mainContainer .navbar ul {
@@ -262,7 +301,7 @@ body {
   border-radius: 5px;
   width: 60px;
   height: 60px;
-  color: #fff;
+  color: var(--font-color);
   position: relative;
   display: flex;
   justify-content: center;
@@ -284,7 +323,7 @@ body {
   pointer-events: none;
 }
 .mainContainer .navbar ul li:hover {
-  background: rgba(16, 18, 27, 0.4);
+  background: var(--container-color);
 }
 .mainContainer .navbar ul li:hover span {
   opacity: 1;
@@ -293,7 +332,8 @@ body {
   margin-top: 0;
 }
 .mainContainer .navbar ul .menuIcon {
-  background: rgba(16, 18, 27, 0.4);
+  background: var(--container-color);
+  color: var(--point-color2);
 }
 .mainContainer .navbar ul .menuIcon .menuText {
   opacity: 1;
@@ -311,4 +351,74 @@ body {
   left: 0;
   background: rgba(0, 0, 0, 0.14);
   backdrop-filter: blur(5px);
+}
+
+.lightMode[data-theme=light] {
+  color: var(--font-color);
+}
+.lightMode[data-theme=light] .circle1 {
+  background: var(--circle1-gradient);
+}
+.lightMode[data-theme=light] .circle2 {
+  background: var(--circle2-gradient);
+}
+.lightMode[data-theme=light] .circle3 {
+  background: var(--circle3-gradient);
+}
+.lightMode[data-theme=light] .circle4 {
+  background: var(--circle4-gradient);
+}
+.lightMode[data-theme=light] .mainContainer {
+  background: var(--container-color);
+}
+.lightMode[data-theme=light] .mainContainer .header {
+  border-bottom: 0.5px solid var(--border-color);
+}
+.lightMode[data-theme=light] .mainContainer .header .searchBar input {
+  background: var(--container-color);
+  color: var(--point-color2);
+}
+.lightMode[data-theme=light] .mainContainer .header .searchBar input:focus {
+  border: 1px solid var(--font-color);
+}
+.lightMode[data-theme=light] .mainContainer .header .searchBar .searchIconBox .searchIcon {
+  color: var(--font-color);
+}
+.lightMode[data-theme=light] .mainContainer .header .searchBar .clearBtn .iconSet {
+  background: var(--font-color);
+}
+.lightMode[data-theme=light] .mainContainer .header .searchBar .clearBtn:hover {
+  background: var(--container-color);
+}
+.lightMode[data-theme=light] .mainContainer .header .searchBar .clearBtn:hover .iconSet {
+  background: var(--sub-title);
+}
+.lightMode[data-theme=light] .mainContainer .header .darkModeBtn .darkModeIcon {
+  color: var(--font-color);
+}
+.lightMode[data-theme=light] .mainContainer .header .darkModeBtn:hover {
+  background: var(--container-color);
+}
+.lightMode[data-theme=light] .mainContainer .header .darkModeBtn:hover .darkModeIcon {
+  color: var(--point-color1);
+}
+.lightMode[data-theme=light] .mainContainer .header .signInBtn .signInIcon {
+  color: var(--font-color);
+}
+.lightMode[data-theme=light] .mainContainer .header .signInBtn span {
+  color: var(--point-color1);
+  background: var(--container-color);
+}
+.lightMode[data-theme=light] .mainContainer .navbar {
+  border-right: 0.5px solid var(--container-color);
+}
+.lightMode[data-theme=light] .mainContainer .navbar ul li {
+  color: var(--font-color);
+}
+.lightMode[data-theme=light] .mainContainer .navbar ul li:hover {
+  background: var(--container-color);
+}
+.lightMode[data-theme=light] .mainContainer .navbar ul .menuIcon {
+  background: var(--container-color);
+  color: var(--point-color2);
 }

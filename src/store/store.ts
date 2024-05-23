@@ -7,6 +7,7 @@ import visibilityReducer from "./visibilitySlice";
 import currentNewsReducer from "./currentNewsSlice";
 import iconIndexReducer from "./iconIndexSlice";
 import searchModalTriggerReducer from "./searchModalTriggerSlice";
+import darkLightReducer from "./darkLightSlice";
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     visibility: visibilityReducer,
     iconIndex: iconIndexReducer,
     searchModalTrigger: searchModalTriggerReducer,
+    darkLight: darkLightReducer,
   },
 });
 

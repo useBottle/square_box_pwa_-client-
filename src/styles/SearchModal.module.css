@@ -1,10 +1,11 @@
+@import "./color-set.css";
 .modalContainer {
   position: absolute;
   font-family: "S-CoreDream-1Thin";
   z-index: 9999;
   width: 400px;
   height: 300px;
-  background: rgba(16, 18, 27, 0.6509803922);
+  background: var(--modal-color);
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -24,10 +25,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid rgba(113, 119, 144, 0.431372549);
+  border-bottom: 1px solid var(--border-color);
   font-size: 20px;
   font-weight: 800;
-  background: rgba(16, 18, 27, 0.4);
+  background: var(--container-color);
   box-sizing: border-box;
 }
 .modalContainer ul {
@@ -42,7 +43,7 @@
 .modalContainer li {
   position: relative;
   font-family: "Barlow Condensed";
-  color: #fff;
+  color: var(--font-color);
   display: flex;
   align-items: center;
   font-size: 18px;
@@ -69,6 +70,20 @@
   width: 100px;
 }
 .modalContainer li:hover {
-  background: rgba(16, 18, 27, 0.4);
-  color: #71f1fc;
+  background: var(--container-color);
+  color: var(--point-color2);
+}
+
+.lightMode[data-theme=light] .modalContainer {
+  background: var(--container-color);
+}
+.lightMode[data-theme=light] .modalContainer h2 {
+  background: var(--container-color);
+}
+.lightMode[data-theme=light] .modalContainer ul li {
+  color: var(--font-color);
+}
+.lightMode[data-theme=light] .modalContainer ul li:hover {
+  background: var(--container-color);
+  color: var(--point-color2);
 }

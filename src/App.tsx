@@ -3,63 +3,49 @@ import styles from "../src/styles/App.module.css";
 import Home from "./routes/Home";
 import News from "./routes/News";
 import { IoSearch } from "react-icons/io5";
-import { GoSun, GoSignIn } from "react-icons/go";
+import { GoSun, GoMoon, GoSignIn } from "react-icons/go";
 import { FaNewspaper, FaYoutube, FaInstagram, FaBookmark } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { setInputValue } from "./store/inputValueSlice";
-import { Article } from "./types/types";
-import { useState } from "react";
+import { useEffect } from "react";
 import { setNewsData } from "./store/newsDataSlice";
 import { setIconIndex } from "./store/iconIndexSlice";
 import SearchModal from "./components/SearchModal";
 import { setSearchModalTrigger } from "./store/searchModalTriggerSlice";
+import { setDarkLight } from "./store/darkLightSlice";
+import axios from "axios";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const inputValue = useSelector((state: RootState) => state.inputValue);
-  const [toggle, setToggle] = useState<number>(1);
   const iconIndex = useSelector((state: RootState) => state.iconIndex);
   const searchModalTrigger = useSelector((state: RootState) => state.searchModalTrigger);
-
-  const stripHtml = (html: string): string => {
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = html;
-    return tempDiv.innerText;
-  };
+  const darkLightToggle = useSelector((state: RootState) => state.darkLight);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     dispatch(setInputValue(e.target.value));
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    iconIndex === -1 ? dispatch(setSearchModalTrigger("block")) : null;
+    iconIndex === -1 ? dispatch(setSearchModalTrigger(true)) : null;
     e.preventDefault();
     const fetchData = async (): Promise<void> => {
       try {
-        const response = await fetch(process.env.REACT_APP_GET_NEWS_API_URL as string, {
-          headers: {
-            "Content-Type": "application/json",
+        const response = await axios.put(
+          process.env.REACT_APP_GET_NEWS_API_URL as string,
+          { inputValue },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
           },
-          method: "PUT",
-          body: JSON.stringify({ inputValue }),
-        });
-        const result = await response.json();
-
-        const textData = result.map(
-          (item: Article): Article => ({
-            title: stripHtml(item.title),
-            description: stripHtml(item.description),
-            pubDate: stripHtml(item.pubDate),
-            originallink: stripHtml(item.originallink),
-            imageUrls: item.imageUrls,
-            articleText: stripHtml(item.articleText),
-          }),
         );
+        const result = response.data;
 
-        dispatch(setNewsData(textData));
+        dispatch(setNewsData(result));
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
@@ -75,17 +61,37 @@ function App(): JSX.Element {
     { path: "/bookmark", icon: <FaBookmark />, label: "Bookmark" },
   ];
 
+  const themeExchange = () => {
+    if (darkLightToggle === "dark") {
+      dispatch(setDarkLight("light"));
+      localStorage.setItem("theme", "light");
+    } else {
+      dispatch(setDarkLight("dark"));
+      localStorage.setItem("theme", "dark");
+    }
+  };
+
+  useEffect(() => {
+    localStorage.getItem("theme") === "dark" ? dispatch(setDarkLight("dark")) : dispatch(setDarkLight("light"));
+  }, [dispatch]);
+
+  console.log(darkLightToggle);
+
   return (
-    <div>
-      <div className={styles.modalSet} style={{ display: `${searchModalTrigger}` }}>
+    <div
+      className={darkLightToggle === "dark" ? "" : styles.lightMode}
+      data-theme={darkLightToggle === "dark" ? "" : "light"}
+    >
+      <div className={styles.modalSet} style={searchModalTrigger === true ? { display: "block" } : {}}>
         <SearchModal />
-        <div className={styles.overlay} />
+        <div className={styles.overlay} role="button" onClick={() => dispatch(setSearchModalTrigger(false))} />
       </div>
       <div className={styles.circle1} />
       <div className={styles.circle2} />
       <div className={styles.circle3} />
+      <div className={styles.circle4} />
       <div className={styles.mainContainer}>
-        <div className={styles.header}>
+        <header className={styles.header}>
           <h1
             className={styles.logo}
             onClick={() => {
@@ -96,7 +102,7 @@ function App(): JSX.Element {
             Custom Board
           </h1>
 
-          <form onSubmit={onSubmit}>
+          <form onSubmit={inputValue ? onSubmit : (e) => e.preventDefault()}>
             <div className={styles.searchBar}>
               <input
                 type="text"
@@ -110,30 +116,30 @@ function App(): JSX.Element {
                 role="button"
                 className={styles.clearBtn}
                 onClick={() => dispatch(setInputValue(""))}
-                style={inputValue === "" ? { opacity: 0 } : { opacity: 1 }}
+                style={inputValue === "" ? { display: "none" } : { display: "block" }}
               >
-                <span className={`${styles.part1} ${styles.iconSet}`}></span>
-                <span className={`${styles.part2} ${styles.iconSet}`}></span>
+                <span className={`${styles.iconSet} ${styles.part1}`}></span>
+                <span className={`${styles.iconSet} ${styles.part2}`}></span>
               </div>
-              <button className={styles.searchIcon} type="submit">
-                <IoSearch />
+              <button className={styles.searchIconBox} type="submit">
+                <IoSearch className={styles.searchIcon} />
               </button>
             </div>
           </form>
 
-          <div className={styles.darkmode} style={{ opacity: `${toggle}` }}>
-            <span className={styles.darkModeIcon}>
-              <GoSun />
-            </span>
-          </div>
+          <button className={styles.darkModeBtn} onClick={themeExchange}>
+            {darkLightToggle === "dark" ? (
+              <GoSun className={styles.darkModeIcon} onClick={() => {}} />
+            ) : (
+              <GoMoon className={styles.darkModeIcon} />
+            )}
+          </button>
 
-          <button className={styles.signInBtn} onMouseOver={() => setToggle(0)} onMouseOut={() => setToggle(1)}>
-            <div className={styles.icon}>
-              <GoSignIn />
-            </div>
+          <button className={styles.signInBtn}>
+            <GoSignIn className={styles.signInIcon} />
             <span>Sign in</span>
           </button>
-        </div>
+        </header>
 
         <nav className={styles.navbar}>
           <ul>

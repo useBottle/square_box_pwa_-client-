@@ -1,4 +1,4 @@
-@use "./_color-set.scss" as colors;
+@import "./color-set.css";
 
 .newsPreview {
   position: absolute;
@@ -21,30 +21,32 @@
     margin-top: 30px;
     font-size: 30px;
     line-height: 1.2;
-    color: colors.$point-beige;
+    color: var(--point-color1);
+    transition: color 0.3s ease-in-out;
   }
 
   & .articleDate {
     margin-top: 20px;
-    color: colors.$deep-blue;
-    background: colors.$container-back;
+    color: var(--link-btn-hover);
+    background: var(--container-color);
     padding: 10px 10px;
     border-radius: 5px;
+    transition: color 0.3s ease-in-out;
   }
 
   & .originalLink {
     margin-top: 20px;
-    color: colors.$pure-white;
-    background: colors.$sky-blue;
+    color: var(--font-color);
+    background: var(--lint-btn);
     padding: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out;
   }
 
   & .originalLink:hover {
-    background: colors.$deep-blue;
+    background: var(--point-color3);
   }
 
   & p {
@@ -57,4 +59,25 @@
 
 .newsPreview::-webkit-scrollbar {
   display: none;
+}
+
+.lightMode[data-theme="light"] {
+  & .newsPreview {
+    & h3 {
+      color: var(--point-color1);
+    }
+
+    & .articleDate {
+      background: var(--container-color);
+      color: var(--point-color3);
+    }
+
+    & .originalLink {
+      background: var(--point-color2);
+    }
+
+    & .originalLink:hover {
+      background: var(--point-color3);
+    }
+  }
 }

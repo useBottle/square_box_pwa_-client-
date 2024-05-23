@@ -1,16 +1,18 @@
+@import "./color-set.css";
 .newsContainer {
   font-family: "S-CoreDream-4Regular";
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(16, 18, 27, 0.4);
+  background: var(--container-color);
   padding: 0 30px;
   top: 100px;
   left: 100px;
   width: 1200px;
   height: 650px;
   box-sizing: border-box;
+  transition: background 0.3s ease-in-out;
 }
 .newsContainer .previewContainer {
   position: absolute;
@@ -24,27 +26,7 @@
   position: relative;
   top: 50px;
   left: 0;
-  color: #8c8c8c;
-}
-.newsContainer .previewContainer .imgSeletor {
-  position: relative;
-  top: 50px;
-}
-.newsContainer .previewContainer .imgSeletor .btn {
-  background: rgba(16, 18, 27, 0.4);
-  border-radius: 5px;
-  font-size: 20px;
-  padding: 2px;
-  cursor: pointer;
-  user-select: none;
-  box-sizing: border-box;
-}
-.newsContainer .previewContainer .imgSeletor .btn:hover {
-  border: 1px solid #fff;
-  color: #f8d17c;
-}
-.newsContainer .previewContainer .imgSeletor .rightBtn {
-  margin-left: 5px;
+  color: var(--sub-title);
 }
 .newsContainer .previewContainer .defaultPreview {
   position: absolute;
@@ -77,7 +59,7 @@
   position: absolute;
   top: 50px;
   left: 0;
-  color: #8c8c8c;
+  color: var(--sub-title);
 }
 .newsContainer .contentsContainer .articleList {
   position: absolute;
@@ -90,21 +72,40 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(16, 18, 27, 0.4);
+  background: var(--container-color);
   border-radius: 10px;
   box-sizing: border-box;
+  transition: background 0.3s ease-in-out;
 }
 .newsContainer .contentsContainer .articleList .text {
   pointer-events: none;
 }
 .newsContainer .contentsContainer .borderEffect {
-  animation: blink 3s infinite alternate ease-in-out;
+  animation: blink-darkMode 3s infinite alternate ease-in-out;
 }
-@keyframes blink {
+@keyframes blink-darkMode {
   0% {
     border: 3px solid transparent;
   }
   100% {
-    border: 3px solid #fff;
+    border: 3px solid var(--font-color);
+  }
+}
+
+.lightMode[data-theme=light] .newsContainer {
+  background: var(--container-color);
+}
+.lightMode[data-theme=light] .newsContainer .contentsContainer .articleList {
+  background: var(--container-color);
+}
+.lightMode[data-theme=light] .newsContainer .contentsContainer .borderEffect {
+  animation: blink-lightMode 3s infinite alternate ease-in-out;
+}
+@keyframes blink-lightMode {
+  0% {
+    border: 3px solid transparent;
+  }
+  100% {
+    border: 3px solid var(--font-color);
   }
 }
