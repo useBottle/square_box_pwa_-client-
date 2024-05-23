@@ -407,7 +407,7 @@ body {
   }
 }
 
-.lightMode[data-theme="light"] {
+[data-theme="light"] {
   color: var(--font-color);
 
   & .circle1 {

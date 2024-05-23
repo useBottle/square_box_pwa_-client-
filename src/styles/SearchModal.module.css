@@ -74,16 +74,16 @@
   color: var(--point-color2);
 }
 
-.lightMode[data-theme=light] .modalContainer {
+[data-theme=light] .modalContainer {
   background: var(--container-color);
 }
-.lightMode[data-theme=light] .modalContainer h2 {
+[data-theme=light] .modalContainer h2 {
   background: var(--container-color);
 }
-.lightMode[data-theme=light] .modalContainer ul li {
+[data-theme=light] .modalContainer ul li {
   color: var(--font-color);
 }
-.lightMode[data-theme=light] .modalContainer ul li:hover {
+[data-theme=light] .modalContainer ul li:hover {
   background: var(--container-color);
   color: var(--point-color2);
 }

@@ -16,6 +16,8 @@ import SearchModal from "./components/SearchModal";
 import { setSearchModalTrigger } from "./store/searchModalTriggerSlice";
 import { setDarkLight } from "./store/darkLightSlice";
 import axios from "axios";
+import { setPreviewToggle } from "./store/previewToggleSlice";
+import { setLoadingToggle } from "./store/loadingToggleSlice";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -30,6 +32,8 @@ function App(): JSX.Element {
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    dispatch(setPreviewToggle(false));
+    dispatch(setLoadingToggle(true));
     iconIndex === -1 ? dispatch(setSearchModalTrigger(true)) : null;
     e.preventDefault();
     const fetchData = async (): Promise<void> => {
@@ -46,6 +50,7 @@ function App(): JSX.Element {
         const result = response.data;
 
         dispatch(setNewsData(result));
+        dispatch(setLoadingToggle(false));
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
@@ -75,13 +80,8 @@ function App(): JSX.Element {
     localStorage.getItem("theme") === "dark" ? dispatch(setDarkLight("dark")) : dispatch(setDarkLight("light"));
   }, [dispatch]);
 
-  console.log(darkLightToggle);
-
   return (
-    <div
-      className={darkLightToggle === "dark" ? "" : styles.lightMode}
-      data-theme={darkLightToggle === "dark" ? "" : "light"}
-    >
+    <div data-theme={darkLightToggle === "dark" ? "" : "light"}>
       <div className={styles.modalSet} style={searchModalTrigger === true ? { display: "block" } : {}}>
         <SearchModal />
         <div className={styles.overlay} role="button" onClick={() => dispatch(setSearchModalTrigger(false))} />

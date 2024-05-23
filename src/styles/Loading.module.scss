@@ -1,0 +1,19 @@
+.loaderContainer {
+  position: absolute;
+  top: 75px;
+  left: 0;
+  width: 400px;
+  height: 500px;
+  box-sizing: border-box;
+
+  & .loader {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    margin: 20px;
+    display: inline-block;
+  }
+}

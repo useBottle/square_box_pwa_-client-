@@ -10,10 +10,7 @@ export default function ArticleContainer(): JSX.Element {
   const darkLightToggle = useSelector((state: RootState) => state.darkLight);
 
   return (
-    <div
-      className={darkLightToggle === "dark" ? "" : styles.lightMode}
-      data-theme={darkLightToggle === "dark" ? "" : "light"}
-    >
+    <div data-theme={darkLightToggle === "dark" ? "" : "light"}>
       <div className={styles.articleList}>
         {newsData.map((item, index) => {
           const onMouseEnter = (): void => {

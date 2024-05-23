@@ -39,15 +39,15 @@
   color: var(--point-color2);
 }
 
-.lightMode[data-theme=light] .articleList .article p {
+[data-theme=light] .articleList .article p {
   color: var(--point-color3);
 }
-.lightMode[data-theme=light] .articleList .article:hover {
+[data-theme=light] .articleList .article:hover {
   background: var(--container-color);
 }
-.lightMode[data-theme=light] .articleList .article:hover h3 {
+[data-theme=light] .articleList .article:hover h3 {
   color: var(--point-color1);
 }
-.lightMode[data-theme=light] .articleList .article:hover p {
+[data-theme=light] .articleList .article:hover p {
   color: var(--point-color2);
 }

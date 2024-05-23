@@ -8,6 +8,8 @@ import currentNewsReducer from "./currentNewsSlice";
 import iconIndexReducer from "./iconIndexSlice";
 import searchModalTriggerReducer from "./searchModalTriggerSlice";
 import darkLightReducer from "./darkLightSlice";
+import previewToggleReducer from "./previewToggleSlice";
+import loadingToggleReducer from "./loadingToggleSlice";
 
 const store = configureStore({
   reducer: {
@@ -20,6 +22,8 @@ const store = configureStore({
     iconIndex: iconIndexReducer,
     searchModalTrigger: searchModalTriggerReducer,
     darkLight: darkLightReducer,
+    previewToggle: previewToggleReducer,
+    loadingToggle: loadingToggleReducer,
   },
 });
 

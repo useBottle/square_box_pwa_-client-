@@ -61,7 +61,7 @@
   display: none;
 }
 
-.lightMode[data-theme="light"] {
+[data-theme="light"] {
   & .newsPreview {
     & h3 {
       color: var(--point-color1);

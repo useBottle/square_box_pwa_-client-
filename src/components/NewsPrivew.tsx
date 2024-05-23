@@ -44,10 +44,7 @@ export default function NewsPreview({ article }: NewsProps): JSX.Element {
   };
 
   return (
-    <div
-      className={darkLightToggle === "dark" ? "" : styles.lightMode}
-      data-theme={darkLightToggle === "dark" ? "" : "light"}
-    >
+    <div data-theme={darkLightToggle === "dark" ? "" : "light"}>
       <div className={styles.newsPreview}>
         <img src={imageUrl} alt="articleImage" />
         <h3>{article.title}</h3>
