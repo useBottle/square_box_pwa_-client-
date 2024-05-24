@@ -21,7 +21,7 @@ body {
   left: -50%;
   box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5607843137);
   animation: wave 20s infinite linear;
-  z-index: 4;
+  z-index: 5;
   transition: background 0.3s ease-in-out;
 }
 
@@ -35,7 +35,7 @@ body {
   left: -50%;
   box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5607843137);
   animation: wave 30s infinite linear;
-  z-index: 3;
+  z-index: 4;
   transition: background 0.3s ease-in-out;
 }
 
@@ -49,7 +49,7 @@ body {
   left: -50%;
   box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5607843137);
   animation: wave 40s infinite linear;
-  z-index: 2;
+  z-index: 3;
   transition: background 0.3s ease-in-out;
 }
 
@@ -62,8 +62,17 @@ body {
   animation: wave 10s infinite linear;
   right: -9000px;
   bottom: -5000px;
-  z-index: 1;
+  z-index: 2;
   transition: background 0.3s ease-in-out;
+}
+
+.finalBackground {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--circle4-gradient);
+  z-index: 1;
 }
 
 @keyframes wave {
@@ -354,72 +363,75 @@ body {
   backdrop-filter: blur(5px);
 }
 
-.lightMode[data-theme=light] {
+[data-theme=light] {
   color: var(--font-color);
 }
-.lightMode[data-theme=light] .circle1 {
+[data-theme=light] .circle1 {
   background: var(--circle1-gradient);
 }
-.lightMode[data-theme=light] .circle2 {
+[data-theme=light] .circle2 {
   background: var(--circle2-gradient);
 }
-.lightMode[data-theme=light] .circle3 {
+[data-theme=light] .circle3 {
   background: var(--circle3-gradient);
 }
-.lightMode[data-theme=light] .circle4 {
+[data-theme=light] .circle4 {
   background: var(--circle4-gradient);
 }
-.lightMode[data-theme=light] .mainContainer {
+[data-theme=light] .finalBackground {
+  background: var(--circle4-gradient);
+}
+[data-theme=light] .mainContainer {
   background: var(--container-color);
 }
-.lightMode[data-theme=light] .mainContainer .header {
+[data-theme=light] .mainContainer .header {
   border-bottom: 0.5px solid var(--border-color);
 }
-.lightMode[data-theme=light] .mainContainer .header .searchBar input {
+[data-theme=light] .mainContainer .header .searchBar input {
   background: var(--container-color);
   color: var(--point-color2);
 }
-.lightMode[data-theme=light] .mainContainer .header .searchBar input:focus {
+[data-theme=light] .mainContainer .header .searchBar input:focus {
   border: 1px solid var(--font-color);
 }
-.lightMode[data-theme=light] .mainContainer .header .searchBar .searchIconBox .searchIcon {
+[data-theme=light] .mainContainer .header .searchBar .searchIconBox .searchIcon {
   color: var(--font-color);
 }
-.lightMode[data-theme=light] .mainContainer .header .searchBar .clearBtn .iconSet {
+[data-theme=light] .mainContainer .header .searchBar .clearBtn .iconSet {
   background: var(--font-color);
 }
-.lightMode[data-theme=light] .mainContainer .header .searchBar .clearBtn:hover {
+[data-theme=light] .mainContainer .header .searchBar .clearBtn:hover {
   background: var(--container-color);
 }
-.lightMode[data-theme=light] .mainContainer .header .searchBar .clearBtn:hover .iconSet {
+[data-theme=light] .mainContainer .header .searchBar .clearBtn:hover .iconSet {
   background: var(--sub-title);
 }
-.lightMode[data-theme=light] .mainContainer .header .darkModeBtn .darkModeIcon {
+[data-theme=light] .mainContainer .header .darkModeBtn .darkModeIcon {
   color: var(--font-color);
 }
-.lightMode[data-theme=light] .mainContainer .header .darkModeBtn:hover {
+[data-theme=light] .mainContainer .header .darkModeBtn:hover {
   background: var(--container-color);
 }
-.lightMode[data-theme=light] .mainContainer .header .darkModeBtn:hover .darkModeIcon {
+[data-theme=light] .mainContainer .header .darkModeBtn:hover .darkModeIcon {
   color: var(--point-color1);
 }
-.lightMode[data-theme=light] .mainContainer .header .signInBtn .signInIcon {
+[data-theme=light] .mainContainer .header .signInBtn .signInIcon {
   color: var(--font-color);
 }
-.lightMode[data-theme=light] .mainContainer .header .signInBtn span {
+[data-theme=light] .mainContainer .header .signInBtn span {
   color: var(--point-color1);
   background: var(--container-color);
 }
-.lightMode[data-theme=light] .mainContainer .navbar {
+[data-theme=light] .mainContainer .navbar {
   border-right: 0.5px solid var(--container-color);
 }
-.lightMode[data-theme=light] .mainContainer .navbar ul li {
+[data-theme=light] .mainContainer .navbar ul li {
   color: var(--font-color);
 }
-.lightMode[data-theme=light] .mainContainer .navbar ul li:hover {
+[data-theme=light] .mainContainer .navbar ul li:hover {
   background: var(--container-color);
 }
-.lightMode[data-theme=light] .mainContainer .navbar ul .menuIcon {
+[data-theme=light] .mainContainer .navbar ul .menuIcon {
   background: var(--container-color);
   color: var(--point-color2);
 }

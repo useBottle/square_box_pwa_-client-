@@ -82,7 +82,7 @@
   }
 }
 
-.lightMode[data-theme="light"] {
+[data-theme="light"] {
   & .modalContainer {
     background: var(--container-color);
 

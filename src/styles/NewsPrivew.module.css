@@ -54,16 +54,16 @@
   display: none;
 }
 
-.lightMode[data-theme=light] .newsPreview h3 {
+[data-theme=light] .newsPreview h3 {
   color: var(--point-color1);
 }
-.lightMode[data-theme=light] .newsPreview .articleDate {
+[data-theme=light] .newsPreview .articleDate {
   background: var(--container-color);
   color: var(--point-color3);
 }
-.lightMode[data-theme=light] .newsPreview .originalLink {
+[data-theme=light] .newsPreview .originalLink {
   background: var(--point-color2);
 }
-.lightMode[data-theme=light] .newsPreview .originalLink:hover {
+[data-theme=light] .newsPreview .originalLink:hover {
   background: var(--point-color3);
 }

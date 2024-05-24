@@ -106,7 +106,7 @@
   }
 }
 
-.lightMode[data-theme="light"] {
+[data-theme="light"] {
 
   & .newsContainer {
     background: var(--container-color);

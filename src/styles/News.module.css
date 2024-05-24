@@ -92,13 +92,13 @@
   }
 }
 
-.lightMode[data-theme=light] .newsContainer {
+[data-theme=light] .newsContainer {
   background: var(--container-color);
 }
-.lightMode[data-theme=light] .newsContainer .contentsContainer .articleList {
+[data-theme=light] .newsContainer .contentsContainer .articleList {
   background: var(--container-color);
 }
-.lightMode[data-theme=light] .newsContainer .contentsContainer .borderEffect {
+[data-theme=light] .newsContainer .contentsContainer .borderEffect {
   animation: blink-lightMode 3s infinite alternate ease-in-out;
 }
 @keyframes blink-lightMode {
