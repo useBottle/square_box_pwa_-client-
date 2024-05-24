@@ -33,7 +33,7 @@ body {
   left: $left;
   box-shadow: $box-shadow;
   animation: wave 20s infinite linear;
-  z-index: 4;
+  z-index: 5;
   transition: background 0.3s ease-in-out;
 }
 
@@ -47,7 +47,7 @@ body {
   left: $left;
   box-shadow: $box-shadow;
   animation: wave 30s infinite linear;
-  z-index: 3;
+  z-index: 4;
   transition: background 0.3s ease-in-out;
 }
 
@@ -61,7 +61,7 @@ body {
   left: $left;
   box-shadow: $box-shadow;
   animation: wave 40s infinite linear;
-  z-index: 2;
+  z-index: 3;
   transition: background 0.3s ease-in-out;
 }
 
@@ -74,8 +74,17 @@ body {
   animation: wave 10s infinite linear;
   right: -9000px;
   bottom: -5000px;
-  z-index: 1;
+  z-index: 2;
   transition: background 0.3s ease-in-out;
+}
+
+.finalBackground {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--circle4-gradient);
+  z-index: 1;
 }
 
 @keyframes wave {
@@ -423,6 +432,10 @@ body {
   }
 
   & .circle4 {
+    background: var(--circle4-gradient);
+  }
+
+  & .finalBackground {
     background: var(--circle4-gradient);
   }
 

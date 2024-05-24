@@ -21,7 +21,7 @@ body {
   left: -50%;
   box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5607843137);
   animation: wave 20s infinite linear;
-  z-index: 4;
+  z-index: 5;
   transition: background 0.3s ease-in-out;
 }
 
@@ -35,7 +35,7 @@ body {
   left: -50%;
   box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5607843137);
   animation: wave 30s infinite linear;
-  z-index: 3;
+  z-index: 4;
   transition: background 0.3s ease-in-out;
 }
 
@@ -49,7 +49,7 @@ body {
   left: -50%;
   box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5607843137);
   animation: wave 40s infinite linear;
-  z-index: 2;
+  z-index: 3;
   transition: background 0.3s ease-in-out;
 }
 
@@ -62,8 +62,17 @@ body {
   animation: wave 10s infinite linear;
   right: -9000px;
   bottom: -5000px;
-  z-index: 1;
+  z-index: 2;
   transition: background 0.3s ease-in-out;
+}
+
+.finalBackground {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--circle4-gradient);
+  z-index: 1;
 }
 
 @keyframes wave {
@@ -367,6 +376,9 @@ body {
   background: var(--circle3-gradient);
 }
 [data-theme=light] .circle4 {
+  background: var(--circle4-gradient);
+}
+[data-theme=light] .finalBackground {
   background: var(--circle4-gradient);
 }
 [data-theme=light] .mainContainer {
