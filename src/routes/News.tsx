@@ -36,10 +36,6 @@ export default function News(): JSX.Element {
                   <p>Please search for the news...</p>
                 </div>
               )}
-              {/* {newsData.length !== 0 && loadingToggle === false
-            ? newsData.slice(current, current + 1).map((item) => <NewsPreview article={item} key={current} />)
-            : loadingToggle === true && <Loading />}
-          {newsData.length !== 0 && loadingToggle === true && <Loading />} */}
               {newsData.length !== 0 &&
                 newsData.slice(current, current + 1).map((item) => <NewsPreview article={item} key={current} />)}
             </div>

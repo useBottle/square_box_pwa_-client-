@@ -56,7 +56,6 @@ function App(): JSX.Element {
       }
     };
     fetchData();
-    // setTimeout(() => fetchData(), 100000000000);
   };
 
   const navItem = [
