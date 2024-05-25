@@ -82,7 +82,7 @@ function App(): JSX.Element {
 
   useEffect(() => {
     const fetchKeyword = async (): Promise<void> => {
-      const response = await axios.get("http://localhost:8080/getKeyword");
+      const response = await axios.get(process.env.REACT_APP_GET_KEYWORDS_API_URL);
       const result = response.data;
       console.log(result);
     };

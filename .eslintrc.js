@@ -101,7 +101,8 @@ module.exports = {
 	},
 	overrides: [
 		{
-			files: ["index.js"],
+			files: ["index.js", "<tsconfigRootDir>/env.d.ts"],
+			excludedFiles: "<tsconfigRootDir>/env.d.ts",
 			rules: {
 				"@typescript-eslint": "off",
 			},
