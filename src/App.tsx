@@ -80,15 +80,6 @@ function App(): JSX.Element {
     localStorage.getItem("theme") === "dark" ? dispatch(setDarkLight("dark")) : dispatch(setDarkLight("light"));
   }, [dispatch]);
 
-  useEffect(() => {
-    const fetchKeyword = async (): Promise<void> => {
-      const response = await axios.get(process.env.REACT_APP_GET_KEYWORDS_API_URL);
-      const result = response.data;
-      console.log(result);
-    };
-    fetchKeyword();
-  }, []);
-
   return (
     <div data-theme={darkLightToggle === "dark" ? "" : "light"}>
       <div className={styles.modalSet} style={searchModalTrigger === true ? { display: "block" } : {}}>
