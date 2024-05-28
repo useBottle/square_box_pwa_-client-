@@ -109,7 +109,7 @@ function App(): JSX.Element {
               navigate("/");
             }}
           >
-            Custom Board
+            Square Box
           </h1>
 
           <form onSubmit={inputValue ? onSubmit : (e) => e.preventDefault()}>

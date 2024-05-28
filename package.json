@@ -1,7 +1,9 @@
 {
-  "name": "custom_board_pwa",
+  "name": "square_box_pwa",
   "version": "0.1.0",
   "private": true,
+  "author": "Byung Ho Jung (AvenueDev)",
+  "license": "MIT",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.3",
     "@testing-library/jest-dom": "^5.16.1",
