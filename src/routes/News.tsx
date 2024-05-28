@@ -28,7 +28,7 @@ export default function News(): JSX.Element {
         {loadingToggle === false ? (
           <div>
             <div className={styles.previewContainer}>
-              <div className={styles.previewTitle}>Preview</div>
+              <h4 className={styles.previewTitle}>Preview</h4>
               {previewToggle === true && (
                 <div className={styles.defaultPreview}>
                   <img src="images/news_image_class0.jpg" alt="replacement" />
@@ -40,7 +40,7 @@ export default function News(): JSX.Element {
                 newsData.slice(current, current + 1).map((item) => <NewsPreview article={item} key={current} />)}
             </div>
             <div className={styles.contentsContainer}>
-              <div className={styles.contentsTitle}>Contents</div>
+              <h4 className={styles.contentsTitle}>Contents</h4>
               <div className={`${styles.articleList} ${borderToggle ? styles.borderEffect : null}`}>
                 {newsData.length !== 0 ? (
                   <ArticleContainer />

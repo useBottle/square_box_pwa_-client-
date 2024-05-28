@@ -1,5 +1,5 @@
 @import "../styles/color-set.css";
-.container {
+.HomeContainer {
   position: absolute;
   top: 100px;
   left: 100px;
@@ -9,10 +9,24 @@
   justify-content: center;
   background: var(--container-color);
 }
-.container .realTime {
+.HomeContainer .realTimeContainer {
+  position: absolute;
+  top: 0;
+  right: 100px;
+  width: 400px;
+  height: 650px;
+  box-sizing: border-box;
+}
+.HomeContainer .realTimeContainer .realTimeTitle {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  color: var(--sub-title);
+}
+.HomeContainer .realTimeContainer .realTime {
   position: absolute;
   top: 75px;
-  right: 100px;
+  right: 0;
   width: 400px;
   height: 500px;
   background: var(--container-color);
@@ -22,14 +36,14 @@
   justify-content: center;
   overflow: hidden;
 }
-.container .realTime li {
+.HomeContainer .realTimeContainer .realTime li {
   padding: 10px 10px;
   width: 100%;
   border-radius: 10px;
   display: flex;
   align-items: center;
 }
-.container .realTime li .rank {
+.HomeContainer .realTimeContainer .realTime li .rank {
   font-family: "S-CoreDream-4Regular";
   display: flex;
   justify-content: center;
@@ -38,10 +52,10 @@
   height: 30px;
   font-weight: 800;
 }
-.container .realTime li .text {
+.HomeContainer .realTimeContainer .realTime li .text {
   margin-left: 10px;
 }
-.container .realTime li .indicator {
+.HomeContainer .realTimeContainer .realTime li .indicator {
   position: absolute;
   right: 0;
   margin-right: 20px;
@@ -49,23 +63,23 @@
   background: var(--container-color);
   border-radius: 5px;
 }
-.container .realTime li .new {
+.HomeContainer .realTimeContainer .realTime li .new {
   color: rgb(78, 203, 105);
 }
-.container .realTime li .stay {
+.HomeContainer .realTimeContainer .realTime li .stay {
   color: var(--font-color);
 }
-.container .realTime li .up {
+.HomeContainer .realTimeContainer .realTime li .up {
   color: #fb3131;
 }
-.container .realTime li .down {
+.HomeContainer .realTimeContainer .realTime li .down {
   color: #4343ff;
 }
-.container .realTime li:hover {
+.HomeContainer .realTimeContainer .realTime li:hover {
   background: var(--container-color);
   cursor: pointer;
 }
-.container p {
+.HomeContainer p {
   position: absolute;
   bottom: 20px;
 }

@@ -1,6 +1,6 @@
 @import "../styles/color-set.css";
 
-.container {
+.HomeContainer {
   position: absolute;
   top: 100px;
   left: 100px;
@@ -10,69 +10,85 @@
   justify-content: center;
   background: var(--container-color);
 
-  & .realTime {
+  & .realTimeContainer {
     position: absolute;
-    top: 75px;
+    top: 0;
     right: 100px;
     width: 400px;
-    height: 500px;
-    background: var(--container-color);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
+    height: 650px;
+    box-sizing: border-box;
 
-    & li {
-      padding: 10px 10px;
-      width: 100%;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-
-      & .rank {
-        font-family: "S-CoreDream-4Regular";
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 30px;
-        height: 30px;
-        font-weight: 800;
-      }
-
-      & .text {
-        margin-left: 10px;
-      }
-
-      & .indicator {
-        position: absolute;
-        right: 0;
-        margin-right: 20px;
-        padding: 5px;
-        background: var(--container-color);
-        border-radius: 5px;
-      }
-
-      & .new {
-        color: rgb(78, 203, 105);
-      }
-
-      & .stay {
-        color: var(--font-color);
-      }
-
-      & .up {
-        color: #fb3131;
-      }
-
-      & .down {
-        color: #4343ff;
-      }
+    & .realTimeTitle {
+      position: absolute;
+      top: 50px;
+      left: 0;
+      color: var(--sub-title);
     }
 
-    & li:hover {
+    & .realTime {
+      position: absolute;
+      top: 75px;
+      right: 0;
+      width: 400px;
+      height: 500px;
       background: var(--container-color);
-      cursor: pointer;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+
+      & li {
+        padding: 10px 10px;
+        width: 100%;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+
+        & .rank {
+          font-family: "S-CoreDream-4Regular";
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 30px;
+          height: 30px;
+          font-weight: 800;
+        }
+
+        & .text {
+          margin-left: 10px;
+        }
+
+        & .indicator {
+          position: absolute;
+          right: 0;
+          margin-right: 20px;
+          padding: 5px;
+          background: var(--container-color);
+          border-radius: 5px;
+        }
+
+        & .new {
+          color: rgb(78, 203, 105);
+        }
+
+        & .stay {
+          color: var(--font-color);
+        }
+
+        & .up {
+          color: #fb3131;
+        }
+
+        & .down {
+          color: #4343ff;
+        }
+      }
+
+      & li:hover {
+        background: var(--container-color);
+        cursor: pointer;
+      }
     }
   }
 

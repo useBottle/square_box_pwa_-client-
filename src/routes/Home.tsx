@@ -52,18 +52,25 @@ export default function Home(): JSX.Element {
 
   return (
     <section data-theme={darkLightToggle === "dark" ? "" : "light"}>
-      <div className={styles.container}>
-        <ul className={styles.realTime}>
-          {realTimeSearchTerms.top10.map((item, index) => {
-            return (
-              <li key={index}>
-                <span className={styles.rank}>{item.rank}</span>
-                <span className={styles.text}>{item.keyword}</span>
-                <KeywordIndicator indicator={item.state as string} />
-              </li>
-            );
-          })}
-        </ul>
+      <div className={styles.HomeContainer}>
+        <div className={styles.realTimeContainer}>
+          <h4 className={styles.realTimeTitle}>실시간 검색어 Top 10</h4>
+          <ul className={styles.realTime}>
+            {realTimeSearchTerms && realTimeSearchTerms.top10 && realTimeSearchTerms.top10.length > 0 ? (
+              realTimeSearchTerms.top10.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <span className={styles.rank}>{item.rank}</span>
+                    <span className={styles.text}>{item.keyword}</span>
+                    <KeywordIndicator indicator={item.state as string} />
+                  </li>
+                );
+              })
+            ) : (
+              <p>Loading...</p>
+            )}
+          </ul>
+        </div>
         <p>{process.env.REACT_APP_EXTENSION_NOTICE}</p>
       </div>
     </section>
