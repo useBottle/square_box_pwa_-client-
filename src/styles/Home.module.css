@@ -7,9 +7,78 @@
   height: 650px;
   display: flex;
   justify-content: center;
-  align-items: center;
   background: var(--container-color);
 }
+.container .realTime {
+  position: absolute;
+  top: 75px;
+  right: 100px;
+  width: 400px;
+  height: 500px;
+  background: var(--container-color);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+.container .realTime li {
+  padding: 10px 10px;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+.container .realTime li .rank {
+  font-family: "S-CoreDream-4Regular";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  font-weight: 800;
+}
+.container .realTime li .text {
+  margin-left: 10px;
+}
+.container .realTime li .indicator {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  padding: 5px;
+  background: var(--container-color);
+  border-radius: 5px;
+}
+.container .realTime li .new {
+  color: rgb(78, 203, 105);
+}
+.container .realTime li .stay {
+  color: var(--font-color);
+}
+.container .realTime li .up {
+  color: #fb3131;
+}
+.container .realTime li .down {
+  color: #4343ff;
+}
+.container .realTime li:hover {
+  background: var(--container-color);
+  cursor: pointer;
+}
 .container p {
-  position: relative;
+  position: absolute;
+  bottom: 20px;
+}
+
+[data-theme=light] .container {
+  background: var(--container-color);
+}
+[data-theme=light] .container .realTime {
+  background: var(--container-color);
+}
+[data-theme=light] .container .realTime li .indicator {
+  background: var(--container-color);
+}
+[data-theme=light] .container .realTime li .stay {
+  color: var(--font-color);
 }

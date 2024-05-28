@@ -23,7 +23,7 @@ export default function News(): JSX.Element {
   }, [newsData]);
 
   return (
-    <div data-theme={darkLightToggle === "dark" ? "" : "light"}>
+    <section data-theme={darkLightToggle === "dark" ? "" : "light"}>
       <div className={styles.newsContainer}>
         {loadingToggle === false ? (
           <div>
@@ -54,6 +54,6 @@ export default function News(): JSX.Element {
           <Loading />
         )}
       </div>
-    </div>
+    </section>
   );
 }

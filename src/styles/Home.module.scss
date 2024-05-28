@@ -8,10 +8,96 @@
   height: 650px;
   display: flex;
   justify-content: center;
-  align-items: center;
   background: var(--container-color);
 
+  & .realTime {
+    position: absolute;
+    top: 75px;
+    right: 100px;
+    width: 400px;
+    height: 500px;
+    background: var(--container-color);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+
+    & li {
+      padding: 10px 10px;
+      width: 100%;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+
+      & .rank {
+        font-family: "S-CoreDream-4Regular";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        font-weight: 800;
+      }
+
+      & .text {
+        margin-left: 10px;
+      }
+
+      & .indicator {
+        position: absolute;
+        right: 0;
+        margin-right: 20px;
+        padding: 5px;
+        background: var(--container-color);
+        border-radius: 5px;
+      }
+
+      & .new {
+        color: rgb(78, 203, 105);
+      }
+
+      & .stay {
+        color: var(--font-color);
+      }
+
+      & .up {
+        color: #fb3131;
+      }
+
+      & .down {
+        color: #4343ff;
+      }
+    }
+
+    & li:hover {
+      background: var(--container-color);
+      cursor: pointer;
+    }
+  }
+
   & p {
-    position: relative;
+    position: absolute;
+    bottom: 20px;
+  }
+}
+
+[data-theme="light"] {
+  .container {
+    background: var(--container-color);
+
+    & .realTime {
+      background: var(--container-color);
+
+      & li {
+        & .indicator {
+          background: var(--container-color);
+        }
+
+        & .stay {
+          color: var(--font-color);
+        }
+      }
+    }
   }
 }

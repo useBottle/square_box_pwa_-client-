@@ -1,14 +1,15 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { KeywordsType } from "../types/types";
 
-type StateType = Record<string, unknown>;
+type StateType = Record<string, string[]>;
 
-const initialState: StateType = {};
+const initialState: KeywordsType = {};
 
 const realTimeSearchTermSlice = createSlice({
   name: "realTimeSearchTerm",
   initialState,
   reducers: {
-    setRealTimeSearchTerm(state, action: PayloadAction<{ key: string; value: unknown }>) {
+    setRealTimeSearchTerm(state, action: PayloadAction<KeywordsType>) {
       return action.payload;
     },
   },

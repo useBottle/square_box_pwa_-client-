@@ -4,11 +4,13 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setRealTimeSearchTerm } from "../store/realTimeSearchTermSlice";
 import { RootState } from "../store/store";
+import KeywordIndicator from "../components/KeywordIndicator";
 
 export default function Home(): JSX.Element {
   const [currentMinutes, setCurrentMinutes] = useState<number>(new Date().getMinutes());
   const dispatch = useDispatch();
   const realTimeSearchTerms = useSelector((state: RootState) => state.realTimeSearchTerm);
+  const darkLightToggle = useSelector((state: RootState) => state.darkLight);
 
   const fetchKeyword = async (): Promise<void> => {
     try {
@@ -46,9 +48,24 @@ export default function Home(): JSX.Element {
     console.log(realTimeSearchTerms);
   }, [realTimeSearchTerms]);
 
+  console.log(realTimeSearchTerms.top10);
+
   return (
-    <div className={styles.container}>
-      <p>브라우저의 광고 차단 익스텐션을 사용중이라면 컨텐츠가 제대로 표시되지 않을 수 있습니다.</p>
-    </div>
+    <section data-theme={darkLightToggle === "dark" ? "" : "light"}>
+      <div className={styles.container}>
+        <ul className={styles.realTime}>
+          {realTimeSearchTerms.top10.map((item, index) => {
+            return (
+              <li key={index}>
+                <span className={styles.rank}>{item.rank}</span>
+                <span className={styles.text}>{item.keyword}</span>
+                <KeywordIndicator indicator={item.state as string} />
+              </li>
+            );
+          })}
+        </ul>
+        <p>{process.env.REACT_APP_EXTENSION_NOTICE}</p>
+      </div>
+    </section>
   );
 }
