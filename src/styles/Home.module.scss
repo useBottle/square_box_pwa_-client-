@@ -25,6 +25,24 @@
       color: var(--sub-title);
     }
 
+    & .updateCounter {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      width: 100px;
+      height: 20px;
+      border-radius: 5px;
+      background: var(--container-color);
+
+      & .gauge {
+        position: absolute;
+        height: 20px;
+        left: 0;
+        border-radius: 5px;
+        background: var(--point-color1)
+      }
+    }
+
     & .realTime {
       position: absolute;
       top: 75px;

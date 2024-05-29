@@ -7,11 +7,10 @@ import { RootState } from "../store/store";
 import KeywordIndicator from "../components/KeywordIndicator";
 
 export default function Home(): JSX.Element {
-  const [currentMinutes, setCurrentMinutes] = useState<number>(new Date().getMinutes());
   const dispatch = useDispatch();
   const realTimeSearchTerms = useSelector((state: RootState) => state.realTimeSearchTerm);
   const darkLightToggle = useSelector((state: RootState) => state.darkLight);
-  const [loadedTime, setLoadedTime] = useState<number>(0);
+  const [startTime, setStartTime] = useState<number>(0);
   const [count, setCount] = useState<number>(0);
   const [gauge, setGauge] = useState<number>(0);
 
@@ -32,8 +31,13 @@ export default function Home(): JSX.Element {
     const minutes = new Date().getMinutes();
     const seconds = new Date().getSeconds();
 
-    // 로드 시간을 10분 = 600초 구간안에서 몇 초인지  계산.
-    setLoadedTime((minutes % 10) * 60 + seconds);
+    // 저장된 페이지 최초 로드 시간에서 1분 30초 minus 하여 스타트 시간 설정.
+    // 실검 제공 API 에서 매 시간 10분 단위 기준에서 약 1분 20초 후 데이터 업데이트하기 때문에 이를 반영.
+    if ((minutes === 1 && seconds >= 30) || minutes !== 1) {
+      setStartTime(((minutes + 9) % 10) * 60 + seconds - 30);
+    } else if (minutes === 1 && seconds < 30) {
+      setStartTime(((minutes + 9) % 10) * 60 + seconds + 30);
+    }
 
     // 페이지 첫 로드 이후 초 단위 시간 카운트.
     const intervalId = setInterval(() => {
@@ -42,43 +46,41 @@ export default function Home(): JSX.Element {
 
     return () => {
       clearInterval(intervalId);
-      setCount(0);
-      setGauge(0);
     };
   }, []);
 
   useEffect(() => {
     // 10분 단위 안에서 현 시간 기준으로 지난 시간을 백분율로 소수점 두 자리수 까지 계산.
-    setGauge(Number(((loadedTime + count) / 6).toFixed(2)));
-  }, [count]);
-
-  useEffect(() => {
-    // 5초마다 분단위로만 현재 시간 저장.
-    const intervalId = setInterval(() => {
-      const minutes = new Date().getMinutes();
-      setCurrentMinutes(minutes);
-    }, 1000);
-
-    // 매 시간 minute 가 10의 배수일 때만 실시간 검색어 요청.
-    if (currentMinutes % 10 === 0) {
+    if (gauge < 100) {
+      setGauge(Number(((startTime + count) / 6).toFixed(2)));
+    } else {
       fetchKeyword();
+      const minutes = new Date().getMinutes();
+      const seconds = new Date().getSeconds();
+      setGauge(0);
+      setCount(0);
+
+      if ((minutes === 1 && seconds >= 30) || minutes !== 1) {
+        setStartTime(((minutes + 9) % 10) * 60 + seconds - 30);
+      } else if (minutes === 1 && seconds < 30) {
+        setStartTime(((minutes + 9) % 10) * 60 + seconds + 30);
+      }
+      setGauge(Number(((startTime + count) / 6).toFixed(2)));
     }
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [currentMinutes]);
-
-  // 데이터 fetching 성공 여부 확인용.
-  useEffect(() => {
-    console.log(realTimeSearchTerms);
-  }, [realTimeSearchTerms]);
+    console.log("count: " + count);
+    console.log("loadedTime: " + startTime);
+    console.log("gauge: " + gauge);
+    console.log("");
+  }, [count]);
 
   return (
     <section data-theme={darkLightToggle === "dark" ? "" : "light"}>
       <div className={styles.HomeContainer}>
         <div className={styles.realTimeContainer}>
           <h4 className={styles.realTimeTitle}>실시간 검색어 Top 10</h4>
+          <div className={styles.updateCounter}>
+            <div className={styles.gauge} style={{ width: `${gauge}%` }} />
+          </div>
           <ul className={styles.realTime}>
             {realTimeSearchTerms && realTimeSearchTerms.top10 && realTimeSearchTerms.top10.length > 0 ? (
               realTimeSearchTerms.top10.map((item, index) => {
