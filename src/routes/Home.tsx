@@ -16,8 +16,6 @@ export default function Home(): JSX.Element {
   const realTimeSearchTerms = useSelector((state: RootState) => state.realTimeSearchTerm);
   const darkLightToggle = useSelector((state: RootState) => state.darkLight);
   const inputValue = useSelector((state: RootState) => state.inputValue);
-  const loadingToggle = useSelector((state: RootState) => state.loadingToggle);
-  const searchModalTrigger = useSelector((state: RootState) => state.searchModalTrigger);
   const [gauge, setGauge] = useState<number>(0);
   const [clickTrigger, setClickTrigger] = useState<boolean>(false);
 
@@ -78,7 +76,6 @@ export default function Home(): JSX.Element {
     if (inputValue !== "") {
       fetchData();
     }
-    console.log("loadingToggle :" + loadingToggle);
   }, [clickTrigger]);
 
   return (
