@@ -31,13 +31,8 @@ export default function Home(): JSX.Element {
     const minutes = new Date().getMinutes();
     const seconds = new Date().getSeconds();
 
-    // 저장된 페이지 최초 로드 시간에서 1분 30초 minus 하여 스타트 시간 설정.
-    // 실검 제공 API 에서 매 시간 10분 단위 기준에서 약 1분 20초 후 데이터 업데이트하기 때문에 이를 반영.
-    if ((minutes === 1 && seconds >= 30) || minutes !== 1) {
-      setStartTime(((minutes + 9) % 10) * 60 + seconds - 30);
-    } else if (minutes === 1 && seconds < 30) {
-      setStartTime(((minutes + 9) % 10) * 60 + seconds + 30);
-    }
+    // 저장된 페이지 최초 로드 시간으로 스타트 시간 설정.
+    setStartTime((minutes % 10) * 60 + seconds);
 
     // 페이지 첫 로드 이후 초 단위 시간 카운트.
     const intervalId = setInterval(() => {
@@ -60,11 +55,7 @@ export default function Home(): JSX.Element {
       setGauge(0);
       setCount(0);
 
-      if ((minutes === 1 && seconds >= 30) || minutes !== 1) {
-        setStartTime(((minutes + 9) % 10) * 60 + seconds - 30);
-      } else if (minutes === 1 && seconds < 30) {
-        setStartTime(((minutes + 9) % 10) * 60 + seconds + 30);
-      }
+      setStartTime((minutes % 10) * 60 + seconds);
       setGauge(Number(((startTime + count) / 6).toFixed(2)));
     }
     console.log("count: " + count);
