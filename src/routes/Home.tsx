@@ -10,8 +10,6 @@ export default function Home(): JSX.Element {
   const dispatch = useDispatch();
   const realTimeSearchTerms = useSelector((state: RootState) => state.realTimeSearchTerm);
   const darkLightToggle = useSelector((state: RootState) => state.darkLight);
-  const [startTime, setStartTime] = useState<number>(0);
-  const [count, setCount] = useState<number>(0);
   const [gauge, setGauge] = useState<number>(0);
 
   const fetchKeyword = async (): Promise<void> => {
@@ -27,47 +25,23 @@ export default function Home(): JSX.Element {
   useEffect(() => {
     fetchKeyword();
 
-    // 페이지 최초 로드 한 순간의 시간 저장.
-    const minutes = new Date().getMinutes();
-    const seconds = new Date().getSeconds();
-    const initialStartTime = (minutes % 5) * 60 + seconds;
-
-    // 저장된 페이지 최초 로드 시간으로 스타트 시간 설정.
-    setStartTime(initialStartTime);
-
     // 페이지 로드 시간 기준으로 초기 게이지 수치 설정.
-    setGauge(Number((initialStartTime / 3).toFixed(2)));
+    const seconds = new Date().getSeconds();
+    setGauge(Number(((seconds / 6) * 10).toFixed(2)));
 
-    // 페이지 첫 로드 이후 초 단위 시간 카운트.
-    const intervalId = setInterval(() => {
-      setCount((count) => count + 0.1);
-    }, 100);
+    // 현재 초 시간 기준으로 게이지 값 설정.
+    const countInterval = setInterval(() => {
+      const seconds = new Date().getSeconds();
+      setGauge(Number(((seconds / 6) * 10).toFixed(2)));
+      if (seconds === 0) {
+        fetchKeyword();
+      }
+    }, 1000);
 
     return () => {
-      clearInterval(intervalId);
+      clearInterval(countInterval);
     };
   }, []);
-
-  useEffect(() => {
-    // 5분 단위 안에서 현 시간 기준으로 지난 시간을 백분율로 소수점 두 자리수 까지 계산.
-    if (gauge < 100) {
-      setGauge(Number(((startTime + count) / 3).toFixed(2)));
-    } else {
-      fetchKeyword();
-      const minutes = new Date().getMinutes();
-      const seconds = new Date().getSeconds();
-      setGauge(0);
-      setCount(0);
-
-      const newStartTime = (minutes % 5) * 60 + seconds;
-      setStartTime(newStartTime);
-      setGauge(Number(((newStartTime + count) / 3).toFixed(2)));
-    }
-    console.log("count: " + count);
-    console.log("loadedTime: " + startTime);
-    console.log("gauge: " + gauge);
-    console.log("");
-  }, [count]);
 
   return (
     <section data-theme={darkLightToggle === "dark" ? "" : "light"}>
