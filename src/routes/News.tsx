@@ -31,7 +31,7 @@ export default function News(): JSX.Element {
               <h4 className={styles.previewTitle}>Preview</h4>
               {previewToggle === true && (
                 <div className={styles.defaultPreview}>
-                  <img src="images/news_image_class0.jpg" alt="replacement" />
+                  <img src={process.env.REACT_APP_DEFAULT_NEWS_IMAGE} alt="replacement" />
                   <h3>News</h3>
                   <p>Please search for the news...</p>
                 </div>

@@ -32,7 +32,7 @@ export default function Home(): JSX.Element {
     const seconds = new Date().getSeconds();
 
     // 저장된 페이지 최초 로드 시간으로 스타트 시간 설정.
-    setStartTime((minutes % 10) * 60 + seconds);
+    setStartTime((minutes % 5) * 60 + seconds);
 
     // 페이지 첫 로드 이후 초 단위 시간 카운트.
     const intervalId = setInterval(() => {
@@ -45,9 +45,9 @@ export default function Home(): JSX.Element {
   }, []);
 
   useEffect(() => {
-    // 10분 단위 안에서 현 시간 기준으로 지난 시간을 백분율로 소수점 두 자리수 까지 계산.
+    // 5분 단위 안에서 현 시간 기준으로 지난 시간을 백분율로 소수점 두 자리수 까지 계산.
     if (gauge < 100) {
-      setGauge(Number(((startTime + count) / 6).toFixed(2)));
+      setGauge(Number(((startTime + count) / 3).toFixed(2)));
     } else {
       fetchKeyword();
       const minutes = new Date().getMinutes();
@@ -55,7 +55,7 @@ export default function Home(): JSX.Element {
       setGauge(0);
       setCount(0);
 
-      setStartTime((minutes % 10) * 60 + seconds);
+      setStartTime((minutes % 5) * 60 + seconds);
       setGauge(Number(((startTime + count) / 6).toFixed(2)));
     }
     console.log("count: " + count);
