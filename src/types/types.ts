@@ -15,3 +15,15 @@ export interface IframeProps {
   title: string;
   src: string;
 }
+
+export interface objectElement {
+  [key: string]: string | number;
+}
+
+export interface KeywordsType {
+  [key: string]: objectElement[];
+}
+
+export interface Indicator {
+  indicator: string;
+}

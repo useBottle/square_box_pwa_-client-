@@ -12,6 +12,7 @@ import { setInputValue } from "./store/inputValueSlice";
 import { useEffect } from "react";
 import { setNewsData } from "./store/newsDataSlice";
 import { setIconIndex } from "./store/iconIndexSlice";
+import { BsBox } from "react-icons/bs";
 import SearchModal from "./components/SearchModal";
 import { setSearchModalTrigger } from "./store/searchModalTriggerSlice";
 import { setDarkLight } from "./store/darkLightSlice";
@@ -53,6 +54,7 @@ function App(): JSX.Element {
         dispatch(setLoadingToggle(false));
       } catch (error) {
         console.error("Error fetching data: ", error);
+        dispatch(setLoadingToggle(false));
       }
     };
     fetchData();
@@ -80,15 +82,6 @@ function App(): JSX.Element {
     localStorage.getItem("theme") === "dark" ? dispatch(setDarkLight("dark")) : dispatch(setDarkLight("light"));
   }, [dispatch]);
 
-  useEffect(() => {
-    const fetchKeyword = async (): Promise<void> => {
-      const response = await axios.get(process.env.REACT_APP_GET_KEYWORDS_API_URL);
-      const result = response.data;
-      console.log(result);
-    };
-    fetchKeyword();
-  }, []);
-
   return (
     <div data-theme={darkLightToggle === "dark" ? "" : "light"}>
       <div className={styles.modalSet} style={searchModalTrigger === true ? { display: "block" } : {}}>
@@ -109,7 +102,8 @@ function App(): JSX.Element {
               navigate("/");
             }}
           >
-            Square Box
+            <BsBox />
+            <span>Square Box</span>
           </h1>
 
           <form onSubmit={inputValue ? onSubmit : (e) => e.preventDefault()}>

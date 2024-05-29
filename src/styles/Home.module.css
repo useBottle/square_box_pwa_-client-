@@ -1,11 +1,114 @@
-.container {
+@import "../styles/color-set.css";
+.HomeContainer {
   position: absolute;
-  top: 400px;
-  left: 400px;
+  top: 100px;
+  left: 100px;
+  width: 1200px;
+  height: 650px;
+  display: flex;
+  justify-content: center;
+  background: var(--container-color);
+}
+.HomeContainer .realTimeContainer {
+  position: absolute;
+  top: 0;
+  right: 100px;
+  width: 400px;
+  height: 650px;
+  box-sizing: border-box;
+}
+.HomeContainer .realTimeContainer .realTimeTitle {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  color: var(--sub-title);
+}
+.HomeContainer .realTimeContainer .updateCounter {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 100px;
+  height: 20px;
+  border-radius: 5px;
+  background: var(--container-color);
+}
+.HomeContainer .realTimeContainer .updateCounter .gauge {
+  position: absolute;
+  height: 20px;
+  left: 0;
+  border-radius: 5px;
+  background: var(--point-color1);
+}
+.HomeContainer .realTimeContainer .realTime {
+  position: absolute;
+  top: 75px;
+  right: 0;
+  width: 400px;
+  height: 500px;
+  background: var(--container-color);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+.HomeContainer .realTimeContainer .realTime li {
+  padding: 10px 10px;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+.HomeContainer .realTimeContainer .realTime li .rank {
+  font-family: "S-CoreDream-4Regular";
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 30px;
+  height: 30px;
+  font-weight: 800;
 }
-.container p {
-  position: relative;
+.HomeContainer .realTimeContainer .realTime li .text {
+  margin-left: 10px;
+}
+.HomeContainer .realTimeContainer .realTime li .indicator {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  padding: 5px;
+  background: var(--container-color);
+  border-radius: 5px;
+}
+.HomeContainer .realTimeContainer .realTime li .new {
+  color: rgb(78, 203, 105);
+}
+.HomeContainer .realTimeContainer .realTime li .stay {
+  color: var(--font-color);
+}
+.HomeContainer .realTimeContainer .realTime li .up {
+  color: #fb3131;
+}
+.HomeContainer .realTimeContainer .realTime li .down {
+  color: #4343ff;
+}
+.HomeContainer .realTimeContainer .realTime li:hover {
+  background: var(--container-color);
+  cursor: pointer;
+}
+.HomeContainer p {
+  position: absolute;
+  bottom: 20px;
+}
+
+[data-theme=light] .container {
+  background: var(--container-color);
+}
+[data-theme=light] .container .realTime {
+  background: var(--container-color);
+}
+[data-theme=light] .container .realTime li .indicator {
+  background: var(--container-color);
+}
+[data-theme=light] .container .realTime li .stay {
+  color: var(--font-color);
 }

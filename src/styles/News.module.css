@@ -83,7 +83,7 @@
 .newsContainer .contentsContainer .borderEffect {
   animation: blink-darkMode 3s infinite alternate ease-in-out;
 }
-@keyframes blink-darkMode {
+@keyframes blinkBorder {
   0% {
     border: 3px solid transparent;
   }
@@ -101,7 +101,7 @@
 [data-theme=light] .newsContainer .contentsContainer .borderEffect {
   animation: blink-lightMode 3s infinite alternate ease-in-out;
 }
-@keyframes blink-lightMode {
+@keyframes blinkBorder {
   0% {
     border: 3px solid transparent;
   }

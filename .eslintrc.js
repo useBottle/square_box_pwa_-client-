@@ -50,7 +50,7 @@ module.exports = {
 		// export문이 하나일 때 default export 사용 권장 경고 비활성화
 		"import/prefer-default-export": ["off"],
 		// react hooks의 의존성배열이 충분하지 않을 때 경고 표시
-		"react-hooks/exhaustive-deps": ["warn"],
+		"react-hooks/exhaustive-deps": ["off"],
 		// 컴포넌트 이름은 PascalCase로
 		"react/jsx-pascal-case": "warn",
 		// 반복문으로 생성하는 요소에 key 강제

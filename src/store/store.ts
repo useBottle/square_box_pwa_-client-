@@ -10,6 +10,7 @@ import searchModalTriggerReducer from "./searchModalTriggerSlice";
 import darkLightReducer from "./darkLightSlice";
 import previewToggleReducer from "./previewToggleSlice";
 import loadingToggleReducer from "./loadingToggleSlice";
+import realTimeSearchTermReducer from "./realTimeSearchTermSlice";
 
 const store = configureStore({
   reducer: {
@@ -24,6 +25,7 @@ const store = configureStore({
     darkLight: darkLightReducer,
     previewToggle: previewToggleReducer,
     loadingToggle: loadingToggleReducer,
+    realTimeSearchTerm: realTimeSearchTermReducer,
   },
 });
 
