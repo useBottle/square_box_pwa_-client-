@@ -34,6 +34,9 @@ export default function Home(): JSX.Element {
     // 저장된 페이지 최초 로드 시간으로 스타트 시간 설정.
     setStartTime((minutes % 5) * 60 + seconds);
 
+    // 페이지 로드 시간 기준으로 초기 게이지 수치 설정.
+    setGauge(Number(((startTime + count) / 3).toFixed(2)));
+
     // 페이지 첫 로드 이후 초 단위 시간 카운트.
     const intervalId = setInterval(() => {
       setCount((count) => count + 1);
@@ -56,7 +59,7 @@ export default function Home(): JSX.Element {
       setCount(0);
 
       setStartTime((minutes % 5) * 60 + seconds);
-      setGauge(Number(((startTime + count) / 6).toFixed(2)));
+      setGauge(Number(((startTime + count) / 3).toFixed(2)));
     }
     console.log("count: " + count);
     console.log("loadedTime: " + startTime);
