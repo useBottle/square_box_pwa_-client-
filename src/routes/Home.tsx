@@ -5,12 +5,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { setRealTimeSearchTerm } from "../store/realTimeSearchTermSlice";
 import { RootState } from "../store/store";
 import KeywordIndicator from "../components/KeywordIndicator";
+import { setInputValue } from "../store/inputValueSlice";
+import { setNewsData } from "../store/newsDataSlice";
+import { setLoadingToggle } from "../store/loadingToggleSlice";
+import { setPreviewToggle } from "../store/previewToggleSlice";
+import { setSearchModalTrigger } from "../store/searchModalTriggerSlice";
 
 export default function Home(): JSX.Element {
   const dispatch = useDispatch();
   const realTimeSearchTerms = useSelector((state: RootState) => state.realTimeSearchTerm);
   const darkLightToggle = useSelector((state: RootState) => state.darkLight);
+  const inputValue = useSelector((state: RootState) => state.inputValue);
+  const loadingToggle = useSelector((state: RootState) => state.loadingToggle);
+  const searchModalTrigger = useSelector((state: RootState) => state.searchModalTrigger);
   const [gauge, setGauge] = useState<number>(0);
+  const [clickTrigger, setClickTrigger] = useState<boolean>(false);
 
   const fetchKeyword = async (): Promise<void> => {
     try {
@@ -24,6 +33,7 @@ export default function Home(): JSX.Element {
 
   useEffect(() => {
     fetchKeyword();
+    dispatch(setInputValue(""));
 
     // 페이지 로드 시간 기준으로 초기 게이지 수치 설정.
     const seconds = new Date().getSeconds();
@@ -43,6 +53,34 @@ export default function Home(): JSX.Element {
     };
   }, []);
 
+  const fetchData = async (): Promise<void> => {
+    dispatch(setLoadingToggle(true));
+    try {
+      const response = await axios.put(
+        process.env.REACT_APP_GET_NEWS_API_URL as string,
+        { inputValue },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+      const result = response.data;
+      dispatch(setNewsData(result));
+      dispatch(setLoadingToggle(false));
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+      dispatch(setLoadingToggle(false));
+    }
+  };
+
+  useEffect(() => {
+    if (inputValue !== "") {
+      fetchData();
+    }
+    console.log("loadingToggle :" + loadingToggle);
+  }, [clickTrigger]);
+
   return (
     <section data-theme={darkLightToggle === "dark" ? "" : "light"}>
       <div className={styles.HomeContainer}>
@@ -55,7 +93,16 @@ export default function Home(): JSX.Element {
             {realTimeSearchTerms && realTimeSearchTerms.top10 && realTimeSearchTerms.top10.length > 0 ? (
               realTimeSearchTerms.top10.map((item, index) => {
                 return (
-                  <li key={index}>
+                  <li
+                    key={index}
+                    onClick={() => {
+                      dispatch(setInputValue(item.keyword as unknown as string));
+                      dispatch(setLoadingToggle(true));
+                      dispatch(setPreviewToggle(false));
+                      dispatch(setSearchModalTrigger(true));
+                      clickTrigger === false ? setClickTrigger(true) : setClickTrigger(false);
+                    }}
+                  >
                     <span className={styles.rank}>{item.rank}</span>
                     <span className={styles.text}>{item.keyword}</span>
                     <KeywordIndicator indicator={item.state as string} />

@@ -22,6 +22,10 @@ export default function News(): JSX.Element {
     }
   }, [newsData]);
 
+  useEffect(() => {
+    console.log("loadingToggle :" + loadingToggle);
+  }, [loadingToggle]);
+
   return (
     <section data-theme={darkLightToggle === "dark" ? "" : "light"}>
       <div className={styles.newsContainer}>

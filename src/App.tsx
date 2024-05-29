@@ -54,6 +54,7 @@ function App(): JSX.Element {
         dispatch(setLoadingToggle(false));
       } catch (error) {
         console.error("Error fetching data: ", error);
+        dispatch(setLoadingToggle(false));
       }
     };
     fetchData();
