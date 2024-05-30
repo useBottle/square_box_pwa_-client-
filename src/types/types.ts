@@ -16,14 +16,21 @@ export interface IframeProps {
   src: string;
 }
 
-export interface objectElement {
+export interface ObjectElement {
   [key: string]: string | number;
 }
 
 export interface KeywordsType {
-  [key: string]: objectElement[];
+  [key: string]: ObjectElement[];
 }
 
 export interface Indicator {
   indicator: string;
+}
+
+export interface LoadingStatus {
+  newsLoading: boolean;
+  youtubeLoading: boolean;
+  instaLoading: boolean;
+  xLoading: boolean;
 }

@@ -12,7 +12,7 @@ export default function News(): JSX.Element {
   const [borderToggle, setBorderToggle] = useState<boolean>(true);
   const darkLightToggle = useSelector((state: RootState) => state.darkLight);
   const previewToggle = useSelector((state: RootState) => state.previewToggle);
-  const loadingToggle = useSelector((state: RootState) => state.loadingToggle);
+  const { newsLoading } = useSelector((state: RootState) => state.loadingStatus);
 
   useEffect(() => {
     if (newsData.length !== 0) {
@@ -25,7 +25,7 @@ export default function News(): JSX.Element {
   return (
     <section data-theme={darkLightToggle === "dark" ? "" : "light"}>
       <div className={styles.newsContainer}>
-        {loadingToggle === false ? (
+        {newsLoading === false ? (
           <div>
             <div className={styles.previewContainer}>
               <h4 className={styles.previewTitle}>Preview</h4>

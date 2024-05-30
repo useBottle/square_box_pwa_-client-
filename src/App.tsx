@@ -18,7 +18,7 @@ import { setSearchModalTrigger } from "./store/searchModalTriggerSlice";
 import { setDarkLight } from "./store/darkLightSlice";
 import axios from "axios";
 import { setPreviewToggle } from "./store/previewToggleSlice";
-import { setLoadingToggle } from "./store/loadingToggleSlice";
+import { setNewsLoading } from "./store/loadingStatusSlice";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -34,7 +34,7 @@ function App(): JSX.Element {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     dispatch(setPreviewToggle(false));
-    dispatch(setLoadingToggle(true));
+    dispatch(setNewsLoading(true));
     iconIndex === -1 ? dispatch(setSearchModalTrigger(true)) : null;
     e.preventDefault();
     const fetchNewsData = async (): Promise<void> => {
@@ -51,10 +51,10 @@ function App(): JSX.Element {
         const result = response.data;
 
         dispatch(setNewsData(result));
-        dispatch(setLoadingToggle(false));
+        dispatch(setNewsLoading(false));
       } catch (error) {
         console.error("Error fetching news data: ", error);
-        dispatch(setLoadingToggle(false));
+        dispatch(setNewsLoading(false));
       }
     };
 

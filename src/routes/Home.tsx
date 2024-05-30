@@ -7,9 +7,9 @@ import { RootState } from "../store/store";
 import KeywordIndicator from "../components/KeywordIndicator";
 import { setInputValue } from "../store/inputValueSlice";
 import { setNewsData } from "../store/newsDataSlice";
-import { setLoadingToggle } from "../store/loadingToggleSlice";
 import { setPreviewToggle } from "../store/previewToggleSlice";
 import { setSearchModalTrigger } from "../store/searchModalTriggerSlice";
+import { setNewsLoading } from "../store/loadingStatusSlice";
 
 export default function Home(): JSX.Element {
   const dispatch = useDispatch();
@@ -52,7 +52,7 @@ export default function Home(): JSX.Element {
   }, []);
 
   const fetchData = async (): Promise<void> => {
-    dispatch(setLoadingToggle(true));
+    dispatch(setNewsLoading(true));
     try {
       const response = await axios.put(
         process.env.REACT_APP_GET_NEWS_API_URL as string,
@@ -65,10 +65,10 @@ export default function Home(): JSX.Element {
       );
       const result = response.data;
       dispatch(setNewsData(result));
-      dispatch(setLoadingToggle(false));
+      dispatch(setNewsLoading(false));
     } catch (error) {
       console.error("Error fetching data: ", error);
-      dispatch(setLoadingToggle(false));
+      dispatch(setNewsLoading(false));
     }
   };
 
@@ -94,7 +94,7 @@ export default function Home(): JSX.Element {
                     key={index}
                     onClick={() => {
                       dispatch(setInputValue(item.keyword as unknown as string));
-                      dispatch(setLoadingToggle(true));
+                      dispatch(setNewsLoading(true));
                       dispatch(setPreviewToggle(false));
                       dispatch(setSearchModalTrigger(true));
                       clickTrigger === false ? setClickTrigger(true) : setClickTrigger(false);

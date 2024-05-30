@@ -9,7 +9,7 @@ import iconIndexReducer from "./iconIndexSlice";
 import searchModalTriggerReducer from "./searchModalTriggerSlice";
 import darkLightReducer from "./darkLightSlice";
 import previewToggleReducer from "./previewToggleSlice";
-import loadingToggleReducer from "./loadingToggleSlice";
+import loadingStatusReducer from "./loadingStatusSlice";
 import realTimeSearchTermReducer from "./realTimeSearchTermSlice";
 
 const store = configureStore({
@@ -24,7 +24,7 @@ const store = configureStore({
     searchModalTrigger: searchModalTriggerReducer,
     darkLight: darkLightReducer,
     previewToggle: previewToggleReducer,
-    loadingToggle: loadingToggleReducer,
+    loadingStatus: loadingStatusReducer,
     realTimeSearchTerm: realTimeSearchTermReducer,
   },
 });
