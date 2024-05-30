@@ -8,11 +8,11 @@ import Loading from "../components/Loading";
 
 export default function News(): JSX.Element {
   const { newsData } = useSelector((state: RootState) => state.data);
-  const current = useSelector((state: RootState) => state.visibility);
+  const { currentNewsIndex } = useSelector((state: RootState) => state.newsState);
   const [borderToggle, setBorderToggle] = useState<boolean>(true);
-  const darkLightToggle = useSelector((state: RootState) => state.darkLight);
-  const previewToggle = useSelector((state: RootState) => state.previewToggle);
-  const { newsLoading } = useSelector((state: RootState) => state.loadingStatus);
+  const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
+  const { previewToggle } = useSelector((state: RootState) => state.newsState);
+  const { newsLoading } = useSelector((state: RootState) => state.userInterface.loadingStatus);
 
   useEffect(() => {
     if (newsData.length !== 0) {
@@ -37,7 +37,9 @@ export default function News(): JSX.Element {
                 </div>
               )}
               {newsData.length !== 0 &&
-                newsData.slice(current, current + 1).map((item) => <NewsPreview article={item} key={current} />)}
+                newsData
+                  .slice(currentNewsIndex, currentNewsIndex + 1)
+                  .map((item) => <NewsPreview article={item} key={currentNewsIndex} />)}
             </div>
             <div className={styles.contentsContainer}>
               <h4 className={styles.contentsTitle}>Contents</h4>

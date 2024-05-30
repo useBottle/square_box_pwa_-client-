@@ -3,14 +3,13 @@ import { FaNewspaper, FaYoutube, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setSearchModalTrigger } from "../store/searchModalTriggerSlice";
-import { setIconIndex } from "../store/iconIndexSlice";
 import { AppDispatch, RootState } from "../store/store";
+import { setMenuIndex, setSearchModalTrigger } from "../store/userInterfaceSlice";
 
 export default function SearchModal(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  const darkLightToggle = useSelector((state: RootState) => state.darkLight);
+  const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
   const modalItem = [
     { path: "/news", icon: <FaNewspaper />, label: "News" },
     { path: "/youtube", icon: <FaYoutube />, label: "Youtube" },
@@ -29,7 +28,7 @@ export default function SearchModal(): JSX.Element {
                 key={index}
                 onClick={() => {
                   dispatch(setSearchModalTrigger(false));
-                  dispatch(setIconIndex(index));
+                  dispatch(setMenuIndex(index));
                   navigate(`${item.path}`);
                 }}
               >

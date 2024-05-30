@@ -5,15 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import KeywordIndicator from "../components/KeywordIndicator";
 import { setInputValue } from "../store/inputValueSlice";
-import { setPreviewToggle } from "../store/previewToggleSlice";
-import { setSearchModalTrigger } from "../store/searchModalTriggerSlice";
-import { setNewsLoading } from "../store/loadingStatusSlice";
 import { setNewsData, setRealTimeSearchTerms } from "../store/dataSlice";
+import { setPreviewToggle } from "../store/newsSlice";
+import { setNewsLoading, setSearchModalTrigger } from "../store/userInterfaceSlice";
 
 export default function Home(): JSX.Element {
   const dispatch = useDispatch();
   const { realTimeSearchTerms } = useSelector((state: RootState) => state.data);
-  const darkLightToggle = useSelector((state: RootState) => state.darkLight);
+  const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
   const inputValue = useSelector((state: RootState) => state.inputValue);
   const [gauge, setGauge] = useState<number>(0);
   const [clickTrigger, setClickTrigger] = useState<boolean>(false);

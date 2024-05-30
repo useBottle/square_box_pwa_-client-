@@ -14,7 +14,7 @@ const dataSlice = createSlice({
     setRealTimeSearchTerms(state, action: PayloadAction<KeywordsType>) {
       state.realTimeSearchTerms = action.payload;
     },
-    setNewsData(state, action: PayloadAction<NewsData[]>) {
+    setNewsData(state, action: PayloadAction<Partial<NewsData>[]>) {
       state.newsData = action.payload;
     },
     setYoutubeData(state, action: PayloadAction<Partial<YoutubeData>[]>) {
@@ -23,5 +23,5 @@ const dataSlice = createSlice({
   },
 });
 
-export const { setNewsData, setYoutubeData, setRealTimeSearchTerms } = dataSlice.actions;
+export const { setRealTimeSearchTerms, setNewsData, setYoutubeData } = dataSlice.actions;
 export default dataSlice.reducer;

@@ -1,19 +1,34 @@
 export interface NewsData {
-  title: string;
-  description: string;
-  pubDate: string;
-  originallink: string;
-  imageUrls: string[];
-  articleText: string;
+  title?: string;
+  description?: string;
+  pubDate?: string;
+  originallink?: string;
+  imageUrls?: string[];
+  articleText?: string;
 }
 
 export interface NewsProps {
   article: NewsData;
 }
 
-export interface IframeProps {
-  title: string;
-  src: string;
+export interface NewsState {
+  currentNewsIndex: number;
+  currentNews: NewsData;
+  previewToggle: boolean;
+}
+
+export interface LoadingStatus {
+  newsLoading: boolean;
+  youtubeLoading: boolean;
+  instaLoading: boolean;
+  xLoading: boolean;
+}
+
+export interface userInterface {
+  darkLightToggle: string;
+  menuIndex: number;
+  searchModalTrigger: boolean;
+  loadingStatus: LoadingStatus;
 }
 
 export interface ObjectElement {
@@ -26,13 +41,6 @@ export interface KeywordsType {
 
 export interface Indicator {
   indicator: string;
-}
-
-export interface LoadingStatus {
-  newsLoading: boolean;
-  youtubeLoading: boolean;
-  instaLoading: boolean;
-  xLoading: boolean;
 }
 
 export interface YoutubeData {

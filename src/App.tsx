@@ -10,23 +10,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { setInputValue } from "./store/inputValueSlice";
 import { useEffect } from "react";
-import { setIconIndex } from "./store/iconIndexSlice";
 import { BsBox } from "react-icons/bs";
 import SearchModal from "./components/SearchModal";
-import { setSearchModalTrigger } from "./store/searchModalTriggerSlice";
-import { setDarkLight } from "./store/darkLightSlice";
 import axios from "axios";
-import { setPreviewToggle } from "./store/previewToggleSlice";
-import { setNewsLoading, setYoutubeLoading } from "./store/loadingStatusSlice";
 import { setNewsData, setYoutubeData } from "./store/dataSlice";
+import { setPreviewToggle } from "./store/newsSlice";
+import {
+  setDarkLight,
+  setMenuIndex,
+  setNewsLoading,
+  setSearchModalTrigger,
+  setYoutubeLoading,
+} from "./store/userInterfaceSlice";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const inputValue = useSelector((state: RootState) => state.inputValue);
-  const iconIndex = useSelector((state: RootState) => state.iconIndex);
-  const searchModalTrigger = useSelector((state: RootState) => state.searchModalTrigger);
-  const darkLightToggle = useSelector((state: RootState) => state.darkLight);
+  const { menuIndex } = useSelector((state: RootState) => state.userInterface);
+  const { searchModalTrigger } = useSelector((state: RootState) => state.userInterface);
+  const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     dispatch(setInputValue(e.target.value));
@@ -37,7 +40,7 @@ function App(): JSX.Element {
     dispatch(setNewsLoading(true));
     dispatch(setYoutubeLoading(true));
 
-    iconIndex === -1 ? dispatch(setSearchModalTrigger(true)) : null;
+    menuIndex === -1 ? dispatch(setSearchModalTrigger(true)) : null;
     e.preventDefault();
 
     const fetchNewsData = async (): Promise<void> => {
@@ -123,7 +126,7 @@ function App(): JSX.Element {
           <h1
             className={styles.logo}
             onClick={() => {
-              dispatch(setIconIndex(-1));
+              dispatch(setMenuIndex(-1));
               navigate("/");
             }}
           >
@@ -175,15 +178,15 @@ function App(): JSX.Element {
             {navItem.map((item, index) => {
               return (
                 <li
-                  className={iconIndex === index ? `${styles.menuIcon}` : ""}
+                  className={menuIndex === index ? `${styles.menuIcon}` : ""}
                   key={index}
                   onClick={() => {
-                    dispatch(setIconIndex(index));
+                    dispatch(setMenuIndex(index));
                     navigate(`${item.path}`);
                   }}
                 >
                   <div>{item.icon}</div>
-                  <span className={iconIndex === index ? `${styles.menuText}` : ""}>{item.label}</span>
+                  <span className={menuIndex === index ? `${styles.menuText}` : ""}>{item.label}</span>
                 </li>
               );
             })}
