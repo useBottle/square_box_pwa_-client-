@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { setInputValue } from "./store/inputValueSlice";
 import { useEffect } from "react";
-import { setNewsData } from "./store/newsDataSlice";
 import { setIconIndex } from "./store/iconIndexSlice";
 import { BsBox } from "react-icons/bs";
 import SearchModal from "./components/SearchModal";
@@ -18,7 +17,8 @@ import { setSearchModalTrigger } from "./store/searchModalTriggerSlice";
 import { setDarkLight } from "./store/darkLightSlice";
 import axios from "axios";
 import { setPreviewToggle } from "./store/previewToggleSlice";
-import { setNewsLoading } from "./store/loadingStatusSlice";
+import { setNewsLoading, setYoutubeLoading } from "./store/loadingStatusSlice";
+import { setNewsData, setYoutubeData } from "./store/dataSlice";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -35,8 +35,11 @@ function App(): JSX.Element {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     dispatch(setPreviewToggle(false));
     dispatch(setNewsLoading(true));
+    dispatch(setYoutubeLoading(true));
+
     iconIndex === -1 ? dispatch(setSearchModalTrigger(true)) : null;
     e.preventDefault();
+
     const fetchNewsData = async (): Promise<void> => {
       try {
         const response = await axios.put(
@@ -69,14 +72,16 @@ function App(): JSX.Element {
             },
           },
         );
-        const result = response.data;
+        const result = response.data.items;
         console.log(result);
+        dispatch(setYoutubeData(result));
+        dispatch(setYoutubeLoading(false));
       } catch (error) {
         console.error("Error fetching news data: ", error);
       }
     };
 
-    // fetchNewsData();
+    fetchNewsData();
     fetchYoutubeData();
   };
 

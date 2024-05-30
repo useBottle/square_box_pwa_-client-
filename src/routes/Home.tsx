@@ -2,18 +2,17 @@ import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { setRealTimeSearchTerm } from "../store/realTimeSearchTermSlice";
 import { RootState } from "../store/store";
 import KeywordIndicator from "../components/KeywordIndicator";
 import { setInputValue } from "../store/inputValueSlice";
-import { setNewsData } from "../store/newsDataSlice";
 import { setPreviewToggle } from "../store/previewToggleSlice";
 import { setSearchModalTrigger } from "../store/searchModalTriggerSlice";
 import { setNewsLoading } from "../store/loadingStatusSlice";
+import { setNewsData, setRealTimeSearchTerms } from "../store/dataSlice";
 
 export default function Home(): JSX.Element {
   const dispatch = useDispatch();
-  const realTimeSearchTerms = useSelector((state: RootState) => state.realTimeSearchTerm);
+  const { realTimeSearchTerms } = useSelector((state: RootState) => state.data);
   const darkLightToggle = useSelector((state: RootState) => state.darkLight);
   const inputValue = useSelector((state: RootState) => state.inputValue);
   const [gauge, setGauge] = useState<number>(0);
@@ -23,7 +22,7 @@ export default function Home(): JSX.Element {
     try {
       const response = await axios.get(process.env.REACT_APP_GET_KEYWORDS_API_URL);
       const result = response.data;
-      dispatch(setRealTimeSearchTerm(result));
+      dispatch(setRealTimeSearchTerms(result));
     } catch (error) {
       console.error("Failed fetching keyword data.", error);
     }

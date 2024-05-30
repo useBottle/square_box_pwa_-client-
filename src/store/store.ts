@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 import inputValueReducer from "./inputValueSlice";
-import newsDataReducer from "./newsDataSlice";
 import amountReducer from "./amountSlice";
 import positionReducer from "./positionSlice";
 import visibilityReducer from "./visibilitySlice";
@@ -10,12 +9,11 @@ import searchModalTriggerReducer from "./searchModalTriggerSlice";
 import darkLightReducer from "./darkLightSlice";
 import previewToggleReducer from "./previewToggleSlice";
 import loadingStatusReducer from "./loadingStatusSlice";
-import realTimeSearchTermReducer from "./realTimeSearchTermSlice";
+import dataReducer from "./dataSlice";
 
 const store = configureStore({
   reducer: {
     inputValue: inputValueReducer,
-    newsData: newsDataReducer,
     currentNews: currentNewsReducer,
     amount: amountReducer,
     position: positionReducer,
@@ -25,7 +23,7 @@ const store = configureStore({
     darkLight: darkLightReducer,
     previewToggle: previewToggleReducer,
     loadingStatus: loadingStatusReducer,
-    realTimeSearchTerm: realTimeSearchTermReducer,
+    data: dataReducer,
   },
 });
 

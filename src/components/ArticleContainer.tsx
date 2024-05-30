@@ -6,7 +6,7 @@ import { setCurrentNews } from "../store/currentNewsSlice";
 
 export default function ArticleContainer(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
-  const newsData = useSelector((state: RootState) => state.newsData);
+  const { newsData } = useSelector((state: RootState) => state.data);
   const darkLightToggle = useSelector((state: RootState) => state.darkLight);
 
   return (

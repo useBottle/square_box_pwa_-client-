@@ -7,7 +7,7 @@ import NewsPreview from "../components/NewsPrivew";
 import Loading from "../components/Loading";
 
 export default function News(): JSX.Element {
-  const newsData = useSelector((state: RootState) => state.newsData);
+  const { newsData } = useSelector((state: RootState) => state.data);
   const current = useSelector((state: RootState) => state.visibility);
   const [borderToggle, setBorderToggle] = useState<boolean>(true);
   const darkLightToggle = useSelector((state: RootState) => state.darkLight);

@@ -1,4 +1,4 @@
-export interface Article {
+export interface NewsData {
   title: string;
   description: string;
   pubDate: string;
@@ -8,7 +8,7 @@ export interface Article {
 }
 
 export interface NewsProps {
-  article: Article;
+  article: NewsData;
 }
 
 export interface IframeProps {
@@ -33,4 +33,45 @@ export interface LoadingStatus {
   youtubeLoading: boolean;
   instaLoading: boolean;
   xLoading: boolean;
+}
+
+export interface YoutubeData {
+  kind?: string;
+  etag?: string;
+  id?: {
+    kind?: string;
+    videoId?: string;
+  };
+  snippet?: {
+    publishedAt?: string;
+    channelId?: string;
+    title?: string;
+    description?: string;
+    thumbnails?: {
+      default?: {
+        url?: string;
+        width?: number;
+        height?: number;
+      };
+      medium?: {
+        url?: string;
+        width?: number;
+        height?: number;
+      };
+      high?: {
+        url?: string;
+        width?: number;
+        height?: number;
+      };
+    };
+    channelTitle?: string;
+    liveBroadcastContent?: string;
+    publishTime?: string;
+  };
+}
+
+export interface Data {
+  realTimeSearchTerms: KeywordsType;
+  newsData: NewsData[];
+  youtubeData: Partial<YoutubeData>[];
 }

@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { Article } from "../types/types";
+import { NewsData } from "../types/types";
 
-const initialState: Article = {
+const initialState: NewsData = {
   title: "",
   description: "",
   pubDate: "",
@@ -14,7 +14,7 @@ const currentNewsSlice = createSlice({
   name: "currentNews",
   initialState,
   reducers: {
-    setCurrentNews(state, action: PayloadAction<Article>) {
+    setCurrentNews(state, action: PayloadAction<NewsData>) {
       return action.payload;
     },
   },
