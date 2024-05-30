@@ -37,7 +37,7 @@ function App(): JSX.Element {
     dispatch(setLoadingToggle(true));
     iconIndex === -1 ? dispatch(setSearchModalTrigger(true)) : null;
     e.preventDefault();
-    const fetchData = async (): Promise<void> => {
+    const fetchNewsData = async (): Promise<void> => {
       try {
         const response = await axios.put(
           process.env.REACT_APP_GET_NEWS_API_URL as string,
@@ -53,11 +53,31 @@ function App(): JSX.Element {
         dispatch(setNewsData(result));
         dispatch(setLoadingToggle(false));
       } catch (error) {
-        console.error("Error fetching data: ", error);
+        console.error("Error fetching news data: ", error);
         dispatch(setLoadingToggle(false));
       }
     };
-    fetchData();
+
+    const fetchYoutubeData = async (): Promise<void> => {
+      try {
+        const response = await axios.put(
+          process.env.REACT_APP_GET_YOUTUBE_API_URL as string,
+          { inputValue },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          },
+        );
+        const result = response.data;
+        console.log(result);
+      } catch (error) {
+        console.error("Error fetching news data: ", error);
+      }
+    };
+
+    // fetchNewsData();
+    fetchYoutubeData();
   };
 
   const navItem = [
