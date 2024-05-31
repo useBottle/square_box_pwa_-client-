@@ -1,4 +1,4 @@
-.newsContainer {
+.youtubeContainer {
   font-family: "S-CoreDream-4Regular";
   position: absolute;
   display: flex;
@@ -13,7 +13,7 @@
   box-sizing: border-box;
   transition: background 0.3s ease-in-out;
 }
-.newsContainer .previewContainer {
+.youtubeContainer .previewContainer {
   position: absolute;
   top: 0;
   left: 100px;
@@ -21,34 +21,34 @@
   height: 600px;
   box-sizing: border-box;
 }
-.newsContainer .previewContainer .previewTitle {
+.youtubeContainer .previewContainer .previewTitle {
   position: relative;
   top: 50px;
   left: 0;
   color: var(--sub-title);
 }
-.newsContainer .previewContainer .defaultPreview {
+.youtubeContainer .previewContainer .defaultPreview {
   position: absolute;
   top: 75px;
 }
-.newsContainer .previewContainer .defaultPreview img {
+.youtubeContainer .previewContainer .defaultPreview img {
   position: relative;
   width: 550px;
   height: 367px;
   border-radius: 10px;
   user-select: none;
 }
-.newsContainer .previewContainer .defaultPreview h3 {
+.youtubeContainer .previewContainer .defaultPreview h3 {
   position: relative;
   margin-top: 30px;
   font-size: 30px;
 }
-.newsContainer .previewContainer .defaultPreview p {
+.youtubeContainer .previewContainer .defaultPreview p {
   position: relative;
   margin-top: 30px;
   font-weight: 100;
 }
-.newsContainer .contentsContainer {
+.youtubeContainer .contentsContainer {
   position: absolute;
   top: 0;
   right: 100px;
@@ -56,13 +56,13 @@
   height: 650px;
   box-sizing: border-box;
 }
-.newsContainer .contentsContainer .contentsTitle {
+.youtubeContainer .contentsContainer .contentsTitle {
   position: absolute;
   top: 50px;
   left: 0;
   color: var(--sub-title);
 }
-.newsContainer .contentsContainer .articleList {
+.youtubeContainer .contentsContainer .videoList {
   position: absolute;
   font-family: "S-CoreDream-4Regular";
   font-size: 20px;
@@ -78,10 +78,10 @@
   box-sizing: border-box;
   transition: background 0.3s ease-in-out;
 }
-.newsContainer .contentsContainer .articleList .text {
+.youtubeContainer .contentsContainer .videoList .text {
   pointer-events: none;
 }
-.newsContainer .contentsContainer .borderEffect {
+.youtubeContainer .contentsContainer .borderEffect {
   animation: blinkBorder 3s infinite alternate ease-in-out;
 }
 @keyframes blinkBorder {
@@ -92,7 +92,7 @@
     border: 3px solid var(--font-color);
   }
 }
-.newsContainer .notice {
+.youtubeContainer .notice {
   font-family: "S-CoreDream-1Thin";
   z-index: 900;
   position: absolute;
@@ -100,13 +100,16 @@
   color: var(--sub-title);
 }
 
-[data-theme=light] .newsContainer {
+[data-theme=light] .youtubeContainer {
   background: var(--container-color);
 }
-[data-theme=light] .newsContainer .contentsContainer .articleList {
+[data-theme=light] .youtubeContainer .contentsContainer .contentsTitle {
+  color: var(--sub-title);
+}
+[data-theme=light] .youtubeContainer .contentsContainer .videoList {
   background: var(--container-color);
 }
-[data-theme=light] .newsContainer .contentsContainer .borderEffect {
+[data-theme=light] .youtubeContainer .contentsContainer .borderEffect {
   animation: blinkBorder 3s infinite alternate ease-in-out;
 }
 @keyframes blinkBorder {

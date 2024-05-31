@@ -2,19 +2,17 @@ import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { setRealTimeSearchTerm } from "../store/realTimeSearchTermSlice";
 import { RootState } from "../store/store";
 import KeywordIndicator from "../components/KeywordIndicator";
 import { setInputValue } from "../store/inputValueSlice";
-import { setNewsData } from "../store/newsDataSlice";
-import { setLoadingToggle } from "../store/loadingToggleSlice";
-import { setPreviewToggle } from "../store/previewToggleSlice";
-import { setSearchModalTrigger } from "../store/searchModalTriggerSlice";
+import { setNewsData, setRealTimeSearchTerms, setYoutubeData } from "../store/dataSlice";
+import { setPreviewToggle } from "../store/newsSlice";
+import { setNewsLoading, setSearchModalTrigger, setYoutubeLoading } from "../store/userInterfaceSlice";
 
 export default function Home(): JSX.Element {
   const dispatch = useDispatch();
-  const realTimeSearchTerms = useSelector((state: RootState) => state.realTimeSearchTerm);
-  const darkLightToggle = useSelector((state: RootState) => state.darkLight);
+  const { realTimeSearchTerms } = useSelector((state: RootState) => state.data);
+  const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
   const inputValue = useSelector((state: RootState) => state.inputValue);
   const [gauge, setGauge] = useState<number>(0);
   const [clickTrigger, setClickTrigger] = useState<boolean>(false);
@@ -23,7 +21,7 @@ export default function Home(): JSX.Element {
     try {
       const response = await axios.get(process.env.REACT_APP_GET_KEYWORDS_API_URL);
       const result = response.data;
-      dispatch(setRealTimeSearchTerm(result));
+      dispatch(setRealTimeSearchTerms(result));
     } catch (error) {
       console.error("Failed fetching keyword data.", error);
     }
@@ -51,8 +49,8 @@ export default function Home(): JSX.Element {
     };
   }, []);
 
-  const fetchData = async (): Promise<void> => {
-    dispatch(setLoadingToggle(true));
+  const fetchNewsData = async (): Promise<void> => {
+    dispatch(setNewsLoading(true));
     try {
       const response = await axios.put(
         process.env.REACT_APP_GET_NEWS_API_URL as string,
@@ -65,16 +63,37 @@ export default function Home(): JSX.Element {
       );
       const result = response.data;
       dispatch(setNewsData(result));
-      dispatch(setLoadingToggle(false));
+      dispatch(setNewsLoading(false));
     } catch (error) {
-      console.error("Error fetching data: ", error);
-      dispatch(setLoadingToggle(false));
+      console.error("Error fetching news data: ", error);
+      dispatch(setNewsLoading(false));
+    }
+  };
+
+  const fetchYoutubeData = async (): Promise<void> => {
+    dispatch(setYoutubeLoading(true));
+    try {
+      const response = await axios.put(
+        process.env.REACT_APP_GET_YOUTUBE_API_URL as string,
+        { inputValue },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+      const result = response.data.items;
+      console.log(result);
+      dispatch(setYoutubeData(result));
+      dispatch(setYoutubeLoading(false));
+    } catch (error) {
+      console.error("Error fetching youtube data: ", error);
     }
   };
 
   useEffect(() => {
     if (inputValue !== "") {
-      fetchData();
+      Promise.all([fetchNewsData(), fetchYoutubeData()]);
     }
   }, [clickTrigger]);
 
@@ -94,7 +113,7 @@ export default function Home(): JSX.Element {
                     key={index}
                     onClick={() => {
                       dispatch(setInputValue(item.keyword as unknown as string));
-                      dispatch(setLoadingToggle(true));
+                      dispatch(setNewsLoading(true));
                       dispatch(setPreviewToggle(false));
                       dispatch(setSearchModalTrigger(true));
                       clickTrigger === false ? setClickTrigger(true) : setClickTrigger(false);
@@ -111,7 +130,7 @@ export default function Home(): JSX.Element {
             )}
           </ul>
         </div>
-        <p>{process.env.REACT_APP_EXTENSION_NOTICE}</p>
+        <p className={styles.notice}>{process.env.REACT_APP_EXTENSION_NOTICE}</p>
       </div>
     </section>
   );

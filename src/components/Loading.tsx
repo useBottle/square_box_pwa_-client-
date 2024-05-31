@@ -5,7 +5,7 @@ import { RootState } from "../store/store";
 
 export default function Loading(): JSX.Element {
   const [color, setColor] = useState("#fff");
-  const darkLightToggle = useSelector((state: RootState) => state.darkLight);
+  const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
 
   useEffect(() => {
     if (darkLightToggle === "dark") {

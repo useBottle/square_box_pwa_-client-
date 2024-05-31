@@ -1,4 +1,4 @@
-.newsContainer {
+.youtubeContainer {
   font-family: "S-CoreDream-4Regular";
   position: absolute;
   display: flex;
@@ -69,7 +69,7 @@
       color: var(--sub-title);
     }
 
-    & .articleList {
+    & .videoList {
       position: absolute;
       font-family: "S-CoreDream-4Regular";
       font-size: 20px;
@@ -115,13 +115,15 @@
 }
 
 [data-theme="light"] {
-
-  & .newsContainer {
+  .youtubeContainer {
     background: var(--container-color);
 
     & .contentsContainer {
+      & .contentsTitle {
+        color: var(--sub-title);
+      }
 
-      & .articleList {
+      & .videoList {
         background: var(--container-color);
       }
 

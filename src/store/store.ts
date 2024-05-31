@@ -1,31 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
 import inputValueReducer from "./inputValueSlice";
-import newsDataReducer from "./newsDataSlice";
-import amountReducer from "./amountSlice";
-import positionReducer from "./positionSlice";
-import visibilityReducer from "./visibilitySlice";
-import currentNewsReducer from "./currentNewsSlice";
-import iconIndexReducer from "./iconIndexSlice";
-import searchModalTriggerReducer from "./searchModalTriggerSlice";
-import darkLightReducer from "./darkLightSlice";
-import previewToggleReducer from "./previewToggleSlice";
-import loadingToggleReducer from "./loadingToggleSlice";
-import realTimeSearchTermReducer from "./realTimeSearchTermSlice";
+import dataReducer from "./dataSlice";
+import newsReducer from "./newsSlice";
+import userInterfaceReducer from "./userInterfaceSlice";
+import youtubeReducer from "./youtubeSlice";
 
 const store = configureStore({
   reducer: {
     inputValue: inputValueReducer,
-    newsData: newsDataReducer,
-    currentNews: currentNewsReducer,
-    amount: amountReducer,
-    position: positionReducer,
-    visibility: visibilityReducer,
-    iconIndex: iconIndexReducer,
-    searchModalTrigger: searchModalTriggerReducer,
-    darkLight: darkLightReducer,
-    previewToggle: previewToggleReducer,
-    loadingToggle: loadingToggleReducer,
-    realTimeSearchTerm: realTimeSearchTermReducer,
+    data: dataReducer,
+    news: newsReducer,
+    youtube: youtubeReducer,
+    userInterface: userInterfaceReducer,
   },
 });
 

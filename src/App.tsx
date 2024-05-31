@@ -4,29 +4,33 @@ import Home from "./routes/Home";
 import News from "./routes/News";
 import { IoSearch } from "react-icons/io5";
 import { GoSun, GoMoon, GoSignIn } from "react-icons/go";
-import { FaNewspaper, FaYoutube, FaInstagram, FaBookmark } from "react-icons/fa";
+import { FaHome, FaNewspaper, FaYoutube, FaBookmark } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { setInputValue } from "./store/inputValueSlice";
 import { useEffect } from "react";
-import { setNewsData } from "./store/newsDataSlice";
-import { setIconIndex } from "./store/iconIndexSlice";
 import { BsBox } from "react-icons/bs";
 import SearchModal from "./components/SearchModal";
-import { setSearchModalTrigger } from "./store/searchModalTriggerSlice";
-import { setDarkLight } from "./store/darkLightSlice";
 import axios from "axios";
-import { setPreviewToggle } from "./store/previewToggleSlice";
-import { setLoadingToggle } from "./store/loadingToggleSlice";
+import { setNewsData, setYoutubeData } from "./store/dataSlice";
+import { setPreviewToggle } from "./store/newsSlice";
+import {
+  setDarkLight,
+  setMenuIndex,
+  setNewsLoading,
+  setSearchModalTrigger,
+  setYoutubeLoading,
+} from "./store/userInterfaceSlice";
+import Youtube from "./routes/Youtube";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const inputValue = useSelector((state: RootState) => state.inputValue);
-  const iconIndex = useSelector((state: RootState) => state.iconIndex);
-  const searchModalTrigger = useSelector((state: RootState) => state.searchModalTrigger);
-  const darkLightToggle = useSelector((state: RootState) => state.darkLight);
+  const { menuIndex } = useSelector((state: RootState) => state.userInterface);
+  const { searchModalTrigger } = useSelector((state: RootState) => state.userInterface);
+  const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     dispatch(setInputValue(e.target.value));
@@ -34,10 +38,13 @@ function App(): JSX.Element {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     dispatch(setPreviewToggle(false));
-    dispatch(setLoadingToggle(true));
-    iconIndex === -1 ? dispatch(setSearchModalTrigger(true)) : null;
+    dispatch(setNewsLoading(true));
+    dispatch(setYoutubeLoading(true));
+
+    menuIndex === 0 && dispatch(setSearchModalTrigger(true));
     e.preventDefault();
-    const fetchData = async (): Promise<void> => {
+
+    const fetchNewsData = async (): Promise<void> => {
       try {
         const response = await axios.put(
           process.env.REACT_APP_GET_NEWS_API_URL as string,
@@ -51,19 +58,39 @@ function App(): JSX.Element {
         const result = response.data;
 
         dispatch(setNewsData(result));
-        dispatch(setLoadingToggle(false));
+        dispatch(setNewsLoading(false));
       } catch (error) {
-        console.error("Error fetching data: ", error);
-        dispatch(setLoadingToggle(false));
+        console.error("Error fetching news data: ", error);
+        dispatch(setNewsLoading(false));
       }
     };
-    fetchData();
+
+    const fetchYoutubeData = async (): Promise<void> => {
+      try {
+        const response = await axios.put(
+          process.env.REACT_APP_GET_YOUTUBE_API_URL as string,
+          { inputValue },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          },
+        );
+        const result = response.data.items;
+        dispatch(setYoutubeData(result));
+        dispatch(setYoutubeLoading(false));
+      } catch (error) {
+        console.error("Error fetching youtube data: ", error);
+      }
+    };
+
+    Promise.all([fetchNewsData(), fetchYoutubeData()]);
   };
 
-  const navItem = [
+  const menuItem = [
+    { path: "/", icon: <FaHome />, label: "Home" },
     { path: "/news", icon: <FaNewspaper />, label: "News" },
     { path: "/youtube", icon: <FaYoutube />, label: "Youtube" },
-    { path: "/instagram", icon: <FaInstagram />, label: "Instagram" },
     { path: "/x", icon: <FaXTwitter />, label: "X" },
     { path: "/bookmark", icon: <FaBookmark />, label: "Bookmark" },
   ];
@@ -84,7 +111,7 @@ function App(): JSX.Element {
 
   return (
     <div data-theme={darkLightToggle === "dark" ? "" : "light"}>
-      <div className={styles.modalSet} style={searchModalTrigger === true ? { display: "block" } : {}}>
+      <div className={styles.modalSet} style={searchModalTrigger === true ? { display: "block" } : { display: "none" }}>
         <SearchModal />
         <div className={styles.overlay} role="button" onClick={() => dispatch(setSearchModalTrigger(false))} />
       </div>
@@ -98,7 +125,7 @@ function App(): JSX.Element {
           <h1
             className={styles.logo}
             onClick={() => {
-              dispatch(setIconIndex(-1));
+              dispatch(setMenuIndex(0));
               navigate("/");
             }}
           >
@@ -147,18 +174,18 @@ function App(): JSX.Element {
 
         <nav className={styles.navbar}>
           <ul>
-            {navItem.map((item, index) => {
+            {menuItem.map((item, index) => {
               return (
                 <li
-                  className={iconIndex === index ? `${styles.menuIcon}` : ""}
+                  className={menuIndex === index ? `${styles.menuIcon}` : ""}
                   key={index}
                   onClick={() => {
-                    dispatch(setIconIndex(index));
+                    dispatch(setMenuIndex(index));
                     navigate(`${item.path}`);
                   }}
                 >
                   <div>{item.icon}</div>
-                  <span className={iconIndex === index ? `${styles.menuText}` : ""}>{item.label}</span>
+                  <span className={menuIndex === index ? `${styles.menuText}` : ""}>{item.label}</span>
                 </li>
               );
             })}
@@ -168,6 +195,7 @@ function App(): JSX.Element {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/news" element={<News />} />
+          <Route path="/youtube" element={<Youtube />} />
         </Routes>
       </div>
     </div>

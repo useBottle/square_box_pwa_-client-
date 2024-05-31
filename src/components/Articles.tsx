@@ -1,32 +1,30 @@
 import { AppDispatch, RootState } from "../store/store";
-import styles from "../styles/ArticleContainer.module.css";
+import styles from "../styles/Articles.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setVisibility } from "../store/visibilitySlice";
-import { setCurrentNews } from "../store/currentNewsSlice";
+import { setCurrentNews, setCurrentNewsIndex } from "../store/newsSlice";
 
-export default function ArticleContainer(): JSX.Element {
+export default function Articles(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
-  const newsData = useSelector((state: RootState) => state.newsData);
-  const darkLightToggle = useSelector((state: RootState) => state.darkLight);
+  const { newsData } = useSelector((state: RootState) => state.data);
+  const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
 
   return (
     <div data-theme={darkLightToggle === "dark" ? "" : "light"}>
-      <div className={styles.articleList}>
+      <div className={styles.articleSlider}>
         {newsData.map((item, index) => {
           const onMouseEnter = (): void => {
             dispatch(setCurrentNews(item));
           };
 
-          // JSX에서 이벤트 핸들러 사용
           return (
             <div
               key={index}
-              className={styles.article}
+              className={styles.articleList}
               onMouseEnter={() => {
-                dispatch(setVisibility(index));
+                dispatch(setCurrentNewsIndex(index));
               }}
             >
-              <div onMouseEnter={onMouseEnter}>
+              <div onMouseEnter={onMouseEnter} className={styles.article}>
                 <h3>{item.title}</h3>
                 <p>{item.pubDate}</p>
               </div>
