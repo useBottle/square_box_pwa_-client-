@@ -55,7 +55,7 @@ export default function News(): JSX.Element {
         ) : (
           <Loading />
         )}
-        <p className={styles.notice}>{process.env.REACT_APP_EXTENSION_NOTICE}</p>
+        {newsLoading === false && <p className={styles.notice}>{process.env.REACT_APP_EXTENSION_NOTICE}</p>}
       </div>
     </section>
   );

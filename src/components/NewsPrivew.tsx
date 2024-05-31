@@ -1,5 +1,5 @@
 import { NewsProps } from "../types/types";
-import styles from "../styles/NewsPrivew.module.css";
+import styles from "../styles/NewsPreview.module.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";

@@ -25,8 +25,10 @@ export default function Videos(): JSX.Element {
               }}
             >
               <div onMouseEnter={onMouseEnter} className={styles.video}>
+                <img src={item.snippet.thumbnails[0].url} alt="thumbnail" />
                 <h3>{item.snippet.title}</h3>
-                <p>{item.snippet.timestamp}</p>
+                <span className={styles.timeStamp}>{item.snippet.timestamp}</span>
+                <span className={styles.views}>{item.snippet.views} views</span>
               </div>
             </div>
           );
