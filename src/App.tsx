@@ -80,12 +80,11 @@ function App(): JSX.Element {
         dispatch(setYoutubeData(result));
         dispatch(setYoutubeLoading(false));
       } catch (error) {
-        console.error("Error fetching news data: ", error);
+        console.error("Error fetching youtube data: ", error);
       }
     };
 
-    fetchNewsData();
-    fetchYoutubeData();
+    Promise.all([fetchNewsData(), fetchYoutubeData()]);
   };
 
   const navItem = [

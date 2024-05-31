@@ -81,7 +81,7 @@
   pointer-events: none;
 }
 .newsContainer .contentsContainer .borderEffect {
-  animation: blink-darkMode 3s infinite alternate ease-in-out;
+  animation: blinkBorder 3s infinite alternate ease-in-out;
 }
 @keyframes blinkBorder {
   0% {
@@ -99,7 +99,7 @@
   background: var(--container-color);
 }
 [data-theme=light] .newsContainer .contentsContainer .borderEffect {
-  animation: blink-lightMode 3s infinite alternate ease-in-out;
+  animation: blinkBorder 3s infinite alternate ease-in-out;
 }
 @keyframes blinkBorder {
   0% {

@@ -91,7 +91,7 @@
     }
 
     & .borderEffect {
-      animation: blink-darkMode 3s infinite alternate ease-in-out;
+      animation: blinkBorder 3s infinite alternate ease-in-out;
     }
 
     @keyframes blinkBorder {
@@ -118,7 +118,7 @@
       }
 
       & .borderEffect {
-        animation: blink-lightMode 3s infinite alternate ease-in-out;
+        animation: blinkBorder 3s infinite alternate ease-in-out;
       }
 
       @keyframes blinkBorder {

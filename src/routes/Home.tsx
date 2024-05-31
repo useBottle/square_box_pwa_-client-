@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import KeywordIndicator from "../components/KeywordIndicator";
 import { setInputValue } from "../store/inputValueSlice";
-import { setNewsData, setRealTimeSearchTerms } from "../store/dataSlice";
+import { setNewsData, setRealTimeSearchTerms, setYoutubeData } from "../store/dataSlice";
 import { setPreviewToggle } from "../store/newsSlice";
-import { setNewsLoading, setSearchModalTrigger } from "../store/userInterfaceSlice";
+import { setNewsLoading, setSearchModalTrigger, setYoutubeLoading } from "../store/userInterfaceSlice";
 
 export default function Home(): JSX.Element {
   const dispatch = useDispatch();
@@ -49,7 +49,7 @@ export default function Home(): JSX.Element {
     };
   }, []);
 
-  const fetchData = async (): Promise<void> => {
+  const fetchNewsData = async (): Promise<void> => {
     dispatch(setNewsLoading(true));
     try {
       const response = await axios.put(
@@ -65,14 +65,35 @@ export default function Home(): JSX.Element {
       dispatch(setNewsData(result));
       dispatch(setNewsLoading(false));
     } catch (error) {
-      console.error("Error fetching data: ", error);
+      console.error("Error fetching news data: ", error);
       dispatch(setNewsLoading(false));
+    }
+  };
+
+  const fetchYoutubeData = async (): Promise<void> => {
+    dispatch(setYoutubeLoading(true));
+    try {
+      const response = await axios.put(
+        process.env.REACT_APP_GET_YOUTUBE_API_URL as string,
+        { inputValue },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+      const result = response.data.items;
+      console.log(result);
+      dispatch(setYoutubeData(result));
+      dispatch(setYoutubeLoading(false));
+    } catch (error) {
+      console.error("Error fetching youtube data: ", error);
     }
   };
 
   useEffect(() => {
     if (inputValue !== "") {
-      fetchData();
+      Promise.all([fetchNewsData(), fetchYoutubeData()]);
     }
   }, [clickTrigger]);
 
