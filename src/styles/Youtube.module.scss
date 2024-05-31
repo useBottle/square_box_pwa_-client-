@@ -1,0 +1,145 @@
+.youtubeContainer {
+  font-family: "S-CoreDream-4Regular";
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--container-color);
+  padding: 0 30px;
+  top: 100px;
+  left: 100px;
+  width: 1200px;
+  height: 650px;
+  box-sizing: border-box;
+  transition: background 0.3s ease-in-out;
+
+  & .previewContainer {
+    position: absolute;
+    top: 0;
+    left: 100px;
+    width: 550px;
+    height: 600px;
+    box-sizing: border-box;
+
+    & .previewTitle {
+      position: relative;
+      top: 50px;
+      left: 0;
+      color: var(--sub-title);
+    }
+
+    & .defaultPreview {
+      position: absolute;
+      top: 75px;
+
+      & img {
+        position: relative;
+        width: 550px;
+        height: auto;
+        border-radius: 10px;
+        user-select: none;
+      }
+
+      & h3 {
+        position: relative;
+        margin-top: 30px;
+        font-size: 30px;
+      }
+
+      & p {
+        position: relative;
+        margin-top: 30px;
+        font-weight: 100;
+      }
+    }
+  }
+
+  & .contentsContainer {
+    position: absolute;
+    top: 0;
+    right: 100px;
+    width: 400px;
+    height: 650px;
+    box-sizing: border-box;
+
+    & .contentsTitle {
+      position: absolute;
+      top: 50px;
+      left: 0;
+      color: var(--sub-title);
+    }
+
+    & .videoList {
+      position: absolute;
+      font-family: "S-CoreDream-4Regular";
+      font-size: 20px;
+      font-weight: 400;
+      width: 400px;
+      height: 500px;
+      top: 75px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--container-color);
+      border-radius: 10px;
+      box-sizing: border-box;
+      transition: background 0.3s ease-in-out;
+
+      & .text {
+        pointer-events: none;
+      }
+    }
+
+    & .borderEffect {
+      animation: blinkBorder 3s infinite alternate ease-in-out;
+    }
+
+    @keyframes blinkBorder {
+      0% {
+        border: 3px solid transparent;
+      }
+
+      100% {
+        border: 3px solid var(--font-color);
+      }
+    }
+  }
+
+  & .notice {
+    font-family: "S-CoreDream-1Thin";
+    z-index: 900;
+    position: absolute;
+    bottom: 20px;
+    color: var(--sub-title);
+  }
+}
+
+[data-theme="light"] {
+  .youtubeContainer {
+    background: var(--container-color);
+
+    & .contentsContainer {
+      & .contentsTitle {
+        color: var(--sub-title);
+      }
+
+      & .videoList {
+        background: var(--container-color);
+      }
+
+      & .borderEffect {
+        animation: blinkBorder 3s infinite alternate ease-in-out;
+      }
+
+      @keyframes blinkBorder {
+        0% {
+          border: 3px solid transparent;
+        }
+
+        100% {
+          border: 3px solid var(--font-color);
+        }
+      }
+    }
+  }
+}

@@ -22,6 +22,8 @@ import {
   setSearchModalTrigger,
   setYoutubeLoading,
 } from "./store/userInterfaceSlice";
+import Youtube from "./routes/Youtube";
+import { NewsData } from "./types/types";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -87,7 +89,7 @@ function App(): JSX.Element {
     Promise.all([fetchNewsData(), fetchYoutubeData()]);
   };
 
-  const navItem = [
+  const menuItem = [
     { path: "/news", icon: <FaNewspaper />, label: "News" },
     { path: "/youtube", icon: <FaYoutube />, label: "Youtube" },
     { path: "/instagram", icon: <FaInstagram />, label: "Instagram" },
@@ -174,7 +176,7 @@ function App(): JSX.Element {
 
         <nav className={styles.navbar}>
           <ul>
-            {navItem.map((item, index) => {
+            {menuItem.map((item, index) => {
               return (
                 <li
                   className={menuIndex === index ? `${styles.menuIcon}` : ""}
@@ -195,6 +197,7 @@ function App(): JSX.Element {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/news" element={<News />} />
+          <Route path="/youtube" element={<Youtube />} />
         </Routes>
       </div>
     </div>

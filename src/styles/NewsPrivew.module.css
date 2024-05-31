@@ -1,4 +1,3 @@
-@import "./color-set.css";
 .newsPreview {
   position: absolute;
   display: flex;
@@ -23,7 +22,7 @@
   transition: color 0.3s ease-in-out;
 }
 .newsPreview .articleDate {
-  margin-top: 20px;
+  position: relative;
   color: var(--link-btn-hover);
   background: var(--container-color);
   padding: 10px 10px;
@@ -44,6 +43,7 @@
   background: var(--point-color3);
 }
 .newsPreview p {
+  position: relative;
   margin-top: 40px;
   font-weight: 100;
   line-height: 1.3;

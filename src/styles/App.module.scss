@@ -100,6 +100,8 @@ body {
 .mainContainer {
   background: var(--container-color);
   position: relative;
+  display: flex;
+  justify-content: center;
   width: $main-container-width;
   height: $main-container-height;
   border-radius: 10px;
@@ -336,6 +338,7 @@ body {
   & .navbar {
     position: absolute;
     bottom: 0;
+    left: 0;
     width: 100px;
     height: calc(($main-container-height) - 100px);
     display: flex;

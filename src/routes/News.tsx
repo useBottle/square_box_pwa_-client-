@@ -1,17 +1,17 @@
 import styles from "../styles/News.module.css";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import ArticleContainer from "../components/ArticleContainer";
 import { useEffect, useState } from "react";
 import NewsPreview from "../components/NewsPrivew";
 import Loading from "../components/Loading";
+import Articles from "../components/Articles";
 
 export default function News(): JSX.Element {
   const { newsData } = useSelector((state: RootState) => state.data);
-  const { currentNewsIndex } = useSelector((state: RootState) => state.newsState);
+  const { currentNewsIndex } = useSelector((state: RootState) => state.news);
   const [borderToggle, setBorderToggle] = useState<boolean>(true);
   const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
-  const { previewToggle } = useSelector((state: RootState) => state.newsState);
+  const { previewToggle } = useSelector((state: RootState) => state.news);
   const { newsLoading } = useSelector((state: RootState) => state.userInterface.loadingStatus);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function News(): JSX.Element {
                 <div className={styles.defaultPreview}>
                   <img src={process.env.REACT_APP_DEFAULT_NEWS_IMAGE} alt="replacement" />
                   <h3>News</h3>
-                  <p>Please search for the news...</p>
+                  <p>{process.env.REACT_APP_NEWS_DEFAULT}</p>
                 </div>
               )}
               {newsData.length !== 0 &&
@@ -45,9 +45,9 @@ export default function News(): JSX.Element {
               <h4 className={styles.contentsTitle}>Contents</h4>
               <div className={`${styles.articleList} ${borderToggle ? styles.borderEffect : null}`}>
                 {newsData.length !== 0 ? (
-                  <ArticleContainer />
+                  <Articles />
                 ) : (
-                  <div className={styles.text}>Search for your interests.</div>
+                  <div className={styles.text}>{process.env.REACT_APP_CONTENTS_DEFAULT}</div>
                 )}
               </div>
             </div>
@@ -55,6 +55,7 @@ export default function News(): JSX.Element {
         ) : (
           <Loading />
         )}
+        <p className={styles.notice}>{process.env.REACT_APP_EXTENSION_NOTICE}</p>
       </div>
     </section>
   );

@@ -1,7 +1,6 @@
-@import "./color-set.css";
 .newsContainer {
   font-family: "S-CoreDream-4Regular";
-  position: relative;
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,10 +39,12 @@
   user-select: none;
 }
 .newsContainer .previewContainer .defaultPreview h3 {
+  position: relative;
   margin-top: 30px;
   font-size: 30px;
 }
 .newsContainer .previewContainer .defaultPreview p {
+  position: relative;
   margin-top: 30px;
   font-weight: 100;
 }
@@ -90,6 +91,13 @@
   100% {
     border: 3px solid var(--font-color);
   }
+}
+.newsContainer .notice {
+  font-family: "S-CoreDream-1Thin";
+  z-index: 900;
+  position: absolute;
+  bottom: 20px;
+  color: var(--sub-title);
 }
 
 [data-theme=light] .newsContainer {

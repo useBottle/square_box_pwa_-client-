@@ -130,7 +130,7 @@ export default function Home(): JSX.Element {
             )}
           </ul>
         </div>
-        <p>{process.env.REACT_APP_EXTENSION_NOTICE}</p>
+        <p className={styles.notice}>{process.env.REACT_APP_EXTENSION_NOTICE}</p>
       </div>
     </section>
   );

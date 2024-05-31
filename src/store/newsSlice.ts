@@ -3,7 +3,14 @@ import { NewsData, NewsState } from "../types/types";
 
 const initialState: NewsState = {
   currentNewsIndex: 0,
-  currentNews: {},
+  currentNews: {
+    title: "",
+    description: "",
+    pubDate: "",
+    originallink: "",
+    imageUrls: [],
+    articleText: "",
+  },
   previewToggle: true,
 };
 
@@ -14,7 +21,7 @@ export const newsSlice = createSlice({
     setCurrentNewsIndex(state, action: PayloadAction<number>) {
       state.currentNewsIndex = action.payload;
     },
-    setCurrentNews(state, action: PayloadAction<Partial<NewsData>>) {
+    setCurrentNews(state, action: PayloadAction<NewsData>) {
       state.currentNews = action.payload;
     },
     setPreviewToggle(state, action: PayloadAction<boolean>) {

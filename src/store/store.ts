@@ -1,14 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import inputValueReducer from "./inputValueSlice";
 import dataReducer from "./dataSlice";
-import newsStateReducer from "./newsSlice";
+import newsReducer from "./newsSlice";
 import userInterfaceReducer from "./userInterfaceSlice";
+import youtubeReducer from "./youtubeSlice";
 
 const store = configureStore({
   reducer: {
     inputValue: inputValueReducer,
     data: dataReducer,
-    newsState: newsStateReducer,
+    news: newsReducer,
+    youtube: youtubeReducer,
     userInterface: userInterfaceReducer,
   },
 });

@@ -14,10 +14,10 @@ const dataSlice = createSlice({
     setRealTimeSearchTerms(state, action: PayloadAction<KeywordsType>) {
       state.realTimeSearchTerms = action.payload;
     },
-    setNewsData(state, action: PayloadAction<Partial<NewsData>[]>) {
+    setNewsData(state, action: PayloadAction<NewsData[]>) {
       state.newsData = action.payload;
     },
-    setYoutubeData(state, action: PayloadAction<Partial<YoutubeData>[]>) {
+    setYoutubeData(state, action: PayloadAction<YoutubeData[]>) {
       state.youtubeData = action.payload;
     },
   },

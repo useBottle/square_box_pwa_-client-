@@ -6,5 +6,8 @@ declare namespace NodeJS {
     REACT_APP_GET_KEYWORDS_API_URL: string;
     REACT_APP_GET_YOUTUBE_API_URL: string;
     REACT_APP_EXTENSION_NOTICE: string;
+    REACT_APP_NEWS_DEFAULT: string;
+    REACT_APP_YOUTUBE_DEFAULT: string;
+    REACT_APP_CONTENTS_DEFAULT: string;
   }
 }

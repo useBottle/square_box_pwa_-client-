@@ -40,9 +40,12 @@ export default function NewsPreview({ article }: NewsProps): JSX.Element {
     }
   }
 
-  const editedText = article.articleText
-    ? cleanText(article.articleText)
-    : (process.env.REACT_APP_NO_ARTICLE_MESSAGE as string);
+  const koreanRegex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+
+  const editedText =
+    article.articleText && koreanRegex.test(article.articleText)
+      ? cleanText(article.articleText)
+      : (process.env.REACT_APP_NO_ARTICLE_MESSAGE as string);
 
   // a 태그 대신 사용. 브라우저 하단에 URL 미리보기 나타나는 것 방지하기 위한 용도.
   const openNewTab = (url: string): void => {

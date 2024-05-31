@@ -1,19 +1,29 @@
 export interface NewsData {
-  title?: string;
-  description?: string;
-  pubDate?: string;
-  originallink?: string;
-  imageUrls?: string[];
-  articleText?: string;
+  title: string;
+  description: string;
+  pubDate: string;
+  originallink: string;
+  imageUrls: string[];
+  articleText: string;
 }
 
 export interface NewsProps {
   article: NewsData;
 }
 
+export interface videoProps {
+  video: YoutubeData;
+}
+
 export interface NewsState {
   currentNewsIndex: number;
   currentNews: NewsData;
+  previewToggle: boolean;
+}
+
+export interface YoutubeState {
+  currentYoutubeIndex: number;
+  currentYoutube: YoutubeData;
   previewToggle: boolean;
 }
 
@@ -44,42 +54,41 @@ export interface Indicator {
 }
 
 export interface YoutubeData {
-  kind?: string;
-  etag?: string;
-  id?: {
-    kind?: string;
-    videoId?: string;
+  kind: string;
+  etag: string;
+  id: {
+    kind: string;
+    videoId: string;
   };
-  snippet?: {
-    publishedAt?: string;
-    channelId?: string;
-    title?: string;
-    description?: string;
-    thumbnails?: {
-      default?: {
-        url?: string;
-        width?: number;
-        height?: number;
-      };
-      medium?: {
-        url?: string;
-        width?: number;
-        height?: number;
-      };
-      high?: {
-        url?: string;
-        width?: number;
-        height?: number;
-      };
-    };
-    channelTitle?: string;
-    liveBroadcastContent?: string;
-    publishTime?: string;
+  snippet: {
+    channelId: string;
+    title: string;
+    thumbnails: [
+      {
+        url: string;
+        width: number;
+        height: number;
+      },
+    ];
+    channelTitle: string;
+    channelHandle: string;
+    timestamp: string;
+    duration: string;
+    views: string;
+    badges: string[];
+    channelApproval: null | unknown;
+    channelThumbnails: [{ url: string; width: number; height: number }];
+    detailedMetadataSnippet: [
+      {
+        test: string;
+      },
+    ];
+    chapters: [];
   };
 }
 
 export interface Data {
   realTimeSearchTerms: KeywordsType;
   newsData: NewsData[];
-  youtubeData: Partial<YoutubeData>[];
+  youtubeData: YoutubeData[];
 }
