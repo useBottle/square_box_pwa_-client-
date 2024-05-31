@@ -3,7 +3,7 @@ import { userInterface } from "../types/types";
 
 const initialState: userInterface = {
   darkLightToggle: "dark",
-  menuIndex: -1,
+  menuIndex: 0,
   searchModalTrigger: false,
   loadingStatus: {
     newsLoading: false,

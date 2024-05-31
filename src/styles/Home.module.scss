@@ -104,6 +104,10 @@
       & li:hover {
         background: var(--container-color);
         cursor: pointer;
+
+        & .text {
+          color: var(--point-color1);
+        }
       }
     }
   }

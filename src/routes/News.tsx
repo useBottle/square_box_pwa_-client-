@@ -42,7 +42,7 @@ export default function News(): JSX.Element {
                   .map((item) => <NewsPreview article={item} key={currentNewsIndex} />)}
             </div>
             <div className={styles.contentsContainer}>
-              <h4 className={styles.contentsTitle}>Contents</h4>
+              <h4 className={styles.contentsTitle}>Articles</h4>
               <div className={`${styles.articleList} ${borderToggle ? styles.borderEffect : null}`}>
                 {newsData.length !== 0 ? (
                   <Articles />

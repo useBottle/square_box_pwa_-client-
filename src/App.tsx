@@ -4,7 +4,7 @@ import Home from "./routes/Home";
 import News from "./routes/News";
 import { IoSearch } from "react-icons/io5";
 import { GoSun, GoMoon, GoSignIn } from "react-icons/go";
-import { FaNewspaper, FaYoutube, FaInstagram, FaBookmark } from "react-icons/fa";
+import { FaHome, FaNewspaper, FaYoutube, FaBookmark } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
@@ -23,7 +23,6 @@ import {
   setYoutubeLoading,
 } from "./store/userInterfaceSlice";
 import Youtube from "./routes/Youtube";
-import { NewsData } from "./types/types";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -42,7 +41,7 @@ function App(): JSX.Element {
     dispatch(setNewsLoading(true));
     dispatch(setYoutubeLoading(true));
 
-    menuIndex === -1 ? dispatch(setSearchModalTrigger(true)) : null;
+    menuIndex === 0 && dispatch(setSearchModalTrigger(true));
     e.preventDefault();
 
     const fetchNewsData = async (): Promise<void> => {
@@ -78,7 +77,6 @@ function App(): JSX.Element {
           },
         );
         const result = response.data.items;
-        console.log(result);
         dispatch(setYoutubeData(result));
         dispatch(setYoutubeLoading(false));
       } catch (error) {
@@ -90,9 +88,9 @@ function App(): JSX.Element {
   };
 
   const menuItem = [
+    { path: "/", icon: <FaHome />, label: "Home" },
     { path: "/news", icon: <FaNewspaper />, label: "News" },
     { path: "/youtube", icon: <FaYoutube />, label: "Youtube" },
-    { path: "/instagram", icon: <FaInstagram />, label: "Instagram" },
     { path: "/x", icon: <FaXTwitter />, label: "X" },
     { path: "/bookmark", icon: <FaBookmark />, label: "Bookmark" },
   ];
@@ -113,7 +111,7 @@ function App(): JSX.Element {
 
   return (
     <div data-theme={darkLightToggle === "dark" ? "" : "light"}>
-      <div className={styles.modalSet} style={searchModalTrigger === true ? { display: "block" } : {}}>
+      <div className={styles.modalSet} style={searchModalTrigger === true ? { display: "block" } : { display: "none" }}>
         <SearchModal />
         <div className={styles.overlay} role="button" onClick={() => dispatch(setSearchModalTrigger(false))} />
       </div>
@@ -127,7 +125,7 @@ function App(): JSX.Element {
           <h1
             className={styles.logo}
             onClick={() => {
-              dispatch(setMenuIndex(-1));
+              dispatch(setMenuIndex(0));
               navigate("/");
             }}
           >

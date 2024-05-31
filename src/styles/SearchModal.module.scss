@@ -3,7 +3,6 @@
   font-family: "S-CoreDream-1Thin";
   z-index: 9999;
   width: 400px;
-  height: 300px;
   background: var(--modal-color);
   left: 50%;
   top: 50%;
@@ -34,47 +33,64 @@
   & ul {
     position: relative;
     width: 400px;
-    height: 220px;
     display: flex;
     align-items: center;
     flex-direction: column;
     box-sizing: border-box;
-  }
 
-  & li {
-    position: relative;
-    font-family: "Barlow Condensed";
-    color: var(--font-color);
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    font-weight: 800;
-    width: 400px;
-    height: 55px;
-    cursor: pointer;
-
-    & .itemContainer {
+    & li {
       position: relative;
-      width: 100%;
+      font-family: "Barlow Condensed";
+      color: var(--font-color);
       display: flex;
-      justify-content: center;
       align-items: center;
-      margin: 0;
+      font-size: 18px;
+      font-weight: 800;
+      width: 400px;
+      height: 55px;
+      cursor: pointer;
 
-      & .icon {
-        font-size: 25px;
-      }
-
-      & .label {
+      & .itemContainer {
+        position: relative;
+        width: 100%;
         display: flex;
+        justify-content: center;
         align-items: center;
-        margin-left: 20px;
-        width: 100px;
+        margin: 0;
+
+        & .icon {
+          font-size: 25px;
+        }
+
+        & .label {
+          display: flex;
+          align-items: center;
+          margin-left: 20px;
+          width: 100px;
+        }
       }
+    }
+
+    & li:hover {
+      background: var(--container-color);
+      color: var(--point-color2);
     }
   }
 
-  & li:hover {
+  & .cancel {
+    width: 100%;
+    border: none;
+    color: var(--font-color);
+    border-top: 1px solid var(--border-color);
+    font-size: 25px;
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  & .cancel:hover {
     background: var(--container-color);
     color: var(--point-color2);
   }

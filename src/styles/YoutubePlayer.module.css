@@ -13,7 +13,6 @@
   width: 550px;
   height: auto;
   border-radius: 10px;
-  overflow: hidden;
   overflow: scroll;
 }
 .youtubePreview .videoSlider iframe {
@@ -59,4 +58,7 @@
 }
 .youtubePreview .videoSlider .contentInfo .channel span {
   margin-left: 10px;
+}
+.youtubePreview .videoSlider::-webkit-scrollbar {
+  display: none;
 }

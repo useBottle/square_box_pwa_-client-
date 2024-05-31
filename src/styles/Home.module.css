@@ -94,6 +94,9 @@
   background: var(--container-color);
   cursor: pointer;
 }
+.HomeContainer .realTimeContainer .realTime li:hover .text {
+  color: var(--point-color1);
+}
 .HomeContainer .notice {
   font-family: "S-CoreDream-1Thin";
   z-index: 900;

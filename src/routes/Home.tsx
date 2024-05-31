@@ -16,7 +16,6 @@ export default function Home(): JSX.Element {
   const inputValue = useSelector((state: RootState) => state.inputValue);
   const [gauge, setGauge] = useState<number>(0);
   const [clickTrigger, setClickTrigger] = useState<boolean>(false);
-  const { newsLoading } = useSelector((state: RootState) => state.userInterface.loadingStatus);
 
   const fetchKeyword = async (): Promise<void> => {
     try {

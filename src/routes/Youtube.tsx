@@ -4,7 +4,7 @@ import styles from "../styles/Youtube.module.css";
 import { useEffect, useState } from "react";
 import Videos from "../components/Videos";
 import Loading from "../components/Loading";
-import YoutubePreview from "../components/YoutubePreview";
+import YoutubePlayer from "../components/YoutubePlayer";
 
 export default function Youtube(): JSX.Element {
   const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
@@ -28,10 +28,10 @@ export default function Youtube(): JSX.Element {
         {youtubeLoading === false ? (
           <div>
             <div className={styles.previewContainer}>
-              <h4 className={styles.previewTitle}>Preview</h4>
+              <h4 className={styles.previewTitle}>Player</h4>
               {previewToggle === true && (
                 <div className={styles.defaultPreview}>
-                  <img src={process.env.REACT_APP_DEFAULT_NEWS_IMAGE} alt="replacement" />
+                  <img src={process.env.REACT_APP_DEFAULT_YOUTUBE_IMAGE} alt="replacement" />
                   <h3>Youtube</h3>
                   <p>{process.env.REACT_APP_YOUTUBE_DEFAULT}</p>
                 </div>
@@ -39,10 +39,10 @@ export default function Youtube(): JSX.Element {
               {youtubeData.length !== 0 &&
                 youtubeData
                   .slice(currentYoutubeIndex, currentYoutubeIndex + 1)
-                  .map((item) => <YoutubePreview video={item} key={currentYoutubeIndex} />)}
+                  .map((item) => <YoutubePlayer video={item} key={currentYoutubeIndex} />)}
             </div>
             <div className={styles.contentsContainer}>
-              <h4 className={styles.contentsTitle}>Contents</h4>
+              <h4 className={styles.contentsTitle}>Videos</h4>
               <div className={`${styles.videoList} ${borderToggle ? styles.borderEffect : null}`}>
                 {youtubeData.length !== 0 ? (
                   <Videos />

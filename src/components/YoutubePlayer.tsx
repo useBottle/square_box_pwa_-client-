@@ -1,5 +1,5 @@
 import { videoProps } from "../types/types";
-import styles from "../styles/YoutubePreview.module.css";
+import styles from "../styles/YoutubePlayer.module.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
@@ -26,22 +26,24 @@ export default function YoutubePreview({ video }: videoProps): JSX.Element {
     <div data-theme={darkLightToggle === "dark" ? "" : "light"}>
       <div className={styles.youtubePreview}>
         <div className={styles.videoSlider}>
-          <YouTube
-            videoId={currentYoutube.id.videoId}
-            opts={{
-              width: "550",
-              height: "350",
-              playerVars: {
-                autoplay: 0, //자동재생 O
-                rel: 0, //관련 동영상 표시하지 않음 (근데 별로 쓸모 없는듯..)
-                modestbranding: 1, // 컨트롤 바에 youtube 로고를 표시하지 않음
-              },
-            }}
-            //이벤트 리스너
-            onEnd={(e) => {
-              e.target.stopVideo(0);
-            }}
-          />
+          {currentYoutube && currentYoutube.id && (
+            <YouTube
+              videoId={currentYoutube.id.videoId}
+              opts={{
+                width: "550",
+                height: "350",
+                playerVars: {
+                  autoplay: 0, // 자동재생 O
+                  rel: 0, // 관련 동영상 표시하지 않음
+                  modestbranding: 1, // 컨트롤 바에 youtube 로고를 표시하지 않음
+                },
+              }}
+              // 이벤트 리스너
+              onEnd={(e) => {
+                e.target.stopVideo(0);
+              }}
+            />
+          )}
           <h3>{video.snippet.title}</h3>
           <div className={styles.contentInfo}>
             <div className={styles.detailInfoSet}>

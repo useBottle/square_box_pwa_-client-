@@ -13,7 +13,6 @@
     width: 550px;
     height: auto;
     border-radius: 10px;
-    overflow: hidden;
     overflow: scroll;
 
     & iframe {
@@ -72,5 +71,9 @@
         }
       }
     }
+  }
+
+  & .videoSlider::-webkit-scrollbar {
+    display: none;
   }
 }
