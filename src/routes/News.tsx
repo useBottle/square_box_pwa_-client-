@@ -36,10 +36,7 @@ export default function News(): JSX.Element {
                   <p>{process.env.REACT_APP_NEWS_DEFAULT}</p>
                 </div>
               )}
-              {newsData.length !== 0 &&
-                newsData
-                  .slice(currentNewsIndex, currentNewsIndex + 1)
-                  .map((item) => <NewsPreview article={item} key={currentNewsIndex} />)}
+              {newsData.length !== 0 && <NewsPreview article={newsData[currentNewsIndex]} />}
             </div>
             <div className={styles.contentsContainer}>
               <h4 className={styles.contentsTitle}>Articles</h4>
