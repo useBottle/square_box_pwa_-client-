@@ -14,9 +14,7 @@ export default function NewsPreview({ article }: NewsProps): JSX.Element {
   }, [article, dispatch]);
 
   let imageUrl;
-  if (article.imageUrls?.[0]?.startsWith("https://")) {
-    imageUrl = article.imageUrls[0];
-  } else if (article.imageUrls?.[0]?.startsWith("http://")) {
+  if (article.imageUrls?.[0]?.startsWith("https://") || article.imageUrls?.[0]?.startsWith("http://")) {
     imageUrl = article.imageUrls[0];
   } else {
     imageUrl = process.env.REACT_APP_DEFAULT_NEWS_IMAGE;
