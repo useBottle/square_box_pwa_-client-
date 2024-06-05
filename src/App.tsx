@@ -61,7 +61,6 @@ function App(): JSX.Element {
         dispatch(setNewsLoading(false));
       } catch (error) {
         console.error("Error fetching news data: ", error);
-        dispatch(setNewsLoading(false));
       }
     };
 
