@@ -7,10 +7,6 @@ export interface NewsData {
   articleText: string;
 }
 
-export interface NewsProps {
-  article: NewsData;
-}
-
 export interface videoProps {
   video: YoutubeData;
 }
