@@ -1,7 +1,7 @@
 import { AppDispatch, RootState } from "../store/store";
 import styles from "../styles/Articles.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentNews, setCurrentNewsIndex } from "../store/newsSlice";
+import { setCurrentNews } from "../store/newsSlice";
 
 export default function Articles(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -21,7 +21,7 @@ export default function Articles(): JSX.Element {
               key={index}
               className={styles.articleList}
               onMouseEnter={() => {
-                dispatch(setCurrentNewsIndex(index));
+                dispatch(setCurrentNews(item));
               }}
             >
               <div onMouseEnter={onMouseEnter} className={styles.article}>

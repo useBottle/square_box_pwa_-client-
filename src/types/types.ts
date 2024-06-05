@@ -16,7 +16,6 @@ export interface videoProps {
 }
 
 export interface NewsState {
-  currentNewsIndex: number;
   currentNews: NewsData;
   previewToggle: boolean;
 }

@@ -2,7 +2,6 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { NewsData, NewsState } from "../types/types";
 
 const initialState: NewsState = {
-  currentNewsIndex: 0,
   currentNews: {
     title: "",
     description: "",
@@ -18,9 +17,6 @@ export const newsSlice = createSlice({
   name: "newsState",
   initialState,
   reducers: {
-    setCurrentNewsIndex(state, action: PayloadAction<number>) {
-      state.currentNewsIndex = action.payload;
-    },
     setCurrentNews(state, action: PayloadAction<NewsData>) {
       state.currentNews = action.payload;
     },
@@ -30,5 +26,5 @@ export const newsSlice = createSlice({
   },
 });
 
-export const { setCurrentNewsIndex, setCurrentNews, setPreviewToggle } = newsSlice.actions;
+export const { setCurrentNews, setPreviewToggle } = newsSlice.actions;
 export default newsSlice.reducer;

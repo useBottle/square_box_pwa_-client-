@@ -8,7 +8,6 @@ import Articles from "../components/Articles";
 
 export default function News(): JSX.Element {
   const { newsData } = useSelector((state: RootState) => state.data);
-  const { currentNewsIndex } = useSelector((state: RootState) => state.news);
   const [borderToggle, setBorderToggle] = useState<boolean>(true);
   const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
   const { previewToggle } = useSelector((state: RootState) => state.news);
@@ -36,7 +35,7 @@ export default function News(): JSX.Element {
                   <p>{process.env.REACT_APP_NEWS_DEFAULT}</p>
                 </div>
               )}
-              {newsData.length !== 0 && <NewsPreview article={newsData[currentNewsIndex]} />}
+              {newsData.length !== 0 && <NewsPreview />}
             </div>
             <div className={styles.contentsContainer}>
               <h4 className={styles.contentsTitle}>Articles</h4>
