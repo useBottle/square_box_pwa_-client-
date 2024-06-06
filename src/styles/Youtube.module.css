@@ -13,7 +13,7 @@
   box-sizing: border-box;
   transition: background 0.3s ease-in-out;
 }
-.youtubeContainer .previewContainer {
+.youtubeContainer .playerContainer {
   position: absolute;
   top: 0;
   left: 100px;
@@ -21,34 +21,34 @@
   height: 600px;
   box-sizing: border-box;
 }
-.youtubeContainer .previewContainer .previewTitle {
+.youtubeContainer .playerContainer .playerTitle {
   position: relative;
   top: 50px;
   left: 0;
   color: var(--sub-title);
 }
-.youtubeContainer .previewContainer .defaultPreview {
+.youtubeContainer .playerContainer .defaultPlayer {
   position: absolute;
   top: 75px;
 }
-.youtubeContainer .previewContainer .defaultPreview img {
+.youtubeContainer .playerContainer .defaultPlayer img {
   position: relative;
   width: 550px;
   height: 367px;
   border-radius: 10px;
   user-select: none;
 }
-.youtubeContainer .previewContainer .defaultPreview h3 {
+.youtubeContainer .playerContainer .defaultPlayer h3 {
   position: relative;
   margin-top: 30px;
   font-size: 30px;
 }
-.youtubeContainer .previewContainer .defaultPreview p {
+.youtubeContainer .playerContainer .defaultPlayer p {
   position: relative;
   margin-top: 30px;
   font-weight: 100;
 }
-.youtubeContainer .contentsContainer {
+.youtubeContainer .videosContainer {
   position: absolute;
   top: 0;
   right: 100px;
@@ -56,13 +56,13 @@
   height: 650px;
   box-sizing: border-box;
 }
-.youtubeContainer .contentsContainer .contentsTitle {
+.youtubeContainer .videosContainer .videosTitle {
   position: absolute;
   top: 50px;
   left: 0;
   color: var(--sub-title);
 }
-.youtubeContainer .contentsContainer .videoList {
+.youtubeContainer .videosContainer .videoList {
   position: absolute;
   font-family: "S-CoreDream-4Regular";
   font-size: 20px;
@@ -78,10 +78,10 @@
   box-sizing: border-box;
   transition: background 0.3s ease-in-out;
 }
-.youtubeContainer .contentsContainer .videoList .text {
+.youtubeContainer .videosContainer .videoList .text {
   pointer-events: none;
 }
-.youtubeContainer .contentsContainer .borderEffect {
+.youtubeContainer .videosContainer .borderEffect {
   animation: blinkBorder 3s infinite alternate ease-in-out;
 }
 @keyframes blinkBorder {

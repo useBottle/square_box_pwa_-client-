@@ -14,7 +14,6 @@ export default function SearchModal(): JSX.Element {
   const modalItem = [
     { path: "/news", icon: <FaNewspaper />, label: "News" },
     { path: "/youtube", icon: <FaYoutube />, label: "Youtube" },
-    { path: "/x", icon: <FaXTwitter />, label: "X" },
   ];
 
   return (

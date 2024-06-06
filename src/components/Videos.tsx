@@ -1,7 +1,7 @@
 import { AppDispatch, RootState } from "../store/store";
 import styles from "../styles/Videos.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentYoutube, setCurrentYoutubeIndex } from "../store/youtubeSlice";
+import { setCurrentYoutube } from "../store/youtubeSlice";
 
 export default function Videos(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -21,7 +21,7 @@ export default function Videos(): JSX.Element {
               key={index}
               className={styles.videoList}
               onMouseEnter={() => {
-                dispatch(setCurrentYoutubeIndex(index));
+                dispatch(setCurrentYoutube(item));
               }}
             >
               <div onMouseEnter={onMouseEnter} className={styles.video}>

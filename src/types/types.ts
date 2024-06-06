@@ -7,25 +7,19 @@ export interface NewsData {
   articleText: string;
 }
 
-export interface videoProps {
-  video: YoutubeData;
-}
-
 export interface NewsState {
   currentNews: NewsData;
   previewToggle: boolean;
 }
 
 export interface YoutubeState {
-  currentYoutubeIndex: number;
   currentYoutube: YoutubeData;
-  previewToggle: boolean;
+  playerToggle: boolean;
 }
 
 export interface LoadingStatus {
   newsLoading: boolean;
   youtubeLoading: boolean;
-  xLoading: boolean;
 }
 
 export interface userInterface {

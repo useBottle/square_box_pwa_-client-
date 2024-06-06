@@ -11,8 +11,7 @@ export default function Youtube(): JSX.Element {
   const [borderToggle, setBorderToggle] = useState<boolean>(true);
   const { youtubeData } = useSelector((state: RootState) => state.data);
   const { youtubeLoading } = useSelector((state: RootState) => state.userInterface.loadingStatus);
-  const { previewToggle } = useSelector((state: RootState) => state.youtube);
-  const { currentYoutubeIndex } = useSelector((state: RootState) => state.youtube);
+  const { playerToggle } = useSelector((state: RootState) => state.youtube);
 
   useEffect(() => {
     if (youtubeData.length !== 0) {
@@ -27,22 +26,19 @@ export default function Youtube(): JSX.Element {
       <div className={styles.youtubeContainer}>
         {youtubeLoading === false ? (
           <div>
-            <div className={styles.previewContainer}>
-              <h4 className={styles.previewTitle}>Player</h4>
-              {previewToggle === true && (
-                <div className={styles.defaultPreview}>
+            <div className={styles.playerContainer}>
+              <h4 className={styles.playerTitle}>Player</h4>
+              {playerToggle === true && (
+                <div className={styles.defaultPlayer}>
                   <img src={process.env.REACT_APP_DEFAULT_YOUTUBE_IMAGE} alt="replacement" />
                   <h3>Youtube</h3>
                   <p>{process.env.REACT_APP_YOUTUBE_DEFAULT}</p>
                 </div>
               )}
-              {youtubeData.length !== 0 &&
-                youtubeData
-                  .slice(currentYoutubeIndex, currentYoutubeIndex + 1)
-                  .map((item) => <YoutubePlayer video={item} key={currentYoutubeIndex} />)}
+              {youtubeData.length !== 0 && <YoutubePlayer />}
             </div>
-            <div className={styles.contentsContainer}>
-              <h4 className={styles.contentsTitle}>Videos</h4>
+            <div className={styles.videosContainer}>
+              <h4 className={styles.videosTitle}>Videos</h4>
               <div className={`${styles.videoList} ${borderToggle ? styles.borderEffect : null}`}>
                 {youtubeData.length !== 0 ? (
                   <Videos />

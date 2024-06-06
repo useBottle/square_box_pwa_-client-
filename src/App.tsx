@@ -23,7 +23,8 @@ import {
   setYoutubeLoading,
 } from "./store/userInterfaceSlice";
 import Youtube from "./routes/Youtube";
-import X from "./routes/X";
+import { setPlayerToggle } from "./store/youtubeSlice";
+// import X from "./routes/X";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -39,6 +40,7 @@ function App(): JSX.Element {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     dispatch(setPreviewToggle(false));
+    dispatch(setPlayerToggle(false));
     dispatch(setNewsLoading(true));
     dispatch(setYoutubeLoading(true));
 
@@ -60,7 +62,7 @@ function App(): JSX.Element {
 
         dispatch(setNewsData(result));
         dispatch(setNewsLoading(false));
-      } catch (error) {
+      } catch (error: unknown) {
         console.error("Error fetching news data: ", error);
       }
     };
@@ -79,7 +81,7 @@ function App(): JSX.Element {
         const result = response.data.items;
         dispatch(setYoutubeData(result));
         dispatch(setYoutubeLoading(false));
-      } catch (error) {
+      } catch (error: unknown) {
         console.error("Error fetching youtube data: ", error);
       }
     };
@@ -91,7 +93,6 @@ function App(): JSX.Element {
     { path: "/", icon: <FaHome />, label: "Home" },
     { path: "/news", icon: <FaNewspaper />, label: "News" },
     { path: "/youtube", icon: <FaYoutube />, label: "Youtube" },
-    { path: "/x", icon: <FaXTwitter />, label: "X" },
     { path: "/bookmark", icon: <FaBookmark />, label: "Bookmark" },
   ];
 
@@ -196,7 +197,7 @@ function App(): JSX.Element {
           <Route path="/" element={<Home />} />
           <Route path="/news" element={<News />} />
           <Route path="/youtube" element={<Youtube />} />
-          <Route path="/x" element={<X />} />
+          {/* <Route path="/x" element={<X />} /> */}
         </Routes>
       </div>
     </div>

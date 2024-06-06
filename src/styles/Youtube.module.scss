@@ -13,7 +13,7 @@
   box-sizing: border-box;
   transition: background 0.3s ease-in-out;
 
-  & .previewContainer {
+  & .playerContainer {
     position: absolute;
     top: 0;
     left: 100px;
@@ -21,14 +21,14 @@
     height: 600px;
     box-sizing: border-box;
 
-    & .previewTitle {
+    & .playerTitle {
       position: relative;
       top: 50px;
       left: 0;
       color: var(--sub-title);
     }
 
-    & .defaultPreview {
+    & .defaultPlayer {
       position: absolute;
       top: 75px;
 
@@ -54,7 +54,7 @@
     }
   }
 
-  & .contentsContainer {
+  & .videosContainer {
     position: absolute;
     top: 0;
     right: 100px;
@@ -62,7 +62,7 @@
     height: 650px;
     box-sizing: border-box;
 
-    & .contentsTitle {
+    & .videosTitle {
       position: absolute;
       top: 50px;
       left: 0;

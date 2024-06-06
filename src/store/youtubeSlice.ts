@@ -2,7 +2,6 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { YoutubeData, YoutubeState } from "../types/types";
 
 const initialState: YoutubeState = {
-  currentYoutubeIndex: 0,
   currentYoutube: {
     kind: "",
     etag: "",
@@ -36,24 +35,21 @@ const initialState: YoutubeState = {
       chapters: [],
     },
   },
-  previewToggle: true,
+  playerToggle: true,
 };
 
 export const youtubeSlice = createSlice({
   name: "newsState",
   initialState,
   reducers: {
-    setCurrentYoutubeIndex(state, action: PayloadAction<number>) {
-      state.currentYoutubeIndex = action.payload;
-    },
     setCurrentYoutube(state, action: PayloadAction<YoutubeData>) {
       state.currentYoutube = action.payload;
     },
-    setPreviewToggle(state, action: PayloadAction<boolean>) {
-      state.previewToggle = action.payload;
+    setPlayerToggle(state, action: PayloadAction<boolean>) {
+      state.playerToggle = action.payload;
     },
   },
 });
 
-export const { setCurrentYoutubeIndex, setCurrentYoutube, setPreviewToggle } = youtubeSlice.actions;
+export const { setCurrentYoutube, setPlayerToggle } = youtubeSlice.actions;
 export default youtubeSlice.reducer;
