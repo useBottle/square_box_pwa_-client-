@@ -8,7 +8,6 @@ const initialState: userInterface = {
   loadingStatus: {
     newsLoading: false,
     youtubeLoading: false,
-    instaLoading: false,
     xLoading: false,
   },
 };
@@ -32,22 +31,12 @@ const userInterfaceSlice = createSlice({
     setYoutubeLoading(state, action: PayloadAction<boolean>) {
       state.loadingStatus.youtubeLoading = action.payload;
     },
-    setInstaLoading(state, action: PayloadAction<boolean>) {
-      state.loadingStatus.instaLoading = action.payload;
-    },
     setXLoading(state, action: PayloadAction<boolean>) {
       state.loadingStatus.xLoading = action.payload;
     },
   },
 });
 
-export const {
-  setDarkLight,
-  setMenuIndex,
-  setSearchModalTrigger,
-  setNewsLoading,
-  setYoutubeLoading,
-  setInstaLoading,
-  setXLoading,
-} = userInterfaceSlice.actions;
+export const { setDarkLight, setMenuIndex, setSearchModalTrigger, setNewsLoading, setYoutubeLoading, setXLoading } =
+  userInterfaceSlice.actions;
 export default userInterfaceSlice.reducer;

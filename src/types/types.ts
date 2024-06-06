@@ -25,7 +25,6 @@ export interface YoutubeState {
 export interface LoadingStatus {
   newsLoading: boolean;
   youtubeLoading: boolean;
-  instaLoading: boolean;
   xLoading: boolean;
 }
 

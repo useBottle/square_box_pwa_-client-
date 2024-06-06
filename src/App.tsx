@@ -23,6 +23,7 @@ import {
   setYoutubeLoading,
 } from "./store/userInterfaceSlice";
 import Youtube from "./routes/Youtube";
+import X from "./routes/X";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -195,6 +196,7 @@ function App(): JSX.Element {
           <Route path="/" element={<Home />} />
           <Route path="/news" element={<News />} />
           <Route path="/youtube" element={<Youtube />} />
+          <Route path="/x" element={<X />} />
         </Routes>
       </div>
     </div>
