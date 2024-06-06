@@ -1,6 +1,5 @@
 import styles from "../styles/SearchModal.module.css";
 import { FaNewspaper, FaYoutube } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AppDispatch, RootState } from "../store/store";

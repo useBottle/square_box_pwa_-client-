@@ -5,7 +5,6 @@ import News from "./routes/News";
 import { IoSearch } from "react-icons/io5";
 import { GoSun, GoMoon, GoSignIn } from "react-icons/go";
 import { FaHome, FaNewspaper, FaYoutube, FaBookmark } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { setInputValue } from "./store/inputValueSlice";
