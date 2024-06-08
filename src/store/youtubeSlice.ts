@@ -35,7 +35,6 @@ const initialState: YoutubeState = {
       chapters: [],
     },
   },
-  playerToggle: true,
 };
 
 export const youtubeSlice = createSlice({
@@ -45,11 +44,8 @@ export const youtubeSlice = createSlice({
     setCurrentYoutube(state, action: PayloadAction<YoutubeData>) {
       state.currentYoutube = action.payload;
     },
-    setPlayerToggle(state, action: PayloadAction<boolean>) {
-      state.playerToggle = action.payload;
-    },
   },
 });
 
-export const { setCurrentYoutube, setPlayerToggle } = youtubeSlice.actions;
+export const { setCurrentYoutube } = youtubeSlice.actions;
 export default youtubeSlice.reducer;

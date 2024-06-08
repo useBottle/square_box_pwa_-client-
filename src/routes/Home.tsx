@@ -6,7 +6,6 @@ import { RootState } from "../store/store";
 import KeywordIndicator from "../components/KeywordIndicator";
 import { setInputValue } from "../store/inputValueSlice";
 import { setNewsData, setRealTimeSearchTerms, setYoutubeData } from "../store/dataSlice";
-import { setPreviewToggle } from "../store/newsSlice";
 import { setNewsLoading, setSearchModalTrigger, setYoutubeLoading } from "../store/userInterfaceSlice";
 
 export default function Home(): JSX.Element {
@@ -114,7 +113,6 @@ export default function Home(): JSX.Element {
                     onClick={() => {
                       dispatch(setInputValue(item.keyword as unknown as string));
                       dispatch(setNewsLoading(true));
-                      dispatch(setPreviewToggle(false));
                       dispatch(setSearchModalTrigger(true));
                       clickTrigger === false ? setClickTrigger(true) : setClickTrigger(false);
                     }}

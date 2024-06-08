@@ -9,12 +9,10 @@ export interface NewsData {
 
 export interface NewsState {
   currentNews: NewsData;
-  previewToggle: boolean;
 }
 
 export interface YoutubeState {
   currentYoutube: YoutubeData;
-  playerToggle: boolean;
 }
 
 export interface LoadingStatus {

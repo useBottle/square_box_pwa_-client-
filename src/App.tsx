@@ -13,7 +13,6 @@ import { BsBox } from "react-icons/bs";
 import SearchModal from "./components/SearchModal";
 import axios from "axios";
 import { setNewsData, setYoutubeData } from "./store/dataSlice";
-import { setPreviewToggle } from "./store/newsSlice";
 import {
   setDarkLight,
   setMenuIndex,
@@ -22,7 +21,6 @@ import {
   setYoutubeLoading,
 } from "./store/userInterfaceSlice";
 import Youtube from "./routes/Youtube";
-import { setPlayerToggle } from "./store/youtubeSlice";
 // import X from "./routes/X";
 
 function App(): JSX.Element {
@@ -38,8 +36,6 @@ function App(): JSX.Element {
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    dispatch(setPreviewToggle(false));
-    dispatch(setPlayerToggle(false));
     dispatch(setNewsLoading(true));
     dispatch(setYoutubeLoading(true));
 

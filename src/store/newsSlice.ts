@@ -10,7 +10,6 @@ const initialState: NewsState = {
     imageUrls: [],
     articleText: "",
   },
-  previewToggle: true,
 };
 
 export const newsSlice = createSlice({
@@ -20,11 +19,8 @@ export const newsSlice = createSlice({
     setCurrentNews(state, action: PayloadAction<NewsData>) {
       state.currentNews = action.payload;
     },
-    setPreviewToggle(state, action: PayloadAction<boolean>) {
-      state.previewToggle = action.payload;
-    },
   },
 });
 
-export const { setCurrentNews, setPreviewToggle } = newsSlice.actions;
+export const { setCurrentNews } = newsSlice.actions;
 export default newsSlice.reducer;
