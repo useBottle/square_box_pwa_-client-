@@ -47,28 +47,3 @@
     }
   }
 }
-
-[data-theme="light"] {
-  & .border {
-    border: 3px solid var(--font-color);
-    animation: extendBorder 2s infinite ease-in-out;
-  }
-
-  @keyframes extendBorder {
-    0% {
-      border: 3px solid transparent;
-    }
-
-    50% {
-      width: 1150px;
-      height: 600px;
-      border: 3px solid var(--font-color);
-    }
-
-    100% {
-      width: 1150px;
-      height: 600px;
-      border: 3px solid transparent;
-    }
-  }
-}

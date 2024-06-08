@@ -122,23 +122,3 @@
     color: var(--sub-title);
   }
 }
-
-[data-theme="light"] {
-  .container {
-    background: var(--container-color);
-
-    & .realTime {
-      background: var(--container-color);
-
-      & li {
-        & .indicator {
-          background: var(--container-color);
-        }
-
-        & .stay {
-          color: var(--font-color);
-        }
-      }
-    }
-  }
-}

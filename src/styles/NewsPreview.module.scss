@@ -61,24 +61,3 @@
 .newsPreview::-webkit-scrollbar {
   display: none;
 }
-
-[data-theme="light"] {
-  & .newsPreview {
-    & h3 {
-      color: var(--point-color1);
-    }
-
-    & .articleDate {
-      background: var(--container-color);
-      color: var(--point-color3);
-    }
-
-    & .originalLink {
-      background: var(--point-color2);
-    }
-
-    & .originalLink:hover {
-      background: var(--point-color3);
-    }
-  }
-}

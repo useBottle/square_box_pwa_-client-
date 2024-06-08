@@ -115,31 +115,3 @@
     color: var(--sub-title);
   }
 }
-
-[data-theme="light"] {
-
-  & .newsContainer {
-    background: var(--container-color);
-
-    & .contentsContainer {
-
-      & .articleList {
-        background: var(--container-color);
-      }
-
-      & .borderEffect {
-        animation: blinkBorder 3s infinite alternate ease-in-out;
-      }
-
-      @keyframes blinkBorder {
-        0% {
-          border: 3px solid transparent;
-        }
-
-        100% {
-          border: 3px solid var(--font-color);
-        }
-      }
-    }
-  }
-}

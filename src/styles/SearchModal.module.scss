@@ -97,24 +97,3 @@
     color: var(--point-color2);
   }
 }
-
-[data-theme="light"] {
-  & .modalContainer {
-    background: var(--container-color);
-
-    & h2 {
-      background: var(--container-color);
-    }
-
-    & ul {
-      & li {
-        color: var(--font-color);
-      }
-
-      & li:hover {
-        background: var(--container-color);
-        color: var(--point-color2);
-      }
-    }
-  }
-}

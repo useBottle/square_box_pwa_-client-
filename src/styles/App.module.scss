@@ -99,6 +99,7 @@ body {
 }
 
 .mainContainer {
+  color: var(--font-color);
   background: var(--container-color);
   position: relative;
   display: flex;
@@ -422,116 +423,5 @@ body {
     left: 0;
     background: rgba(0, 0, 0, 0.14);
     backdrop-filter: blur(5px);
-  }
-}
-
-[data-theme="light"] {
-  color: var(--font-color);
-
-  & .circle1 {
-    background: var(--circle1-gradient);
-  }
-
-  & .circle2 {
-    background: var(--circle2-gradient);
-  }
-
-  & .circle3 {
-    background: var(--circle3-gradient);
-  }
-
-  & .circle4 {
-    background: var(--circle4-gradient);
-  }
-
-  & .finalBackground {
-    background: var(--circle4-gradient);
-  }
-
-  & .mainContainer {
-    background: var(--container-color);
-
-    & .header {
-      border-bottom: 0.5px solid var(--border-color);
-
-      & .searchBar {
-
-        & input {
-          background: var(--container-color);
-          color: var(--point-color2);
-        }
-
-        & input:focus {
-          border: 1px solid var(--font-color);
-        }
-
-        & .searchIconBox {
-
-          & .searchIcon {
-            color: var(--font-color);
-          }
-        }
-
-        & .clearBtn {
-          & .iconSet {
-            background: var(--font-color);
-          }
-        }
-
-        & .clearBtn:hover {
-          background: var(--container-color);
-
-          & .iconSet {
-            background: var(--sub-title);
-          }
-        }
-      }
-
-      & .darkModeBtn {
-
-        & .darkModeIcon {
-          color: var(--font-color);
-        }
-      }
-
-      & .darkModeBtn:hover {
-        background: var(--container-color);
-
-        & .darkModeIcon {
-          color: var(--point-color1);
-        }
-      }
-
-      & .signInBtn {
-
-        & .signInIcon {
-          color: var(--font-color);
-        }
-
-        & span {
-          color: var(--point-color1);
-          background: var(--container-color);
-        }
-      }
-    }
-
-    & .navbar {
-      border-right: 0.5px solid var(--container-color);
-
-      & ul {
-        & li {
-          color: var(--font-color);
-        }
-
-        & li:hover {
-          background: var(--container-color);
-        }
-
-        & .menuIcon {
-          background: var(--container-color);
-          color: var(--point-color2);
-        }
-      }
-    }
   }
 }

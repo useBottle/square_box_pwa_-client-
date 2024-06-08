@@ -50,7 +50,7 @@ export default function YoutubePreview(): JSX.Element {
           <h3>{currentYoutube.snippet.title}</h3>
           <div className={styles.contentInfo}>
             <div className={styles.detailInfoSet}>
-              <span className={styles.timestamp}>{currentYoutube.snippet.timestamp}</span>
+              <span>{currentYoutube.snippet.timestamp}</span>
               <span className={styles.views}>{currentYoutube.snippet.views} views</span>
             </div>
             <button

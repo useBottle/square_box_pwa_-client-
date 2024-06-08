@@ -9,8 +9,10 @@
   width: 550px;
   height: 500px;
   border-radius: 10px;
+  color: var(--font-color);
 
   & .videoSlider {
+    color: var(--font-color);
     position: relative;
     width: 550px;
     height: auto;
@@ -43,8 +45,6 @@
         right: 0;
         font-size: 14px;
 
-        & .timestamp {}
-
         & .views {
           margin-left: 20px;
         }
@@ -55,10 +55,10 @@
         display: flex;
         align-items: center;
         background: var(--container-color);
+        color: var(--font-color);
         padding: 10px 20px;
         border: none;
         border-radius: 10px;
-        color: var(--font-color);
         font-size: 15px;
         font-weight: 800;
         cursor: pointer;

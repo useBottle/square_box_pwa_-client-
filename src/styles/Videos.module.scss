@@ -5,6 +5,7 @@
   font-family: "S-CoreDream-4Regular";
   font-size: 20px;
   font-weight: 400;
+  color: var(--font-color);
   width: 400px;
   height: 500px;
   top: 0;
@@ -71,28 +72,6 @@
 
     & p {
       color: var(--point-color2);
-    }
-  }
-}
-
-[data-theme="light"] {
-  & .videoSlicer {
-    & .video {
-      & p {
-        color: var(--point-color3);
-      }
-    }
-
-    & .video:hover {
-      background: var(--container-color);
-
-      & h3 {
-        color: var(--point-color1);
-      }
-
-      & p {
-        color: var(--point-color2);
-      }
     }
   }
 }

@@ -57,26 +57,3 @@
     }
   }
 }
-
-
-[data-theme="light"] {
-  .articleSlider {
-    & .article {
-      & p {
-        color: var(--point-color3);
-      }
-    }
-
-    & .article:hover {
-      background: var(--container-color);
-
-      & h3 {
-        color: var(--point-color1);
-      }
-
-      & p {
-        color: var(--point-color2);
-      }
-    }
-  }
-}

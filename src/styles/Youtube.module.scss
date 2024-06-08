@@ -115,33 +115,3 @@
     color: var(--sub-title);
   }
 }
-
-[data-theme="light"] {
-  .youtubeContainer {
-    background: var(--container-color);
-
-    & .contentsContainer {
-      & .contentsTitle {
-        color: var(--sub-title);
-      }
-
-      & .videoList {
-        background: var(--container-color);
-      }
-
-      & .borderEffect {
-        animation: blinkBorder 3s infinite alternate ease-in-out;
-      }
-
-      @keyframes blinkBorder {
-        0% {
-          border: 3px solid transparent;
-        }
-
-        100% {
-          border: 3px solid var(--font-color);
-        }
-      }
-    }
-  }
-}
