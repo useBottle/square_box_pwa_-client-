@@ -1,8 +1,8 @@
 // import React from 'react';
 import ReactDOM from "react-dom/client";
-import "./styles/index.css";
-import "./styles/reset.css";
-import "./styles/fonts.css";
+import "./styles/index.scss";
+import "./styles/reset.scss";
+import "./styles/fonts.scss";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";

@@ -1,6 +1,6 @@
 import { Indicator } from "../types/types";
 import { FaPlus, FaMinus, FaCaretUp, FaCaretDown } from "react-icons/fa6";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 
 export default function KeywordIndicator({ indicator }: Indicator): JSX.Element | undefined {
   if (indicator === "n") {

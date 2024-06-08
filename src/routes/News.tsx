@@ -1,9 +1,11 @@
-import styles from "../styles/News.module.css";
+import styles from "../styles/News.module.scss";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import NewsPreview from "../components/NewsPrivew";
 import Loading from "../components/Loading";
 import Articles from "../components/Articles";
+import defaultImage from "../assets/images/news_image_class0.webp";
+import { MESSAGE } from "../common/message";
 
 export default function News(): JSX.Element {
   const { newsData } = useSelector((state: RootState) => state.data);
@@ -21,9 +23,9 @@ export default function News(): JSX.Element {
                 <NewsPreview />
               ) : (
                 <div className={styles.defaultPreview}>
-                  <img src={process.env.REACT_APP_DEFAULT_NEWS_IMAGE} alt="replacement" />
+                  <img src={defaultImage} alt="replacement" />
                   <h3>News</h3>
-                  <p>{process.env.REACT_APP_NEWS_DEFAULT}</p>
+                  <p>{MESSAGE.INFO.NEWS_DEFAULT}</p>
                 </div>
               )}
             </div>
@@ -35,7 +37,7 @@ export default function News(): JSX.Element {
                 </div>
               ) : (
                 <div className={`${styles.articleList} ${styles.borderEffect}`}>
-                  <div className={styles.text}>{process.env.REACT_APP_CONTENTS_DEFAULT}</div>
+                  <div className={styles.text}>{MESSAGE.INFO.CONTENTS_DEFAULT}</div>
                 </div>
               )}
             </div>
@@ -43,7 +45,7 @@ export default function News(): JSX.Element {
         ) : (
           <Loading />
         )}
-        {newsLoading === false && <p className={styles.notice}>{process.env.REACT_APP_EXTENSION_NOTICE}</p>}
+        {newsLoading === false && <p className={styles.notice}>{MESSAGE.INFO.EXTENSION_NOTICE}</p>}
       </div>
     </section>
   );

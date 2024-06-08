@@ -1,5 +1,5 @@
 import { AppDispatch, RootState } from "../store/store";
-import styles from "../styles/Videos.module.css";
+import styles from "../styles/Videos.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentYoutube } from "../store/youtubeSlice";
 

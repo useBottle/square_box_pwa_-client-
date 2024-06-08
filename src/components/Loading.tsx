@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "../styles/Loading.module.css";
+import styles from "../styles/Loading.module.scss";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 

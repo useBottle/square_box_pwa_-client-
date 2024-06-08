@@ -1,10 +1,11 @@
-import styles from "../styles/SearchModal.module.css";
+import styles from "../styles/SearchModal.module.scss";
 import { FaNewspaper, FaYoutube } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AppDispatch, RootState } from "../store/store";
 import { setMenuIndex, setSearchModalTrigger } from "../store/userInterfaceSlice";
 import { MdCancel } from "react-icons/md";
+import { MESSAGE } from "../common/message";
 
 export default function SearchModal(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -18,7 +19,7 @@ export default function SearchModal(): JSX.Element {
   return (
     <div data-theme={darkLightToggle === "dark" ? "" : "light"}>
       <div className={styles.modalContainer}>
-        <h2>{process.env.REACT_APP_MODAL_MESSAGE}</h2>
+        <h2>{MESSAGE.INFO.MODAL_MESSAGE}</h2>
         <ul>
           {modalItem.map((item, index) => {
             return (

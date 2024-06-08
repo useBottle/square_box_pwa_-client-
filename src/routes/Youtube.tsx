@@ -1,9 +1,11 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import styles from "../styles/Youtube.module.css";
+import styles from "../styles/Youtube.module.scss";
 import Videos from "../components/Videos";
 import Loading from "../components/Loading";
 import YoutubePlayer from "../components/YoutubePlayer";
+import defaultImage from "../assets/images/youtube_logo.webp";
+import { MESSAGE } from "../common/message";
 
 export default function Youtube(): JSX.Element {
   const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
@@ -21,9 +23,9 @@ export default function Youtube(): JSX.Element {
                 <YoutubePlayer />
               ) : (
                 <div className={styles.defaultPlayer}>
-                  <img src={process.env.REACT_APP_DEFAULT_YOUTUBE_IMAGE} alt="replacement" />
+                  <img src={defaultImage} alt="replacement" />
                   <h3>Youtube</h3>
-                  <p>{process.env.REACT_APP_YOUTUBE_DEFAULT}</p>
+                  <p>{MESSAGE.INFO.YOUTUBE_DEFAULT}</p>
                 </div>
               )}
             </div>
@@ -35,7 +37,7 @@ export default function Youtube(): JSX.Element {
                 </div>
               ) : (
                 <div className={`${styles.videoList} ${styles.borderEffect}`}>
-                  <div className={styles.text}>{process.env.REACT_APP_CONTENTS_DEFAULT}</div>
+                  <div className={styles.text}>{MESSAGE.INFO.CONTENTS_DEFAULT}</div>
                 </div>
               )}
             </div>
@@ -43,7 +45,7 @@ export default function Youtube(): JSX.Element {
         ) : (
           <Loading />
         )}
-        {youtubeLoading === false && <p className={styles.notice}>{process.env.REACT_APP_EXTENSION_NOTICE}</p>}
+        {youtubeLoading === false && <p className={styles.notice}>{MESSAGE.INFO.EXTENSION_NOTICE}</p>}
       </div>
     </section>
   );

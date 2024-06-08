@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
@@ -7,6 +7,7 @@ import KeywordIndicator from "../components/KeywordIndicator";
 import { setInputValue } from "../store/inputValueSlice";
 import { setNewsData, setRealTimeSearchTerms, setYoutubeData } from "../store/dataSlice";
 import { setNewsLoading, setSearchModalTrigger, setYoutubeLoading } from "../store/userInterfaceSlice";
+import { MESSAGE } from "../common/message";
 
 export default function Home(): JSX.Element {
   const dispatch = useDispatch();
@@ -128,7 +129,7 @@ export default function Home(): JSX.Element {
             )}
           </ul>
         </div>
-        <p className={styles.notice}>{process.env.REACT_APP_EXTENSION_NOTICE}</p>
+        <p className={styles.notice}>{MESSAGE.INFO.EXTENSION_NOTICE}</p>
       </div>
     </section>
   );

@@ -1,9 +1,10 @@
-import styles from "../styles/YoutubePlayer.module.css";
+import styles from "../styles/YoutubePlayer.module.scss";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
 import { setCurrentYoutube } from "../store/youtubeSlice";
 import YouTube from "react-youtube";
+import defaultImage from "../assets/images/youtube_logo.webp";
 
 export default function YoutubePreview(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -26,7 +27,7 @@ export default function YoutubePreview(): JSX.Element {
     <div data-theme={darkLightToggle === "dark" ? "" : "light"}>
       <div className={styles.youtubePreview}>
         <div className={styles.videoSlider}>
-          {currentYoutube && currentYoutube.id && (
+          {currentYoutube && currentYoutube.id ? (
             <YouTube
               videoId={currentYoutube.id.videoId}
               opts={{
@@ -43,6 +44,8 @@ export default function YoutubePreview(): JSX.Element {
                 e.target.stopVideo(0);
               }}
             />
+          ) : (
+            <img src={defaultImage} alt="defaultImage" />
           )}
           <h3>{currentYoutube.snippet.title}</h3>
           <div className={styles.contentInfo}>

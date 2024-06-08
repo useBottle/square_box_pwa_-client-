@@ -1,8 +1,10 @@
-import styles from "../styles/NewsPreview.module.css";
+import styles from "../styles/NewsPreview.module.scss";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
 import { setCurrentNews } from "../store/newsSlice";
+import defaultImage from "../assets/images/news_image_class0.webp";
+import { MESSAGE } from "../common/message";
 
 export default function NewsPreview(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -18,7 +20,7 @@ export default function NewsPreview(): JSX.Element {
   if (currentNews.imageUrls?.[0]?.startsWith("https://") || currentNews.imageUrls?.[0]?.startsWith("http://")) {
     imageUrl = currentNews.imageUrls[0];
   } else {
-    imageUrl = process.env.REACT_APP_DEFAULT_NEWS_IMAGE;
+    imageUrl = defaultImage;
   }
 
   const koreanRegex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
@@ -26,7 +28,7 @@ export default function NewsPreview(): JSX.Element {
   const refineText =
     currentNews.articleText && koreanRegex.test(currentNews.articleText)
       ? currentNews.articleText
-      : (process.env.REACT_APP_NO_ARTICLE_MESSAGE as string);
+      : MESSAGE.ERROR.NO_ARTICLE;
 
   // a 태그 대신 사용. 브라우저 하단에 URL 미리보기 나타나는 것 방지하기 위한 용도.
   const openNewTab = (url: string): void => {

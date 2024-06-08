@@ -1,5 +1,5 @@
 import { AppDispatch, RootState } from "../store/store";
-import styles from "../styles/Articles.module.css";
+import styles from "../styles/Articles.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentNews } from "../store/newsSlice";
 
