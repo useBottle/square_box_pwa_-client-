@@ -12,7 +12,6 @@ import { MESSAGE } from "../common/message";
 export default function Home(): JSX.Element {
   const dispatch = useDispatch();
   const { realTimeSearchTerms } = useSelector((state: RootState) => state.data);
-  const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
   const inputValue = useSelector((state: RootState) => state.inputValue);
   const [gauge, setGauge] = useState<number>(0);
   const [clickTrigger, setClickTrigger] = useState<boolean>(false);
@@ -98,39 +97,37 @@ export default function Home(): JSX.Element {
   }, [clickTrigger]);
 
   return (
-    <section data-theme={darkLightToggle === "dark" ? "" : "light"}>
-      <div className={styles.HomeContainer}>
-        <div className={styles.realTimeContainer}>
-          <h4 className={styles.realTimeTitle}>실시간 검색어 Top 10</h4>
-          <div className={styles.updateCounter}>
-            <div className={styles.gauge} style={{ width: `${gauge}%` }} />
-          </div>
-          <ul className={styles.realTime}>
-            {realTimeSearchTerms && realTimeSearchTerms.top10 && realTimeSearchTerms.top10.length > 0 ? (
-              realTimeSearchTerms.top10.map((item, index) => {
-                return (
-                  <li
-                    key={index}
-                    onClick={() => {
-                      dispatch(setInputValue(item.keyword as unknown as string));
-                      dispatch(setNewsLoading(true));
-                      dispatch(setSearchModalTrigger(true));
-                      clickTrigger === false ? setClickTrigger(true) : setClickTrigger(false);
-                    }}
-                  >
-                    <span className={styles.rank}>{item.rank}</span>
-                    <span className={styles.text}>{item.keyword}</span>
-                    <KeywordIndicator indicator={item.state as string} />
-                  </li>
-                );
-              })
-            ) : (
-              <p>Loading...</p>
-            )}
-          </ul>
+    <section className={styles.HomeContainer}>
+      <div className={styles.realTimeContainer}>
+        <h4 className={styles.realTimeTitle}>실시간 검색어 Top 10</h4>
+        <div className={styles.updateCounter}>
+          <div className={styles.gauge} style={{ width: `${gauge}%` }} />
         </div>
-        <p className={styles.notice}>{MESSAGE.INFO.EXTENSION_NOTICE}</p>
+        <ul className={styles.realTime}>
+          {realTimeSearchTerms && realTimeSearchTerms.top10 && realTimeSearchTerms.top10.length > 0 ? (
+            realTimeSearchTerms.top10.map((item, index) => {
+              return (
+                <li
+                  key={index}
+                  onClick={() => {
+                    dispatch(setInputValue(item.keyword as unknown as string));
+                    dispatch(setNewsLoading(true));
+                    dispatch(setSearchModalTrigger(true));
+                    clickTrigger === false ? setClickTrigger(true) : setClickTrigger(false);
+                  }}
+                >
+                  <span className={styles.rank}>{item.rank}</span>
+                  <span className={styles.text}>{item.keyword}</span>
+                  <KeywordIndicator indicator={item.state as string} />
+                </li>
+              );
+            })
+          ) : (
+            <p>Loading...</p>
+          )}
+        </ul>
       </div>
+      <p className={styles.notice}>{MESSAGE.INFO.EXTENSION_NOTICE}</p>
     </section>
   );
 }

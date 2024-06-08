@@ -102,11 +102,15 @@ function App(): JSX.Element {
   };
 
   useEffect(() => {
+    document.documentElement.setAttribute("data-theme", darkLightToggle);
+  }, [darkLightToggle]);
+
+  useEffect(() => {
     localStorage.getItem("theme") === "dark" ? dispatch(setDarkLight("dark")) : dispatch(setDarkLight("light"));
   }, [dispatch]);
 
   return (
-    <div data-theme={darkLightToggle === "dark" ? "" : "light"}>
+    <div>
       <div className={styles.modalSet} style={searchModalTrigger === true ? { display: "block" } : { display: "none" }}>
         <SearchModal />
         <div className={styles.overlay} role="button" onClick={() => dispatch(setSearchModalTrigger(false))} />

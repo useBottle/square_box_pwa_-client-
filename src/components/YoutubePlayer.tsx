@@ -8,7 +8,6 @@ import defaultImage from "../assets/images/youtube_logo.webp";
 
 export default function YoutubePreview(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
-  const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
   const { currentYoutube } = useSelector((state: RootState) => state.youtube);
   const { youtubeData } = useSelector((state: RootState) => state.data);
   const channelThumbnails = currentYoutube.snippet.channelThumbnails[0].url;
@@ -24,43 +23,41 @@ export default function YoutubePreview(): JSX.Element {
   };
 
   return (
-    <div data-theme={darkLightToggle === "dark" ? "" : "light"}>
-      <div className={styles.youtubePreview}>
-        <div className={styles.videoSlider}>
-          {currentYoutube && currentYoutube.id ? (
-            <YouTube
-              videoId={currentYoutube.id.videoId}
-              opts={{
-                width: "550",
-                height: "350",
-                playerVars: {
-                  autoplay: 0, // 자동재생 O
-                  rel: 0, // 관련 동영상 표시하지 않음
-                  modestbranding: 1, // 컨트롤 바에 youtube 로고를 표시하지 않음
-                },
-              }}
-              // 이벤트 리스너
-              onEnd={(e) => {
-                e.target.stopVideo(0);
-              }}
-            />
-          ) : (
-            <img src={defaultImage} alt="defaultImage" />
-          )}
-          <h3>{currentYoutube.snippet.title}</h3>
-          <div className={styles.contentInfo}>
-            <div className={styles.detailInfoSet}>
-              <span>{currentYoutube.snippet.timestamp}</span>
-              <span className={styles.views}>{currentYoutube.snippet.views} views</span>
-            </div>
-            <button
-              className={styles.channel}
-              onClick={() => openNewTab("https://www.youtube.com/" + currentYoutube.snippet.channelHandle)}
-            >
-              <img src={channelThumbnails} alt="channelId" />
-              <span>{channelTitle}</span>
-            </button>
+    <div className={styles.youtubePreview}>
+      <div className={styles.videoSlider}>
+        {currentYoutube && currentYoutube.id ? (
+          <YouTube
+            videoId={currentYoutube.id.videoId}
+            opts={{
+              width: "550",
+              height: "350",
+              playerVars: {
+                autoplay: 0, // 자동재생 O
+                rel: 0, // 관련 동영상 표시하지 않음
+                modestbranding: 1, // 컨트롤 바에 youtube 로고를 표시하지 않음
+              },
+            }}
+            // 이벤트 리스너
+            onEnd={(e) => {
+              e.target.stopVideo(0);
+            }}
+          />
+        ) : (
+          <img src={defaultImage} alt="defaultImage" />
+        )}
+        <h3>{currentYoutube.snippet.title}</h3>
+        <div className={styles.contentInfo}>
+          <div className={styles.detailInfoSet}>
+            <span>{currentYoutube.snippet.timestamp}</span>
+            <span className={styles.views}>{currentYoutube.snippet.views} views</span>
           </div>
+          <button
+            className={styles.channel}
+            onClick={() => openNewTab("https://www.youtube.com/" + currentYoutube.snippet.channelHandle)}
+          >
+            <img src={channelThumbnails} alt="channelId" />
+            <span>{channelTitle}</span>
+          </button>
         </div>
       </div>
     </div>

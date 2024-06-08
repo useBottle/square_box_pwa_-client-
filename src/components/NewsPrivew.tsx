@@ -8,7 +8,6 @@ import { MESSAGE } from "../common/message";
 
 export default function NewsPreview(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
-  const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
   const { currentNews } = useSelector((state: RootState) => state.news);
   const { newsData } = useSelector((state: RootState) => state.data);
 
@@ -36,16 +35,14 @@ export default function NewsPreview(): JSX.Element {
   };
 
   return (
-    <div data-theme={darkLightToggle === "dark" ? "" : "light"}>
-      <div className={styles.newsPreview}>
-        <img src={imageUrl} alt="articleImage" />
-        <h3>{currentNews.title}</h3>
-        <p className={styles.articleDate}>{currentNews.pubDate}</p>
-        <button className={styles.originalLink} onClick={() => openNewTab(currentNews.originallink as string)}>
-          원문 링크
-        </button>
-        <p>{refineText as string}</p>
-      </div>
+    <div className={styles.newsPreview}>
+      <img src={imageUrl} alt="articleImage" />
+      <h3>{currentNews.title}</h3>
+      <p className={styles.articleDate}>{currentNews.pubDate}</p>
+      <button className={styles.originalLink} onClick={() => openNewTab(currentNews.originallink as string)}>
+        원문 링크
+      </button>
+      <p>{refineText as string}</p>
     </div>
   );
 }
