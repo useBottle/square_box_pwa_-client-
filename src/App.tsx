@@ -74,6 +74,7 @@ function App(): JSX.Element {
           },
         );
         const result = response.data.items;
+
         dispatch(setYoutubeData(result));
         dispatch(setYoutubeLoading(false));
       } catch (error: unknown) {

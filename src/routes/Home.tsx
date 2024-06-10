@@ -82,7 +82,6 @@ export default function Home(): JSX.Element {
         },
       );
       const result = response.data.items;
-      console.log(result);
       dispatch(setYoutubeData(result));
       dispatch(setYoutubeLoading(false));
     } catch (error) {
