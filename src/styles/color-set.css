@@ -1,5 +1,6 @@
 :root {
   --font-color: #fff;
+  --icon-back: #000;
   --sub-title: #8c8c8c;
   --point-color1: #f8d17c;
   --point-color2: #71f1fc;
@@ -17,6 +18,7 @@
 
 [data-theme="light"] {
   --font-color: #000;
+  --icon-back: #fff;
   --sub-title: #565656;
   --point-color1: #8463ef;
   --point-color2: #f5515f;
