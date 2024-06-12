@@ -9,10 +9,10 @@ export default function Login(): JSX.Element {
   const navigate = useNavigate();
 
   const onSubmit = async (): Promise<void> => {
-    const [emailValue, passwordValue] = getValues(["email", "password"]);
+    const [idValue, passwordValue] = getValues(["id", "password"]);
     await axios.put(
       "",
-      { emailValue, passwordValue },
+      { idValue, passwordValue },
       {
         headers: {
           "Content-Type": "application/json",
@@ -29,15 +29,15 @@ export default function Login(): JSX.Element {
           <h1>Square Box</h1>
         </div>
         <input
-          {...register("email", {
-            required: "Email 입력은 필수 입니다.",
+          {...register("id", {
+            required: "ID 입력은 필수 입니다.",
             pattern: {
-              value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
-              message: "Email 형식에 맞지 않습니다.",
+              value: /^[A-Za-z0-9]{6,19}$/,
+              message: "ID 형식에 맞지 않습니다.",
             },
           })}
           spellCheck="false"
-          placeholder="Email"
+          placeholder="ID"
           autoComplete="off"
         />
         <input

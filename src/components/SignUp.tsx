@@ -1,18 +1,62 @@
 import { useForm } from "react-hook-form";
 import styles from "../styles/SignUp.module.scss";
 import { BsBox } from "react-icons/bs";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaCheck } from "react-icons/fa";
 import { MESSAGE } from "../common/message";
 import { useNavigate } from "react-router-dom";
+import { FormValues } from "../types/types";
 
 export default function SignUp(): JSX.Element {
-  const { register, handleSubmit, watch } = useForm();
+  const { register, handleSubmit, watch } = useForm<FormValues>();
   const navigate = useNavigate();
+  const [idValue, passwordValue, confirmValue] = watch(["id", "password", "confirm"]);
+
+  const idPattern = /^[A-Za-z0-9]{6,20}$/;
+  const passwordPattern = /^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{6,}$/;
+
+  const isIdValid = idPattern.test(idValue);
+  const isPasswordValid = passwordPattern.test(passwordValue);
+  const isPasswordConfirmed = passwordValue === confirmValue;
+  const emptyPassword = !passwordValue && !confirmValue;
+  const confirmCondition = isPasswordConfirmed && !emptyPassword && isPasswordValid;
 
   const onSubmit = async (): Promise<void> => {};
-  const [emailValue, passwordValue, confirmValue] = watch(["email", "password", "confirm"]);
-  const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-  const passwordPattern = /^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{6,}$/;
+
+  const IdText = () => {
+    if (!idValue) {
+      return <span>{MESSAGE.SIGNUP.ID.INFO}</span>;
+    } else if (idValue && !isIdValid) {
+      return <span className={styles.warning}>{MESSAGE.SIGNUP.ID.WRONG}</span>;
+    } else if (idValue && isIdValid) {
+      return <span className={styles.pass}>{MESSAGE.SIGNUP.ID.PASS}</span>;
+    }
+  };
+
+  const PasswordText = () => {
+    if (!passwordValue) {
+      return <span>{MESSAGE.SIGNUP.PASSWORD.INFO}</span>;
+    } else if (passwordValue && !isPasswordValid) {
+      return <span className={styles.warning}>{MESSAGE.SIGNUP.PASSWORD.WRONG}</span>;
+    } else if (isPasswordValid) {
+      return <span className={styles.pass}>{MESSAGE.SIGNUP.PASSWORD.PASS}</span>;
+    } else if (!isPasswordConfirmed) {
+      return <span className={styles.warning}>{MESSAGE.SIGNUP.CONFIRM.WRONG}</span>;
+    }
+  };
+
+  const ConfirmText = () => {
+    if (!confirmValue) {
+      return <span>{MESSAGE.SIGNUP.CONFIRM.INFO}</span>;
+    } else if (confirmValue && !passwordValue) {
+      return <span className={styles.warning}>{MESSAGE.SIGNUP.PASSWORD.REQUIRED}</span>;
+    } else if (isPasswordConfirmed && !emptyPassword && !isPasswordValid) {
+      return <span className={styles.warning}>{MESSAGE.SIGNUP.PASSWORD.WRONG}</span>;
+    } else if (!isPasswordConfirmed) {
+      return <span className={styles.warning}>{MESSAGE.SIGNUP.CONFIRM.WRONG}</span>;
+    } else if (isPasswordConfirmed && isPasswordValid) {
+      return <span className={styles.pass}>{MESSAGE.SIGNUP.CONFIRM.PASS}</span>;
+    }
+  };
 
   return (
     <section className={styles.signUpContainer}>
@@ -22,57 +66,55 @@ export default function SignUp(): JSX.Element {
         <h1>Square Box</h1>
       </div>
       <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.checkIconSet}>
+          {idValue && isIdValid && <FaCheck className={styles.checkIcon} />}
+          {isPasswordValid && <FaCheck className={styles.checkIcon} />}
+          {confirmCondition && <FaCheck className={styles.checkIcon} />}
+        </div>
         <div className={styles.category}>
-          <span>Email</span>
+          <span>ID</span>
           <span>Password</span>
           <span>Confirm</span>
         </div>
         <div className={styles.inputFields}>
           <input
-            {...register("email", {
-              required: "이메일 입력은 필수입니다.",
-              pattern: { value: emailPattern, message: "" },
+            {...register("id", {
+              required: MESSAGE.SIGNUP.ID.REQUIRED,
+              pattern: { value: idPattern, message: MESSAGE.SIGNUP.ID.WRONG },
             })}
-            type="email"
+            type="text"
             spellCheck="false"
             autoComplete="off"
           />
           <input
             {...register("password", {
-              required: "비밀번호 입력은 필수입니다.",
-              pattern: { value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/, message: "" },
+              required: MESSAGE.SIGNUP.PASSWORD.REQUIRED,
+              pattern: { value: passwordPattern, message: MESSAGE.SIGNUP.PASSWORD.WRONG },
             })}
-            type="text"
+            type="password"
             spellCheck="false"
             autoComplete="off"
           />
           <input
             {...register("confirm", {
-              required: "비밀번호를 한 번 더 입력해 주세요.",
+              required: MESSAGE.SIGNUP.CONFIRM.REQUIRED,
             })}
-            type="text"
+            type="password"
             spellCheck="false"
             autoComplete="off"
           />
         </div>
+
         <div className={styles.inputDescription}>
-          {emailValue && !emailPattern.test(emailValue) ? (
-            <span className={styles.warning}>{MESSAGE.SIGNUP.EMAIL_WRONG}</span>
-          ) : (
-            <span>{MESSAGE.SIGNUP.EMAIL_INFO}</span>
-          )}
-          {passwordValue && !passwordPattern.test(passwordValue) ? (
-            <span className={styles.warning}>{MESSAGE.SIGNUP.PASSWORD_WRONG}</span>
-          ) : (
-            <span>{MESSAGE.SIGNUP.PASSWORD_INFO}</span>
-          )}
-          {passwordValue !== confirmValue ? (
-            <span className={styles.warning}>{MESSAGE.SIGNUP.CONFIRM_WRONG}</span>
-          ) : (
-            <span>{MESSAGE.SIGNUP.PASSWORD_CONFIRM}</span>
-          )}
+          <IdText />
+          <PasswordText />
+          <ConfirmText />
         </div>
-        <button type="submit">가입하기</button>
+        {idPattern.test(idValue) && passwordPattern.test(passwordValue) && passwordValue === confirmValue ? (
+          <button type="submit">가입하기</button>
+        ) : (
+          <button className={styles.disableBtn}>양식을 채워주세요</button>
+        )}
       </form>
     </section>
   );

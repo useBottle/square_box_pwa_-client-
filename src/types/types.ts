@@ -78,3 +78,9 @@ export interface Data {
   newsData: NewsData[];
   youtubeData: YoutubeData[];
 }
+
+export interface FormValues {
+  id: string;
+  password: string;
+  confirm: string;
+}
