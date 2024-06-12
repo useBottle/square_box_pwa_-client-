@@ -21,7 +21,8 @@ import {
   setYoutubeLoading,
 } from "./store/userInterfaceSlice";
 import Youtube from "./routes/Youtube";
-// import X from "./routes/X";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -86,7 +87,7 @@ function App(): JSX.Element {
   };
 
   const menuItem = [
-    { path: "/", icon: <FaHome />, label: "Home" },
+    { path: "/home", icon: <FaHome />, label: "Home" },
     { path: "/news", icon: <FaNewspaper />, label: "News" },
     { path: "/youtube", icon: <FaYoutube />, label: "Youtube" },
     { path: "/bookmark", icon: <FaBookmark />, label: "Bookmark" },
@@ -121,84 +122,90 @@ function App(): JSX.Element {
       <div className={styles.circle3} />
       <div className={styles.circle4} />
       <div className={styles.finalBackground} />
-      <div className={styles.mainContainer}>
-        <header className={styles.header}>
-          <h1
-            className={styles.logo}
-            onClick={() => {
-              dispatch(setMenuIndex(0));
-              navigate("/");
-            }}
-          >
-            <BsBox />
-            <span>Square Box</span>
-          </h1>
-
-          <form onSubmit={inputValue ? onSubmit : (e) => e.preventDefault()}>
-            <div className={styles.searchBar}>
-              <input
-                type="text"
-                onChange={onChange}
-                value={inputValue}
-                placeholder="Search"
-                spellCheck="false"
-                autoComplete="off"
-              />
-              <div
-                role="button"
-                className={styles.clearBtn}
-                onClick={() => dispatch(setInputValue(""))}
-                style={inputValue === "" ? { display: "none" } : { display: "block" }}
-              >
-                <span className={`${styles.iconSet} ${styles.part1}`}></span>
-                <span className={`${styles.iconSet} ${styles.part2}`}></span>
-              </div>
-              <button className={styles.searchIconBox} type="submit">
-                <IoSearch className={styles.searchIcon} />
-              </button>
-            </div>
-          </form>
-
-          <button className={styles.darkModeBtn} onClick={themeExchange}>
-            {darkLightToggle === "dark" ? (
-              <GoSun className={styles.darkModeIcon} onClick={() => {}} />
-            ) : (
-              <GoMoon className={styles.darkModeIcon} />
-            )}
-          </button>
-
-          <button className={styles.signInBtn}>
-            <GoSignIn className={styles.signInIcon} />
-            <span>Sign in</span>
-          </button>
-        </header>
-
-        <nav className={styles.navbar}>
-          <ul>
-            {menuItem.map((item, index) => {
-              return (
-                <li
-                  className={menuIndex === index ? `${styles.menuIcon}` : ""}
-                  key={index}
+      <div>
+        <div className={styles.mainContainer}>
+          {false && (
+            <div>
+              <header className={styles.header}>
+                <h1
+                  className={styles.logo}
                   onClick={() => {
-                    dispatch(setMenuIndex(index));
-                    navigate(`${item.path}`);
+                    dispatch(setMenuIndex(0));
+                    navigate("/");
                   }}
                 >
-                  <div>{item.icon}</div>
-                  <span className={menuIndex === index ? `${styles.menuText}` : ""}>{item.label}</span>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+                  <BsBox />
+                  <span>Square Box</span>
+                </h1>
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/youtube" element={<Youtube />} />
-          {/* <Route path="/x" element={<X />} /> */}
-        </Routes>
+                <form onSubmit={inputValue ? onSubmit : (e) => e.preventDefault()}>
+                  <div className={styles.searchBar}>
+                    <input
+                      type="text"
+                      onChange={onChange}
+                      value={inputValue}
+                      placeholder="Search"
+                      spellCheck="false"
+                      autoComplete="off"
+                    />
+                    <div
+                      role="button"
+                      className={styles.clearBtn}
+                      onClick={() => dispatch(setInputValue(""))}
+                      style={inputValue === "" ? { display: "none" } : { display: "block" }}
+                    >
+                      <span className={`${styles.iconSet} ${styles.part1}`}></span>
+                      <span className={`${styles.iconSet} ${styles.part2}`}></span>
+                    </div>
+                    <button className={styles.searchIconBox} type="submit">
+                      <IoSearch className={styles.searchIcon} />
+                    </button>
+                  </div>
+                </form>
+
+                <button className={styles.darkModeBtn} onClick={themeExchange}>
+                  {darkLightToggle === "dark" ? (
+                    <GoSun className={styles.darkModeIcon} onClick={() => {}} />
+                  ) : (
+                    <GoMoon className={styles.darkModeIcon} />
+                  )}
+                </button>
+
+                <button className={styles.signInBtn}>
+                  <GoSignIn className={styles.signInIcon} />
+                  <span>Sign in</span>
+                </button>
+              </header>
+              <nav className={styles.navbar}>
+                <ul>
+                  {menuItem.map((item, index) => {
+                    return (
+                      <li
+                        className={menuIndex === index ? `${styles.menuIcon}` : ""}
+                        key={index}
+                        onClick={() => {
+                          dispatch(setMenuIndex(index));
+                          navigate(`${item.path}`);
+                        }}
+                      >
+                        <div>{item.icon}</div>
+                        <span className={menuIndex === index ? `${styles.menuText}` : ""}>{item.label}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </nav>
+            </div>
+          )}
+
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/youtube" element={<Youtube />} />
+            <Route path="/signup" element={<SignUp />} />
+          </Routes>
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,82 @@
+@import "./color-set.css";
+@import "./fonts.scss";
+
+.loginView {
+  position: absolute;
+  // background: var(--container-color);
+  // top: 100px;
+  // width: 800px;
+  // height: 650px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & .formContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 3px solid var(--font-color);
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 500px;
+    height: 600px;
+    background: var(--container-color);
+
+    & .viewHead {
+      position: relative;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 20px;
+
+      & .icon {
+        font-size: 100px;
+        margin-bottom: 20px;
+      }
+
+      & h1 {
+        font-family: "Poiret One";
+        font-size: 50px;
+        margin-bottom: 30px;
+      }
+    }
+
+    & input {
+      border: none;
+      border-radius: 5px;
+      background: var(--container-color);
+      color: var(--point-color2);
+      width: 200px;
+      height: 40px;
+      font-size: 18px;
+      outline: none;
+      padding: 0 10px;
+      margin-top: 30px;
+    }
+
+    & .loginBtn {
+      margin-top: 50px;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      background: var(--point-color2);
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    & .signUpBtn {
+      font-family: "S-CoreDream-4Regular";
+      border: none;
+      background: transparent;
+      color: var(--font-color);
+      margin-top: 40px;
+      border-bottom: 1px solid var(--font-color);
+      padding: 0;
+      cursor: pointer;
+    }
+  }
+}

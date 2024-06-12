@@ -76,7 +76,7 @@ module.exports = {
 		// 파일의 경로가 틀렸는지 확인하는 옵션 false
 		"import/no-unresolved": ["error", { caseSensitive: false }],
 		// props spreading 허용하지 않는 경고 표시
-		"react/jsx-props-no-spreading": [1, { custom: "ignore" }],
+		"react/jsx-props-no-spreading": "off",
 		"linebreak-style": 0,
 		"import/extensions": 0,
 		"no-use-before-define": 0,
