@@ -3,10 +3,6 @@
 
 .loginView {
   position: absolute;
-  // background: var(--container-color);
-  // top: 100px;
-  // width: 800px;
-  // height: 650px;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -46,7 +42,7 @@
     }
 
     & input {
-      border: none;
+      border: 1px solid transparent;
       border-radius: 5px;
       background: var(--container-color);
       color: var(--point-color2);
@@ -56,6 +52,12 @@
       outline: none;
       padding: 0 10px;
       margin-top: 30px;
+      box-sizing: border-box;
+      transition: border 0.3s ease-in-out;
+    }
+
+    & input:focus {
+      border: 2px solid var(--font-color);
     }
 
     & .loginBtn {
