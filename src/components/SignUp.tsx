@@ -5,6 +5,7 @@ import { FaArrowLeft, FaCheck } from "react-icons/fa";
 import { MESSAGE } from "../common/message";
 import { useNavigate } from "react-router-dom";
 import { FormValues } from "../types/types";
+import axios from "axios";
 
 export default function SignUp(): JSX.Element {
   const { register, handleSubmit, watch } = useForm<FormValues>();
@@ -20,7 +21,17 @@ export default function SignUp(): JSX.Element {
   const emptyPassword = !passwordValue && !confirmValue;
   const confirmCondition = isPasswordConfirmed && !emptyPassword && isPasswordValid;
 
-  const onSubmit = async (): Promise<void> => {};
+  const onSubmit = async (): Promise<void> => {
+    await axios.post(
+      process.env.REACT_APP_SIGNUP_API_URL,
+      { idValue, passwordValue },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+    );
+  };
 
   const IdText = () => {
     if (!idValue) {
