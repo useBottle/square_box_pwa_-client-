@@ -47,7 +47,7 @@
 
   & .formContainer {
     position: absolute;
-    top: 200px;
+    top: 230px;
     display: flex;
     justify-content: center;
     width: 1000px;
@@ -62,8 +62,13 @@
       & .checkIcon {
         color: #6fff80;
         height: 40px;
-        margin-top: 30px;
+        margin-bottom: 30px;
         font-size: 20px;
+      }
+
+      & .blank {
+        height: 40px;
+        margin-bottom: 30px;
       }
     }
 
@@ -79,7 +84,7 @@
       & span {
         height: 40px;
         padding: 0 10px;
-        margin-top: 30px;
+        margin-bottom: 30px;
         box-sizing: border-box;
         font-size: 15px;
         display: flex;
@@ -105,7 +110,7 @@
         font-size: 18px;
         outline: none;
         padding: 0 10px;
-        margin-top: 30px;
+        margin-bottom: 30px;
         box-sizing: border-box;
         transition: border 0.3s ease-in-out;
       }
@@ -124,11 +129,24 @@
 
       & span {
         height: 40px;
-        margin-top: 30px;
+        margin-bottom: 30px;
         font-size: 15px;
         display: flex;
         align-items: center;
         justify-content: flex-start;
+
+        & .duplicateBtn {
+          font-family: "S-CoreDream-4Regular";
+          font-weight: 500;
+          position: relative;
+          width: 80px;
+          height: 40px;
+          margin-right: 20px;
+          border: none;
+          background: var(--point-color2);
+          border-radius: 5px;
+          cursor: pointer;
+        }
       }
 
       & .warning {
@@ -142,7 +160,7 @@
       }
     }
 
-    & button {
+    & .joinBtn {
       position: absolute;
       bottom: 0;
       left: 50%;

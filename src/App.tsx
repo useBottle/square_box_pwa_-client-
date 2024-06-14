@@ -21,8 +21,8 @@ import {
   setYoutubeLoading,
 } from "./store/userInterfaceSlice";
 import Youtube from "./routes/Youtube";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
+import Login from "./routes/Login";
+import SignUp from "./routes/SignUp";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
