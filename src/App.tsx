@@ -23,6 +23,7 @@ import {
 import Youtube from "./routes/Youtube";
 import Login from "./routes/Login";
 import SignUp from "./routes/SignUp";
+import AfterSignUp from "./routes/AfterSignUp";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -204,6 +205,7 @@ function App(): JSX.Element {
             <Route path="/news" element={<News />} />
             <Route path="/youtube" element={<Youtube />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/welcome" element={<AfterSignUp />} />
           </Routes>
         </div>
       </div>

@@ -7,10 +7,14 @@ import { useNavigate } from "react-router-dom";
 import { FormValues, IdCheck } from "../types/types";
 import axios, { isAxiosError } from "axios";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setSignUpCheck } from "../store/verificationSlice";
 
 export default function SignUp(): JSX.Element {
-  const { register, handleSubmit, watch } = useForm<FormValues>();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { register, handleSubmit, watch } = useForm<FormValues>();
   const [idValue, passwordValue, confirmValue] = watch(["id", "password", "confirm"]);
 
   const idPattern = /^[A-Za-z0-9]{6,20}$/;
@@ -24,19 +28,30 @@ export default function SignUp(): JSX.Element {
   const [userDuplication, setUserDuplication] = useState<IdCheck>("default");
 
   const onSubmit = async (): Promise<void> => {
-    const result = await axios.post(
-      process.env.REACT_APP_SIGNUP_API_URL,
-      { idValue, passwordValue },
-      {
-        headers: {
-          "Content-Type": "application/json",
+    try {
+      const result = await axios.post(
+        process.env.REACT_APP_SIGNUP_API_URL,
+        { idValue, passwordValue },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         },
-      },
-    );
-    if (result.status === 200) {
-      navigate("/");
+      );
+      if (result.status === 200) {
+        dispatch(setSignUpCheck(true));
+        navigate("/welcome");
+      } else if (result.status !== 200) {
+        navigate("/signup_error");
+      }
+      console.log("sign up result : ", result);
+    } catch (error: unknown) {
+      if (isAxiosError(error)) {
+        console.error("An error occurred during ID check:", error);
+      } else {
+        console.error("An unexpected error occurred:", error);
+      }
     }
-    console.log("sign up result : ", result);
   };
 
   const checkId = async (): Promise<void> => {
