@@ -14,6 +14,29 @@ export const MESSAGE = {
 
   SIGNUP: {
     ID: {
+      INFO: "ID 를 입력해주세요. (6~20자, 영문, 숫자만 가능)",
+      REQUIRED: "ID 입력은 필수입니다.",
+      WRONG: "ID 형식이 맞지 않습니다.",
+      PASS: "사용 가능한 ID 입니다.",
+      CHECK: "중복 확인을 해주세요.",
+      DUPLICATION: "이미 존재하는 ID 입니다.",
+    },
+    PASSWORD: {
+      INFO: "사용할 비밀번호를 입력해주세요. (6자 이상, 특수문자 1개 이상)",
+      REQUIRED: "비밀번호 입력은 필수입니다.",
+      WRONG: "비밀번호 형식이 맞지 않습니다.",
+      PASS: "사용 가능한 비밀번호 입니다.",
+    },
+    CONFIRM: {
+      INFO: "비밀번호를 한 번 더 입력해주세요.",
+      REQUIRED: "비밀번호를 한 번 더 입력해 주세요.",
+      WRONG: "입력한 비밀번호와 다릅니다.",
+      PASS: "비밀번호와 일치합니다.",
+    },
+  },
+
+  SIGNUP: {
+    ID: {
       INFO: "ID 를 입력해주세요. (6글자 이상 20자 이하, 영문, 숫자만 가능)",
       REQUIRED: "ID 입력은 필수입니다.",
       WRONG: "ID 형식이 맞지 않습니다.",

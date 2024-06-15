@@ -4,6 +4,7 @@ import dataReducer from "./dataSlice";
 import newsReducer from "./newsSlice";
 import userInterfaceReducer from "./userInterfaceSlice";
 import youtubeReducer from "./youtubeSlice";
+import verificationReducer from "./verificationSlice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     news: newsReducer,
     youtube: youtubeReducer,
     userInterface: userInterfaceReducer,
+    verification: verificationReducer,
   },
 });
 

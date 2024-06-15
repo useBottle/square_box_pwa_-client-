@@ -21,8 +21,10 @@ import {
   setYoutubeLoading,
 } from "./store/userInterfaceSlice";
 import Youtube from "./routes/Youtube";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
+import Login from "./routes/Login";
+import SignUp from "./routes/SignUp";
+import AfterSignUp from "./routes/AfterSignUp";
+import SignUpError from "./routes/SignUpError";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -204,6 +206,8 @@ function App(): JSX.Element {
             <Route path="/news" element={<News />} />
             <Route path="/youtube" element={<Youtube />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/welcome" element={<AfterSignUp />} />
+            <Route path="/signup_error" element={<SignUpError />} />
           </Routes>
         </div>
       </div>
