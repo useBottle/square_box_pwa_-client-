@@ -86,9 +86,3 @@ export interface FormValues {
 }
 
 export type IdCheck = "default" | "duplication" | "not-duplication";
-
-export interface FormValues {
-  id: string;
-  password: string;
-  confirm: string;
-}
