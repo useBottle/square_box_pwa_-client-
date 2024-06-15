@@ -1,17 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/SignUpError.module.scss";
 import { BsBox } from "react-icons/bs";
-import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
-import { useEffect } from "react";
 
 export default function SignUpError(): JSX.Element {
   const navigate = useNavigate();
-  const signUpCheck = useSelector((state: RootState) => state.verification);
-
-  useEffect(() => {
-    signUpCheck && navigate("/");
-  });
 
   return (
     <section className={styles.mainContainer}>
