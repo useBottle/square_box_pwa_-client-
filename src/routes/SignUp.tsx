@@ -7,8 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { FormValues, IdCheck } from "../types/types";
 import axios, { isAxiosError } from "axios";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSignUpCheck } from "../store/verificationSlice";
+import { RootState } from "../store/store";
+import { setSignUpLoading } from "../store/userInterfaceSlice";
+import SignUpLoading from "../components/SignUpLoading";
 
 export default function SignUp(): JSX.Element {
   const navigate = useNavigate();
@@ -16,6 +19,7 @@ export default function SignUp(): JSX.Element {
 
   const { register, handleSubmit, watch } = useForm<FormValues>();
   const [idValue, passwordValue, confirmValue] = watch(["id", "password", "confirm"]);
+  const { signUpLoading } = useSelector((state: RootState) => state.userInterface.loadingStatus);
 
   const idPattern = /^[A-Za-z0-9]{6,20}$/;
   const passwordPattern = /^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{6,}$/;
@@ -28,6 +32,8 @@ export default function SignUp(): JSX.Element {
   const [userDuplication, setUserDuplication] = useState<IdCheck>("default");
 
   const onSubmit = async (): Promise<void> => {
+    dispatch(setSignUpLoading(true));
+
     try {
       const result = await axios.post(
         process.env.REACT_APP_SIGNUP_API_URL,
@@ -40,6 +46,7 @@ export default function SignUp(): JSX.Element {
       );
       if (result.status === 200) {
         dispatch(setSignUpCheck(true));
+        dispatch(setSignUpLoading(false));
         navigate("/welcome");
       } else if (result.status !== 200) {
         navigate("/signup_error");
@@ -145,69 +152,75 @@ export default function SignUp(): JSX.Element {
   };
 
   return (
-    <section className={styles.signUpContainer}>
-      <FaArrowLeft className={styles.backArrow} onClick={() => navigate("/")} />
-      <div className={styles.viewHead}>
-        <BsBox className={styles.icon} />
-        <h1>Square Box</h1>
-      </div>
-      <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
-        <div className={styles.checkIconSet}>
-          {idValue && isIdValid && userDuplication === "not-duplication" ? (
-            <FaCheck className={styles.checkIcon} />
-          ) : (
-            <span className={styles.blank} />
-          )}
-          {isPasswordValid && <FaCheck className={styles.checkIcon} />}
-          {confirmCondition && <FaCheck className={styles.checkIcon} />}
-        </div>
-        <div className={styles.category}>
-          <span>ID</span>
-          <span>Password</span>
-          <span>Confirm</span>
-        </div>
-        <div className={styles.inputFields}>
-          <input
-            {...register("id", {
-              required: MESSAGE.SIGNUP.ID.REQUIRED,
-              pattern: { value: idPattern, message: MESSAGE.SIGNUP.ID.WRONG },
-            })}
-            type="text"
-            spellCheck="false"
-            autoComplete="off"
-          />
-          <input
-            {...register("password", {
-              required: MESSAGE.SIGNUP.PASSWORD.REQUIRED,
-              pattern: { value: passwordPattern, message: MESSAGE.SIGNUP.PASSWORD.WRONG },
-            })}
-            type="password"
-            spellCheck="false"
-            autoComplete="off"
-          />
-          <input
-            {...register("confirm", {
-              required: MESSAGE.SIGNUP.CONFIRM.REQUIRED,
-            })}
-            type="password"
-            spellCheck="false"
-            autoComplete="off"
-          />
-        </div>
+    <div>
+      {signUpLoading ? (
+        <SignUpLoading />
+      ) : (
+        <section className={styles.signUpContainer}>
+          <FaArrowLeft className={styles.backArrow} onClick={() => navigate("/")} />
+          <div className={styles.viewHead}>
+            <BsBox className={styles.icon} />
+            <h1>Square Box</h1>
+          </div>
+          <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
+            <div className={styles.checkIconSet}>
+              {idValue && isIdValid && userDuplication === "not-duplication" ? (
+                <FaCheck className={styles.checkIcon} />
+              ) : (
+                <span className={styles.blank} />
+              )}
+              {isPasswordValid && <FaCheck className={styles.checkIcon} />}
+              {confirmCondition && <FaCheck className={styles.checkIcon} />}
+            </div>
+            <div className={styles.category}>
+              <span>ID</span>
+              <span>Password</span>
+              <span>Confirm</span>
+            </div>
+            <div className={styles.inputFields}>
+              <input
+                {...register("id", {
+                  required: MESSAGE.SIGNUP.ID.REQUIRED,
+                  pattern: { value: idPattern, message: MESSAGE.SIGNUP.ID.WRONG },
+                })}
+                type="text"
+                spellCheck="false"
+                autoComplete="off"
+              />
+              <input
+                {...register("password", {
+                  required: MESSAGE.SIGNUP.PASSWORD.REQUIRED,
+                  pattern: { value: passwordPattern, message: MESSAGE.SIGNUP.PASSWORD.WRONG },
+                })}
+                type="password"
+                spellCheck="false"
+                autoComplete="off"
+              />
+              <input
+                {...register("confirm", {
+                  required: MESSAGE.SIGNUP.CONFIRM.REQUIRED,
+                })}
+                type="password"
+                spellCheck="false"
+                autoComplete="off"
+              />
+            </div>
 
-        <div className={styles.inputDescription}>
-          <IdText />
-          <PasswordText />
-          <ConfirmText />
-        </div>
-        {isIdValid && isPasswordValid && isPasswordConfirmed && userDuplication === "not-duplication" ? (
-          <button type="submit" className={styles.joinBtn}>
-            가입하기
-          </button>
-        ) : (
-          <button className={styles.disableBtn}>양식을 채워주세요</button>
-        )}
-      </form>
-    </section>
+            <div className={styles.inputDescription}>
+              <IdText />
+              <PasswordText />
+              <ConfirmText />
+            </div>
+            {isIdValid && isPasswordValid && isPasswordConfirmed && userDuplication === "not-duplication" ? (
+              <button type="submit" className={styles.joinBtn}>
+                가입하기
+              </button>
+            ) : (
+              <button className={styles.disableBtn}>양식을 채워주세요</button>
+            )}
+          </form>
+        </section>
+      )}
+    </div>
   );
 }

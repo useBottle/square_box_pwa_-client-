@@ -1,0 +1,49 @@
+.loaderContainer {
+  position: absolute;
+  left: 0;
+  width: 1300px;
+  height: 750px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & .border {
+    position: absolute;
+    width: 1100px;
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border: 3px solid var(--font-color);
+    border-radius: 10px;
+    animation: extendBorder 2s infinite ease-in-out;
+
+    @keyframes extendBorder {
+      0% {
+        border: 3px solid transparent;
+      }
+
+      50% {
+        width: 1150px;
+        height: 600px;
+        border: 3px solid var(--font-color);
+      }
+
+      100% {
+        width: 1150px;
+        height: 600px;
+        border: 3px solid transparent;
+      }
+    }
+
+    & .loader {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      margin: 20px;
+      display: inline-block;
+    }
+  }
+}

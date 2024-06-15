@@ -18,6 +18,7 @@ export interface YoutubeState {
 export interface LoadingStatus {
   newsLoading: boolean;
   youtubeLoading: boolean;
+  signUpLoading: boolean;
 }
 
 export interface userInterface {
