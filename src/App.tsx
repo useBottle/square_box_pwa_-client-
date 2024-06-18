@@ -33,6 +33,7 @@ function App(): JSX.Element {
   const { menuIndex } = useSelector((state: RootState) => state.userInterface);
   const { searchModalTrigger } = useSelector((state: RootState) => state.userInterface);
   const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
+  const userCheck = useSelector((state: RootState) => state.verification.userCheck);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     dispatch(setInputValue(e.target.value));
@@ -126,7 +127,7 @@ function App(): JSX.Element {
       <div className={styles.finalBackground} />
       <div>
         <div className={styles.mainContainer}>
-          {false && (
+          {userCheck === true && (
             <div>
               <header className={styles.header}>
                 <h1

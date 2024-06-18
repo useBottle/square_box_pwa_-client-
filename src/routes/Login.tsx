@@ -5,28 +5,45 @@ import { BsBox } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { MESSAGE } from "../common/message";
+import Cookies from "js-cookie";
+import { useDispatch } from "react-redux";
+import { setUserCheck } from "../store/verificationSlice";
 
 export default function Login(): JSX.Element {
   const { register, handleSubmit, getValues } = useForm();
   const navigate = useNavigate();
-  const [idState, setIdState] = useState<number>(-1);
-  const [passwordState, setPasswordState] = useState<number>(-1);
+  const dispatch = useDispatch();
+  const [idError, setIdError] = useState<boolean>(false);
+  const [passwordError, setPasswordError] = useState<boolean>(false);
+  const accessToken = Cookies.get("accessToken");
 
   const onSubmit = async (): Promise<void> => {
     const [idValue, passwordValue] = getValues(["id", "password"]);
 
     try {
-      const result = await axios.put(
+      const headers: Record<string, string> = {
+        "Content-Type": "application/json",
+      };
+
+      if (accessToken) {
+        headers["Authorization"] = `Bearer ${accessToken}`;
+      }
+
+      const response = await axios.put(
         process.env.REACT_APP_LOGIN_API_URL,
         { idValue, passwordValue },
         {
-          headers: {
-            "Content-Type": "application/json",
+          headers,
+          withCredentials: true,
+          validateStatus: (status) => {
+            return status >= 200 && status < 500;
           },
         },
       );
-      result.status === 404 && setIdState(0);
-      result.status === 401 && setPasswordState(0);
+      dispatch(setUserCheck(true));
+      response.status === 404 && setIdError(true);
+      response.status === 401 && setPasswordError(true);
+      response.status === 200 && navigate("/home");
     } catch (error) {
       console.error("Login failed.", error);
     }
@@ -52,6 +69,7 @@ export default function Login(): JSX.Element {
           autoComplete="off"
         />
         <input
+          type="password"
           {...register("password", {
             required: "Password 입력은 필수 입니다.",
           })}
@@ -59,8 +77,8 @@ export default function Login(): JSX.Element {
           placeholder="Password"
           autoComplete="off"
         />
-        {idState === 0 && <strong>{MESSAGE.LOGIN.ID_ERROR}</strong>}
-        {passwordState === 0 && <strong>{MESSAGE.LOGIN.PW_ERROR}</strong>}
+        {idError === true && <strong>{MESSAGE.LOGIN.ID_ERROR}</strong>}
+        {passwordError === true && <strong>{MESSAGE.LOGIN.PW_ERROR}</strong>}
         <button className={styles.loginBtn} type="submit">
           Login
         </button>

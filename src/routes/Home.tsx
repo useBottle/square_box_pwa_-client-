@@ -9,9 +9,13 @@ import { setNewsData, setRealTimeSearchTerms, setYoutubeData } from "../store/da
 import { setNewsLoading, setSearchModalTrigger, setYoutubeLoading } from "../store/userInterfaceSlice";
 import { MESSAGE } from "../common/message";
 import { FaInfoCircle } from "react-icons/fa";
+import tokenVerification from "../module/tokenVerification";
+import { useNavigate } from "react-router-dom";
+import refreshToken from "../module/refreshToken";
 
 export default function Home(): JSX.Element {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { realTimeSearchTerms } = useSelector((state: RootState) => state.data);
   const inputValue = useSelector((state: RootState) => state.inputValue);
   const [gauge, setGauge] = useState<number>(0);
@@ -28,6 +32,17 @@ export default function Home(): JSX.Element {
   };
 
   useEffect(() => {
+    const verifyToken = async () => {
+      const response = await tokenVerification();
+      if (response) {
+        if (response.status === 403) {
+          navigate("/");
+        } else if (response.status === 401) {
+          refreshToken();
+        }
+      }
+    };
+    verifyToken();
     fetchKeyword();
     dispatch(setInputValue(""));
 

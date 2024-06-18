@@ -1,9 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { Verification, userCheck } from "../types/types";
+import { Verification } from "../types/types";
 
 const initialState: Verification = {
   signUpCheck: false,
-  userCheck: "default",
+  userCheck: false,
 };
 
 export const verificationSlice = createSlice({
@@ -13,7 +13,7 @@ export const verificationSlice = createSlice({
     setSignUpCheck(state, action: PayloadAction<boolean>) {
       state.signUpCheck = action.payload;
     },
-    setUserCheck(state, action: PayloadAction<userCheck>) {
+    setUserCheck(state, action: PayloadAction<boolean>) {
       state.userCheck = action.payload;
     },
   },
