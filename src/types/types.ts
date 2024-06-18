@@ -87,3 +87,10 @@ export interface FormValues {
 }
 
 export type IdCheck = "default" | "duplication" | "not-duplication";
+
+export type userCheck = "default" | "success" | "failed";
+
+export interface Verification {
+  signUpCheck: boolean;
+  userCheck: userCheck;
+}

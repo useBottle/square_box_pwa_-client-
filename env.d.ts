@@ -6,5 +6,8 @@ declare namespace NodeJS {
     REACT_APP_SIGNUP_API_URL: string;
     REACT_APP_ID_CHECK_API_URL: string;
     REACT_APP_SIGNUP_API_URL: string;
+    REACT_APP_LOGIN_API_URL: string;
+    REACT_APP_REFRESH_TOKEN: string;
+    REACT_APP_CHECK_TOKEN: string;
   }
 }
