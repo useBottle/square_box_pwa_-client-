@@ -10,7 +10,6 @@ import { useEffect } from "react";
 import reissueToken from "../module/reissueToken";
 import { setUserCheck } from "../store/verificationSlice";
 import { useNavigate } from "react-router-dom";
-import tokenVerification from "../module/tokenVerification";
 import Cookies from "js-cookie";
 
 export default function News(): JSX.Element {

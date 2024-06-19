@@ -3,11 +3,12 @@ import styles from "../styles/Login.module.scss";
 import { useForm } from "react-hook-form";
 import { BsBox } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MESSAGE } from "../common/message";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { setUserCheck } from "../store/verificationSlice";
+import tokenVerification from "../module/tokenVerification";
 
 export default function Login(): JSX.Element {
   const { register, handleSubmit, getValues } = useForm();
@@ -16,6 +17,27 @@ export default function Login(): JSX.Element {
   const [idError, setIdError] = useState<boolean>(false);
   const [passwordError, setPasswordError] = useState<boolean>(false);
   const accessToken = Cookies.get("accessToken");
+
+  const verifyToken = async () => {
+    try {
+      const response = await tokenVerification();
+      if (response) {
+        if (response.status === 200) {
+          dispatch(setUserCheck(true));
+          navigate("/home");
+        }
+      }
+    } catch (error) {
+      console.error("Token is invalid.", error);
+    }
+  };
+
+  useEffect(() => {
+    if (accessToken) {
+      verifyToken();
+    }
+    return;
+  }, []);
 
   const onSubmit = async (): Promise<void> => {
     const [idValue, passwordValue] = getValues(["id", "password"]);

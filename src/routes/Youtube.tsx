@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import reissueToken from "../module/reissueToken";
 import { setUserCheck } from "../store/verificationSlice";
-import tokenVerification from "../module/tokenVerification";
 import Cookies from "js-cookie";
 
 export default function Youtube(): JSX.Element {
