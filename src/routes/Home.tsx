@@ -11,7 +11,9 @@ import { MESSAGE } from "../common/message";
 import { FaInfoCircle } from "react-icons/fa";
 import tokenVerification from "../module/tokenVerification";
 import { useNavigate } from "react-router-dom";
-import refreshToken from "../module/refreshToken";
+import reissueToken from "../module/reissueToken";
+import { setUserCheck } from "../store/verificationSlice";
+import Cookies from "js-cookie";
 
 export default function Home(): JSX.Element {
   const dispatch = useDispatch();
@@ -20,6 +22,8 @@ export default function Home(): JSX.Element {
   const inputValue = useSelector((state: RootState) => state.inputValue);
   const [gauge, setGauge] = useState<number>(0);
   const [clickTrigger, setClickTrigger] = useState<boolean>(false);
+  const accessToken = Cookies.get("accessToken");
+  const refreshToken = Cookies.get("refreshToken");
 
   const fetchKeyword = async (): Promise<void> => {
     try {
@@ -32,13 +36,26 @@ export default function Home(): JSX.Element {
   };
 
   useEffect(() => {
+    if (!accessToken && refreshToken) {
+      reissueToken();
+    } else if (!accessToken && !refreshToken) {
+      dispatch(setUserCheck(false));
+      navigate("/");
+    }
+  }, [inputValue]);
+
+  useEffect(() => {
     const verifyToken = async () => {
       const response = await tokenVerification();
       if (response) {
         if (response.status === 403) {
+          dispatch(setUserCheck(false));
           navigate("/");
         } else if (response.status === 401) {
-          refreshToken();
+          reissueToken();
+          dispatch(setUserCheck(true));
+        } else {
+          dispatch(setUserCheck(true));
         }
       }
     };

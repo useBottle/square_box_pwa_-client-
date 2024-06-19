@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import Cookies from "js-cookie";
 
-export default async function () {
+export default async function reissueToken(): Promise<AxiosResponse> {
   const refreshToken = Cookies.get("refreshToken");
 
   const response = await axios.get(process.env.REACT_APP_REFRESH_TOKEN, {

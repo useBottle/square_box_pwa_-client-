@@ -1,15 +1,34 @@
 import styles from "../styles/News.module.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import NewsPreview from "../components/NewsPrivew";
 import Loading from "../components/Loading";
 import Articles from "../components/Articles";
 import defaultImage from "../assets/images/news_image_class0.webp";
 import { MESSAGE } from "../common/message";
+import { useEffect } from "react";
+import reissueToken from "../module/reissueToken";
+import { setUserCheck } from "../store/verificationSlice";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default function News(): JSX.Element {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { newsData } = useSelector((state: RootState) => state.data);
   const { newsLoading } = useSelector((state: RootState) => state.userInterface.loadingStatus);
+  const accessToken = Cookies.get("accessToken");
+  const refreshToken = Cookies.get("refreshToken");
+  const inputValue = useSelector((state: RootState) => state.inputValue);
+
+  useEffect(() => {
+    if (!accessToken && refreshToken) {
+      reissueToken();
+    } else if (!accessToken && !refreshToken) {
+      dispatch(setUserCheck(false));
+      navigate("/");
+    }
+  }, [inputValue]);
 
   return (
     <section className={styles.newsContainer}>

@@ -25,6 +25,9 @@ import Login from "./routes/Login";
 import SignUp from "./routes/SignUp";
 import AfterSignUp from "./routes/AfterSignUp";
 import SignUpError from "./routes/SignUpError";
+import Cookies from "js-cookie";
+import reissueToken from "./module/reissueToken";
+import { setUserCheck } from "./store/verificationSlice";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -34,6 +37,25 @@ function App(): JSX.Element {
   const { searchModalTrigger } = useSelector((state: RootState) => state.userInterface);
   const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
   const userCheck = useSelector((state: RootState) => state.verification.userCheck);
+  const accessToken = Cookies.get("accessToken");
+  const refreshToken = Cookies.get("refreshToken");
+
+  useEffect(() => {
+    if (!accessToken && refreshToken) {
+      reissueToken();
+    } else if (!accessToken && !refreshToken) {
+      dispatch(setUserCheck(false));
+      navigate("/");
+    }
+  }, [inputValue]);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", darkLightToggle);
+  }, [darkLightToggle]);
+
+  useEffect(() => {
+    localStorage.getItem("theme") === "dark" ? dispatch(setDarkLight("dark")) : dispatch(setDarkLight("light"));
+  }, [dispatch]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     dispatch(setInputValue(e.target.value));
@@ -106,14 +128,6 @@ function App(): JSX.Element {
     }
   };
 
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", darkLightToggle);
-  }, [darkLightToggle]);
-
-  useEffect(() => {
-    localStorage.getItem("theme") === "dark" ? dispatch(setDarkLight("dark")) : dispatch(setDarkLight("light"));
-  }, [dispatch]);
-
   return (
     <div>
       <div className={styles.modalSet} style={searchModalTrigger === true ? { display: "block" } : { display: "none" }}>
@@ -134,7 +148,7 @@ function App(): JSX.Element {
                   className={styles.logo}
                   onClick={() => {
                     dispatch(setMenuIndex(0));
-                    navigate("/");
+                    navigate("/home");
                   }}
                 >
                   <BsBox />
