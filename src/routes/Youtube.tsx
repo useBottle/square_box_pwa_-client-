@@ -7,28 +7,39 @@ import YoutubePlayer from "../components/YoutubePlayer";
 import defaultImage from "../assets/images/youtube_logo.webp";
 import { MESSAGE } from "../common/message";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 import { useEffect } from "react";
 import reissueToken from "../module/reissueToken";
 import { setUserCheck } from "../store/verificationSlice";
+import tokenVerification from "../module/tokenVerification";
+import Cookies from "js-cookie";
 
 export default function Youtube(): JSX.Element {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { youtubeData } = useSelector((state: RootState) => state.data);
   const { youtubeLoading } = useSelector((state: RootState) => state.userInterface.loadingStatus);
-  const accessToken = Cookies.get("accessToken");
   const refreshToken = Cookies.get("refreshToken");
-  const inputValue = useSelector((state: RootState) => state.inputValue);
+  const accessToken = Cookies.get("accessToken");
+
+  const verifyToken = async () => {
+    try {
+      const response = await reissueToken();
+      if (response.status === 200) {
+        dispatch(setUserCheck(true));
+      }
+    } catch (error) {
+      console.error("Token reissue failed.", error);
+    }
+  };
 
   useEffect(() => {
     if (!accessToken && refreshToken) {
-      reissueToken();
+      verifyToken();
     } else if (!accessToken && !refreshToken) {
       dispatch(setUserCheck(false));
       navigate("/");
     }
-  }, [inputValue]);
+  }, []);
 
   return (
     <section className={styles.youtubeContainer}>

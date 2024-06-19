@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import reissueToken from "../module/reissueToken";
 import { setUserCheck } from "../store/verificationSlice";
 import { useNavigate } from "react-router-dom";
+import tokenVerification from "../module/tokenVerification";
 import Cookies from "js-cookie";
 
 export default function News(): JSX.Element {
@@ -17,18 +18,28 @@ export default function News(): JSX.Element {
   const navigate = useNavigate();
   const { newsData } = useSelector((state: RootState) => state.data);
   const { newsLoading } = useSelector((state: RootState) => state.userInterface.loadingStatus);
-  const accessToken = Cookies.get("accessToken");
   const refreshToken = Cookies.get("refreshToken");
-  const inputValue = useSelector((state: RootState) => state.inputValue);
+  const accessToken = Cookies.get("accessToken");
+
+  const verifyToken = async () => {
+    try {
+      const response = await reissueToken();
+      if (response.status === 200) {
+        dispatch(setUserCheck(true));
+      }
+    } catch (error) {
+      console.error("Token reissue failed.", error);
+    }
+  };
 
   useEffect(() => {
     if (!accessToken && refreshToken) {
-      reissueToken();
+      verifyToken();
     } else if (!accessToken && !refreshToken) {
       dispatch(setUserCheck(false));
       navigate("/");
     }
-  }, [inputValue]);
+  }, []);
 
   return (
     <section className={styles.newsContainer}>

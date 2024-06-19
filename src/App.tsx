@@ -47,7 +47,7 @@ function App(): JSX.Element {
       dispatch(setUserCheck(false));
       navigate("/");
     }
-  }, [inputValue]);
+  }, []);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", darkLightToggle);

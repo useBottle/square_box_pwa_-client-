@@ -9,7 +9,6 @@ import { setNewsData, setRealTimeSearchTerms, setYoutubeData } from "../store/da
 import { setNewsLoading, setSearchModalTrigger, setYoutubeLoading } from "../store/userInterfaceSlice";
 import { MESSAGE } from "../common/message";
 import { FaInfoCircle } from "react-icons/fa";
-import tokenVerification from "../module/tokenVerification";
 import { useNavigate } from "react-router-dom";
 import reissueToken from "../module/reissueToken";
 import { setUserCheck } from "../store/verificationSlice";
@@ -22,8 +21,8 @@ export default function Home(): JSX.Element {
   const inputValue = useSelector((state: RootState) => state.inputValue);
   const [gauge, setGauge] = useState<number>(0);
   const [clickTrigger, setClickTrigger] = useState<boolean>(false);
-  const accessToken = Cookies.get("accessToken");
   const refreshToken = Cookies.get("refreshToken");
+  const accessToken = Cookies.get("accessToken");
 
   const fetchKeyword = async (): Promise<void> => {
     try {
@@ -35,31 +34,26 @@ export default function Home(): JSX.Element {
     }
   };
 
+  const verifyToken = async () => {
+    try {
+      const response = await reissueToken();
+      if (response.status === 200) {
+        dispatch(setUserCheck(true));
+      }
+    } catch (error) {
+      console.error("Token reissue failed.", error);
+    }
+  };
+
   useEffect(() => {
+    console.log("accessToken : ", accessToken);
+    console.log("refreshToken : ", refreshToken);
     if (!accessToken && refreshToken) {
-      reissueToken();
+      verifyToken();
     } else if (!accessToken && !refreshToken) {
       dispatch(setUserCheck(false));
       navigate("/");
     }
-  }, [inputValue]);
-
-  useEffect(() => {
-    const verifyToken = async () => {
-      const response = await tokenVerification();
-      if (response) {
-        if (response.status === 403) {
-          dispatch(setUserCheck(false));
-          navigate("/");
-        } else if (response.status === 401) {
-          reissueToken();
-          dispatch(setUserCheck(true));
-        } else {
-          dispatch(setUserCheck(true));
-        }
-      }
-    };
-    verifyToken();
     fetchKeyword();
     dispatch(setInputValue(""));
 
