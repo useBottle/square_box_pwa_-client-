@@ -37,6 +37,8 @@ export default function News(): JSX.Element {
     } else if (!accessToken && !refreshToken) {
       dispatch(setUserCheck(false));
       navigate("/");
+    } else if (accessToken) {
+      dispatch(setUserCheck(true));
     }
   }, []);
 

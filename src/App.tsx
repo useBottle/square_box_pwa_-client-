@@ -3,7 +3,7 @@ import styles from "../src/styles/App.module.scss";
 import Home from "./routes/Home";
 import News from "./routes/News";
 import { IoSearch } from "react-icons/io5";
-import { GoSun, GoMoon, GoSignIn } from "react-icons/go";
+import { GoSun, GoMoon, GoSignOut } from "react-icons/go";
 import { FaHome, FaNewspaper, FaYoutube, FaBookmark, FaUser } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
@@ -50,6 +50,7 @@ function App(): JSX.Element {
       dispatch(setUserCheck(false));
       navigate("/");
     } else if (accessToken) {
+      dispatch(setUserCheck(true));
       const decodedToken = jwtDecode<TokenInfo>(accessToken);
       setUserId(decodedToken.username);
     }
@@ -115,6 +116,13 @@ function App(): JSX.Element {
     };
 
     Promise.all([fetchNewsData(), fetchYoutubeData()]);
+  };
+
+  const logOut = (): void => {
+    Cookies.remove("accessToken");
+    Cookies.remove("refreshToken");
+    dispatch(setUserCheck(false));
+    navigate("/");
   };
 
   const menuItem = [
@@ -193,14 +201,14 @@ function App(): JSX.Element {
 
                 <button className={styles.darkModeBtn} onClick={themeExchange}>
                   {darkLightToggle === "dark" ? (
-                    <GoSun className={styles.darkModeIcon} onClick={() => {}} />
+                    <GoSun className={styles.darkModeIcon} />
                   ) : (
                     <GoMoon className={styles.darkModeIcon} />
                   )}
                 </button>
 
-                <button className={styles.signInBtn}>
-                  <GoSignIn className={styles.signInIcon} />
+                <button className={styles.signInBtn} onClick={logOut}>
+                  <GoSignOut className={styles.signInIcon} />
                   <span>Log Out</span>
                 </button>
               </header>

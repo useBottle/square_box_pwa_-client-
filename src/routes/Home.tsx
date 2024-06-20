@@ -46,13 +46,13 @@ export default function Home(): JSX.Element {
   };
 
   useEffect(() => {
-    console.log("accessToken : ", accessToken);
-    console.log("refreshToken : ", refreshToken);
     if (!accessToken && refreshToken) {
       verifyToken();
     } else if (!accessToken && !refreshToken) {
       dispatch(setUserCheck(false));
       navigate("/");
+    } else if (accessToken) {
+      dispatch(setUserCheck(true));
     }
     fetchKeyword();
     dispatch(setInputValue(""));

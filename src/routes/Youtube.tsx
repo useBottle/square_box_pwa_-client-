@@ -37,6 +37,8 @@ export default function Youtube(): JSX.Element {
     } else if (!accessToken && !refreshToken) {
       dispatch(setUserCheck(false));
       navigate("/");
+    } else if (accessToken) {
+      dispatch(setUserCheck(true));
     }
   }, []);
 
