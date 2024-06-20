@@ -2,10 +2,10 @@
 @import "./fonts.scss";
 
 $box-shadow: inset 0 0 50px #0000008f;
-$object-width: 140vw;
-$object-height: 245vh;
-$circle-radius: 48%;
-$left: -50%;
+$object-width: 2200px;
+$object-height: 2200px;
+$circle-radius: 1050px;
+$left: -800px;
 $main-container-width: 1300px;
 $main-container-height: 750px;
 $header-height: 750px;
@@ -125,6 +125,7 @@ body {
     align-items: center;
     padding: 0 30px;
     box-sizing: border-box;
+    user-select: none;
 
     & .logo {
       position: absolute;
@@ -141,9 +142,35 @@ body {
       }
     }
 
+    & .welcome {
+      position: absolute;
+      font-family: "S-CoreDream-4Regular";
+      right: 160px;
+      background: var(--container-color);
+      height: 50px;
+      width: 130px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 10px;
+      border-radius: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      user-select: none;
+
+      & .icon {
+        margin-right: 20px;
+      }
+
+      & span {
+        color: var(--point-color1);
+      }
+    }
+
     & form {
       position: absolute;
-      right: 160px;
+      right: 330px;
 
       & .searchBar {
         position: relative;
@@ -352,6 +379,7 @@ body {
     align-items: center;
     border-right: 0.5px solid var(--border-color);
     box-sizing: border-box;
+    user-select: none;
 
     & ul {
       display: flex;

@@ -92,3 +92,7 @@ export interface Verification {
   signUpCheck: boolean;
   userCheck: boolean;
 }
+
+export interface TokenInfo {
+  username: string;
+}

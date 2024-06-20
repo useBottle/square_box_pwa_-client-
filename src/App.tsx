@@ -4,11 +4,11 @@ import Home from "./routes/Home";
 import News from "./routes/News";
 import { IoSearch } from "react-icons/io5";
 import { GoSun, GoMoon, GoSignIn } from "react-icons/go";
-import { FaHome, FaNewspaper, FaYoutube, FaBookmark } from "react-icons/fa";
+import { FaHome, FaNewspaper, FaYoutube, FaBookmark, FaUser } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { setInputValue } from "./store/inputValueSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BsBox } from "react-icons/bs";
 import SearchModal from "./components/SearchModal";
 import axios from "axios";
@@ -28,6 +28,8 @@ import SignUpError from "./routes/SignUpError";
 import Cookies from "js-cookie";
 import reissueToken from "./module/reissueToken";
 import { setUserCheck } from "./store/verificationSlice";
+import { jwtDecode } from "jwt-decode";
+import { TokenInfo } from "./types/types";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -39,6 +41,7 @@ function App(): JSX.Element {
   const userCheck = useSelector((state: RootState) => state.verification.userCheck);
   const accessToken = Cookies.get("accessToken");
   const refreshToken = Cookies.get("refreshToken");
+  const [userId, setUserId] = useState<string>("");
 
   useEffect(() => {
     if (!accessToken && refreshToken) {
@@ -46,6 +49,9 @@ function App(): JSX.Element {
     } else if (!accessToken && !refreshToken) {
       dispatch(setUserCheck(false));
       navigate("/");
+    } else if (accessToken) {
+      const decodedToken = jwtDecode<TokenInfo>(accessToken);
+      setUserId(decodedToken.username);
     }
   }, []);
 
@@ -155,6 +161,11 @@ function App(): JSX.Element {
                   <span>Square Box</span>
                 </h1>
 
+                <div className={styles.welcome}>
+                  <FaUser className={styles.icon} />
+                  <span>{userId}</span>
+                </div>
+
                 <form onSubmit={inputValue ? onSubmit : (e) => e.preventDefault()}>
                   <div className={styles.searchBar}>
                     <input
@@ -190,7 +201,7 @@ function App(): JSX.Element {
 
                 <button className={styles.signInBtn}>
                   <GoSignIn className={styles.signInIcon} />
-                  <span>Sign in</span>
+                  <span>Log Out</span>
                 </button>
               </header>
               <nav className={styles.navbar}>
