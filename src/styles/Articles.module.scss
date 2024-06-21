@@ -16,8 +16,9 @@
   transition: background 0.3s ease-in-out;
   overflow: scroll;
 
-  & .articleList {
-    left: 0;
+  & .articleSet {
+    display: flex;
+    align-items: center;
     border-radius: 10px;
 
     & .article {
@@ -45,7 +46,7 @@
     }
   }
 
-  & .article:hover {
+  & .articleSet:hover {
     background: var(--container-color);
 
     & h3 {

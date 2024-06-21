@@ -25,7 +25,6 @@ export default function Home(): JSX.Element {
   const [clickTrigger, setClickTrigger] = useState<boolean>(false);
   const refreshToken = Cookies.get("refreshToken");
   const accessToken = Cookies.get("accessToken");
-  const username = useSelector((state: RootState) => state.verification.username);
 
   const fetchKeyword = async (): Promise<void> => {
     try {
@@ -58,8 +57,8 @@ export default function Home(): JSX.Element {
       navigate("/");
     } else if (accessToken) {
       const decodedToken = jwtDecode<TokenInfo>(accessToken);
-      dispatch(setUsername(decodedToken.username));
       dispatch(setUserCheck(true));
+      dispatch(setUsername(decodedToken.username));
     }
     fetchKeyword();
     dispatch(setInputValue(""));
@@ -140,7 +139,7 @@ export default function Home(): JSX.Element {
               <span>Square Box</span> 에 오신 것을 환영합니다. <br />
             </p>
             <p>
-              검색어로 검색하면 관련 뉴스 기사 및 유튜브 영상을 <br />
+              검색어를 입력해 검색하면 관련 뉴스 기사 및 유튜브 영상을 <br />
               보실 수 있습니다. <br />
             </p>
             <p>

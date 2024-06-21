@@ -5,6 +5,8 @@ import { AppDispatch, RootState } from "../store/store";
 import { setCurrentYoutube } from "../store/youtubeSlice";
 import YouTube from "react-youtube";
 import defaultImage from "../assets/images/youtube_logo.webp";
+import { FaBookmark } from "react-icons/fa6";
+import axios from "axios";
 
 export default function YoutubePreview(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -20,6 +22,22 @@ export default function YoutubePreview(): JSX.Element {
   // a 태그 대신 사용. 브라우저 하단에 URL 미리보기 나타나는 것 방지하기 위한 용도.
   const openNewTab = (url: string): void => {
     window.open(url, "_blank", "noopener, noreferrer");
+  };
+
+  const addToBookMark = async () => {
+    try {
+      await axios.post(
+        "",
+        { currentYoutube },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+    } catch (error) {
+      console.error("News data upload fail.");
+    }
   };
 
   return (
@@ -50,6 +68,9 @@ export default function YoutubePreview(): JSX.Element {
           <div className={styles.detailInfoSet}>
             <span>{currentYoutube.snippet.timestamp}</span>
             <span className={styles.views}>{currentYoutube.snippet.views} views</span>
+            <button className={styles.bookMark} onClick={addToBookMark}>
+              <FaBookmark />
+            </button>
           </div>
           <button
             className={styles.channel}
