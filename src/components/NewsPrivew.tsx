@@ -12,6 +12,7 @@ export default function NewsPreview(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const { currentNews } = useSelector((state: RootState) => state.news);
   const { newsData } = useSelector((state: RootState) => state.data);
+  const username = useSelector((state: RootState) => state.verification.username);
 
   useEffect(() => {
     newsData ? dispatch(setCurrentNews(newsData[0])) : null;
@@ -36,11 +37,19 @@ export default function NewsPreview(): JSX.Element {
     window.open(url, "_blank", "noopener, noreferrer");
   };
 
+  const bookMarkNewsData = {
+    title: currentNews.title,
+    pubDate: currentNews.pubDate,
+    originallink: currentNews.originallink,
+    imageUrl: currentNews.imageUrls[0],
+    articleText: refinedText,
+  };
+
   const addToBookMark = async () => {
     try {
       await axios.post(
-        "",
-        { currentNews },
+        process.env.REACT_APP_ADD_NEWS_DATA,
+        { bookMarkNewsData, username },
         {
           headers: {
             "Content-Type": "application/json",

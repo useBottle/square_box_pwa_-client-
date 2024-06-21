@@ -36,7 +36,7 @@ export default function SignUp(): JSX.Element {
 
     try {
       const result = await axios.post(
-        process.env.REACT_APP_SIGNUP_API_URL,
+        process.env.REACT_APP_SIGNUP,
         { idValue, passwordValue },
         {
           headers: {
@@ -65,7 +65,7 @@ export default function SignUp(): JSX.Element {
     if (idValue && isIdValid) {
       try {
         const result = await axios.put(
-          process.env.REACT_APP_ID_CHECK_API_URL,
+          process.env.REACT_APP_ID_CHECK,
           { idValue },
           {
             headers: {
