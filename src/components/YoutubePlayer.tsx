@@ -14,6 +14,7 @@ export default function YoutubePreview(): JSX.Element {
   const { youtubeData } = useSelector((state: RootState) => state.data);
   const channelThumbnails = currentYoutube.snippet.channelThumbnails[0].url;
   const channelTitle = currentYoutube.snippet.channelTitle;
+  const username = useSelector((state: RootState) => state.verification.username);
 
   useEffect(() => {
     youtubeData ? dispatch(setCurrentYoutube(youtubeData[0])) : null;
@@ -27,8 +28,8 @@ export default function YoutubePreview(): JSX.Element {
   const addToBookMark = async () => {
     try {
       await axios.post(
-        "",
-        { currentYoutube },
+        process.env.REACT_APP_ADD_YOUTUBE_DATA,
+        { currentYoutube, username },
         {
           headers: {
             "Content-Type": "application/json",

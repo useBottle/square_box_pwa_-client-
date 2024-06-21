@@ -52,7 +52,7 @@ export default function Login(): JSX.Element {
       }
 
       const response = await axios.put(
-        process.env.REACT_APP_LOGIN_API_URL,
+        process.env.REACT_APP_LOGIN,
         { idValue, passwordValue },
         {
           headers,

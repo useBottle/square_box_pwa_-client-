@@ -8,7 +8,7 @@ import { FaHome, FaNewspaper, FaYoutube, FaBookmark, FaUser } from "react-icons/
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { setInputValue } from "./store/inputValueSlice";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { BsBox } from "react-icons/bs";
 import SearchModal from "./components/SearchModal";
 import axios from "axios";
