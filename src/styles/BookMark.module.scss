@@ -1,0 +1,13 @@
+@import "./fonts.scss";
+
+.BookMarkContainer {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  width: 1200px;
+  height: 650px;
+  display: flex;
+  justify-content: center;
+  background: var(--container-color);
+  user-select: none;
+}

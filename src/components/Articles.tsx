@@ -15,16 +15,12 @@ export default function Articles(): JSX.Element {
         };
 
         return (
-          <div
-            key={index}
-            className={styles.articleList}
-            onMouseEnter={() => {
-              dispatch(setCurrentNews(item));
-            }}
-          >
+          <div className={styles.articleSet} key={index}>
             <div onMouseEnter={onMouseEnter} className={styles.article}>
-              <h3>{item.title}</h3>
-              <p>{item.pubDate}</p>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.pubDate}</p>
+              </div>
             </div>
           </div>
         );

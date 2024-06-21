@@ -21,7 +21,6 @@ export default function Youtube(): JSX.Element {
   const { youtubeLoading } = useSelector((state: RootState) => state.userInterface.loadingStatus);
   const refreshToken = Cookies.get("refreshToken");
   const accessToken = Cookies.get("accessToken");
-  const username = useSelector((state: RootState) => state.verification.username);
 
   const verifyToken = async () => {
     try {
@@ -44,8 +43,8 @@ export default function Youtube(): JSX.Element {
       navigate("/");
     } else if (accessToken) {
       const decodedToken = jwtDecode<TokenInfo>(accessToken);
-      dispatch(setUsername(decodedToken.username));
       dispatch(setUserCheck(true));
+      dispatch(setUsername(decodedToken.username));
     }
   }, []);
 

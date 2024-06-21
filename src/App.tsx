@@ -30,6 +30,7 @@ import reissueToken from "./module/reissueToken";
 import { setUserCheck, setUsername } from "./store/verificationSlice";
 import { jwtDecode } from "jwt-decode";
 import { TokenInfo } from "./types/types";
+import BookMark from "./routes/BookMark";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -251,6 +252,7 @@ function App(): JSX.Element {
             <Route path="/home" element={<Home />} />
             <Route path="/news" element={<News />} />
             <Route path="/youtube" element={<Youtube />} />
+            <Route path="/bookmark" element={<BookMark />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/welcome" element={<AfterSignUp />} />
             <Route path="/signup_error" element={<SignUpError />} />
