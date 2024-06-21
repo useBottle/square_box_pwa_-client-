@@ -11,8 +11,10 @@ import { MESSAGE } from "../common/message";
 import { FaInfoCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import reissueToken from "../module/reissueToken";
-import { setUserCheck } from "../store/verificationSlice";
+import { setUserCheck, setUsername } from "../store/verificationSlice";
 import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
+import { TokenInfo } from "../types/types";
 
 export default function Home(): JSX.Element {
   const dispatch = useDispatch();
@@ -23,6 +25,7 @@ export default function Home(): JSX.Element {
   const [clickTrigger, setClickTrigger] = useState<boolean>(false);
   const refreshToken = Cookies.get("refreshToken");
   const accessToken = Cookies.get("accessToken");
+  const username = useSelector((state: RootState) => state.verification.username);
 
   const fetchKeyword = async (): Promise<void> => {
     try {
@@ -37,8 +40,10 @@ export default function Home(): JSX.Element {
   const verifyToken = async () => {
     try {
       const response = await reissueToken();
-      if (response.status === 200) {
+      if (response.status === 200 && accessToken) {
+        const decodedToken = jwtDecode<TokenInfo>(accessToken);
         dispatch(setUserCheck(true));
+        dispatch(setUsername(decodedToken.username));
       }
     } catch (error) {
       console.error("Token reissue failed.", error);
@@ -52,6 +57,8 @@ export default function Home(): JSX.Element {
       dispatch(setUserCheck(false));
       navigate("/");
     } else if (accessToken) {
+      const decodedToken = jwtDecode<TokenInfo>(accessToken);
+      dispatch(setUsername(decodedToken.username));
       dispatch(setUserCheck(true));
     }
     fetchKeyword();

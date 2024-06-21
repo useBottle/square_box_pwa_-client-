@@ -91,6 +91,7 @@ export type IdCheck = "default" | "duplication" | "not-duplication";
 export interface Verification {
   signUpCheck: boolean;
   userCheck: boolean;
+  username: string;
 }
 
 export interface TokenInfo {

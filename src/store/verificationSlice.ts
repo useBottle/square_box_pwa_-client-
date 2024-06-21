@@ -4,6 +4,7 @@ import { Verification } from "../types/types";
 const initialState: Verification = {
   signUpCheck: false,
   userCheck: false,
+  username: "",
 };
 
 export const verificationSlice = createSlice({
@@ -16,8 +17,11 @@ export const verificationSlice = createSlice({
     setUserCheck(state, action: PayloadAction<boolean>) {
       state.userCheck = action.payload;
     },
+    setUsername(state, action: PayloadAction<string>) {
+      state.username = action.payload;
+    },
   },
 });
 
-export const { setSignUpCheck, setUserCheck } = verificationSlice.actions;
+export const { setSignUpCheck, setUserCheck, setUsername } = verificationSlice.actions;
 export default verificationSlice.reducer;

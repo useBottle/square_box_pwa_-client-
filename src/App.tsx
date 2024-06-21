@@ -27,7 +27,7 @@ import AfterSignUp from "./routes/AfterSignUp";
 import SignUpError from "./routes/SignUpError";
 import Cookies from "js-cookie";
 import reissueToken from "./module/reissueToken";
-import { setUserCheck } from "./store/verificationSlice";
+import { setUserCheck, setUsername } from "./store/verificationSlice";
 import { jwtDecode } from "jwt-decode";
 import { TokenInfo } from "./types/types";
 
@@ -41,18 +41,30 @@ function App(): JSX.Element {
   const userCheck = useSelector((state: RootState) => state.verification.userCheck);
   const accessToken = Cookies.get("accessToken");
   const refreshToken = Cookies.get("refreshToken");
-  const [userId, setUserId] = useState<string>("");
+  const username = useSelector((state: RootState) => state.verification.username);
+
+  const verifyToken = async () => {
+    try {
+      const response = await reissueToken();
+      if (response.status === 200 && accessToken) {
+        const decodedToken = jwtDecode<TokenInfo>(accessToken);
+        dispatch(setUserCheck(true));
+        dispatch(setUsername(decodedToken.username));
+      }
+    } catch (error) {
+      console.error("Token reissue failed.", error);
+    }
+  };
 
   useEffect(() => {
     if (!accessToken && refreshToken) {
-      reissueToken();
+      verifyToken();
     } else if (!accessToken && !refreshToken) {
       dispatch(setUserCheck(false));
       navigate("/");
     } else if (accessToken) {
-      dispatch(setUserCheck(true));
       const decodedToken = jwtDecode<TokenInfo>(accessToken);
-      setUserId(decodedToken.username);
+      dispatch(setUsername(decodedToken.username));
     }
   }, []);
 
@@ -171,7 +183,7 @@ function App(): JSX.Element {
 
                 <div className={styles.welcome}>
                   <FaUser className={styles.icon} />
-                  <span>{userId}</span>
+                  <span>{username}</span>
                 </div>
 
                 <form onSubmit={inputValue ? onSubmit : (e) => e.preventDefault()}>
