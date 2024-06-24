@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store/store";
+import { AppDispatch, RootState } from "../store/store";
 import styles from "../styles/Youtube.module.scss";
 import Videos from "../components/Videos";
 import Loading from "../components/Loading";
@@ -15,7 +15,7 @@ import { jwtDecode } from "jwt-decode";
 import { TokenInfo } from "../types/types";
 
 export default function Youtube(): JSX.Element {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const { youtubeData } = useSelector((state: RootState) => state.data);
   const { youtubeLoading } = useSelector((state: RootState) => state.userInterface.loadingStatus);

@@ -9,11 +9,12 @@ import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { setUserCheck } from "../store/verificationSlice";
 import tokenVerification from "../module/tokenVerification";
+import { AppDispatch } from "../store/store";
 
 export default function Login(): JSX.Element {
   const { register, handleSubmit, getValues } = useForm();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const [idError, setIdError] = useState<boolean>(false);
   const [passwordError, setPasswordError] = useState<boolean>(false);
   const accessToken = Cookies.get("accessToken");

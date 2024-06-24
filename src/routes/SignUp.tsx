@@ -9,13 +9,13 @@ import axios, { isAxiosError } from "axios";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSignUpCheck } from "../store/verificationSlice";
-import { RootState } from "../store/store";
+import { AppDispatch, RootState } from "../store/store";
 import { setSignUpLoading } from "../store/userInterfaceSlice";
 import SignUpLoading from "../components/SignUpLoading";
 
 export default function SignUp(): JSX.Element {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const { register, handleSubmit, watch } = useForm<FormValues>();
   const [idValue, passwordValue, confirmValue] = watch(["id", "password", "confirm"]);
