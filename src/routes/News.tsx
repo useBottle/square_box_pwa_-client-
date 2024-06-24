@@ -1,6 +1,6 @@
 import styles from "../styles/News.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store/store";
+import { AppDispatch, RootState } from "../store/store";
 import NewsPreview from "../components/NewsPrivew";
 import Loading from "../components/Loading";
 import Articles from "../components/Articles";
@@ -15,7 +15,7 @@ import { jwtDecode } from "jwt-decode";
 import { TokenInfo } from "../types/types";
 
 export default function News(): JSX.Element {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const { newsData } = useSelector((state: RootState) => state.data);
   const { newsLoading } = useSelector((state: RootState) => state.userInterface.loadingStatus);

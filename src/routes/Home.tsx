@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.scss";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store/store";
+import { AppDispatch, RootState } from "../store/store";
 import KeywordIndicator from "../components/KeywordIndicator";
 import { setInputValue } from "../store/inputValueSlice";
 import { setNewsData, setRealTimeSearchTerms, setYoutubeData } from "../store/dataSlice";
@@ -17,7 +17,7 @@ import { jwtDecode } from "jwt-decode";
 import { TokenInfo } from "../types/types";
 
 export default function Home(): JSX.Element {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const { realTimeSearchTerms } = useSelector((state: RootState) => state.data);
   const inputValue = useSelector((state: RootState) => state.inputValue);
