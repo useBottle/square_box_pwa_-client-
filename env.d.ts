@@ -11,5 +11,6 @@ declare namespace NodeJS {
     REACT_APP_CHECK_TOKEN: string;
     REACT_APP_ADD_NEWS_DATA: string;
     REACT_APP_ADD_YOUTUBE_DATA: string;
+    REACT_APP_FIND_DATA: string;
   }
 }

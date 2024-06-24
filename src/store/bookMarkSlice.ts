@@ -37,6 +37,9 @@ export const bookMarkSlice = createSlice({
     setMarkedNews(state, action: PayloadAction<markedNews[]>) {
       state.markedNews = action.payload;
     },
+    setMarkedYoutube(state, action: PayloadAction<markedYoutube[]>) {
+      state.markedYoutube = action.payload;
+    },
     setMouseOnNews(state, action: PayloadAction<markedNews>) {
       state.mouseOnNews = action.payload;
     },
@@ -46,5 +49,6 @@ export const bookMarkSlice = createSlice({
   },
 });
 
-export const { setSelector, setMarkedNews, setMouseOnNews, setMouseOnYoutube } = bookMarkSlice.actions;
+export const { setSelector, setMarkedNews, setMarkedYoutube, setMouseOnNews, setMouseOnYoutube } =
+  bookMarkSlice.actions;
 export default bookMarkSlice.reducer;

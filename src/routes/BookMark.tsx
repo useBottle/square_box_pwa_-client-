@@ -9,8 +9,9 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { MESSAGE } from "../common/message";
 import { RootState } from "../store/store";
-import { setSelector } from "../store/bookMarkSlice";
+import { setMarkedNews, setMarkedYoutube, setSelector } from "../store/bookMarkSlice";
 import BookMarkNewsList from "../components/BookMarkNewsList";
+import axios from "axios";
 
 export default function BookMark(): JSX.Element {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ export default function BookMark(): JSX.Element {
   const refreshToken = Cookies.get("refreshToken");
   const accessToken = Cookies.get("accessToken");
   const selector = useSelector((state: RootState) => state.bookMark.selector);
+  const username = useSelector((state: RootState) => state.verification.username);
 
   const verifyToken = async () => {
     try {
@@ -32,6 +34,25 @@ export default function BookMark(): JSX.Element {
     }
   };
 
+  const getBookMarkData = async () => {
+    try {
+      const result = await axios.put(
+        process.env.REACT_APP_FIND_DATA as string,
+        { username },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+      dispatch(setMarkedNews(result.data.newsData));
+      dispatch(setMarkedYoutube(result.data.youtubeData));
+      console.log(result);
+    } catch (error) {
+      console.error("Data request failed.", error);
+    }
+  };
+
   useEffect(() => {
     if (!accessToken && refreshToken) {
       verifyToken();
@@ -43,6 +64,7 @@ export default function BookMark(): JSX.Element {
       dispatch(setUserCheck(true));
       dispatch(setUsername(decodedToken.username));
     }
+    getBookMarkData();
   }, []);
 
   return (
