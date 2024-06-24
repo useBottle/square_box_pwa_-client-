@@ -5,6 +5,7 @@ import newsReducer from "./newsSlice";
 import userInterfaceReducer from "./userInterfaceSlice";
 import youtubeReducer from "./youtubeSlice";
 import verificationReducer from "./verificationSlice";
+import bookMarkReducer from "./bookMarkSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     youtube: youtubeReducer,
     userInterface: userInterfaceReducer,
     verification: verificationReducer,
+    bookMark: bookMarkReducer,
   },
 });
 

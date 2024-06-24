@@ -1,0 +1,107 @@
+@import "./fonts.scss";
+
+.BookMarkContainer {
+  font-family: "S-CoreDream-4Regular";
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--container-color);
+  padding: 0 30px;
+  top: 100px;
+  left: 100px;
+  width: 1200px;
+  height: 650px;
+  box-sizing: border-box;
+  transition: background 0.3s ease-in-out;
+
+  & .viewContainer {
+    position: absolute;
+    top: 0;
+    left: 100px;
+    width: 550px;
+    height: 600px;
+    box-sizing: border-box;
+
+    & .viewTitle {
+      position: relative;
+      top: 50px;
+      left: 0;
+      color: var(--sub-title);
+    }
+  }
+
+  & .listContainer {
+    position: absolute;
+    top: 0;
+    right: 100px;
+    width: 400px;
+    height: 650px;
+    box-sizing: border-box;
+
+    & .listHeader {
+      position: absolute;
+      top: 50px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      & .listTitle {
+        color: var(--sub-title);
+      }
+
+      & .selectBtn {
+        display: flex;
+
+        & button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: none;
+          border-radius: 5px;
+          right: 0;
+          height: 20px;
+          padding: 5px 10px;
+          margin-left: 10px;
+          box-sizing: border-box;
+          color: var(--font-color);
+          background: var(--container-color);
+          cursor: pointer;
+        }
+
+        & button:hover {
+          color: var(--point-color2);
+        }
+
+        & .selectedBtn {
+          color: var(--point-color2);
+        }
+      }
+    }
+
+    & .contentList {
+      position: absolute;
+      font-family: "S-CoreDream-4Regular";
+      font-size: 20px;
+      font-weight: 400;
+      width: 400px;
+      height: 500px;
+      top: 75px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--container-color);
+      border-radius: 10px;
+      box-sizing: border-box;
+      transition: background 0.3s ease-in-out;
+    }
+  }
+
+  & .notice {
+    font-family: "S-CoreDream-1Thin";
+    z-index: 900;
+    position: absolute;
+    bottom: 20px;
+    color: var(--sub-title);
+  }
+}

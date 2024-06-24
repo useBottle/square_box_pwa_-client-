@@ -5,11 +5,14 @@ import { AppDispatch, RootState } from "../store/store";
 import { setCurrentNews } from "../store/newsSlice";
 import defaultImage from "../assets/images/news_image_class0.webp";
 import { MESSAGE } from "../common/message";
+import { FaBookmark } from "react-icons/fa6";
+import axios from "axios";
 
 export default function NewsPreview(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const { currentNews } = useSelector((state: RootState) => state.news);
   const { newsData } = useSelector((state: RootState) => state.data);
+  const username = useSelector((state: RootState) => state.verification.username);
 
   useEffect(() => {
     newsData ? dispatch(setCurrentNews(newsData[0])) : null;
@@ -24,7 +27,7 @@ export default function NewsPreview(): JSX.Element {
 
   const koreanRegex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
 
-  const refineText =
+  const refinedText =
     currentNews.articleText && koreanRegex.test(currentNews.articleText)
       ? currentNews.articleText
       : MESSAGE.ERROR.NO_ARTICLE;
@@ -34,15 +37,44 @@ export default function NewsPreview(): JSX.Element {
     window.open(url, "_blank", "noopener, noreferrer");
   };
 
+  const bookMarkNewsData = {
+    title: currentNews.title,
+    pubDate: currentNews.pubDate,
+    originallink: currentNews.originallink,
+    imageUrl: currentNews.imageUrls[0],
+    articleText: refinedText,
+  };
+
+  const addToBookMark = async () => {
+    try {
+      await axios.post(
+        process.env.REACT_APP_ADD_NEWS_DATA,
+        { bookMarkNewsData, username },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+    } catch (error) {
+      console.error("News data upload fail.");
+    }
+  };
+
   return (
     <div className={styles.newsPreview}>
       <img src={imageUrl} alt="articleImage" />
       <h3>{currentNews.title}</h3>
-      <p className={styles.articleDate}>{currentNews.pubDate}</p>
+      <div className={styles.block}>
+        <p className={styles.articleDate}>{currentNews.pubDate}</p>
+        <button className={styles.bookMark} onClick={addToBookMark}>
+          <FaBookmark />
+        </button>
+      </div>
       <button className={styles.originalLink} onClick={() => openNewTab(currentNews.originallink as string)}>
         원문 링크
       </button>
-      <p>{refineText as string}</p>
+      <p>{refinedText as string}</p>
     </div>
   );
 }

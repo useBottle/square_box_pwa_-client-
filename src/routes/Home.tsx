@@ -2,20 +2,29 @@ import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.scss";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store/store";
+import { AppDispatch, RootState } from "../store/store";
 import KeywordIndicator from "../components/KeywordIndicator";
 import { setInputValue } from "../store/inputValueSlice";
 import { setNewsData, setRealTimeSearchTerms, setYoutubeData } from "../store/dataSlice";
 import { setNewsLoading, setSearchModalTrigger, setYoutubeLoading } from "../store/userInterfaceSlice";
 import { MESSAGE } from "../common/message";
 import { FaInfoCircle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import reissueToken from "../module/reissueToken";
+import { setUserCheck, setUsername } from "../store/verificationSlice";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
+import { TokenInfo } from "../types/types";
 
 export default function Home(): JSX.Element {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
   const { realTimeSearchTerms } = useSelector((state: RootState) => state.data);
   const inputValue = useSelector((state: RootState) => state.inputValue);
   const [gauge, setGauge] = useState<number>(0);
   const [clickTrigger, setClickTrigger] = useState<boolean>(false);
+  const refreshToken = Cookies.get("refreshToken");
+  const accessToken = Cookies.get("accessToken");
 
   const fetchKeyword = async (): Promise<void> => {
     try {
@@ -27,7 +36,30 @@ export default function Home(): JSX.Element {
     }
   };
 
+  const verifyToken = async () => {
+    try {
+      const response = await reissueToken();
+      if (response.status === 200 && accessToken) {
+        const decodedToken = jwtDecode<TokenInfo>(accessToken);
+        dispatch(setUserCheck(true));
+        dispatch(setUsername(decodedToken.username));
+      }
+    } catch (error) {
+      console.error("Token reissue failed.", error);
+    }
+  };
+
   useEffect(() => {
+    if (!accessToken && refreshToken) {
+      verifyToken();
+    } else if (!accessToken && !refreshToken) {
+      dispatch(setUserCheck(false));
+      navigate("/");
+    } else if (accessToken) {
+      const decodedToken = jwtDecode<TokenInfo>(accessToken);
+      dispatch(setUserCheck(true));
+      dispatch(setUsername(decodedToken.username));
+    }
     fetchKeyword();
     dispatch(setInputValue(""));
 
@@ -107,7 +139,7 @@ export default function Home(): JSX.Element {
               <span>Square Box</span> 에 오신 것을 환영합니다. <br />
             </p>
             <p>
-              검색어로 검색하면 관련 뉴스 기사 및 유튜브 영상을 <br />
+              검색어를 입력해 검색하면 관련 뉴스 기사 및 유튜브 영상을 <br />
               보실 수 있습니다. <br />
             </p>
             <p>

@@ -60,6 +60,12 @@
       border: 2px solid var(--font-color);
     }
 
+    & strong {
+      position: absolute;
+      bottom: 160px;
+      color: var(--point-color1);
+    }
+
     & .loginBtn {
       margin-top: 50px;
       border: none;

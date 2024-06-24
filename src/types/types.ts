@@ -87,3 +87,43 @@ export interface FormValues {
 }
 
 export type IdCheck = "default" | "duplication" | "not-duplication";
+
+export interface Verification {
+  signUpCheck: boolean;
+  userCheck: boolean;
+  username: string;
+}
+
+export interface TokenInfo {
+  username: string;
+}
+
+export interface markedNews {
+  category: string;
+  username: string;
+  title: string;
+  pubDate: string;
+  originallink: string;
+  imageUrl: string;
+  articleText: string;
+}
+
+export interface markedYoutube {
+  category: string;
+  username: string;
+  videoId: string;
+  thumbnail: string;
+  title: string;
+  timestamp: string;
+  channelHandle: string;
+  channelThumbnail: string;
+  channelTitle: string;
+}
+
+export interface BookMark {
+  selector: string;
+  markedNews: markedNews[];
+  markedYoutube: markedYoutube[];
+  mouseOnNews: markedNews;
+  mouseOnYoutube: markedYoutube;
+}

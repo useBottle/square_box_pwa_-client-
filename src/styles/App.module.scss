@@ -2,10 +2,10 @@
 @import "./fonts.scss";
 
 $box-shadow: inset 0 0 50px #0000008f;
-$object-width: 140vw;
-$object-height: 245vh;
-$circle-radius: 48%;
-$left: -50%;
+$object-width: 2200px;
+$object-height: 2200px;
+$circle-radius: 1050px;
+$left: -800px;
 $main-container-width: 1300px;
 $main-container-height: 750px;
 $header-height: 750px;
@@ -117,6 +117,7 @@ body {
   & .header {
     position: absolute;
     width: 100%;
+    left: 0;
     height: 100px;
     border-bottom: 0.5px solid var(--border-color);
     display: flex;
@@ -124,12 +125,13 @@ body {
     align-items: center;
     padding: 0 30px;
     box-sizing: border-box;
+    user-select: none;
 
     & .logo {
+      position: absolute;
       font-family: "Poiret One";
       font-size: 40px;
       font-weight: 800;
-      position: relative;
       margin: 30px 0;
       cursor: pointer;
       z-index: 999;
@@ -140,116 +142,146 @@ body {
       }
     }
 
-    & .searchBar {
-      position: relative;
-      right: 130px;
-      box-sizing: border-box;
+    & .welcome {
+      position: absolute;
+      font-family: "S-CoreDream-4Regular";
+      right: 160px;
+      background: var(--container-color);
+      height: 50px;
+      width: 130px;
       display: flex;
+      justify-content: center;
       align-items: center;
+      padding: 0 10px;
+      border-radius: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      user-select: none;
 
-      & input {
+      & .icon {
+        margin-right: 20px;
+      }
+
+      & span {
+        color: var(--point-color1);
+      }
+    }
+
+    & form {
+      position: absolute;
+      right: 330px;
+
+      & .searchBar {
         position: relative;
-        right: 0;
-        width: 280px;
-        height: 50px;
-        padding-left: 55px;
-        padding-right: 40px;
-        border: none;
-        border-radius: 5px;
-        list-style: none;
-        outline: none;
-        background: var(--container-color);
-        color: var(--point-color2);
-        font-size: 20px;
-        font-weight: 400;
         box-sizing: border-box;
-        border: 1px solid transparent;
-        transition: background 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
-      }
-
-      & input::placeholder {
-        color: var(--sub-title);
-      }
-
-      & input:focus {
-        border: 1px solid var(--font-color);
-      }
-
-      & .clearBtn {
-        position: absolute;
         display: flex;
-        justify-content: center;
         align-items: center;
-        transform: translateX(-10px);
-        font-size: 20px;
-        font-weight: 400;
-        cursor: pointer;
-        width: 25px;
-        height: 25px;
-        right: 0;
-        border-radius: 50%;
-        border: none;
-        background: transparent;
-        transition: background 0.3s ease-in-out;
 
-        & .iconSet {
+        & input {
+          position: relative;
+          right: 0;
+          width: 280px;
+          height: 50px;
+          padding-left: 55px;
+          padding-right: 40px;
+          border: none;
+          border-radius: 5px;
+          list-style: none;
+          outline: none;
+          background: var(--container-color);
+          color: var(--point-color2);
+          font-size: 20px;
+          font-weight: 400;
+          box-sizing: border-box;
+          border: 1px solid transparent;
+          transition: background 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
+        }
+
+        & input::placeholder {
+          color: var(--sub-title);
+        }
+
+        & input:focus {
+          border: 1px solid var(--font-color);
+        }
+
+        & .clearBtn {
           position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
           display: flex;
-          width: 15px;
-          height: 2px;
-          background: var(--font-color);
+          justify-content: center;
+          align-items: center;
+          transform: translateX(-10px);
+          font-size: 20px;
+          font-weight: 400;
+          cursor: pointer;
+          width: 25px;
+          height: 25px;
+          right: 0;
+          border-radius: 50%;
+          border: none;
+          background: transparent;
           transition: background 0.3s ease-in-out;
+
+          & .iconSet {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            width: 15px;
+            height: 2px;
+            background: var(--font-color);
+            transition: background 0.3s ease-in-out;
+          }
+
+          & .part1,
+          & .part2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 15px;
+            height: 2px;
+            background: var(--font-color);
+            transform-origin: center;
+          }
+
+          & .part1 {
+            transform: translate(-50%, -50%) rotate(45deg);
+          }
+
+          & .part2 {
+            transform: translate(-50%, -50%) rotate(-45deg);
+          }
         }
 
-        & .part1,
-        & .part2 {
+        & .clearBtn:hover {
+          background: var(--container-color);
+
+          & .iconSet {
+            background: var(--sub-title);
+          }
+        }
+
+        & .searchIconBox {
           position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 15px;
-          height: 2px;
-          background: var(--font-color);
-          transform-origin: center;
-        }
+          transform: translateX(35px);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 50px;
+          top: 0;
+          left: -20px;
+          padding: 0;
+          border: none;
+          background: transparent;
+          font-size: 30px;
+          cursor: pointer;
 
-        & .part1 {
-          transform: translate(-50%, -50%) rotate(45deg);
-        }
-
-        & .part2 {
-          transform: translate(-50%, -50%) rotate(-45deg);
-        }
-      }
-
-      & .clearBtn:hover {
-        background: var(--container-color);
-
-        & .iconSet {
-          background: var(--sub-title);
-        }
-      }
-
-      & .searchIconBox {
-        position: absolute;
-        transform: translateX(35px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 50px;
-        top: 0;
-        left: -20px;
-        padding: 0;
-        border: none;
-        background: transparent;
-        font-size: 30px;
-        cursor: pointer;
-
-        & .searchIcon {
-          color: var(--font-color);
-          transition: color 0.3s ease-in-out;
+          & .searchIcon {
+            color: var(--font-color);
+            transition: color 0.3s ease-in-out;
+          }
         }
       }
     }
@@ -347,6 +379,7 @@ body {
     align-items: center;
     border-right: 0.5px solid var(--border-color);
     box-sizing: border-box;
+    user-select: none;
 
     & ul {
       display: flex;

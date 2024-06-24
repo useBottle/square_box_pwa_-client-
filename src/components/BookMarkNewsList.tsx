@@ -1,17 +1,17 @@
-import { AppDispatch, RootState } from "../store/store";
-import styles from "../styles/Articles.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentNews } from "../store/newsSlice";
+import styles from "../styles/BookMarkNewsList.module.scss";
+import { AppDispatch, RootState } from "../store/store";
+import { setMouseOnNews } from "../store/bookMarkSlice";
 
-export default function Articles(): JSX.Element {
+export default function BookMarkNewsList(): JSX.Element {
+  const { markedNews } = useSelector((state: RootState) => state.bookMark);
   const dispatch = useDispatch<AppDispatch>();
-  const { newsData } = useSelector((state: RootState) => state.data);
 
   return (
-    <div className={styles.articleSlider}>
-      {newsData.map((item, index) => {
+    <div className={styles.newsSlider}>
+      {markedNews.map((item, index) => {
         const onMouseEnter = (): void => {
-          dispatch(setCurrentNews(item));
+          dispatch(setMouseOnNews(item));
         };
 
         return (

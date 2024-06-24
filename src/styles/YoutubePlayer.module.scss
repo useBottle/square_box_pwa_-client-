@@ -35,8 +35,6 @@
     }
 
     & .contentInfo {
-      // display: flex;
-      // align-items: center;
       flex-direction: column;
 
       margin-top: 20px;
@@ -44,9 +42,32 @@
       & .detailInfoSet {
         right: 0;
         font-size: 14px;
+        display: flex;
+        align-items: center;
+
 
         & .views {
           margin-left: 20px;
+        }
+
+        & .bookMark {
+          position: absolute;
+          right: 0;
+          padding: 10px;
+          font-size: 20px;
+          background: var(--container-color);
+          color: var(--font-color);
+          border: none;
+          box-sizing: border-box;
+          border-radius: 5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+        }
+
+        & .bookMark:hover {
+          color: var(--point-color2);
         }
       }
 

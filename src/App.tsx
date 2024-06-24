@@ -3,8 +3,8 @@ import styles from "../src/styles/App.module.scss";
 import Home from "./routes/Home";
 import News from "./routes/News";
 import { IoSearch } from "react-icons/io5";
-import { GoSun, GoMoon, GoSignIn } from "react-icons/go";
-import { FaHome, FaNewspaper, FaYoutube, FaBookmark } from "react-icons/fa";
+import { GoSun, GoMoon, GoSignOut } from "react-icons/go";
+import { FaHome, FaNewspaper, FaYoutube, FaBookmark, FaUser } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { setInputValue } from "./store/inputValueSlice";
@@ -25,6 +25,12 @@ import Login from "./routes/Login";
 import SignUp from "./routes/SignUp";
 import AfterSignUp from "./routes/AfterSignUp";
 import SignUpError from "./routes/SignUpError";
+import Cookies from "js-cookie";
+import reissueToken from "./module/reissueToken";
+import { setUserCheck, setUsername } from "./store/verificationSlice";
+import { jwtDecode } from "jwt-decode";
+import { TokenInfo } from "./types/types";
+import BookMark from "./routes/BookMark";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -33,6 +39,43 @@ function App(): JSX.Element {
   const { menuIndex } = useSelector((state: RootState) => state.userInterface);
   const { searchModalTrigger } = useSelector((state: RootState) => state.userInterface);
   const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
+  const userCheck = useSelector((state: RootState) => state.verification.userCheck);
+  const accessToken = Cookies.get("accessToken");
+  const refreshToken = Cookies.get("refreshToken");
+  const username = useSelector((state: RootState) => state.verification.username);
+
+  const verifyToken = async () => {
+    try {
+      const response = await reissueToken();
+      if (response.status === 200 && accessToken) {
+        const decodedToken = jwtDecode<TokenInfo>(accessToken);
+        dispatch(setUserCheck(true));
+        dispatch(setUsername(decodedToken.username));
+      }
+    } catch (error) {
+      console.error("Token reissue failed.", error);
+    }
+  };
+
+  useEffect(() => {
+    if (!accessToken && refreshToken) {
+      verifyToken();
+    } else if (!accessToken && !refreshToken) {
+      dispatch(setUserCheck(false));
+      navigate("/");
+    } else if (accessToken) {
+      const decodedToken = jwtDecode<TokenInfo>(accessToken);
+      dispatch(setUsername(decodedToken.username));
+    }
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", darkLightToggle);
+  }, [darkLightToggle]);
+
+  useEffect(() => {
+    localStorage.getItem("theme") === "dark" ? dispatch(setDarkLight("dark")) : dispatch(setDarkLight("light"));
+  }, [dispatch]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     dispatch(setInputValue(e.target.value));
@@ -88,6 +131,13 @@ function App(): JSX.Element {
     Promise.all([fetchNewsData(), fetchYoutubeData()]);
   };
 
+  const logOut = (): void => {
+    Cookies.remove("accessToken");
+    Cookies.remove("refreshToken");
+    dispatch(setUserCheck(false));
+    navigate("/");
+  };
+
   const menuItem = [
     { path: "/home", icon: <FaHome />, label: "Home" },
     { path: "/news", icon: <FaNewspaper />, label: "News" },
@@ -105,14 +155,6 @@ function App(): JSX.Element {
     }
   };
 
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", darkLightToggle);
-  }, [darkLightToggle]);
-
-  useEffect(() => {
-    localStorage.getItem("theme") === "dark" ? dispatch(setDarkLight("dark")) : dispatch(setDarkLight("light"));
-  }, [dispatch]);
-
   return (
     <div>
       <div className={styles.modalSet} style={searchModalTrigger === true ? { display: "block" } : { display: "none" }}>
@@ -126,19 +168,24 @@ function App(): JSX.Element {
       <div className={styles.finalBackground} />
       <div>
         <div className={styles.mainContainer}>
-          {false && (
+          {userCheck === true && (
             <div>
               <header className={styles.header}>
                 <h1
                   className={styles.logo}
                   onClick={() => {
                     dispatch(setMenuIndex(0));
-                    navigate("/");
+                    navigate("/home");
                   }}
                 >
                   <BsBox />
                   <span>Square Box</span>
                 </h1>
+
+                <div className={styles.welcome}>
+                  <FaUser className={styles.icon} />
+                  <span>{username}</span>
+                </div>
 
                 <form onSubmit={inputValue ? onSubmit : (e) => e.preventDefault()}>
                   <div className={styles.searchBar}>
@@ -167,15 +214,15 @@ function App(): JSX.Element {
 
                 <button className={styles.darkModeBtn} onClick={themeExchange}>
                   {darkLightToggle === "dark" ? (
-                    <GoSun className={styles.darkModeIcon} onClick={() => {}} />
+                    <GoSun className={styles.darkModeIcon} />
                   ) : (
                     <GoMoon className={styles.darkModeIcon} />
                   )}
                 </button>
 
-                <button className={styles.signInBtn}>
-                  <GoSignIn className={styles.signInIcon} />
-                  <span>Sign in</span>
+                <button className={styles.signInBtn} onClick={logOut}>
+                  <GoSignOut className={styles.signInIcon} />
+                  <span>Log Out</span>
                 </button>
               </header>
               <nav className={styles.navbar}>
@@ -205,6 +252,7 @@ function App(): JSX.Element {
             <Route path="/home" element={<Home />} />
             <Route path="/news" element={<News />} />
             <Route path="/youtube" element={<Youtube />} />
+            <Route path="/bookmark" element={<BookMark />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/welcome" element={<AfterSignUp />} />
             <Route path="/signup_error" element={<SignUpError />} />
