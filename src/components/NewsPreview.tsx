@@ -15,7 +15,7 @@ export default function NewsPreview(): JSX.Element {
   const username = useSelector((state: RootState) => state.verification.username);
 
   useEffect(() => {
-    newsData ? dispatch(setCurrentNews(newsData[0])) : null;
+    newsData.length !== 0 ? dispatch(setCurrentNews(newsData[0])) : null;
   }, [newsData, dispatch]);
 
   let imageUrl;

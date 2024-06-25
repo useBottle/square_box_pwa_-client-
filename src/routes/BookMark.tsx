@@ -12,6 +12,8 @@ import { RootState } from "../store/store";
 import { setMarkedNews, setMarkedYoutube, setSelector } from "../store/bookMarkSlice";
 import BookMarkNewsList from "../components/BookMarkNewsList";
 import axios from "axios";
+import BookMarkYoutubeList from "../components/BookMarkYoutubeList";
+import BookMarkNewsView from "../components/BookMarkNewsView";
 
 export default function BookMark(): JSX.Element {
   const dispatch = useDispatch();
@@ -34,7 +36,7 @@ export default function BookMark(): JSX.Element {
     }
   };
 
-  const getBookMarkData = async () => {
+  const getBookMarkData = async (): Promise<void> => {
     try {
       const result = await axios.put(
         process.env.REACT_APP_FIND_DATA as string,
@@ -47,7 +49,6 @@ export default function BookMark(): JSX.Element {
       );
       dispatch(setMarkedNews(result.data.newsData));
       dispatch(setMarkedYoutube(result.data.youtubeData));
-      console.log(result);
     } catch (error) {
       console.error("Data request failed.", error);
     }
@@ -71,6 +72,7 @@ export default function BookMark(): JSX.Element {
     <section className={styles.BookMarkContainer}>
       <div className={styles.viewContainer}>
         <h4 className={styles.viewTitle}>View</h4>
+        {selector === "news" ? <BookMarkNewsView /> : null}
       </div>
       <div className={styles.listContainer}>
         <div className={styles.listHeader}>
@@ -90,9 +92,7 @@ export default function BookMark(): JSX.Element {
             </button>
           </div>
         </div>
-        <div className={styles.contentList}>
-          <BookMarkNewsList />
-        </div>
+        <div className={styles.contentList}>{selector === "news" ? <BookMarkNewsList /> : <BookMarkYoutubeList />}</div>
       </div>
       <p className={styles.notice}>{MESSAGE.INFO.EXTENSION_NOTICE}</p>
     </section>

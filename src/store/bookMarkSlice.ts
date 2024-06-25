@@ -20,7 +20,6 @@ const initialState: BookMark = {
     videoId: "",
     thumbnail: "",
     title: "",
-    timestamp: "",
     channelHandle: "",
     channelThumbnail: "",
     channelTitle: "",

@@ -17,7 +17,7 @@ export default function YoutubePreview(): JSX.Element {
   const username = useSelector((state: RootState) => state.verification.username);
 
   useEffect(() => {
-    youtubeData ? dispatch(setCurrentYoutube(youtubeData[0])) : null;
+    youtubeData.length !== 0 ? dispatch(setCurrentYoutube(youtubeData[0])) : null;
   }, [youtubeData, dispatch]);
 
   // a 태그 대신 사용. 브라우저 하단에 URL 미리보기 나타나는 것 방지하기 위한 용도.

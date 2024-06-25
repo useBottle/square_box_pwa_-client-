@@ -1,7 +1,7 @@
 import styles from "../styles/News.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
-import NewsPreview from "../components/NewsPrivew";
+import NewsPreview from "../components/NewsPreview";
 import Loading from "../components/Loading";
 import Articles from "../components/Articles";
 import defaultImage from "../assets/images/news_image_class0.webp";

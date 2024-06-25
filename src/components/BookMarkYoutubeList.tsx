@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import styles from "../styles/BookMarkNewsList.module.scss";
+import styles from "../styles/BookMarkYoutubeList.module.scss";
 import { AppDispatch, RootState } from "../store/store";
 import { setMouseOnYoutube } from "../store/bookMarkSlice";
 
-export default function BookMarkNewsList(): JSX.Element {
+export default function BookMarkYoutubeList(): JSX.Element {
   const { markedYoutube } = useSelector((state: RootState) => state.bookMark);
   const dispatch = useDispatch<AppDispatch>();
 
@@ -25,7 +25,6 @@ export default function BookMarkNewsList(): JSX.Element {
             <div onMouseEnter={onMouseEnter} className={styles.video}>
               <img src={item.thumbnail} alt="thumbnail" />
               <h3>{item.title}</h3>
-              <span className={styles.timeStamp}>{item.timestamp}</span>
             </div>
           </div>
         );

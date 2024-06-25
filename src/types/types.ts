@@ -114,7 +114,6 @@ export interface markedYoutube {
   videoId: string;
   thumbnail: string;
   title: string;
-  timestamp: string;
   channelHandle: string;
   channelThumbnail: string;
   channelTitle: string;
