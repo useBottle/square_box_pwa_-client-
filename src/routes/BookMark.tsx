@@ -14,6 +14,7 @@ import BookMarkNewsList from "../components/BookMarkNewsList";
 import axios from "axios";
 import BookMarkYoutubeList from "../components/BookMarkYoutubeList";
 import BookMarkNewsView from "../components/BookMarkNewsView";
+import BookMarkYoutubeView from "../components/BookMarkYoutubeView";
 
 export default function BookMark(): JSX.Element {
   const dispatch = useDispatch();
@@ -72,7 +73,7 @@ export default function BookMark(): JSX.Element {
     <section className={styles.BookMarkContainer}>
       <div className={styles.viewContainer}>
         <h4 className={styles.viewTitle}>View</h4>
-        {selector === "news" ? <BookMarkNewsView /> : null}
+        {selector === "news" ? <BookMarkNewsView /> : <BookMarkYoutubeView />}
       </div>
       <div className={styles.listContainer}>
         <div className={styles.listHeader}>

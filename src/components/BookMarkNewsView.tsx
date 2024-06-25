@@ -11,11 +11,15 @@ export default function BookMarkNewsView(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const { markedNews } = useSelector((state: RootState) => state.bookMark);
   const { mouseOnNews } = useSelector((state: RootState) => state.bookMark);
-  const [newsUniqueValue, setNewsUniqueValue] = useState<string>("");
+  const [newsId, setNewsId] = useState<string>("");
 
   useEffect(() => {
     markedNews.length !== 0 ? dispatch(setMouseOnNews(markedNews[0])) : null;
   }, [markedNews, dispatch]);
+
+  useEffect(() => {
+    setNewsId(mouseOnNews._id);
+  }, [mouseOnNews]);
 
   // a 태그 대신 사용. 브라우저 하단에 URL 미리보기 나타나는 것 방지하기 위한 용도.
   const openNewTab = (url: string): void => {
@@ -25,12 +29,11 @@ export default function BookMarkNewsView(): JSX.Element {
   const removeBookMark = async (): Promise<void> => {
     const removedNewsArray = markedNews.filter((item) => item.originallink !== mouseOnNews.originallink);
     dispatch(setMarkedNews(removedNewsArray));
-    setNewsUniqueValue(mouseOnNews._id);
 
     try {
       await axios.put(
         process.env.REACT_APP_DELETE_NEWS as string,
-        { newsUniqueValue },
+        { newsId },
         { headers: { "Content-Type": "application/json" } },
       );
     } catch (error) {
@@ -46,7 +49,7 @@ export default function BookMarkNewsView(): JSX.Element {
           <h3>{mouseOnNews.title}</h3>
           <div className={styles.block}>
             <p className={styles.articleDate}>{mouseOnNews.pubDate}</p>
-            <button className={styles.bookMark} onClick={removeBookMark}>
+            <button className={styles.bookMarkRemover} onClick={removeBookMark}>
               <FaMinusCircle />
             </button>
           </div>
