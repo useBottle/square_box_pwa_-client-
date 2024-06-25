@@ -15,6 +15,31 @@
     border-radius: 10px;
   }
 
+  & .defaultView {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 550px;
+    height: 500px;
+    border: transparent;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background: var(--container-color);
+    animation: blinkBorder 3s infinite alternate ease-in-out;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  @keyframes blinkBorder {
+    0% {
+      border: 3px solid transparent;
+    }
+
+    100% {
+      border: 3px solid var(--font-color);
+    }
+  }
+
   & h3 {
     margin-top: 30px;
     font-size: 30px;

@@ -37,7 +37,7 @@ export default function YoutubePreview(): JSX.Element {
         },
       );
     } catch (error) {
-      console.error("News data upload fail.");
+      console.error("Youtube data upload fail.");
     }
   };
 

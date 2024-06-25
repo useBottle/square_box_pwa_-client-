@@ -106,6 +106,7 @@ export interface markedNews {
   originallink: string;
   imageUrl: string;
   articleText: string;
+  _id: string;
 }
 
 export interface markedYoutube {
@@ -117,6 +118,7 @@ export interface markedYoutube {
   channelHandle: string;
   channelThumbnail: string;
   channelTitle: string;
+  _id: string;
 }
 
 export interface BookMark {

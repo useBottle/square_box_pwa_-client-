@@ -38,4 +38,8 @@ export const MESSAGE = {
     ID_ERROR: "ID가 존재하지 않습니다.",
     PW_ERROR: "비밀번호가 일치하지 않습니다.",
   },
+
+  BOOKMARK: {
+    DEFAULT_INFO: "북마크된 컨텐츠가 없습니다.",
+  },
 };

@@ -5,6 +5,7 @@ import { AppDispatch, RootState } from "../store/store";
 import { setMarkedNews, setMouseOnNews } from "../store/bookMarkSlice";
 import { FaMinusCircle } from "react-icons/fa";
 import axios from "axios";
+import { MESSAGE } from "../common/message";
 
 export default function BookMarkNewsView(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -24,10 +25,14 @@ export default function BookMarkNewsView(): JSX.Element {
   const removeBookMark = async (): Promise<void> => {
     const removedNewsArray = markedNews.filter((item) => item.originallink !== mouseOnNews.originallink);
     dispatch(setMarkedNews(removedNewsArray));
-    setNewsUniqueValue(mouseOnNews.originallink);
+    setNewsUniqueValue(mouseOnNews._id);
 
     try {
-      await axios.put("", { newsUniqueValue }, { headers: { "Content-Type": "application/json" } });
+      await axios.put(
+        process.env.REACT_APP_DELETE_NEWS as string,
+        { newsUniqueValue },
+        { headers: { "Content-Type": "application/json" } },
+      );
     } catch (error) {
       console.error("Data remove request is failed.", error);
     }
@@ -35,18 +40,24 @@ export default function BookMarkNewsView(): JSX.Element {
 
   return (
     <div className={styles.newsView}>
-      <img src={mouseOnNews.imageUrl} alt="news-view" />
-      <h3>{mouseOnNews.title}</h3>
-      <div className={styles.block}>
-        <p className={styles.articleDate}>{mouseOnNews.pubDate}</p>
-        <button className={styles.bookMark} onClick={removeBookMark}>
-          <FaMinusCircle />
-        </button>
-      </div>
-      <button className={styles.originalLink} onClick={() => openNewTab(mouseOnNews.originallink)}>
-        원문 링크
-      </button>
-      <p>{mouseOnNews.articleText}</p>
+      {markedNews.length !== 0 ? (
+        <div>
+          <img src={mouseOnNews.imageUrl} alt="news-view" />
+          <h3>{mouseOnNews.title}</h3>
+          <div className={styles.block}>
+            <p className={styles.articleDate}>{mouseOnNews.pubDate}</p>
+            <button className={styles.bookMark} onClick={removeBookMark}>
+              <FaMinusCircle />
+            </button>
+          </div>
+          <button className={styles.originalLink} onClick={() => openNewTab(mouseOnNews.originallink)}>
+            원문 링크
+          </button>
+          <p>{mouseOnNews.articleText}</p>
+        </div>
+      ) : (
+        <div className={styles.defaultView}>{MESSAGE.BOOKMARK.DEFAULT_INFO}</div>
+      )}
     </div>
   );
 }
