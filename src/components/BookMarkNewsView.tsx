@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
 import { setMarkedNews, setMouseOnNews } from "../store/bookMarkSlice";
-import { FaMinusCircle } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import axios from "axios";
 import { MESSAGE } from "../common/message";
 
@@ -50,7 +50,7 @@ export default function BookMarkNewsView(): JSX.Element {
           <div className={styles.block}>
             <p className={styles.articleDate}>{mouseOnNews.pubDate}</p>
             <button className={styles.bookMarkRemover} onClick={removeBookMark}>
-              <FaMinusCircle />
+              <FaTrash />
             </button>
           </div>
           <button className={styles.originalLink} onClick={() => openNewTab(mouseOnNews.originallink)}>

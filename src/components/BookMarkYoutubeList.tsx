@@ -3,6 +3,7 @@ import styles from "../styles/BookMarkYoutubeList.module.scss";
 import { AppDispatch, RootState } from "../store/store";
 import { setMouseOnYoutube } from "../store/bookMarkSlice";
 import { MESSAGE } from "../common/message";
+import { FaTrash } from "react-icons/fa";
 
 export default function BookMarkYoutubeList(): JSX.Element {
   const { markedYoutube } = useSelector((state: RootState) => state.bookMark);
@@ -28,6 +29,12 @@ export default function BookMarkYoutubeList(): JSX.Element {
                 <div onMouseEnter={onMouseEnter} className={styles.video}>
                   <img src={item.thumbnail} alt="thumbnail" />
                   <h3>{item.title}</h3>
+                  <div className={styles.block}>
+                    <p>{item.channelTitle}</p>
+                    <button>
+                      <FaTrash className={styles.bookMarkRemover} />
+                    </button>
+                  </div>
                 </div>
               </div>
             );

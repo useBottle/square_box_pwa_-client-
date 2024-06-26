@@ -3,6 +3,7 @@ import styles from "../styles/BookMarkNewsList.module.scss";
 import { AppDispatch, RootState } from "../store/store";
 import { setMouseOnNews } from "../store/bookMarkSlice";
 import { MESSAGE } from "../common/message";
+import { FaTrash } from "react-icons/fa";
 
 export default function BookMarkNewsList(): JSX.Element {
   const { markedNews } = useSelector((state: RootState) => state.bookMark);
@@ -22,7 +23,12 @@ export default function BookMarkNewsList(): JSX.Element {
                 <div onMouseEnter={onMouseEnter} className={styles.article}>
                   <div>
                     <h3>{item.title}</h3>
-                    <p>{item.pubDate}</p>
+                    <div className={styles.block}>
+                      <p>{item.pubDate}</p>
+                      <button>
+                        <FaTrash className={styles.bookMarkRemover} />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

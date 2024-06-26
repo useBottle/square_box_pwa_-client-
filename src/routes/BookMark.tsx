@@ -15,6 +15,7 @@ import axios from "axios";
 import BookMarkYoutubeList from "../components/BookMarkYoutubeList";
 import BookMarkNewsView from "../components/BookMarkNewsView";
 import BookMarkYoutubeView from "../components/BookMarkYoutubeView";
+import { FaNewspaper, FaYoutube } from "react-icons/fa";
 
 export default function BookMark(): JSX.Element {
   const dispatch = useDispatch();
@@ -83,13 +84,13 @@ export default function BookMark(): JSX.Element {
               onClick={() => dispatch(setSelector("news"))}
               className={selector === "news" ? styles.selectedBtn : ""}
             >
-              News
+              <FaNewspaper />
             </button>
             <button
               onClick={() => dispatch(setSelector("youtube"))}
               className={selector === "youtube" ? styles.selectedBtn : ""}
             >
-              Youtube
+              <FaYoutube />
             </button>
           </div>
         </div>

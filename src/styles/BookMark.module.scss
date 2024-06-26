@@ -44,6 +44,7 @@
       top: 50px;
       display: flex;
       justify-content: space-between;
+      align-items: flex-end;
       width: 100%;
 
       & .listTitle {
@@ -51,7 +52,9 @@
       }
 
       & .selectBtn {
+        position: absolute;
         display: flex;
+        right: 0;
 
         & button {
           display: flex;
@@ -60,7 +63,9 @@
           border: none;
           border-radius: 5px;
           right: 0;
-          height: 20px;
+          height: 40px;
+          width: 40px;
+          font-size: 20px;
           padding: 5px 10px;
           margin-left: 10px;
           box-sizing: border-box;

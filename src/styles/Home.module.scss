@@ -50,8 +50,9 @@
       border: 3px solid var(--font-color);
       box-sizing: border-box;
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
 
       & p {
         margin: 20px;

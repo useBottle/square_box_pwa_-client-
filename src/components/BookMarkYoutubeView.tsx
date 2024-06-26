@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
 import { useEffect, useState } from "react";
 import { setMarkedYoutube, setMouseOnYoutube } from "../store/bookMarkSlice";
-import { FaMinusCircle } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import axios from "axios";
 import { MESSAGE } from "../common/message";
 
@@ -74,7 +74,7 @@ export default function BookMarkYoutubeView(): JSX.Element {
                 <span>{mouseOnYoutube.channelTitle}</span>
               </button>
               <button className={styles.bookMarkRemover} onClick={removeBookMark}>
-                <FaMinusCircle />
+                <FaTrash />
               </button>
             </div>
           </div>
