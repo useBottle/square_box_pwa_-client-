@@ -1,0 +1,48 @@
+.modalContainer {
+  position: absolute;
+  font-family: "S-CoreDream-1Thin";
+  z-index: 9999;
+  width: 400px;
+  background: var(--modal-color);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 10px 10px 50px#0000008e;
+  overflow: hidden;
+
+  & .infoIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+    font-size: 50px;
+    border: 3px solid var(--font-color);
+    border-radius: 5px;
+    width: 80px;
+    height: 80px;
+    box-sizing: border-box;
+  }
+
+  & h2 {
+    margin: 20px 0;
+  }
+
+  & .confirmBtn {
+    margin: 40px 0;
+    padding: 10px 20px;
+    background: var(--point-color2);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  & .confirmBtn:hover {
+    background: var(--point-color3);
+  }
+}

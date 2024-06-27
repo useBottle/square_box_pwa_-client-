@@ -6,6 +6,7 @@ const initialState: userInterface = {
   menuIndex: 0,
   searchModalTrigger: false,
   bookMarkModalTrigger: false,
+  bookMarkLimitModalTrigger: false,
   loadingStatus: {
     newsLoading: false,
     youtubeLoading: false,
@@ -30,6 +31,9 @@ const userInterfaceSlice = createSlice({
     setBookMarkModalTrigger(state, action: PayloadAction<boolean>) {
       state.bookMarkModalTrigger = action.payload;
     },
+    setBookMarkLimitModalTrigger(state, action: PayloadAction<boolean>) {
+      state.bookMarkLimitModalTrigger = action.payload;
+    },
     setNewsLoading(state, action: PayloadAction<boolean>) {
       state.loadingStatus.newsLoading = action.payload;
     },
@@ -50,6 +54,7 @@ export const {
   setMenuIndex,
   setSearchModalTrigger,
   setBookMarkModalTrigger,
+  setBookMarkLimitModalTrigger,
   setNewsLoading,
   setYoutubeLoading,
   setSignUpLoading,

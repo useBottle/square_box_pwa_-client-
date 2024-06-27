@@ -21,6 +21,7 @@ import { BsBox } from "react-icons/bs";
 import SearchModal from "./components/SearchModal";
 import axios from "axios";
 import {
+  setBookMarkLimitModalTrigger,
   setBookMarkModalTrigger,
   setDarkLight,
   setMenuIndex,
@@ -33,6 +34,7 @@ import reissueToken from "./module/reissueToken";
 import { jwtDecode } from "jwt-decode";
 import { TokenInfo } from "./types/types";
 import BookMarkModal from "./components/BookMarkModal";
+import BookMarkLimitModal from "./components/BookMarkLimitModal";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -41,6 +43,7 @@ function App(): JSX.Element {
   const { menuIndex } = useSelector((state: RootState) => state.userInterface);
   const { searchModalTrigger } = useSelector((state: RootState) => state.userInterface);
   const { bookMarkModalTrigger } = useSelector((state: RootState) => state.userInterface);
+  const { bookMarkLimitModalTrigger } = useSelector((state: RootState) => state.userInterface);
   const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
   const userCheck = useSelector((state: RootState) => state.verification.userCheck);
   const accessToken = Cookies.get("accessToken");
@@ -170,6 +173,13 @@ function App(): JSX.Element {
       >
         <BookMarkModal />
         <div className={styles.overlay} role="button" onClick={() => dispatch(setBookMarkModalTrigger(false))} />
+      </div>
+      <div
+        className={styles.bookMarkLimitModalSet}
+        style={bookMarkLimitModalTrigger === true ? { display: "block" } : { display: "none" }}
+      >
+        <BookMarkLimitModal />
+        <div className={styles.overlay} role="button" onClick={() => dispatch(setBookMarkLimitModalTrigger(false))} />
       </div>
       <div className={styles.circle1} />
       <div className={styles.circle2} />

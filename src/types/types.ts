@@ -27,6 +27,7 @@ export interface userInterface {
   menuIndex: number;
   searchModalTrigger: boolean;
   bookMarkModalTrigger: boolean;
+  bookMarkLimitModalTrigger: boolean;
   loadingStatus: LoadingStatus;
 }
 
