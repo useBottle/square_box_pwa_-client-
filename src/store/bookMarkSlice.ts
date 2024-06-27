@@ -26,6 +26,8 @@ const initialState: BookMark = {
     channelTitle: "",
     _id: "",
   },
+  newsId: "",
+  youtubeId: "",
 };
 
 export const bookMarkSlice = createSlice({
@@ -46,6 +48,12 @@ export const bookMarkSlice = createSlice({
     },
     setMouseOnYoutube(state, action: PayloadAction<markedYoutube>) {
       state.mouseOnYoutube = action.payload;
+    },
+    setNewsId(state, action: PayloadAction<string>) {
+      state.newsId = action.payload;
+    },
+    setYoutubeId(state, action: PayloadAction<string>) {
+      state.youtubeId = action.payload;
     },
     resetMouseOnNews(state) {
       state.mouseOnNews = {
@@ -81,6 +89,8 @@ export const {
   setMarkedYoutube,
   setMouseOnNews,
   setMouseOnYoutube,
+  setNewsId,
+  setYoutubeId,
   resetMouseOnNews,
   resetMouseOnYoutube,
 } = bookMarkSlice.actions;

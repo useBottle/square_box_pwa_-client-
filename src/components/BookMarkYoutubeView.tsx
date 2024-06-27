@@ -2,7 +2,7 @@ import YouTube from "react-youtube";
 import styles from "../styles/BookMarkYoutubeView.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { setMarkedYoutube, setMouseOnYoutube } from "../store/bookMarkSlice";
 import { FaTrash } from "react-icons/fa";
 import axios from "axios";
@@ -12,15 +12,11 @@ export default function BookMarkYoutubeView(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const { markedYoutube } = useSelector((state: RootState) => state.bookMark);
   const { mouseOnYoutube } = useSelector((state: RootState) => state.bookMark);
-  const [youtubeId, setYoutubeId] = useState<string>("");
+  const youtubeId = useSelector((state: RootState) => state.bookMark.youtubeId);
 
   useEffect(() => {
     markedYoutube.length !== 0 ? dispatch(setMouseOnYoutube(markedYoutube[0])) : null;
   }, [markedYoutube, dispatch]);
-
-  useEffect(() => {
-    setYoutubeId(mouseOnYoutube._id);
-  }, [mouseOnYoutube]);
 
   // a 태그 대신 사용. 브라우저 하단에 URL 미리보기 나타나는 것 방지하기 위한 용도.
   const openNewTab = (url: string): void => {

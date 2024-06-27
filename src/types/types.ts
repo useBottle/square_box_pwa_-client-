@@ -127,4 +127,6 @@ export interface BookMark {
   markedYoutube: markedYoutube[];
   mouseOnNews: markedNews;
   mouseOnYoutube: markedYoutube;
+  newsId: string;
+  youtubeId: string;
 }

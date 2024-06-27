@@ -1,5 +1,5 @@
 import styles from "../styles/BookMarkNewsView.module.scss";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
 import { setMarkedNews, setMouseOnNews } from "../store/bookMarkSlice";
@@ -11,15 +11,11 @@ export default function BookMarkNewsView(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const { markedNews } = useSelector((state: RootState) => state.bookMark);
   const { mouseOnNews } = useSelector((state: RootState) => state.bookMark);
-  const [newsId, setNewsId] = useState<string>("");
+  const newsId = useSelector((state: RootState) => state.bookMark.newsId);
 
   useEffect(() => {
     markedNews.length !== 0 ? dispatch(setMouseOnNews(markedNews[0])) : null;
   }, [markedNews, dispatch]);
-
-  useEffect(() => {
-    setNewsId(mouseOnNews._id);
-  }, [mouseOnNews]);
 
   // a 태그 대신 사용. 브라우저 하단에 URL 미리보기 나타나는 것 방지하기 위한 용도.
   const openNewTab = (url: string): void => {
