@@ -7,6 +7,8 @@ import YouTube from "react-youtube";
 import defaultImage from "../assets/images/youtube_logo.webp";
 import { FaBookmark } from "react-icons/fa6";
 import axios from "axios";
+import { setYoutubeDataExistence } from "../store/bookMarkSlice";
+import { setBookMarkModalTrigger } from "../store/userInterfaceSlice";
 
 export default function YoutubePreview(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -27,15 +29,22 @@ export default function YoutubePreview(): JSX.Element {
 
   const addToBookMark = async () => {
     try {
-      await axios.post(
+      const response = await axios.post(
         process.env.REACT_APP_ADD_YOUTUBE_DATA,
         { currentYoutube, username },
         {
           headers: {
             "Content-Type": "application/json",
           },
+          validateStatus: (status) => {
+            return status >= 200 && status < 500;
+          },
         },
       );
+      if (response.status === 409) {
+        dispatch(setYoutubeDataExistence(true));
+      }
+      dispatch(setBookMarkModalTrigger(true));
     } catch (error) {
       console.error("Youtube data upload fail.");
     }
