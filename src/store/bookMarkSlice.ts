@@ -28,6 +28,8 @@ const initialState: BookMark = {
   },
   newsId: "",
   youtubeId: "",
+  newsDataExistence: false,
+  youtubeDataExistence: false,
 };
 
 export const bookMarkSlice = createSlice({
@@ -54,6 +56,12 @@ export const bookMarkSlice = createSlice({
     },
     setYoutubeId(state, action: PayloadAction<string>) {
       state.youtubeId = action.payload;
+    },
+    setNewsDataExistence(state, action: PayloadAction<boolean>) {
+      state.newsDataExistence = action.payload;
+    },
+    setYoutubeDataExistence(state, action: PayloadAction<boolean>) {
+      state.youtubeDataExistence = action.payload;
     },
     resetMouseOnNews(state) {
       state.mouseOnNews = {
@@ -91,6 +99,8 @@ export const {
   setMouseOnYoutube,
   setNewsId,
   setYoutubeId,
+  setNewsDataExistence,
+  setYoutubeDataExistence,
   resetMouseOnNews,
   resetMouseOnYoutube,
 } = bookMarkSlice.actions;

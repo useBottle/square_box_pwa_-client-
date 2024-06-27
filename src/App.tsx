@@ -21,6 +21,7 @@ import { BsBox } from "react-icons/bs";
 import SearchModal from "./components/SearchModal";
 import axios from "axios";
 import {
+  setBookMarkModalTrigger,
   setDarkLight,
   setMenuIndex,
   setNewsLoading,
@@ -31,6 +32,7 @@ import Cookies from "js-cookie";
 import reissueToken from "./module/reissueToken";
 import { jwtDecode } from "jwt-decode";
 import { TokenInfo } from "./types/types";
+import BookMarkModal from "./components/BookMarkModal";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -38,6 +40,7 @@ function App(): JSX.Element {
   const inputValue = useSelector((state: RootState) => state.inputValue);
   const { menuIndex } = useSelector((state: RootState) => state.userInterface);
   const { searchModalTrigger } = useSelector((state: RootState) => state.userInterface);
+  const { bookMarkModalTrigger } = useSelector((state: RootState) => state.userInterface);
   const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
   const userCheck = useSelector((state: RootState) => state.verification.userCheck);
   const accessToken = Cookies.get("accessToken");
@@ -160,6 +163,13 @@ function App(): JSX.Element {
       <div className={styles.modalSet} style={searchModalTrigger === true ? { display: "block" } : { display: "none" }}>
         <SearchModal />
         <div className={styles.overlay} role="button" onClick={() => dispatch(setSearchModalTrigger(false))} />
+      </div>
+      <div
+        className={styles.bookMarkModalSet}
+        style={bookMarkModalTrigger === true ? { display: "block" } : { display: "none" }}
+      >
+        <BookMarkModal />
+        <div className={styles.overlay} role="button" onClick={() => dispatch(setBookMarkModalTrigger(false))} />
       </div>
       <div className={styles.circle1} />
       <div className={styles.circle2} />

@@ -26,6 +26,7 @@ export interface userInterface {
   darkLightToggle: string;
   menuIndex: number;
   searchModalTrigger: boolean;
+  bookMarkModalTrigger: boolean;
   loadingStatus: LoadingStatus;
 }
 
@@ -130,4 +131,6 @@ export interface BookMark {
   mouseOnYoutube: markedYoutube;
   newsId: string;
   youtubeId: string;
+  newsDataExistence: boolean;
+  youtubeDataExistence: boolean;
 }

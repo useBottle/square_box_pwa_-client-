@@ -5,6 +5,7 @@ const initialState: userInterface = {
   darkLightToggle: "dark",
   menuIndex: 0,
   searchModalTrigger: false,
+  bookMarkModalTrigger: false,
   loadingStatus: {
     newsLoading: false,
     youtubeLoading: false,
@@ -26,6 +27,9 @@ const userInterfaceSlice = createSlice({
     setSearchModalTrigger(state, action: PayloadAction<boolean>) {
       state.searchModalTrigger = action.payload;
     },
+    setBookMarkModalTrigger(state, action: PayloadAction<boolean>) {
+      state.bookMarkModalTrigger = action.payload;
+    },
     setNewsLoading(state, action: PayloadAction<boolean>) {
       state.loadingStatus.newsLoading = action.payload;
     },
@@ -45,6 +49,7 @@ export const {
   setDarkLight,
   setMenuIndex,
   setSearchModalTrigger,
+  setBookMarkModalTrigger,
   setNewsLoading,
   setYoutubeLoading,
   setSignUpLoading,

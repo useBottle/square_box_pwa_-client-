@@ -7,6 +7,8 @@ import defaultImage from "../assets/images/news_image_class0.webp";
 import { MESSAGE } from "../common/message";
 import { FaBookmark } from "react-icons/fa6";
 import axios from "axios";
+import { setNewsDataExistence } from "../store/bookMarkSlice";
+import { setBookMarkModalTrigger } from "../store/userInterfaceSlice";
 
 export default function NewsPreview(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -47,34 +49,43 @@ export default function NewsPreview(): JSX.Element {
 
   const addToBookMark = async () => {
     try {
-      await axios.post(
+      const response = await axios.post(
         process.env.REACT_APP_ADD_NEWS_DATA,
         { bookMarkNewsData, username },
         {
           headers: {
             "Content-Type": "application/json",
           },
+          validateStatus: (status) => {
+            return status >= 200 && status < 500;
+          },
         },
       );
+      if (response.status === 409) {
+        dispatch(setNewsDataExistence(true));
+      }
+      dispatch(setBookMarkModalTrigger(true));
     } catch (error) {
       console.error("News data upload fail.");
     }
   };
 
   return (
-    <div className={styles.newsPreview}>
-      <img src={imageUrl} alt="articleImage" />
-      <h3>{currentNews.title}</h3>
-      <div className={styles.block}>
-        <p className={styles.articleDate}>{currentNews.pubDate}</p>
-        <button className={styles.bookMark} onClick={addToBookMark}>
-          <FaBookmark />
+    <div>
+      <div className={styles.newsPreview}>
+        <img src={imageUrl} alt="articleImage" />
+        <h3>{currentNews.title}</h3>
+        <div className={styles.block}>
+          <p className={styles.articleDate}>{currentNews.pubDate}</p>
+          <button className={styles.bookMark} onClick={addToBookMark}>
+            <FaBookmark />
+          </button>
+        </div>
+        <button className={styles.originalLink} onClick={() => openNewTab(currentNews.originallink as string)}>
+          원문 링크
         </button>
+        <p>{refinedText as string}</p>
       </div>
-      <button className={styles.originalLink} onClick={() => openNewTab(currentNews.originallink as string)}>
-        원문 링크
-      </button>
-      <p>{refinedText as string}</p>
     </div>
   );
 }
