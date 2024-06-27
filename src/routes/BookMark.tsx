@@ -105,11 +105,11 @@ export default function BookMark(): JSX.Element {
               {selector === "news" ? <BookMarkNewsList /> : <BookMarkYoutubeList />}
             </div>
           </div>
-          <p className={styles.notice}>{MESSAGE.INFO.EXTENSION_NOTICE}</p>
         </div>
       ) : (
         <Loading />
       )}
+      <p className={styles.notice}>{MESSAGE.INFO.EXTENSION_NOTICE}</p>
     </section>
   );
 }
