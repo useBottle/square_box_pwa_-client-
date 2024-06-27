@@ -7,7 +7,7 @@ import defaultImage from "../assets/images/news_image_class0.webp";
 import { MESSAGE } from "../common/message";
 import { FaBookmark } from "react-icons/fa6";
 import axios from "axios";
-import { setNewsDataExistence } from "../store/bookMarkSlice";
+import { setBookMarkDataExistence } from "../store/bookMarkSlice";
 import { setBookMarkLimitModalTrigger, setBookMarkModalTrigger } from "../store/userInterfaceSlice";
 
 export default function NewsPreview(): JSX.Element {
@@ -73,9 +73,9 @@ export default function NewsPreview(): JSX.Element {
           },
         );
         if (response.status === 409) {
-          dispatch(setNewsDataExistence(true));
+          dispatch(setBookMarkDataExistence(true));
         } else if (response.status === 200) {
-          dispatch(setNewsDataExistence(false));
+          dispatch(setBookMarkDataExistence(false));
         }
         dispatch(setBookMarkModalTrigger(true));
       } else if (result.data.newsData.length >= 10) {

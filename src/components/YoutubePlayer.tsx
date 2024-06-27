@@ -7,8 +7,8 @@ import YouTube from "react-youtube";
 import defaultImage from "../assets/images/youtube_logo.webp";
 import { FaBookmark } from "react-icons/fa6";
 import axios from "axios";
-import { setYoutubeDataExistence } from "../store/bookMarkSlice";
-import { setBookMarkModalTrigger } from "../store/userInterfaceSlice";
+import { setBookMarkLimitModalTrigger, setBookMarkModalTrigger } from "../store/userInterfaceSlice";
+import { setBookMarkDataExistence } from "../store/bookMarkSlice";
 
 export default function YoutubePreview(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -29,22 +29,38 @@ export default function YoutubePreview(): JSX.Element {
 
   const addToBookMark = async () => {
     try {
-      const response = await axios.post(
-        process.env.REACT_APP_ADD_YOUTUBE_DATA,
-        { currentYoutube, username },
+      const result = await axios.put(
+        process.env.REACT_APP_FIND_DATA as string,
+        { username },
         {
           headers: {
             "Content-Type": "application/json",
           },
-          validateStatus: (status) => {
-            return status >= 200 && status < 500;
-          },
         },
       );
-      if (response.status === 409) {
-        dispatch(setYoutubeDataExistence(true));
+
+      if (result.data.youtubeData.length < 10) {
+        const response = await axios.post(
+          process.env.REACT_APP_ADD_YOUTUBE_DATA,
+          { currentYoutube, username },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            validateStatus: (status) => {
+              return status >= 200 && status < 500;
+            },
+          },
+        );
+        if (response.status === 409) {
+          dispatch(setBookMarkDataExistence(true));
+        } else if (response.status === 200) {
+          dispatch(setBookMarkDataExistence(false));
+        }
+        dispatch(setBookMarkModalTrigger(true));
+      } else if (result.data.youtubeData.length >= 10) {
+        dispatch(setBookMarkLimitModalTrigger(true));
       }
-      dispatch(setBookMarkModalTrigger(true));
     } catch (error) {
       console.error("Youtube data upload fail.");
     }

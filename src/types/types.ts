@@ -132,6 +132,5 @@ export interface BookMark {
   mouseOnYoutube: markedYoutube;
   newsId: string;
   youtubeId: string;
-  newsDataExistence: boolean;
-  youtubeDataExistence: boolean;
+  bookMarkDataExistence: boolean;
 }

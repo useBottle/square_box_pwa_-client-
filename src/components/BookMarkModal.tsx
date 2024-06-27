@@ -8,11 +8,11 @@ import { setBookMarkModalTrigger } from "../store/userInterfaceSlice";
 
 export default function BookMarkModal(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
-  const { newsDataExistence } = useSelector((state: RootState) => state.bookMark);
+  const { bookMarkDataExistence } = useSelector((state: RootState) => state.bookMark);
 
   return (
     <div className={styles.modalContainer}>
-      {newsDataExistence === false ? (
+      {bookMarkDataExistence === false ? (
         <div className={styles.modalContents}>
           <div className={styles.infoIcon}>
             <FaInfoCircle />
