@@ -19,12 +19,15 @@ export interface LoadingStatus {
   newsLoading: boolean;
   youtubeLoading: boolean;
   signUpLoading: boolean;
+  bookMarkLoading: boolean;
 }
 
 export interface userInterface {
   darkLightToggle: string;
   menuIndex: number;
   searchModalTrigger: boolean;
+  bookMarkModalTrigger: boolean;
+  bookMarkLimitModalTrigger: boolean;
   loadingStatus: LoadingStatus;
 }
 
@@ -106,6 +109,7 @@ export interface markedNews {
   originallink: string;
   imageUrl: string;
   articleText: string;
+  _id: string;
 }
 
 export interface markedYoutube {
@@ -114,10 +118,10 @@ export interface markedYoutube {
   videoId: string;
   thumbnail: string;
   title: string;
-  timestamp: string;
   channelHandle: string;
   channelThumbnail: string;
   channelTitle: string;
+  _id: string;
 }
 
 export interface BookMark {
@@ -126,4 +130,7 @@ export interface BookMark {
   markedYoutube: markedYoutube[];
   mouseOnNews: markedNews;
   mouseOnYoutube: markedYoutube;
+  newsId: string;
+  youtubeId: string;
+  bookMarkDataExistence: boolean;
 }

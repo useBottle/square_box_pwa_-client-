@@ -7,6 +7,8 @@ import YouTube from "react-youtube";
 import defaultImage from "../assets/images/youtube_logo.webp";
 import { FaBookmark } from "react-icons/fa6";
 import axios from "axios";
+import { setBookMarkLimitModalTrigger, setBookMarkModalTrigger } from "../store/userInterfaceSlice";
+import { setBookMarkDataExistence } from "../store/bookMarkSlice";
 
 export default function YoutubePreview(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -17,7 +19,7 @@ export default function YoutubePreview(): JSX.Element {
   const username = useSelector((state: RootState) => state.verification.username);
 
   useEffect(() => {
-    youtubeData ? dispatch(setCurrentYoutube(youtubeData[0])) : null;
+    youtubeData.length !== 0 ? dispatch(setCurrentYoutube(youtubeData[0])) : null;
   }, [youtubeData, dispatch]);
 
   // a 태그 대신 사용. 브라우저 하단에 URL 미리보기 나타나는 것 방지하기 위한 용도.
@@ -27,17 +29,40 @@ export default function YoutubePreview(): JSX.Element {
 
   const addToBookMark = async () => {
     try {
-      await axios.post(
-        process.env.REACT_APP_ADD_YOUTUBE_DATA,
-        { currentYoutube, username },
+      const result = await axios.put(
+        process.env.REACT_APP_FIND_DATA as string,
+        { username },
         {
           headers: {
             "Content-Type": "application/json",
           },
         },
       );
+
+      if (result.data.youtubeData.length < 10) {
+        const response = await axios.post(
+          process.env.REACT_APP_ADD_YOUTUBE_DATA,
+          { currentYoutube, username },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            validateStatus: (status) => {
+              return status >= 200 && status < 500;
+            },
+          },
+        );
+        if (response.status === 409) {
+          dispatch(setBookMarkDataExistence(true));
+        } else if (response.status === 200) {
+          dispatch(setBookMarkDataExistence(false));
+        }
+        dispatch(setBookMarkModalTrigger(true));
+      } else if (result.data.youtubeData.length >= 10) {
+        dispatch(setBookMarkLimitModalTrigger(true));
+      }
     } catch (error) {
-      console.error("News data upload fail.");
+      console.error("Youtube data upload fail.");
     }
   };
 

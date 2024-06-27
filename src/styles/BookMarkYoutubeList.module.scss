@@ -1,8 +1,9 @@
-.newsSlider {
+.videoSlider {
   position: absolute;
   font-family: "S-CoreDream-4Regular";
   font-size: 20px;
   font-weight: 400;
+  color: var(--font-color);
   width: 400px;
   height: 500px;
   top: 0;
@@ -14,18 +15,25 @@
   transition: background 0.3s ease-in-out;
   overflow: scroll;
 
-  & .articleSet {
-    display: flex;
-    align-items: center;
+  & .videoList {
+    left: 0;
     border-radius: 10px;
 
-    & .article {
+    & .video {
       position: relative;
       border-radius: 10px;
       padding: 10px 15px;
+      display: flex;
+      flex-direction: column;
+
+      & img {
+        margin-top: 5px;
+        border-radius: 10px;
+      }
 
       & h3 {
         position: relative;
+        margin-top: 10px;
         font-family: "S-CoreDream-4Regular";
         font-size: 20px;
         line-height: 1.3;
@@ -67,14 +75,14 @@
     }
   }
 
-  & .articleSet:hover {
+  & .video:hover {
     background: var(--container-color);
 
     & h3 {
       color: var(--point-color1);
     }
 
-    & p {
+    & span {
       color: var(--point-color2);
     }
   }

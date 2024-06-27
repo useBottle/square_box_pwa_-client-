@@ -11,7 +11,7 @@ import { setUserCheck } from "../store/verificationSlice";
 import tokenVerification from "../module/tokenVerification";
 import { AppDispatch } from "../store/store";
 
-export default function Login(): JSX.Element {
+export default function LogIn(): JSX.Element {
   const { register, handleSubmit, getValues } = useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();

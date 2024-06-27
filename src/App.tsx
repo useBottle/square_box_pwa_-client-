@@ -2,42 +2,49 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import styles from "../src/styles/App.module.scss";
 import Home from "./routes/Home";
 import News from "./routes/News";
+import Youtube from "./routes/Youtube";
+import SignUp from "./routes/SignUp";
+import AfterSignUp from "./routes/AfterSignUp";
+import SignUpError from "./routes/SignUpError";
+import BookMark from "./routes/BookMark";
+import LogIn from "./routes/LogIn";
 import { IoSearch } from "react-icons/io5";
 import { GoSun, GoMoon, GoSignOut } from "react-icons/go";
 import { FaHome, FaNewspaper, FaYoutube, FaBookmark, FaUser } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { setInputValue } from "./store/inputValueSlice";
-import { useEffect } from "react";
+import { setNewsData, setYoutubeData } from "./store/dataSlice";
+import { setUserCheck, setUsername } from "./store/verificationSlice";
+import { FormEvent, useEffect, useRef } from "react";
 import { BsBox } from "react-icons/bs";
 import SearchModal from "./components/SearchModal";
 import axios from "axios";
-import { setNewsData, setYoutubeData } from "./store/dataSlice";
 import {
+  setBookMarkLimitModalTrigger,
+  setBookMarkModalTrigger,
   setDarkLight,
   setMenuIndex,
   setNewsLoading,
   setSearchModalTrigger,
   setYoutubeLoading,
 } from "./store/userInterfaceSlice";
-import Youtube from "./routes/Youtube";
-import Login from "./routes/Login";
-import SignUp from "./routes/SignUp";
-import AfterSignUp from "./routes/AfterSignUp";
-import SignUpError from "./routes/SignUpError";
 import Cookies from "js-cookie";
 import reissueToken from "./module/reissueToken";
-import { setUserCheck, setUsername } from "./store/verificationSlice";
 import { jwtDecode } from "jwt-decode";
 import { TokenInfo } from "./types/types";
-import BookMark from "./routes/BookMark";
+import BookMarkModal from "./components/BookMarkModal";
+import BookMarkLimitModal from "./components/BookMarkLimitModal";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const inputValue = useSelector((state: RootState) => state.inputValue);
+  const refInputValue = useRef("");
   const { menuIndex } = useSelector((state: RootState) => state.userInterface);
   const { searchModalTrigger } = useSelector((state: RootState) => state.userInterface);
+  const { bookMarkModalTrigger } = useSelector((state: RootState) => state.userInterface);
+  const { bookMarkLimitModalTrigger } = useSelector((state: RootState) => state.userInterface);
   const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
   const userCheck = useSelector((state: RootState) => state.verification.userCheck);
   const accessToken = Cookies.get("accessToken");
@@ -84,6 +91,7 @@ function App(): JSX.Element {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     dispatch(setNewsLoading(true));
     dispatch(setYoutubeLoading(true));
+    refInputValue.current = inputValue;
 
     menuIndex === 0 && dispatch(setSearchModalTrigger(true));
     e.preventDefault();
@@ -161,6 +169,20 @@ function App(): JSX.Element {
         <SearchModal />
         <div className={styles.overlay} role="button" onClick={() => dispatch(setSearchModalTrigger(false))} />
       </div>
+      <div
+        className={styles.bookMarkModalSet}
+        style={bookMarkModalTrigger === true ? { display: "block" } : { display: "none" }}
+      >
+        <BookMarkModal />
+        <div className={styles.overlay} role="button" onClick={() => dispatch(setBookMarkModalTrigger(false))} />
+      </div>
+      <div
+        className={styles.bookMarkLimitModalSet}
+        style={bookMarkLimitModalTrigger === true ? { display: "block" } : { display: "none" }}
+      >
+        <BookMarkLimitModal />
+        <div className={styles.overlay} role="button" onClick={() => dispatch(setBookMarkLimitModalTrigger(false))} />
+      </div>
       <div className={styles.circle1} />
       <div className={styles.circle2} />
       <div className={styles.circle3} />
@@ -187,7 +209,13 @@ function App(): JSX.Element {
                   <span>{username}</span>
                 </div>
 
-                <form onSubmit={inputValue ? onSubmit : (e) => e.preventDefault()}>
+                <form
+                  onSubmit={
+                    inputValue && refInputValue.current !== inputValue
+                      ? onSubmit
+                      : (e: FormEvent<HTMLFormElement>) => e.preventDefault()
+                  }
+                >
                   <div className={styles.searchBar}>
                     <input
                       type="text"
@@ -248,7 +276,7 @@ function App(): JSX.Element {
           )}
 
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<LogIn />} />
             <Route path="/home" element={<Home />} />
             <Route path="/news" element={<News />} />
             <Route path="/youtube" element={<Youtube />} />

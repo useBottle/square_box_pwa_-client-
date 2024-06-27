@@ -13,6 +13,7 @@ const initialState: BookMark = {
     originallink: "",
     imageUrl: "",
     articleText: "",
+    _id: "",
   },
   mouseOnYoutube: {
     category: "",
@@ -20,11 +21,14 @@ const initialState: BookMark = {
     videoId: "",
     thumbnail: "",
     title: "",
-    timestamp: "",
     channelHandle: "",
     channelThumbnail: "",
     channelTitle: "",
+    _id: "",
   },
+  newsId: "",
+  youtubeId: "",
+  bookMarkDataExistence: false,
 };
 
 export const bookMarkSlice = createSlice({
@@ -46,9 +50,53 @@ export const bookMarkSlice = createSlice({
     setMouseOnYoutube(state, action: PayloadAction<markedYoutube>) {
       state.mouseOnYoutube = action.payload;
     },
+    setNewsId(state, action: PayloadAction<string>) {
+      state.newsId = action.payload;
+    },
+    setYoutubeId(state, action: PayloadAction<string>) {
+      state.youtubeId = action.payload;
+    },
+    setBookMarkDataExistence(state, action: PayloadAction<boolean>) {
+      state.bookMarkDataExistence = action.payload;
+    },
+    resetMouseOnNews(state) {
+      state.mouseOnNews = {
+        category: "",
+        username: "",
+        title: "",
+        pubDate: "",
+        originallink: "",
+        imageUrl: "",
+        articleText: "",
+        _id: "",
+      };
+    },
+    resetMouseOnYoutube(state) {
+      state.mouseOnYoutube = {
+        category: "",
+        username: "",
+        videoId: "",
+        thumbnail: "",
+        title: "",
+        channelHandle: "",
+        channelThumbnail: "",
+        channelTitle: "",
+        _id: "",
+      };
+    },
   },
 });
 
-export const { setSelector, setMarkedNews, setMarkedYoutube, setMouseOnNews, setMouseOnYoutube } =
-  bookMarkSlice.actions;
+export const {
+  setSelector,
+  setMarkedNews,
+  setMarkedYoutube,
+  setMouseOnNews,
+  setMouseOnYoutube,
+  setNewsId,
+  setYoutubeId,
+  setBookMarkDataExistence,
+  resetMouseOnNews,
+  resetMouseOnYoutube,
+} = bookMarkSlice.actions;
 export default bookMarkSlice.reducer;

@@ -38,4 +38,11 @@ export const MESSAGE = {
     ID_ERROR: "ID가 존재하지 않습니다.",
     PW_ERROR: "비밀번호가 일치하지 않습니다.",
   },
+
+  BOOKMARK: {
+    DEFAULT_INFO: "북마크된 컨텐츠가 없습니다.",
+    ADD_COMPLETE: "북마크에 추가했습니다.",
+    ALREADY_EXIST: "이미 북마크된 컨텐츠입니다.",
+    NUMBER_LIMIT: "북마크 추가 제한 수를 초과했습니다.",
+  },
 };
