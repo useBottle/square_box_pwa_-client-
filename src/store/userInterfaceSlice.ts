@@ -9,6 +9,7 @@ const initialState: userInterface = {
     newsLoading: false,
     youtubeLoading: false,
     signUpLoading: false,
+    bookMarkLoading: false,
   },
 };
 
@@ -34,6 +35,9 @@ const userInterfaceSlice = createSlice({
     setSignUpLoading(state, action: PayloadAction<boolean>) {
       state.loadingStatus.signUpLoading = action.payload;
     },
+    setBookMarkLoading(state, action: PayloadAction<boolean>) {
+      state.loadingStatus.bookMarkLoading = action.payload;
+    },
   },
 });
 
@@ -44,5 +48,6 @@ export const {
   setNewsLoading,
   setYoutubeLoading,
   setSignUpLoading,
+  setBookMarkLoading,
 } = userInterfaceSlice.actions;
 export default userInterfaceSlice.reducer;

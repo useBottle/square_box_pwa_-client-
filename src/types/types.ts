@@ -19,6 +19,7 @@ export interface LoadingStatus {
   newsLoading: boolean;
   youtubeLoading: boolean;
   signUpLoading: boolean;
+  bookMarkLoading: boolean;
 }
 
 export interface userInterface {
