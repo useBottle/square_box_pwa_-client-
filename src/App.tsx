@@ -16,7 +16,7 @@ import { AppDispatch, RootState } from "./store/store";
 import { setInputValue } from "./store/inputValueSlice";
 import { setNewsData, setYoutubeData } from "./store/dataSlice";
 import { setUserCheck, setUsername } from "./store/verificationSlice";
-import { useEffect } from "react";
+import { FormEvent, useEffect, useRef } from "react";
 import { BsBox } from "react-icons/bs";
 import SearchModal from "./components/SearchModal";
 import axios from "axios";
@@ -40,6 +40,7 @@ function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const inputValue = useSelector((state: RootState) => state.inputValue);
+  const refInputValue = useRef("");
   const { menuIndex } = useSelector((state: RootState) => state.userInterface);
   const { searchModalTrigger } = useSelector((state: RootState) => state.userInterface);
   const { bookMarkModalTrigger } = useSelector((state: RootState) => state.userInterface);
@@ -90,6 +91,7 @@ function App(): JSX.Element {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     dispatch(setNewsLoading(true));
     dispatch(setYoutubeLoading(true));
+    refInputValue.current = inputValue;
 
     menuIndex === 0 && dispatch(setSearchModalTrigger(true));
     e.preventDefault();
@@ -207,7 +209,13 @@ function App(): JSX.Element {
                   <span>{username}</span>
                 </div>
 
-                <form onSubmit={inputValue ? onSubmit : (e) => e.preventDefault()}>
+                <form
+                  onSubmit={
+                    inputValue && refInputValue.current !== inputValue
+                      ? onSubmit
+                      : (e: FormEvent<HTMLFormElement>) => e.preventDefault()
+                  }
+                >
                   <div className={styles.searchBar}>
                     <input
                       type="text"
