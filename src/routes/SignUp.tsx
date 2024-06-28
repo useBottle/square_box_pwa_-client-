@@ -163,15 +163,6 @@ export default function SignUp(): JSX.Element {
             <h1>Square Box</h1>
           </div>
           <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
-            <div className={styles.checkIconSet}>
-              {idValue && isIdValid && userDuplication === "not-duplication" ? (
-                <FaCheck className={styles.checkIcon} />
-              ) : (
-                <span className={styles.blank} />
-              )}
-              {isPasswordValid && <FaCheck className={styles.checkIcon} />}
-              {confirmCondition && <FaCheck className={styles.checkIcon} />}
-            </div>
             <div className={styles.category}>
               <span>ID</span>
               <span>Password</span>
@@ -210,6 +201,15 @@ export default function SignUp(): JSX.Element {
               <IdText />
               <PasswordText />
               <ConfirmText />
+            </div>
+            <div className={styles.checkIconSet}>
+              {idValue && isIdValid && userDuplication === "not-duplication" ? (
+                <FaCheck className={styles.checkIcon} />
+              ) : (
+                <span className={styles.blank} />
+              )}
+              {isPasswordValid && <FaCheck className={styles.checkIcon} />}
+              {confirmCondition && <FaCheck className={styles.checkIcon} />}
             </div>
             {isIdValid && isPasswordValid && isPasswordConfirmed && userDuplication === "not-duplication" ? (
               <button type="submit" className={styles.joinBtn}>

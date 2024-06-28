@@ -69,7 +69,7 @@ function App(): JSX.Element {
       verifyToken();
     } else if (!accessToken && !refreshToken) {
       dispatch(setUserCheck(false));
-      navigate("/");
+      // navigate("/");
     } else if (accessToken) {
       const decodedToken = jwtDecode<TokenInfo>(accessToken);
       dispatch(setUsername(decodedToken.username));
