@@ -76,7 +76,7 @@ export default function BookMark(): JSX.Element {
   }, []);
 
   return (
-    <section className={styles.BookMarkContainer}>
+    <section className={styles.bookMarkContainer}>
       {bookMarkLoading === false ? (
         <div>
           <div className={styles.viewContainer}>
