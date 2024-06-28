@@ -47,3 +47,36 @@
     }
   }
 }
+
+
+// Desktop
+@media (min-width: 1280px) and (min-height: 700px) {
+  .loaderContainer {
+    width: 90vw;
+    height: 90vh;
+
+    & .border {
+      width: calc(90vw - 200px);
+      height: calc(90vh - 200px);
+      animation: extendBorder 2s infinite ease-in-out;
+    }
+
+    @keyframes extendBorder {
+      0% {
+        border: 3px solid transparent;
+      }
+
+      50% {
+        width: calc(90vw - 150px);
+        height: calc(90vh - 150px);
+        border: 3px solid var(--font-color);
+      }
+
+      100% {
+        width: calc(90vw - 150px);
+        height: calc(90vh - 150px);
+        border: 3px solid transparent;
+      }
+    }
+  }
+}
