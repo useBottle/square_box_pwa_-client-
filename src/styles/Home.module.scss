@@ -204,7 +204,70 @@
         padding: 0 10%;
 
         & p {
+          font-size: 22px;
+        }
+      }
+    }
+
+    & .realTimeContainer {
+      width: 23vw;
+      height: 60vh;
+      top: 50%;
+      left: 77%;
+      transform: translate(-50%, -50%);
+
+      & .realTimeTitle {
+        top: -25px;
+      }
+
+      & .updateCounter {
+        top: -25px;
+      }
+
+      & .realTime {
+        width: 100%;
+        height: 100%;
+        top: 0;
+
+        & li {
+          height: 10%;
           font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1679px) and (min-height: 1000px) {
+  .homeContainer {
+    width: calc(90vw - 100px);
+    height: calc(90vh - 100px);
+
+    & .landingContainer {
+      width: 40vw;
+      height: 60vh;
+      top: 50%;
+      left: 35%;
+      transform: translate(-50%, -50%);
+
+      & .infoIcon {
+        font-size: 50px;
+        top: -25px;
+      }
+
+      & .iconBack {
+        width: 40px;
+        height: 40px;
+        top: -20px;
+      }
+
+      & .infoContainer {
+        width: 40vw;
+        height: 60vh;
+        padding: 0 10%;
+
+        & p {
+          font-size: 18px;
         }
       }
     }
@@ -238,185 +301,7 @@
   }
 }
 
-@media (min-width: 1600px) and (max-width: 1679px) and (min-height: 1000px) {
-  .homeContainer {
-    width: calc(90vw - 100px);
-    height: calc(90vh - 100px);
-
-    & .landingContainer {
-      width: 40vw;
-      height: 60vh;
-      top: 50%;
-      left: 35%;
-      transform: translate(-50%, -50%);
-
-      & .infoContainer {
-        width: 40vw;
-        height: 60vh;
-        padding: 0 10%;
-
-        & p {
-          font-size: 20px;
-        }
-      }
-    }
-
-    & .realTimeContainer {
-      width: 20vw;
-      height: 60vh;
-      top: 50%;
-      left: 75%;
-      transform: translate(-50%, -50%);
-
-      & .realTimeTitle {
-        top: -25px;
-      }
-
-      & .updateCounter {
-        top: -25px;
-      }
-
-      & .realTime {
-        width: 100%;
-        height: 100%;
-        top: 0;
-
-        & li {
-          height: 10%;
-          font-size: 18px;
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 1600px) and (max-width: 1679px) and (min-height: 700px) and (max-height: 999px) {
-  .homeContainer {
-    width: calc(90vw - 100px);
-    height: calc(90vh - 100px);
-
-    & .landingContainer {
-      width: 40vw;
-      height: 60vh;
-      top: 50%;
-      left: 35%;
-      transform: translate(-50%, -50%);
-
-      & .infoIcon {
-        font-size: 50px;
-        top: -25px;
-      }
-
-      & .iconBack {
-        width: 40px;
-        height: 40px;
-        top: -20px;
-      }
-
-      & .infoContainer {
-        width: 40vw;
-        height: 60vh;
-        padding: 0 10%;
-
-        & p {
-          font-size: 18px;
-        }
-      }
-    }
-
-    & .realTimeContainer {
-      width: 20vw;
-      height: 60vh;
-      top: 50%;
-      left: 75%;
-      transform: translate(-50%, -50%);
-
-      & .realTimeTitle {
-        top: -25px;
-      }
-
-      & .updateCounter {
-        top: -25px;
-      }
-
-      & .realTime {
-        width: 100%;
-        height: 100%;
-        top: 0;
-
-        & li {
-          height: 10%;
-          font-size: 16px;
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 1600px) and (max-width: 1679px) and (min-height: 1000px) {
-  .homeContainer {
-    width: calc(90vw - 100px);
-    height: calc(90vh - 100px);
-
-    & .landingContainer {
-      width: 40vw;
-      height: 60vh;
-      top: 50%;
-      left: 35%;
-      transform: translate(-50%, -50%);
-
-      & .infoIcon {
-        font-size: 50px;
-        top: -25px;
-      }
-
-      & .iconBack {
-        width: 40px;
-        height: 40px;
-        top: -20px;
-      }
-
-      & .infoContainer {
-        width: 40vw;
-        height: 60vh;
-        padding: 0 10%;
-
-        & p {
-          font-size: 18px;
-        }
-      }
-    }
-
-    & .realTimeContainer {
-      width: 20vw;
-      height: 60vh;
-      top: 50%;
-      left: 75%;
-      transform: translate(-50%, -50%);
-
-      & .realTimeTitle {
-        top: -25px;
-      }
-
-      & .updateCounter {
-        top: -25px;
-      }
-
-      & .realTime {
-        width: 100%;
-        height: 100%;
-        top: 0;
-
-        & li {
-          height: 10%;
-          font-size: 16px;
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 1280px) and (max-width: 1599px) and (min-height: 700px) and (max-height: 999px) {
+@media (min-width: 1280px) and (max-width: 1679px) and (min-height: 700px) and (max-height: 999px) {
   .homeContainer {
     width: calc(90vw - 100px);
     height: calc(90vh - 100px);
@@ -451,10 +336,10 @@
     }
 
     & .realTimeContainer {
-      width: 20vw;
+      width: 23vw;
       height: 60vh;
       top: 50%;
-      left: 75%;
+      left: 77%;
       transform: translate(-50%, -50%);
 
       & .realTimeTitle {
@@ -474,72 +359,7 @@
         & li {
           width: 100%;
           height: 10%;
-          font-size: 12px;
-          // background: blue;
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 1280px) and (max-width: 1599px) and (min-height: 1000px) and (max-height: 1300px) {
-  .homeContainer {
-    width: calc(90vw - 100px);
-    height: calc(90vh - 100px);
-
-    & .landingContainer {
-      width: 40vw;
-      height: 60vh;
-      top: 50%;
-      left: 35%;
-      transform: translate(-50%, -50%);
-
-      & .infoIcon {
-        font-size: 40px;
-        top: -20px;
-      }
-
-      & .iconBack {
-        width: 40px;
-        height: 40px;
-        top: -20px;
-      }
-
-      & .infoContainer {
-        width: 40vw;
-        height: 60vh;
-        padding: 0 10%;
-
-        & p {
           font-size: 14px;
-        }
-      }
-    }
-
-    & .realTimeContainer {
-      width: 20vw;
-      height: 60vh;
-      top: 50%;
-      left: 75%;
-      transform: translate(-50%, -50%);
-
-      & .realTimeTitle {
-        top: -25px;
-        font-size: 14px;
-      }
-
-      & .updateCounter {
-        top: -30px;
-      }
-
-      & .realTime {
-        width: 100%;
-        height: 100%;
-        top: 0;
-
-        & li {
-          height: 10%;
-          font-size: 12px;
         }
       }
     }

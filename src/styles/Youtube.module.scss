@@ -115,3 +115,16 @@
     color: var(--sub-title);
   }
 }
+
+// Desktop
+@media (min-width: 1680px) {}
+
+@media (min-width: 1600px) and (max-width: 1679px) and (min-height: 1000px) {}
+
+@media (min-width: 1600px) and (max-width: 1679px) and (min-height: 700px) and (max-height: 999px) {}
+
+@media (min-width: 1600px) and (max-width: 1679px) and (min-height: 1000px) {}
+
+@media (min-width: 1280px) and (max-width: 1599px) and (min-height: 700px) and (max-height: 999px) {}
+
+@media (min-width: 1280px) and (max-width: 1599px) and (min-height: 1000px) and (max-height: 1300px) {}
