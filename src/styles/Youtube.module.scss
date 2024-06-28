@@ -116,15 +116,100 @@
   }
 }
 
+
 // Desktop
-@media (min-width: 1680px) {}
+@media (min-width: 1680px) {
+  .youtubeContainer {
+    width: calc(90vw - 100px);
+    height: calc(90vh - 100px);
 
-@media (min-width: 1600px) and (max-width: 1679px) and (min-height: 1000px) {}
+    & .playerContainer {
+      width: 40vw;
+      height: 60vh;
+      top: calc(50% - 25px);
+      left: 35%;
+      transform: translate(-50%, -50%);
 
-@media (min-width: 1600px) and (max-width: 1679px) and (min-height: 700px) and (max-height: 999px) {}
+      & .playerTitle {
+        top: 0;
+      }
 
-@media (min-width: 1600px) and (max-width: 1679px) and (min-height: 1000px) {}
+      & .defaultPlayer {
+        width: 100%;
+        height: 100%;
+        top: 25px;
 
-@media (min-width: 1280px) and (max-width: 1599px) and (min-height: 700px) and (max-height: 999px) {}
+        & img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
 
-@media (min-width: 1280px) and (max-width: 1599px) and (min-height: 1000px) and (max-height: 1300px) {}
+    & .videosContainer {
+      width: 23vw;
+      height: 60vh;
+      top: calc(50% - 25px);
+      left: 77%;
+      transform: translate(-50%, -50%);
+
+      & .videosTitle {
+        top: 0;
+      }
+
+      & .videoList {
+        width: 100%;
+        height: 100%;
+        top: 25px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1679px) and (min-height: 700px) and (max-height: 1440px) {
+  .youtubeContainer {
+    width: calc(90vw - 100px);
+    height: calc(90vh - 100px);
+
+    & .playerContainer {
+      width: 40vw;
+      height: 60vh;
+      top: calc(50% - 25px);
+      left: 35%;
+      transform: translate(-50%, -50%);
+
+      & .playerTitle {
+        top: 0;
+      }
+
+      & .defaultPlayer {
+        width: 100%;
+        height: 100%;
+        top: 25px;
+
+        & img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+
+    & .videosContainer {
+      width: 23vw;
+      height: 60vh;
+      top: calc(50% - 25px);
+      left: 77%;
+      transform: translate(-50%, -50%);
+
+      & .videosTitle {
+        top: 0;
+      }
+
+      & .videoList {
+        width: 100%;
+        height: 100%;
+        top: 25px;
+      }
+    }
+  }
+}
