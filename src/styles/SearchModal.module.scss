@@ -97,3 +97,10 @@
     color: var(--point-color2);
   }
 }
+
+@media (min-width: 1680px) {
+  .modalContainer {
+    width: 20%;
+    height: 25%;
+  }
+}

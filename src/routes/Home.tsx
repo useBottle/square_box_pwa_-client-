@@ -129,7 +129,7 @@ export default function Home(): JSX.Element {
   }, [clickTrigger]);
 
   return (
-    <section className={styles.HomeContainer}>
+    <section className={styles.homeContainer}>
       <div className={styles.landingContainer}>
         <FaInfoCircle className={styles.infoIcon} />
         <div className={styles.iconBack} />

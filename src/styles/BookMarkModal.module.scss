@@ -52,3 +52,10 @@
     background: var(--point-color3);
   }
 }
+
+@media (min-width: 1680px) {
+  .modalContainer {
+    width: 20%;
+    height: 25%;
+  }
+}

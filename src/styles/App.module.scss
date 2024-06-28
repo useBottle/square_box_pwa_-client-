@@ -487,3 +487,15 @@ body {
     backdrop-filter: blur(5px);
   }
 }
+
+@media (min-width: 1680px) {
+  .mainContainer {
+    width: 90vw;
+    height: 90vh;
+
+    & .navbar {
+      top: 100px;
+      height: calc(90vh - 100px);
+    }
+  }
+}

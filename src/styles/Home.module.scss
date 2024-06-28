@@ -1,6 +1,6 @@
 @import "./fonts.scss";
 
-.HomeContainer {
+.homeContainer {
   position: absolute;
   top: 100px;
   left: 100px;
@@ -177,5 +177,62 @@
     position: absolute;
     bottom: 20px;
     color: var(--sub-title);
+  }
+}
+
+@media (min-width: 1680px) {
+  .homeContainer {
+    width: calc(90vw - 100px);
+    height: calc(90vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    & .landingContainer {
+      width: 40vw;
+      height: 60vh;
+      top: 50%;
+      left: 40%;
+      transform: translate(-50%, -50%);
+
+      & .infoContainer {
+        width: 40vw;
+        height: 60vh;
+
+        & p {
+          font-size: 20px;
+          margin-left: 15%;
+        }
+      }
+    }
+
+    & .realTimeContainer {
+      width: 16vw;
+      height: 60vh;
+      top: 50%;
+      left: 75%;
+      transform: translate(-50%, -50%);
+
+      & .realTimeTitle {
+        top: 0;
+      }
+
+      & .updateCounter {
+        top: 0;
+      }
+
+      & .realTime {
+        width: 100%;
+        height: 97%;
+        top: 25px;
+
+        & li {
+          height: 10%;
+          // padding: 16px 10px;
+          font-size: 20px;
+        }
+      }
+    }
   }
 }
