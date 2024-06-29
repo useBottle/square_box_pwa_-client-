@@ -98,9 +98,40 @@
   }
 }
 
-@media (min-width: 1680px) {
+@media (min-width: 1920px) {
   .modalContainer {
     width: 20%;
-    height: 25%;
+  }
+}
+
+@media (min-width: 1440px) and (max-width: 1919px) and (min-height: 700px) and (max-height: 1440px) {
+  .modalContainer {
+    width: 20%;
+
+    & h2 {
+      font-size: 14px;
+    }
+
+    & ul {
+      & li {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1439px) and (min-height: 700px) and (max-height: 1440px) {
+  .modalContainer {
+    width: 20%;
+
+    & h2 {
+      font-size: 12px;
+    }
+
+    & ul {
+      & li {
+        font-size: 12px;
+      }
+    }
   }
 }

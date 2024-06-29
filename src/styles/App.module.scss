@@ -488,7 +488,129 @@ body {
   }
 }
 
-@media (min-width: 1680px) {
+@media (min-width: 2400px) {
+  $length-value: 3600px;
+  $left-value: -1500px;
+  $bottom-value: 300px;
+
+  .circle1 {
+    width: $length-value;
+    height: $length-value;
+    bottom: $bottom-value;
+    left: $left-value;
+    border-radius: 46%;
+  }
+
+  .circle2 {
+    width: $length-value;
+    height: $length-value;
+    bottom: calc($bottom-value - 100px);
+    left: calc($left-value + 70px);
+    border-radius: 46%;
+  }
+
+  .circle3 {
+    width: $length-value;
+    height: $length-value;
+    bottom: calc($bottom-value - 200px);
+    ;
+    left: calc($left-value + 120px);
+    border-radius: 46%;
+  }
+
+  .mainContainer {
+    width: 90vw;
+    height: 90vh;
+
+    & .navbar {
+      top: 100px;
+      height: calc(90vh - 100px);
+    }
+  }
+}
+
+@media (min-width: 2200px) and (max-width: 2399px) {
+  $length-value: 3200px;
+  $left-value: -1300px;
+  $bottom-value: 300px;
+
+  .circle1 {
+    width: $length-value;
+    height: $length-value;
+    bottom: $bottom-value;
+    left: $left-value;
+    border-radius: 46%;
+  }
+
+  .circle2 {
+    width: $length-value;
+    height: $length-value;
+    bottom: calc($bottom-value - 100px);
+    left: calc($left-value + 70px);
+    border-radius: 46%;
+  }
+
+  .circle3 {
+    width: $length-value;
+    height: $length-value;
+    bottom: calc($bottom-value - 200px);
+    ;
+    left: calc($left-value + 120px);
+    border-radius: 46%;
+  }
+
+  .mainContainer {
+    width: 90vw;
+    height: 90vh;
+
+    & .navbar {
+      top: 100px;
+      height: calc(90vh - 100px);
+    }
+  }
+}
+
+@media (min-width: 1920px) and (max-width: 2199px) {
+  $length-value: 2800px;
+  $left-value: -1200px;
+  $bottom-value: 300px;
+
+  .circle1 {
+    width: $length-value;
+    height: $length-value;
+    bottom: $bottom-value;
+    left: $left-value;
+    border-radius: 46%;
+  }
+
+  .circle2 {
+    width: $length-value;
+    height: $length-value;
+    bottom: calc($bottom-value - 100px);
+    left: calc($left-value + 70px);
+    border-radius: 46%;
+  }
+
+  .circle3 {
+    width: $length-value;
+    height: $length-value;
+    bottom: calc($bottom-value - 200px);
+    left: calc($left-value + 120px);
+    border-radius: 46%;
+  }
+
+  .mainContainer {
+    width: 90vw;
+    height: 90vh;
+
+    & .navbar {
+      top: 100px;
+      height: calc(90vh - 100px);
+    }
+  }
+}
+
+@media (min-width: 1680px) and (max-width: 1919px) {
   .mainContainer {
     width: 90vw;
     height: 90vh;
@@ -501,6 +623,10 @@ body {
 }
 
 @media (min-width: 1280px) and (max-width: 1679px) {
+  .circle4 {
+    right: -8000px;
+  }
+
   .mainContainer {
     width: 90vw;
     height: 90vh;

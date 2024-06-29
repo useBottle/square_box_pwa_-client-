@@ -13,7 +13,7 @@
   --circle1-gradient: linear-gradient(90deg, #362774 10%, #335cc5 60%, #637ffd 100%);
   --circle2-gradient: linear-gradient(70deg, #274b74, #382aa2, #8365d7);
   --circle3-gradient: linear-gradient(40deg, #274b74, #3533c5, #2963fd);
-  --circle4-gradient: linear-gradient(180deg, #17caea, #4182b4, #6078ea);
+  --circle4-gradient: linear-gradient(180deg, #5671c4, #3b51a0, #373388);
 }
 
 [data-theme="light"] {
