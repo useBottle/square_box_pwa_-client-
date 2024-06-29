@@ -88,6 +88,7 @@
       transition: background 0.3s ease-in-out;
 
       & .text {
+        font-size: 15px;
         pointer-events: none;
       }
     }
@@ -127,7 +128,7 @@
       width: 40vw;
       height: 60vh;
       top: calc(50% - 25px);
-      left: 35%;
+      left: 33%;
       transform: translate(-50%, -50%);
 
       & .playerTitle {
@@ -141,7 +142,7 @@
 
         & img {
           width: 100%;
-          height: auto;
+          height: 75%;
         }
       }
     }
@@ -175,7 +176,7 @@
       width: 40vw;
       height: 60vh;
       top: calc(50% - 25px);
-      left: 35%;
+      left: 33%;
       transform: translate(-50%, -50%);
 
       & .playerTitle {
@@ -189,7 +190,7 @@
 
         & img {
           width: 100%;
-          height: auto;
+          height: 75%;
         }
       }
     }
