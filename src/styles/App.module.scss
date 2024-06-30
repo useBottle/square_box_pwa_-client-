@@ -488,6 +488,7 @@ body {
   }
 }
 
+// Desktop
 @media (min-width: 2400px) {
   $length-value: 3600px;
   $left-value: -1500px;
@@ -636,4 +637,39 @@ body {
       height: calc(90vh - 100px);
     }
   }
+}
+
+
+// Tablet (vertical mode)
+@media (min-width: 768px) and (max-width: 1279px) and (min-height: 1024px) and (max-height: 1366px) {
+  $length-value: 3600px;
+  $left-value: -2300px;
+  $bottom-value: 300px;
+
+  .circle1 {
+    width: $length-value;
+    height: $length-value;
+    bottom: $bottom-value;
+    left: $left-value;
+    border-radius: 46%;
+  }
+
+  .circle2 {
+    width: $length-value;
+    height: $length-value;
+    bottom: calc($bottom-value - 100px);
+    left: calc($left-value + 70px);
+    border-radius: 46%;
+  }
+
+  .circle3 {
+    width: $length-value;
+    height: $length-value;
+    bottom: calc($bottom-value - 200px);
+    ;
+    left: calc($left-value + 120px);
+    border-radius: 46%;
+  }
+
+  .circle4 {}
 }
