@@ -25,6 +25,7 @@ export interface LoadingStatus {
 export interface userInterface {
   darkLightToggle: string;
   menuIndex: number;
+  navSwitch: boolean;
   searchModalTrigger: boolean;
   bookMarkModalTrigger: boolean;
   bookMarkLimitModalTrigger: boolean;

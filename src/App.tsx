@@ -25,6 +25,7 @@ import {
   setBookMarkModalTrigger,
   setDarkLight,
   setMenuIndex,
+  setNavSwitch,
   setNewsLoading,
   setSearchModalTrigger,
   setYoutubeLoading,
@@ -46,10 +47,11 @@ function App(): JSX.Element {
   const { bookMarkModalTrigger } = useSelector((state: RootState) => state.userInterface);
   const { bookMarkLimitModalTrigger } = useSelector((state: RootState) => state.userInterface);
   const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
-  const userCheck = useSelector((state: RootState) => state.verification.userCheck);
+  const { userCheck } = useSelector((state: RootState) => state.verification);
   const accessToken = Cookies.get("accessToken");
   const refreshToken = Cookies.get("refreshToken");
-  const username = useSelector((state: RootState) => state.verification.username);
+  const { username } = useSelector((state: RootState) => state.verification);
+  const { navSwitch } = useSelector((state: RootState) => state.userInterface);
 
   const verifyToken = async () => {
     try {
@@ -256,10 +258,13 @@ function App(): JSX.Element {
                 </div>
               </header>
               <nav className={styles.navbar}>
-                <div className={styles.menuSwitch}>
+                <button
+                  className={styles.menuSwitch}
+                  onClick={() => dispatch(navSwitch ? setNavSwitch(false) : setNavSwitch(true))}
+                >
                   <IoMenu />
-                </div>
-                <ul>
+                </button>
+                <ul className={navSwitch ? "" : styles.switch}>
                   {menuItem.map((item, index) => {
                     return (
                       <li

@@ -398,6 +398,9 @@ body {
 
     & .menuSwitch {
       display: none;
+      background: transparent;
+      border: none;
+      color: var(--font-color);
     }
 
     & ul {
@@ -458,6 +461,10 @@ body {
           opacity: 1;
         }
       }
+    }
+
+    & .switch {
+      display: none;
     }
   }
 }

@@ -4,6 +4,7 @@ import { userInterface } from "../types/types";
 const initialState: userInterface = {
   darkLightToggle: "dark",
   menuIndex: 0,
+  navSwitch: false,
   searchModalTrigger: false,
   bookMarkModalTrigger: false,
   bookMarkLimitModalTrigger: false,
@@ -24,6 +25,9 @@ const userInterfaceSlice = createSlice({
     },
     setMenuIndex(state, action: PayloadAction<number>) {
       state.menuIndex = action.payload;
+    },
+    setNavSwitch(state, action: PayloadAction<boolean>) {
+      state.navSwitch = action.payload;
     },
     setSearchModalTrigger(state, action: PayloadAction<boolean>) {
       state.searchModalTrigger = action.payload;
@@ -52,6 +56,7 @@ const userInterfaceSlice = createSlice({
 export const {
   setDarkLight,
   setMenuIndex,
+  setNavSwitch,
   setSearchModalTrigger,
   setBookMarkModalTrigger,
   setBookMarkLimitModalTrigger,
