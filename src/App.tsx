@@ -8,7 +8,7 @@ import AfterSignUp from "./routes/AfterSignUp";
 import SignUpError from "./routes/SignUpError";
 import BookMark from "./routes/BookMark";
 import LogIn from "./routes/LogIn";
-import { IoSearch } from "react-icons/io5";
+import { IoSearch, IoMenu } from "react-icons/io5";
 import { GoSun, GoMoon, GoSignOut } from "react-icons/go";
 import { FaHome, FaNewspaper, FaYoutube, FaBookmark, FaUser } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
@@ -204,56 +204,61 @@ function App(): JSX.Element {
                   <span>Square Box</span>
                 </h1>
 
-                <div className={styles.welcome}>
-                  <FaUser className={styles.icon} />
-                  <span>{username}</span>
-                </div>
-
-                <form
-                  onSubmit={
-                    inputValue && refInputValue.current !== inputValue
-                      ? onSubmit
-                      : (e: FormEvent<HTMLFormElement>) => e.preventDefault()
-                  }
-                >
-                  <div className={styles.searchBar}>
-                    <input
-                      type="text"
-                      onChange={onChange}
-                      value={inputValue}
-                      placeholder="Search"
-                      spellCheck="false"
-                      autoComplete="off"
-                    />
-                    <div
-                      role="button"
-                      className={styles.clearBtn}
-                      onClick={() => dispatch(setInputValue(""))}
-                      style={inputValue === "" ? { display: "none" } : { display: "block" }}
-                    >
-                      <span className={`${styles.iconSet} ${styles.part1}`}></span>
-                      <span className={`${styles.iconSet} ${styles.part2}`}></span>
+                <div className={styles.headerBlock}>
+                  <form
+                    onSubmit={
+                      inputValue && refInputValue.current !== inputValue
+                        ? onSubmit
+                        : (e: FormEvent<HTMLFormElement>) => e.preventDefault()
+                    }
+                  >
+                    <div className={styles.searchBar}>
+                      <input
+                        type="text"
+                        onChange={onChange}
+                        value={inputValue}
+                        placeholder="Search"
+                        spellCheck="false"
+                        autoComplete="off"
+                      />
+                      <div
+                        role="button"
+                        className={styles.clearBtn}
+                        onClick={() => dispatch(setInputValue(""))}
+                        style={inputValue === "" ? { display: "none" } : { display: "block" }}
+                      >
+                        <span className={`${styles.iconSet} ${styles.part1}`}></span>
+                        <span className={`${styles.iconSet} ${styles.part2}`}></span>
+                      </div>
+                      <button className={styles.searchIconBox} type="submit">
+                        <IoSearch className={styles.searchIcon} />
+                      </button>
                     </div>
-                    <button className={styles.searchIconBox} type="submit">
-                      <IoSearch className={styles.searchIcon} />
-                    </button>
+                  </form>
+
+                  <div className={styles.user}>
+                    <FaUser className={styles.icon} />
+                    <span>{username}</span>
                   </div>
-                </form>
 
-                <button className={styles.darkModeBtn} onClick={themeExchange}>
-                  {darkLightToggle === "dark" ? (
-                    <GoSun className={styles.darkModeIcon} />
-                  ) : (
-                    <GoMoon className={styles.darkModeIcon} />
-                  )}
-                </button>
+                  <button className={styles.darkModeBtn} onClick={themeExchange}>
+                    {darkLightToggle === "dark" ? (
+                      <GoSun className={styles.darkModeIcon} />
+                    ) : (
+                      <GoMoon className={styles.darkModeIcon} />
+                    )}
+                  </button>
 
-                <button className={styles.signInBtn} onClick={logOut}>
-                  <GoSignOut className={styles.signInIcon} />
-                  <span>Log Out</span>
-                </button>
+                  <button className={styles.logOutBtn} onClick={logOut}>
+                    <GoSignOut className={styles.logOutIcon} />
+                    <span>Log Out</span>
+                  </button>
+                </div>
               </header>
               <nav className={styles.navbar}>
+                <div className={styles.menuSwitch}>
+                  <IoMenu />
+                </div>
                 <ul>
                   {menuItem.map((item, index) => {
                     return (
@@ -265,7 +270,7 @@ function App(): JSX.Element {
                           navigate(`${item.path}`);
                         }}
                       >
-                        <div>{item.icon}</div>
+                        <div className={styles.icon}>{item.icon}</div>
                         <span className={menuIndex === index ? `${styles.menuText}` : ""}>{item.label}</span>
                       </li>
                     );
