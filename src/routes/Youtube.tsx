@@ -51,7 +51,7 @@ export default function Youtube(): JSX.Element {
   return (
     <section className={styles.youtubeContainer}>
       {youtubeLoading === false ? (
-        <div>
+        <div className={styles.innerFrame}>
           <div className={styles.playerContainer}>
             <h4 className={styles.playerTitle}>Player</h4>
             {youtubeData.length !== 0 ? (

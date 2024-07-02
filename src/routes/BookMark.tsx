@@ -78,7 +78,7 @@ export default function BookMark(): JSX.Element {
   return (
     <section className={styles.bookMarkContainer}>
       {bookMarkLoading === false ? (
-        <div>
+        <div className={styles.innerFrame}>
           <div className={styles.viewContainer}>
             <h4 className={styles.viewTitle}>View</h4>
             {selector === "news" ? <BookMarkNewsView /> : <BookMarkYoutubeView />}

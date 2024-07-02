@@ -194,7 +194,6 @@ body {
             justify-content: center;
             align-items: center;
             transform: translateX(-10px);
-            font-size: 20px;
             font-weight: 400;
             cursor: pointer;
             width: 25px;
@@ -717,6 +716,16 @@ body {
               transform: translate(30px, -5px);
             }
           }
+
+          & .clearBtn {
+            width: 20px;
+            height: 20px;
+
+            & .iconSet {
+              width: 10px;
+              height: 1px;
+            }
+          }
         }
 
         & .user {
@@ -857,6 +866,16 @@ body {
               height: 30px;
               font-size: 10px;
               padding-left: 30px;
+            }
+
+            & .clearBtn {
+              width: 20px;
+              height: 20px;
+
+              & .iconSet {
+                width: 10px;
+                height: 1px;
+              }
             }
 
             & .searchIconBox {

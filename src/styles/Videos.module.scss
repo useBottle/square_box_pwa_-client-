@@ -33,45 +33,73 @@
         border-radius: 10px;
       }
 
-      & h3 {
-        position: relative;
-        margin-top: 10px;
-        font-family: "S-CoreDream-4Regular";
-        font-size: 20px;
-        line-height: 1.3;
-        cursor: default;
-        transition: color 0.3s ease-in-out;
-      }
+      & .videoText {
 
-      & .timeStamp {
-        position: relative;
-        top: 10px;
-        margin-bottom: 10px;
-        font-size: 12px;
-        color: var(--point-color3);
-        transition: color 0.3s ease-in-out;
-      }
+        & h3 {
+          position: relative;
+          margin-top: 10px;
+          font-family: "S-CoreDream-4Regular";
+          font-size: 20px;
+          line-height: 1.3;
+          cursor: default;
+          transition: color 0.3s ease-in-out;
+        }
 
-      & .views {
-        position: relative;
-        top: 10px;
-        margin-bottom: 10px;
-        font-size: 12px;
-        color: var(--point-color3);
-        transition: color 0.3s ease-in-out;
+        & .block {
+          display: flex;
+          justify-content: flex-start;
+          flex-direction: column;
+          margin-bottom: 20px;
+
+          & .timeStamp {
+            position: relative;
+            top: 10px;
+            font-size: 12px;
+            color: var(--point-color3);
+            transition: color 0.3s ease-in-out;
+            margin-bottom: 5px;
+          }
+
+          & .views {
+            position: relative;
+            top: 10px;
+            font-size: 12px;
+            color: var(--point-color3);
+            transition: color 0.3s ease-in-out;
+          }
+        }
+
+        & .channelTitle {
+          color: var(--point-color3);
+          transition: color 0.3s ease-in-out;
+          position: relative;
+          font-size: 14px;
+        }
       }
     }
-  }
 
-  & .video:hover {
-    background: var(--container-color);
+    & .video:hover {
+      background: var(--container-color);
 
-    & h3 {
-      color: var(--point-color1);
-    }
+      & .videoText {
+        & h3 {
+          color: var(--point-color1);
+        }
 
-    & p {
-      color: var(--point-color2);
+        & .block {
+          & .timeStamp {
+            color: var(--point-color2);
+          }
+
+          & .views {
+            color: var(--point-color2);
+          }
+        }
+
+        & .channelTitle {
+          color: var(--point-color2);
+        }
+      }
     }
   }
 }
@@ -89,5 +117,69 @@
   .videoSlider {
     width: 100%;
     height: 100%;
+  }
+}
+
+
+// Tablet (vertical mode)
+@media (min-width: 1024px) and (max-width: 1279px) and (min-height: 1366px) and (max-height: 1400px) {
+  .videoSlider {
+    width: 100%;
+    height: 100%;
+
+    & .videoList {
+      height: 100%;
+
+      & .video {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+
+        & img {
+          width: 40%;
+        }
+
+        & .videoText {
+          margin-left: 20px;
+          display: flex;
+          flex-direction: column;
+
+          & .block {
+            margin-bottom: 30px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1023px) and (min-height: 1000px) and (max-height: 1365px) {
+  .videoSlider {
+    width: 100%;
+    height: 100%;
+
+    & .videoList {
+      height: 100%;
+
+      & .video {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+
+        & img {
+          width: 40%;
+        }
+
+        & .videoText {
+          margin-left: 20px;
+          display: flex;
+          flex-direction: column;
+
+          & .block {
+            margin-bottom: 30px;
+          }
+        }
+      }
+    }
   }
 }
