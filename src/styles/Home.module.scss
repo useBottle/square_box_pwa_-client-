@@ -368,124 +368,65 @@
 
 
 // Tablet (vertical mode)
-@media (min-width: 1000px) and (max-width: 1279px) and (min-height: 1000px) and (max-height: 1400px) {
+@media (min-width: 1024px) and (max-width: 1279px) and (min-height: 1366px) and (max-height: 1400px) {
   .homeContainer {
-    width: calc(90vw - 100px);
-    height: calc(90vh - 100px);
+    top: 80px;
+    left: 0;
+    width: 90vw;
+    height: calc(93vh - 80px);
+    flex-direction: column;
+    align-items: center;
 
     & .landingContainer {
-      width: 40vw;
-      height: 60vh;
-      top: 50%;
-      left: 35%;
-      transform: translate(-50%, -50%);
+      position: relative;
+      width: 80%;
+      height: 45vh;
+      top: -3%;
+      left: 0;
 
       & .infoIcon {
+        left: 50%;
         font-size: 40px;
         top: -20px;
       }
 
       & .iconBack {
+        left: 50%;
         width: 40px;
         height: 40px;
         top: -20px;
       }
 
       & .infoContainer {
-        width: 40vw;
-        height: 60vh;
-        padding: 0 10%;
-
-        & p {
-          font-size: 14px;
-        }
-      }
-    }
-
-    & .realTimeContainer {
-      width: 20vw;
-      height: 60vh;
-      top: 50%;
-      left: 75%;
-      transform: translate(-50%, -50%);
-
-      & .realTimeTitle {
-        top: -25px;
-        font-size: 14px;
-      }
-
-      & .updateCounter {
-        top: -30px;
-      }
-
-      & .realTime {
         width: 100%;
         height: 100%;
-        top: 0;
-
-        & li {
-          height: 10%;
-          font-size: 12px;
-
-          & .text {
-            width: 50%;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 700px) and (max-width: 999px) and (min-height: 1000px) and (max-height: 1400px) {
-  .homeContainer {
-    width: calc(90vw - 100px);
-    height: calc(90vh - 100px);
-
-    & .landingContainer {
-      width: 40vw;
-      height: 60vh;
-      top: 50%;
-      left: 35%;
-      transform: translate(-50%, -50%);
-
-      & .infoIcon {
-        left: 40%;
-        font-size: 40px;
-        top: -20px;
-      }
-
-      & .iconBack {
-        left: 40%;
-        width: 40px;
-        height: 40px;
-        top: -20px;
-      }
-
-      & .infoContainer {
-        width: 30vw;
-        height: 60vh;
         padding: 0 10%;
 
         & p {
-          font-size: 10px;
+          font-size: 15px;
         }
       }
     }
 
     & .realTimeContainer {
-      width: 30vw;
-      height: 60vh;
-      top: 50%;
-      left: 72%;
-      transform: translate(-50%, -50%);
+      position: relative;
+      width: 80%;
+      height: 25vh;
+      top: 4%;
+      left: 0;
 
       & .realTimeTitle {
-        top: -25px;
+        top: -20px;
         font-size: 10px;
       }
 
       & .updateCounter {
-        top: -30px;
+        top: -25px;
+        height: 15px;
+
+        & .gauge {
+          height: 15px;
+        }
       }
 
       & .realTime {
@@ -495,11 +436,111 @@
 
         & li {
           height: 10%;
-          font-size: 12px;
+          font-size: 10px;
+
+          & .rank {
+            font-size: 10px;
+          }
 
           & .text {
             width: 50%;
+            font-size: 11px;
+          }
+
+          & .indicator {
             font-size: 10px;
+          }
+        }
+      }
+    }
+
+    .notice {
+      font-size: 12px;
+    }
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1023px) and (min-height: 1000px) and (max-height: 1365px) {
+  .homeContainer {
+    top: 60px;
+    left: 0;
+    width: 90vw;
+    height: calc(93vh - 60px);
+    flex-direction: column;
+    align-items: center;
+
+    & .landingContainer {
+      position: relative;
+      width: 80%;
+      height: 45vh;
+      top: -3%;
+      left: 0;
+
+      & .infoIcon {
+        left: 50%;
+        font-size: 40px;
+        top: -20px;
+      }
+
+      & .iconBack {
+        left: 50%;
+        width: 40px;
+        height: 40px;
+        top: -20px;
+      }
+
+      & .infoContainer {
+        width: 100%;
+        height: 100%;
+        padding: 0 10%;
+
+        & p {
+          font-size: 13px;
+        }
+      }
+    }
+
+    & .realTimeContainer {
+      position: relative;
+      width: 80%;
+      height: 25vh;
+      top: 4%;
+      left: 0;
+
+      & .realTimeTitle {
+        top: -20px;
+        font-size: 10px;
+      }
+
+      & .updateCounter {
+        top: -25px;
+        height: 15px;
+
+        & .gauge {
+          height: 15px;
+        }
+      }
+
+      & .realTime {
+        width: 100%;
+        height: 100%;
+        top: 0;
+
+        & li {
+          height: 10%;
+          font-size: 10px;
+
+          & .rank {
+            font-size: 8px;
+          }
+
+          & .text {
+            width: 50%;
+            font-size: 8px;
+          }
+
+          & .indicator {
+            font-size: 5px;
           }
         }
       }

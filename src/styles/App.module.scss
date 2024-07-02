@@ -149,11 +149,8 @@ body {
       position: absolute;
       right: 20px;
       width: 60%;
-      // background: #eee;
 
       & form {
-        // position: absolute;
-        // right: 330px;
         width: 280px;
         height: 50px;
 
@@ -274,7 +271,6 @@ body {
       & .user {
         position: relative;
         font-family: "S-CoreDream-4Regular";
-        // right: 160px;
         margin-left: 20px;
         padding: 0 10px;
         background: var(--container-color);
@@ -299,9 +295,7 @@ body {
       }
 
       & .darkModeBtn {
-        // position: absolute;
         font-size: 30px;
-        // right: 85px;
         margin-left: 30px;
         width: $darkModeBtn-width;
         height: $darkModeBtn-height;
@@ -335,8 +329,6 @@ body {
 
 
       & .logOutBtn {
-        // position: absolute;
-        // right: 50px;
         margin: 0 30px;
         display: flex;
         justify-content: center;
@@ -401,12 +393,14 @@ body {
       background: transparent;
       border: none;
       color: var(--font-color);
+      z-index: 900;
     }
 
     & ul {
       display: flex;
       align-items: center;
       flex-direction: column;
+      z-index: 900;
 
       & li {
         margin-top: 30px;
@@ -552,6 +546,34 @@ body {
     & .navbar {
       top: 100px;
       height: calc(90vh - 100px);
+
+      & ul {
+        display: flex;
+      }
+
+      & .switch {
+        display: block;
+      }
+    }
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 2400px) {
+  .mainContainer {
+    width: 90vw;
+    height: 90vh;
+
+    & .navbar {
+      top: 100px;
+      height: calc(90vh - 100px);
+
+      & ul {
+        display: flex;
+      }
+
+      & .switch {
+        display: block;
+      }
     }
   }
 }
@@ -585,16 +607,6 @@ body {
     left: calc($left-value + 120px);
     border-radius: 46%;
   }
-
-  .mainContainer {
-    width: 90vw;
-    height: 90vh;
-
-    & .navbar {
-      top: 100px;
-      height: calc(90vh - 100px);
-    }
-  }
 }
 
 @media (min-width: 1920px) and (max-width: 2199px) {
@@ -625,49 +637,18 @@ body {
     left: calc($left-value + 120px);
     border-radius: 46%;
   }
-
-  .mainContainer {
-    width: 90vw;
-    height: 90vh;
-
-    & .navbar {
-      top: 100px;
-      height: calc(90vh - 100px);
-    }
-  }
-}
-
-@media (min-width: 1680px) and (max-width: 1919px) {
-  .mainContainer {
-    width: 90vw;
-    height: 90vh;
-
-    & .navbar {
-      top: 100px;
-      height: calc(90vh - 100px);
-    }
-  }
 }
 
 @media (min-width: 1280px) and (max-width: 1679px) {
   .circle4 {
     right: -8000px;
   }
-
-  .mainContainer {
-    width: 90vw;
-    height: 90vh;
-
-    & .navbar {
-      top: 100px;
-      height: calc(90vh - 100px);
-    }
-  }
 }
 
 
+
 // Tablet (vertical mode)
-@media (min-width: 768px) and (max-width: 1279px) and (min-height: 1024px) and (max-height: 1366px) {
+@media (min-width: 1024px) and (max-width: 1279px) and (min-height: 1366px) and (max-height: 1400px) {
   $length-value: 3600px;
   $left-value: -2300px;
   $bottom-value: 300px;
@@ -718,10 +699,8 @@ body {
       }
 
       & .headerBlock {
-        // background: #eee;
 
         & form {
-          // right: 30%;
           width: 30%;
           height: 50%;
 
@@ -743,7 +722,6 @@ body {
         & .user {
           width: 90px;
           height: 40px;
-          // right: 18%;
 
           & .icon {
             font-size: 12px;
@@ -780,14 +758,17 @@ body {
       width: 80px;
       height: calc(93vh - 80px);
       border: none;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
 
       & .menuSwitch {
         display: flex;
-        position: absolute;
-        top: 20px;
+        margin-top: 10px;
         font-size: 20px;
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         border-radius: 5px;
         justify-content: center;
         align-items: center;
@@ -798,6 +779,8 @@ body {
       }
 
       & ul {
+        margin-top: 150%;
+
         & li {
           font-size: 20px;
           width: 50px;
@@ -809,6 +792,152 @@ body {
 
           & span {
             font-size: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1023px) and (min-height: 1000px) and (max-height: 1365px) {
+  $length-value: 3600px;
+  $left-value: -2300px;
+  $bottom-value: 300px;
+
+  .circle1 {
+    width: $length-value;
+    height: $length-value;
+    bottom: $bottom-value;
+    left: $left-value;
+    border-radius: 46%;
+  }
+
+  .circle2 {
+    width: $length-value;
+    height: $length-value;
+    bottom: calc($bottom-value - 100px);
+    left: calc($left-value + 70px);
+    border-radius: 46%;
+  }
+
+  .circle3 {
+    width: $length-value;
+    height: $length-value;
+    bottom: calc($bottom-value - 200px);
+    ;
+    left: calc($left-value + 120px);
+    border-radius: 46%;
+  }
+
+  .circle4 {
+    right: -2000px;
+    bottom: -6000px;
+  }
+
+  .mainContainer {
+    width: 90vw;
+    height: 93vh;
+
+    & .header {
+      height: 60px;
+
+      & .logo {
+        font-size: 20px;
+      }
+
+      & .headerBlock {
+
+        & form {
+          width: 30%;
+          height: 50%;
+
+          & .searchBar {
+            & input {
+              width: 100%;
+              height: 30px;
+              font-size: 10px;
+              padding-left: 30px;
+            }
+
+            & .searchIconBox {
+              font-size: 15px;
+              transform: translate(30px, -10px);
+            }
+          }
+        }
+
+        & .user {
+          width: 70px;
+          height: 30px;
+
+          & .icon {
+            font-size: 10px;
+            margin-right: 10px;
+          }
+
+          & span {
+            font-size: 10px;
+          }
+        }
+
+        & .darkModeBtn {
+          margin-left: 20px;
+          width: 30px;
+          height: 30px;
+          font-size: 20px;
+        }
+
+        & .logOutBtn {
+          margin: 0 10px;
+          font-size: 20px;
+          width: 30px;
+          height: 30px;
+
+          & span {
+            font-size: 10px;
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+    }
+
+    & .navbar {
+      top: 60px;
+      width: 60px;
+      height: calc(93vh - 60px);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
+
+      & .menuSwitch {
+        display: flex;
+        margin-top: 10px;
+        font-size: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 5px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      & .menuSwitch:active {
+        background: var(--container-color);
+      }
+
+      & ul {
+        margin-top: 150%;
+
+        & li {
+          font-size: 15px;
+          width: 40px;
+          height: 40px;
+
+          & span {
+            font-size: 8px;
+            margin-top: 20px;
           }
         }
       }

@@ -51,7 +51,7 @@ export default function News(): JSX.Element {
   return (
     <section className={styles.newsContainer}>
       {newsLoading === false ? (
-        <div>
+        <div className={styles.innerFrame}>
           <div className={styles.previewContainer}>
             <h4 className={styles.previewTitle}>Preview</h4>
             {newsData.length !== 0 ? (
