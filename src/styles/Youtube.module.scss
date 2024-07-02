@@ -116,6 +116,7 @@
     position: absolute;
     bottom: 20px;
     color: var(--sub-title);
+    font-size: 14px;
   }
 }
 
@@ -264,7 +265,6 @@
         height: 45vh;
         top: -3%;
         left: 0;
-        // background: #eee;
 
         & .playerTitle {
           position: absolute;
@@ -303,6 +303,10 @@
         }
       }
     }
+  }
+
+  .notice {
+    font-size: 12px;
   }
 }
 

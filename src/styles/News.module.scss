@@ -113,6 +113,7 @@
     position: absolute;
     bottom: 20px;
     color: var(--sub-title);
+    font-size: 14px;
   }
 }
 
@@ -298,6 +299,10 @@
         }
       }
     }
+  }
+
+  .notice {
+    font-size: 12px;
   }
 }
 

@@ -51,12 +51,14 @@ export default function BookMarkYoutubeList(): JSX.Element {
               >
                 <div onMouseEnter={onMouseEnter} className={styles.video}>
                   <img src={item.thumbnail} alt="thumbnail" />
-                  <h3>{item.title}</h3>
-                  <div className={styles.block}>
-                    <p>{item.channelTitle}</p>
-                    <button onClick={removeBookMark}>
-                      <FaTrash className={styles.bookMarkRemover} />
-                    </button>
+                  <div className={styles.block1}>
+                    <h3>{item.title}</h3>
+                    <div className={styles.block2}>
+                      <p>{item.channelTitle}</p>
+                      <button onClick={removeBookMark}>
+                        <FaTrash className={styles.bookMarkRemover} />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

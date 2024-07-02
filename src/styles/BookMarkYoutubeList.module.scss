@@ -41,7 +41,7 @@
         transition: color 0.3s ease-in-out;
       }
 
-      & .block {
+      & .block2 {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -82,8 +82,10 @@
       color: var(--point-color1);
     }
 
-    & span {
-      color: var(--point-color2);
+    & .block2 {
+      & p {
+        color: var(--point-color2);
+      }
     }
   }
 }
@@ -135,5 +137,58 @@
   .defaultView {
     width: 23vw;
     height: 60vh;
+  }
+}
+
+
+// Tablet (vertical mode)
+@media (min-width: 1024px) and (max-width: 1279px) and (min-height: 1366px) and (max-height: 1400px) {
+  .videoSlider {
+    width: 100%;
+    height: 100%;
+
+    & .videoList {
+      height: 100%;
+
+      & .video {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+
+        & img {
+          width: 40%;
+        }
+
+        & .block1 {
+          margin-left: 20px;
+
+          & .block2 {
+            width: 100%;
+            margin-top: 30px;
+          }
+        }
+      }
+    }
+  }
+
+  .defaultView {
+    position: absolute;
+    width: 100%;
+    height: 25vh;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1023px) and (min-height: 1000px) and (max-height: 1365px) {
+  .videoSlider {
+    width: 100%;
+    height: 100%;
+  }
+
+  .defaultView {
+    position: absolute;
+    width: 100%;
+    height: 25vh;
+    transform: translate(-50%, -50%);
   }
 }
