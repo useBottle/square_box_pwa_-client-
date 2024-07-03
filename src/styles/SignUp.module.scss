@@ -54,25 +54,6 @@
     width: 1000px;
     height: 350px;
 
-    & .checkIconSet {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      right: 200px;
-
-      & .checkIcon {
-        color: #6fff80;
-        height: 40px;
-        margin-bottom: 30px;
-        font-size: 20px;
-      }
-
-      & .blank {
-        height: 40px;
-        margin-bottom: 30px;
-      }
-    }
-
     & .category {
       position: absolute;
       left: 100px;
@@ -163,6 +144,25 @@
       }
     }
 
+    & .checkIconSet {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      right: 200px;
+
+      & .checkIcon {
+        color: #6fff80;
+        height: 40px;
+        margin-bottom: 30px;
+        font-size: 20px;
+      }
+
+      & .blank {
+        height: 40px;
+        margin-bottom: 30px;
+      }
+    }
+
     & .joinBtn {
       position: absolute;
       bottom: 0;
@@ -207,13 +207,6 @@
       top: 35%;
       width: 100%;
 
-      & .checkIconSet {
-        left: 50%;
-        top: 0;
-        transform: translateX(850%);
-        width: 50px;
-      }
-
       & .category {
         left: 50%;
         top: 0;
@@ -230,6 +223,13 @@
         left: 50%;
         top: 0;
         transform: translateX(-10%);
+      }
+
+      & .checkIconSet {
+        left: 50%;
+        top: 0;
+        transform: translateX(850%);
+        width: 50px;
       }
 
       & .joinBtn {
@@ -252,13 +252,6 @@
       top: 35%;
       width: 100%;
 
-      & .checkIconSet {
-        left: 50%;
-        top: 0;
-        transform: translateX(850%);
-        width: 50px;
-      }
-
       & .category {
         left: 50%;
         top: 0;
@@ -275,6 +268,13 @@
         left: 50%;
         top: 0;
         transform: translateX(-10%);
+      }
+
+      & .checkIconSet {
+        left: 50%;
+        top: 0;
+        transform: translateX(850%);
+        width: 50px;
       }
 
       & .joinBtn {
@@ -301,13 +301,6 @@
       top: 35%;
       width: 100%;
 
-      & .checkIconSet {
-        left: 50%;
-        top: 0;
-        transform: translateX(850%);
-        width: 50px;
-      }
-
       & .category {
         left: 50%;
         top: 0;
@@ -324,6 +317,13 @@
         left: 50%;
         top: 0;
         transform: translateX(-10%);
+      }
+
+      & .checkIconSet {
+        left: 50%;
+        top: 0;
+        transform: translateX(850%);
+        width: 50px;
       }
 
       & .joinBtn {
@@ -350,13 +350,6 @@
       top: 35%;
       width: 100%;
 
-      & .checkIconSet {
-        left: 50%;
-        top: 0;
-        transform: translateX(850%);
-        width: 50px;
-      }
-
       & .category {
         left: 50%;
         top: 0;
@@ -375,12 +368,82 @@
         transform: translateX(-10%);
       }
 
+      & .checkIconSet {
+        left: 50%;
+        top: 0;
+        transform: translateX(850%);
+        width: 50px;
+      }
+
       & .joinBtn {
         bottom: 5%;
       }
 
       & .disableBtn {
         bottom: 5%;
+      }
+    }
+  }
+}
+
+
+// Tablet (vertical mode)
+@media (min-width: 1024px) and (max-width: 1279px) and (min-height: 1366px) and (max-height: 1400px) {
+  .signUpContainer {
+    width: calc(90vw - 60px);
+    height: 50vh;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1023px) and (min-height: 1000px) and (max-height: 1365px) {
+  .signUpContainer {
+    width: calc(90vw - 60px);
+    height: 50vh;
+
+    & .formContainer {
+
+      & .category {
+        left: 220px;
+
+        & span {
+          font-size: 10px;
+          height: 30px;
+        }
+      }
+
+      & .inputFields {
+        left: 310px;
+
+        & input {
+          width: 100px;
+          height: 30px;
+          margin-bottom: 30px;
+        }
+      }
+
+      & .inputDescription {
+        right: 250px;
+        width: 320px;
+
+        & span {
+          font-size: 10px;
+          margin-bottom: 30px;
+          height: 30px;
+
+          & .duplicateBtn {
+            width: 60px;
+            height: 30px;
+            font-size: 10px;
+          }
+        }
+      }
+
+      & .checkIconSet {
+        right: 230px;
+
+        & .checkIcon {
+          height: 30px;
+        }
       }
     }
   }

@@ -13,794 +13,1209 @@ $darkModeBtn-width: 50px;
 $darkModeBtn-height: 50px;
 
 body {
-  width: 100vw;
-  height: 100vh;
-  color: var(--font-color);
-  font-family: "S-CoreDream-1Thin";
-  font-weight: 600;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
 
-.circle1 {
-  position: absolute;
-  width: $object-width;
-  height: $object-height;
-  background: var(--circle1-gradient);
-  border-radius: $circle-radius;
-  bottom: 300px;
-  left: $left;
-  box-shadow: $box-shadow;
-  animation: wave 20s infinite linear;
-  z-index: 5;
-  transition: background 0.3s ease-in-out;
-}
-
-.circle2 {
-  position: absolute;
-  width: $object-width;
-  height: $object-height;
-  background: var(--circle2-gradient);
-  border-radius: $circle-radius;
-  bottom: 200px;
-  left: $left;
-  box-shadow: $box-shadow;
-  animation: wave 30s infinite linear;
-  z-index: 4;
-  transition: background 0.3s ease-in-out;
-}
-
-.circle3 {
-  position: absolute;
-  width: $object-width;
-  height: $object-height;
-  background: var(--circle3-gradient);
-  border-radius: $circle-radius;
-  bottom: 100px;
-  left: $left;
-  box-shadow: $box-shadow;
-  animation: wave 40s infinite linear;
-  z-index: 3;
-  transition: background 0.3s ease-in-out;
-}
-
-.circle4 {
-  position: absolute;
-  width: 800vw;
-  height: 1300vh;
-  border-radius: 50%;
-  background: var(--circle4-gradient);
-  animation: wave 10s infinite linear;
-  right: -9000px;
-  bottom: -5000px;
-  z-index: 2;
-  transition: background 0.3s ease-in-out;
-}
-
-.finalBackground {
-  position: absolute;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: var(--circle4-gradient);
-  z-index: 1;
-}
-
-@keyframes wave {
-  from {
-    transform: rotate(0deg);
-  }
-
-  from {
-    transform: rotate(360deg);
-  }
-}
-
-.mainContainer {
-  color: var(--font-color);
-  background: var(--container-color);
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: $main-container-width;
-  height: $main-container-height;
-  border-radius: 10px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 10px 10px 50px#0000008e;
-  overflow: hidden;
-  z-index: 99;
-  transition: background 0.3s ease-in-out;
-
-  & .header {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    height: 100px;
-    border-bottom: 0.5px solid var(--border-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 30px;
-    box-sizing: border-box;
-    user-select: none;
-
-    & .logo {
-      position: absolute;
-      font-family: "Poiret One";
-      font-size: 40px;
-      font-weight: 800;
-      margin: 30px 0;
-      cursor: pointer;
-      z-index: 999;
-      display: flex;
-
-      & span {
-        margin-left: 30px;
-      }
-    }
-
-    & .headerBlock {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      position: absolute;
-      right: 20px;
-      width: 60%;
-
-      & form {
-        width: 280px;
-        height: 50px;
-
-        & .searchBar {
-          position: relative;
-          box-sizing: border-box;
-          display: flex;
-          align-items: center;
-
-          & input {
-            position: relative;
-            right: 0;
-            width: 100%;
-            height: 50px;
-            padding-left: 55px;
-            padding-right: 40px;
-            border: none;
-            border-radius: 5px;
-            list-style: none;
-            outline: none;
-            background: var(--container-color);
-            color: var(--point-color2);
-            font-size: 20px;
-            font-weight: 400;
-            box-sizing: border-box;
-            border: 1px solid transparent;
-            transition: background 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
-          }
-
-          & input::placeholder {
-            color: var(--sub-title);
-          }
-
-          & input:focus {
-            border: 1px solid var(--font-color);
-          }
-
-          & .clearBtn {
-            position: absolute;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transform: translateX(-10px);
-            font-weight: 400;
-            cursor: pointer;
-            width: 25px;
-            height: 25px;
-            right: 0;
-            border-radius: 50%;
-            border: none;
-            background: transparent;
-            transition: background 0.3s ease-in-out;
-
-            & .iconSet {
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              display: flex;
-              width: 15px;
-              height: 2px;
-              background: var(--font-color);
-              transition: background 0.3s ease-in-out;
-            }
-
-            & .part1,
-            & .part2 {
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              width: 15px;
-              height: 2px;
-              background: var(--font-color);
-              transform-origin: center;
-            }
-
-            & .part1 {
-              transform: translate(-50%, -50%) rotate(45deg);
-            }
-
-            & .part2 {
-              transform: translate(-50%, -50%) rotate(-45deg);
-            }
-          }
-
-          & .clearBtn:hover {
-            background: var(--container-color);
-
-            & .iconSet {
-              background: var(--sub-title);
-            }
-          }
-
-          & .searchIconBox {
-            position: absolute;
-            transform: translateX(35px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 50px;
-            top: 0;
-            left: -20px;
-            padding: 0;
-            border: none;
-            background: transparent;
-            font-size: 30px;
-            cursor: pointer;
-
-            & .searchIcon {
-              color: var(--font-color);
-              transition: color 0.3s ease-in-out;
-            }
-          }
-        }
-      }
-
-      & .user {
-        position: relative;
-        font-family: "S-CoreDream-4Regular";
-        margin-left: 20px;
-        padding: 0 10px;
-        background: var(--container-color);
-        height: 50px;
-        width: 130px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 5px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        user-select: none;
-
-        & .icon {
-          margin-right: 20px;
-        }
-
-        & span {
-          color: var(--point-color1);
-        }
-      }
-
-      & .darkModeBtn {
-        font-size: 30px;
-        margin-left: 30px;
-        width: $darkModeBtn-width;
-        height: $darkModeBtn-height;
-        border-radius: 5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: transparent;
-        border: none;
-        color: var(--font-color);
-        padding: 0;
-        cursor: pointer;
-        overflow: hidden;
-        transition: background 0.3s ease-in-out;
-
-        & .darkModeIcon {
-          display: flex;
-          justify-content: center;
-          transition: transform 0.3s ease-in-out;
-        }
-      }
-
-      & .darkModeBtn:hover {
-        background: var(--container-color);
-
-        & .darkModeIcon {
-          transform: rotate(90deg);
-          color: var(--point-color1);
-        }
-      }
-
-
-      & .logOutBtn {
-        margin: 0 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: transparent;
-        border: none;
-        color: var(--font-color);
-        font-size: 30px;
-        padding: 0;
-        cursor: pointer;
-
-        & .logOutIcon {
-          position: absolute;
-          transition: opacity 0.3s ease;
-          display: flex;
-          justify-content: center;
-        }
-
-        & span {
-          position: absolute;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 15px;
-          width: 40px;
-          height: 50px;
-          color: var(--point-color1);
-          background: var(--container-color);
-          border-radius: 5px;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-      }
-
-      & .logOutBtn:hover {
-        & .logOutIcon {
-          opacity: 0;
-        }
-
-        & span {
-          opacity: 1;
-        }
-      }
-    }
-  }
-
-  & .navbar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100px;
-    height: calc(($main-container-height) - 100px);
+  .bodyContainer {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    color: var(--font-color);
+    font-family: "S-CoreDream-1Thin";
+    font-weight: 600;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-right: 0.5px solid var(--border-color);
-    box-sizing: border-box;
-    user-select: none;
+    overflow: hidden;
+    height: -webkit-fill-available;
 
-    & .menuSwitch {
-      display: none;
-      background: transparent;
-      border: none;
-      color: var(--font-color);
-      z-index: 900;
+    .circle1 {
+      position: absolute;
+      width: $object-width;
+      height: $object-height;
+      background: var(--circle1-gradient);
+      border-radius: $circle-radius;
+      bottom: 300px;
+      left: $left;
+      box-shadow: $box-shadow;
+      animation: wave 20s infinite linear;
+      z-index: 5;
+      transition: background 0.3s ease-in-out;
     }
 
-    & ul {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      z-index: 900;
+    .circle2 {
+      position: absolute;
+      width: $object-width;
+      height: $object-height;
+      background: var(--circle2-gradient);
+      border-radius: $circle-radius;
+      bottom: 200px;
+      left: $left;
+      box-shadow: $box-shadow;
+      animation: wave 30s infinite linear;
+      z-index: 4;
+      transition: background 0.3s ease-in-out;
+    }
 
-      & li {
-        margin-top: 30px;
-        font-family: "Barlow Condensed";
-        font-weight: 100;
-        font-size: 25px;
-        background: transparent;
-        border-radius: 5px;
-        width: 60px;
-        height: 60px;
-        color: var(--font-color);
-        position: relative;
+    .circle3 {
+      position: absolute;
+      width: $object-width;
+      height: $object-height;
+      background: var(--circle3-gradient);
+      border-radius: $circle-radius;
+      bottom: 100px;
+      left: $left;
+      box-shadow: $box-shadow;
+      animation: wave 40s infinite linear;
+      z-index: 3;
+      transition: background 0.3s ease-in-out;
+    }
+
+    .circle4 {
+      position: absolute;
+      width: 800vw;
+      height: 1300vh;
+      border-radius: 50%;
+      background: var(--circle4-gradient);
+      animation: wave 10s infinite linear;
+      right: -9000px;
+      bottom: -5000px;
+      z-index: 2;
+      transition: background 0.3s ease-in-out;
+    }
+
+    .finalBackground {
+      position: absolute;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: var(--circle4-gradient);
+      z-index: 1;
+    }
+
+    @keyframes wave {
+      from {
+        transform: rotate(0deg);
+      }
+
+      from {
+        transform: rotate(360deg);
+      }
+    }
+
+    .mainContainer {
+      color: var(--font-color);
+      background: var(--container-color);
+      position: fixed;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      width: $main-container-width;
+      height: $main-container-height;
+      border-radius: 10px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 10px 10px 50px#0000008e;
+      overflow: hidden;
+      z-index: 99;
+      transition: background 0.3s ease-in-out;
+
+      & .header {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        height: 100px;
+        border-bottom: 0.5px solid var(--border-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 30px;
+        box-sizing: border-box;
+        user-select: none;
+
+        & .logo {
+          position: absolute;
+          font-family: "Poiret One";
+          font-size: 40px;
+          font-weight: 800;
+          margin: 30px 0;
+          cursor: pointer;
+          z-index: 999;
+          display: flex;
+
+          & span {
+            margin-left: 30px;
+          }
+        }
+
+        & .headerBlock {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          position: absolute;
+          right: 20px;
+          width: 60%;
+
+          & form {
+            width: 280px;
+            height: 50px;
+
+            & .searchBar {
+              position: relative;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+
+              & input {
+                position: relative;
+                right: 0;
+                width: 100%;
+                height: 50px;
+                padding-left: 55px;
+                padding-right: 40px;
+                border: none;
+                border-radius: 5px;
+                list-style: none;
+                outline: none;
+                background: var(--container-color);
+                color: var(--point-color2);
+                font-size: 20px;
+                font-weight: 400;
+                box-sizing: border-box;
+                border: 1px solid transparent;
+                transition: background 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
+              }
+
+              & input::placeholder {
+                color: var(--sub-title);
+              }
+
+              & input:focus {
+                border: 1px solid var(--font-color);
+              }
+
+              & .clearBtn {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transform: translateX(-10px);
+                font-weight: 400;
+                cursor: pointer;
+                width: 25px;
+                height: 25px;
+                right: 0;
+                border-radius: 50%;
+                border: none;
+                background: transparent;
+                transition: background 0.3s ease-in-out;
+
+                & .iconSet {
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  display: flex;
+                  width: 15px;
+                  height: 2px;
+                  background: var(--font-color);
+                  transition: background 0.3s ease-in-out;
+                }
+
+                & .part1,
+                & .part2 {
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  width: 15px;
+                  height: 2px;
+                  background: var(--font-color);
+                  transform-origin: center;
+                }
+
+                & .part1 {
+                  transform: translate(-50%, -50%) rotate(45deg);
+                }
+
+                & .part2 {
+                  transform: translate(-50%, -50%) rotate(-45deg);
+                }
+              }
+
+              & .clearBtn:hover {
+                background: var(--container-color);
+
+                & .iconSet {
+                  background: var(--sub-title);
+                }
+              }
+
+              & .searchIconBox {
+                position: absolute;
+                transform: translateX(35px);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 50px;
+                top: 0;
+                left: -20px;
+                padding: 0;
+                border: none;
+                background: transparent;
+                font-size: 30px;
+                cursor: pointer;
+
+                & .searchIcon {
+                  color: var(--font-color);
+                  transition: color 0.3s ease-in-out;
+                }
+              }
+            }
+          }
+
+          & .user {
+            position: relative;
+            font-family: "S-CoreDream-4Regular";
+            margin-left: 20px;
+            padding: 0 10px;
+            background: var(--container-color);
+            height: 50px;
+            width: 130px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            user-select: none;
+
+            & .icon {
+              margin-right: 20px;
+            }
+
+            & span {
+              color: var(--point-color1);
+            }
+          }
+
+          & .darkModeBtn {
+            font-size: 30px;
+            margin-left: 30px;
+            width: $darkModeBtn-width;
+            height: $darkModeBtn-height;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            border: none;
+            color: var(--font-color);
+            padding: 0;
+            cursor: pointer;
+            overflow: hidden;
+            transition: background 0.3s ease-in-out;
+
+            & .darkModeIcon {
+              display: flex;
+              justify-content: center;
+              transition: transform 0.3s ease-in-out;
+            }
+          }
+
+          & .darkModeBtn:hover {
+            background: var(--container-color);
+
+            & .darkModeIcon {
+              transform: rotate(90deg);
+              color: var(--point-color1);
+            }
+          }
+
+
+          & .logOutBtn {
+            margin: 0 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            border: none;
+            color: var(--font-color);
+            font-size: 30px;
+            padding: 0;
+            cursor: pointer;
+
+            & .logOutIcon {
+              position: absolute;
+              transition: opacity 0.3s ease;
+              display: flex;
+              justify-content: center;
+            }
+
+            & span {
+              position: absolute;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 15px;
+              width: 40px;
+              height: 50px;
+              color: var(--point-color1);
+              background: var(--container-color);
+              border-radius: 5px;
+              opacity: 0;
+              transition: opacity 0.3s ease;
+            }
+          }
+
+          & .logOutBtn:hover {
+            & .logOutIcon {
+              opacity: 0;
+            }
+
+            & span {
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      & .navbar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100px;
+        height: calc(($main-container-height) - 100px);
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
-        transition: all 0.3s ease;
-        cursor: pointer;
+        border-right: 0.5px solid var(--border-color);
+        box-sizing: border-box;
+        user-select: none;
 
-        & div {
-          position: relative;
-          top: -10px;
+        & .menuSwitch {
+          display: none;
+          background: transparent;
+          border: none;
+          color: var(--font-color);
+          z-index: 900;
         }
 
-        & span {
-          position: absolute;
-          margin-top: 30px;
-          font-size: 15px;
-          opacity: 0;
-          transition: opacity 0.3s ease-in-out;
-          pointer-events: none;
+        & ul {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          z-index: 900;
+
+          & li {
+            margin-top: 30px;
+            font-family: "Barlow Condensed";
+            font-weight: 100;
+            font-size: 25px;
+            background: transparent;
+            border-radius: 5px;
+            width: 60px;
+            height: 60px;
+            color: var(--font-color);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            cursor: pointer;
+
+            & div {
+              position: relative;
+              top: -10px;
+            }
+
+            & span {
+              position: absolute;
+              margin-top: 30px;
+              font-size: 15px;
+              opacity: 0;
+              transition: opacity 0.3s ease-in-out;
+              pointer-events: none;
+            }
+          }
+
+          & li:hover {
+            background: var(--container-color);
+
+            & span {
+              opacity: 1;
+            }
+          }
+
+          & li:first-child {
+            margin-top: 0;
+          }
+
+          & .menuIcon {
+            background: var(--container-color);
+            color: var(--point-color2);
+
+            & .menuText {
+              opacity: 1;
+            }
+          }
         }
-      }
 
-      & li:hover {
-        background: var(--container-color);
-
-        & span {
-          opacity: 1;
-        }
-      }
-
-      & li:first-child {
-        margin-top: 0;
-      }
-
-      & .menuIcon {
-        background: var(--container-color);
-        color: var(--point-color2);
-
-        & .menuText {
-          opacity: 1;
+        & .switch {
+          display: none;
         }
       }
     }
 
-    & .switch {
+    .modalSet {
       display: none;
+
+      & .overlay {
+        z-index: 998;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.14);
+        backdrop-filter: blur(5px);
+      }
+    }
+
+    .bookMarkModalSet {
+      display: block;
+
+      & .overlay {
+        z-index: 998;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.14);
+        backdrop-filter: blur(5px);
+      }
+    }
+
+    .bookMarkLimitModalSet {
+      display: block;
+
+      & .overlay {
+        z-index: 998;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.14);
+        backdrop-filter: blur(5px);
+      }
     }
   }
 }
 
-.modalSet {
-  display: none;
 
-  & .overlay {
-    z-index: 998;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.14);
-    backdrop-filter: blur(5px);
+// Cell Phone (vertical mode) 
+@media only screen and (orientation : portrait) and (pointer: coarse) and (min-device-width: 300px) {
+  body {
+    .bodyContainer {
+
+      & .mainContainer {
+        width: 90vw;
+        height: 85vh;
+
+        & .header {
+          height: 80px;
+
+          & .logo {
+            font-size: 30px;
+
+            & span {
+              margin-left: 20px;
+            }
+          }
+
+          & .headerBlock {
+
+            & form {
+              width: 30%;
+              height: 50%;
+
+              & .searchBar {
+                & input {
+                  width: 100%;
+                  height: 40px;
+                  font-size: 12px;
+                  padding-left: 40px;
+                }
+
+                & .searchIconBox {
+                  font-size: 20px;
+                  transform: translate(30px, -5px);
+                }
+              }
+
+              & .clearBtn {
+                width: 20px;
+                height: 20px;
+
+                & .iconSet {
+                  width: 10px;
+                  height: 1px;
+                }
+              }
+            }
+
+            & .user {
+              width: 90px;
+              height: 40px;
+
+              & .icon {
+                font-size: 12px;
+              }
+
+              & span {
+                font-size: 12px;
+              }
+            }
+
+            & .darkModeBtn {
+              font-size: 20px;
+              width: 40px;
+              height: 40px;
+            }
+
+            & .logOutBtn {
+              margin: 0 10px;
+              font-size: 20px;
+              width: 40px;
+              height: 40px;
+
+              & span {
+                font-size: 12px;
+                width: 30px;
+                height: 40px;
+              }
+            }
+          }
+        }
+
+        & .navbar {
+          top: 80px;
+          width: 80px;
+          height: calc(93vh - 80px);
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          flex-direction: column;
+
+          & .menuSwitch {
+            display: flex;
+            margin-top: 10px;
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            justify-content: center;
+            align-items: center;
+          }
+
+          & .menuSwitch:active {
+            background: var(--container-color);
+          }
+
+          & ul {
+            margin-top: 150%;
+
+            & li {
+              font-size: 20px;
+              width: 50px;
+              height: 50px;
+
+              & .icon {
+                top: -5px;
+              }
+
+              & span {
+                font-size: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 
-.bookMarkModalSet {
-  display: block;
+// Cell Phone (horizontal mode)
+@media only screen and (orientation : landscape) and (pointer: coarse) and (min-device-width: 300px) {
+  body {
+    .bodyContainer {
+      & .mainContainer {
+        width: 90vw;
+        height: 85vh;
 
-  & .overlay {
-    z-index: 998;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.14);
-    backdrop-filter: blur(5px);
+        & .header {
+          height: 80px;
+
+          & .logo {
+            font-size: 30px;
+
+            & span {
+              margin-left: 20px;
+            }
+          }
+
+          & .headerBlock {
+
+            & form {
+              width: 30%;
+              height: 50%;
+
+              & .searchBar {
+                & input {
+                  width: 100%;
+                  height: 40px;
+                  font-size: 12px;
+                  padding-left: 40px;
+                }
+
+                & .searchIconBox {
+                  font-size: 20px;
+                  transform: translate(30px, -5px);
+                }
+              }
+
+              & .clearBtn {
+                width: 20px;
+                height: 20px;
+
+                & .iconSet {
+                  width: 10px;
+                  height: 1px;
+                }
+              }
+            }
+
+            & .user {
+              width: 90px;
+              height: 40px;
+
+              & .icon {
+                font-size: 12px;
+              }
+
+              & span {
+                font-size: 12px;
+              }
+            }
+
+            & .darkModeBtn {
+              font-size: 20px;
+              width: 40px;
+              height: 40px;
+            }
+
+            & .logOutBtn {
+              margin: 0 10px;
+              font-size: 20px;
+              width: 40px;
+              height: 40px;
+
+              & span {
+                font-size: 12px;
+                width: 30px;
+                height: 40px;
+              }
+            }
+          }
+        }
+
+        & .navbar {
+          top: 80px;
+          width: 80px;
+          height: calc(93vh - 80px);
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          flex-direction: column;
+
+          & .menuSwitch {
+            display: flex;
+            margin-top: 10px;
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            justify-content: center;
+            align-items: center;
+          }
+
+          & .menuSwitch:active {
+            background: var(--container-color);
+          }
+
+          & ul {
+            margin-top: 150%;
+
+            & li {
+              font-size: 20px;
+              width: 50px;
+              height: 50px;
+
+              & .icon {
+                top: -5px;
+              }
+
+              & span {
+                font-size: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 
-.bookMarkLimitModalSet {
-  display: block;
 
-  & .overlay {
-    z-index: 998;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.14);
-    backdrop-filter: blur(5px);
+
+// Tablet (vertical mode) 
+@media only screen and (orientation : portrait) and (pointer: coarse) and (min-device-width : 768px) and (max-device-width : 1024px) {
+  $length-value: 3600px;
+  $left-value: -2100px;
+  $bottom-value: 300px;
+
+  body {
+
+    & .bodyContainer {
+
+      & .circle1 {
+        width: $length-value;
+        height: $length-value;
+        bottom: $bottom-value;
+        left: $left-value;
+        border-radius: 46%;
+      }
+
+      & .circle2 {
+        width: $length-value;
+        height: $length-value;
+        bottom: calc($bottom-value - 100px);
+        left: calc($left-value + 70px);
+        border-radius: 46%;
+      }
+
+      & .circle3 {
+        width: $length-value;
+        height: $length-value;
+        bottom: calc($bottom-value - 200px);
+        ;
+        left: calc($left-value + 120px);
+        border-radius: 46%;
+      }
+
+      & .circle4 {
+        right: -5000px;
+        bottom: -6000px;
+      }
+
+      & .mainContainer {
+        width: 95vw;
+        height: 90vh;
+
+        & .header {
+          height: 80px;
+
+          & .logo {
+            font-size: 30px;
+
+            & span {
+              margin-left: 20px;
+            }
+          }
+
+          & .headerBlock {
+
+            & form {
+              width: 30%;
+              height: 50%;
+
+              & .searchBar {
+                & input {
+                  width: 100%;
+                  height: 40px;
+                  font-size: 12px;
+                  padding-left: 40px;
+                }
+
+                & .searchIconBox {
+                  font-size: 20px;
+                  transform: translate(30px, -5px);
+                }
+              }
+
+              & .clearBtn {
+                width: 20px;
+                height: 20px;
+
+                & .iconSet {
+                  width: 10px;
+                  height: 1px;
+                }
+              }
+            }
+
+            & .user {
+              width: 90px;
+              height: 40px;
+
+              & .icon {
+                font-size: 12px;
+              }
+
+              & span {
+                font-size: 12px;
+              }
+            }
+
+            & .darkModeBtn {
+              font-size: 20px;
+              width: 40px;
+              height: 40px;
+            }
+
+            & .logOutBtn {
+              margin: 0 10px;
+              font-size: 20px;
+              width: 40px;
+              height: 40px;
+
+              & span {
+                font-size: 12px;
+                width: 30px;
+                height: 40px;
+              }
+            }
+          }
+        }
+
+        & .navbar {
+          top: 80px;
+          width: 80px;
+          height: calc(93vh - 80px);
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          flex-direction: column;
+
+          & .menuSwitch {
+            display: flex;
+            margin-top: 10px;
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            justify-content: center;
+            align-items: center;
+          }
+
+          & .menuSwitch:active {
+            background: var(--container-color);
+          }
+
+          & ul {
+            margin-top: 150%;
+
+            & li {
+              font-size: 20px;
+              width: 50px;
+              height: 50px;
+
+              & .icon {
+                top: -5px;
+              }
+
+              & span {
+                font-size: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
+
+// Tablet (horizontal mode) 
+@media only screen and (orientation : landscape) and (pointer: coarse) and (min-device-width : 768px) and (max-device-width : 1024px) {
+  $length-value: 3600px;
+  $left-value: -2100px;
+  $bottom-value: 300px;
+
+  body {
+
+    & .bodyContainer {
+
+      & .circle1 {
+        width: $length-value;
+        height: $length-value;
+        bottom: $bottom-value;
+        left: $left-value;
+        border-radius: 46%;
+      }
+
+      & .circle2 {
+        width: $length-value;
+        height: $length-value;
+        bottom: calc($bottom-value - 100px);
+        left: calc($left-value + 70px);
+        border-radius: 46%;
+      }
+
+      & .circle3 {
+        width: $length-value;
+        height: $length-value;
+        bottom: calc($bottom-value - 200px);
+        ;
+        left: calc($left-value + 120px);
+        border-radius: 46%;
+      }
+
+      & .circle4 {
+        right: -5000px;
+        bottom: -6000px;
+      }
+
+      & .mainContainer {
+        width: 95vw;
+        height: 85vh;
+
+        & .header {
+          height: 80px;
+
+          & .logo {
+            font-size: 30px;
+
+            & span {
+              margin-left: 20px;
+            }
+          }
+
+          & .headerBlock {
+
+            & form {
+              width: 30%;
+              height: 50%;
+
+              & .searchBar {
+                & input {
+                  width: 100%;
+                  height: 40px;
+                  font-size: 12px;
+                  padding-left: 40px;
+                }
+
+                & .searchIconBox {
+                  font-size: 20px;
+                  transform: translate(30px, -5px);
+                }
+              }
+
+              & .clearBtn {
+                width: 20px;
+                height: 20px;
+
+                & .iconSet {
+                  width: 10px;
+                  height: 1px;
+                }
+              }
+            }
+
+            & .user {
+              width: 90px;
+              height: 40px;
+
+              & .icon {
+                font-size: 12px;
+              }
+
+              & span {
+                font-size: 12px;
+              }
+            }
+
+            & .darkModeBtn {
+              font-size: 20px;
+              width: 40px;
+              height: 40px;
+            }
+
+            & .logOutBtn {
+              margin: 0 10px;
+              font-size: 20px;
+              width: 40px;
+              height: 40px;
+
+              & span {
+                font-size: 12px;
+                width: 30px;
+                height: 40px;
+              }
+            }
+          }
+        }
+
+        & .navbar {
+          top: 80px;
+          width: 80px;
+          height: calc(93vh - 80px);
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          flex-direction: column;
+
+          & .menuSwitch {
+            display: flex;
+            margin-top: 10px;
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            justify-content: center;
+            align-items: center;
+          }
+
+          & .menuSwitch:active {
+            background: var(--container-color);
+          }
+
+          & ul {
+            margin-top: 150%;
+
+            & li {
+              font-size: 20px;
+              width: 50px;
+              height: 50px;
+
+              & .icon {
+                top: -5px;
+              }
+
+              & span {
+                font-size: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
 
 // Desktop
-@media (min-width: 2400px) {
-  $length-value: 3600px;
-  $left-value: -1500px;
-  $bottom-value: 300px;
-
-  .circle1 {
-    width: $length-value;
-    height: $length-value;
-    bottom: $bottom-value;
-    left: $left-value;
-    border-radius: 46%;
-  }
-
-  .circle2 {
-    width: $length-value;
-    height: $length-value;
-    bottom: calc($bottom-value - 100px);
-    left: calc($left-value + 70px);
-    border-radius: 46%;
-  }
-
-  .circle3 {
-    width: $length-value;
-    height: $length-value;
-    bottom: calc($bottom-value - 200px);
-    ;
-    left: calc($left-value + 120px);
-    border-radius: 46%;
-  }
-
-  .mainContainer {
-    width: 90vw;
-    height: 90vh;
-
-    & .navbar {
-      top: 100px;
-      height: calc(90vh - 100px);
-
-      & ul {
-        display: flex;
-      }
-
-      & .switch {
-        display: block;
+@media only screen and (pointer: fine) and (min-width: 1280px) {
+  body {
+    .bodyContainer {
+      .circle4 {
+        right: -8000px;
       }
     }
   }
 }
 
-@media (min-width: 1280px) and (max-width: 2400px) {
-  .mainContainer {
-    width: 90vw;
-    height: 90vh;
-
-    & .navbar {
-      top: 100px;
-      height: calc(90vh - 100px);
-
-      & ul {
-        display: flex;
-      }
-
-      & .switch {
-        display: block;
-      }
-    }
-  }
-}
-
-@media (min-width: 2200px) and (max-width: 2399px) {
-  $length-value: 3200px;
-  $left-value: -1300px;
-  $bottom-value: 300px;
-
-  .circle1 {
-    width: $length-value;
-    height: $length-value;
-    bottom: $bottom-value;
-    left: $left-value;
-    border-radius: 46%;
-  }
-
-  .circle2 {
-    width: $length-value;
-    height: $length-value;
-    bottom: calc($bottom-value - 100px);
-    left: calc($left-value + 70px);
-    border-radius: 46%;
-  }
-
-  .circle3 {
-    width: $length-value;
-    height: $length-value;
-    bottom: calc($bottom-value - 200px);
-    ;
-    left: calc($left-value + 120px);
-    border-radius: 46%;
-  }
-}
-
-@media (min-width: 1920px) and (max-width: 2199px) {
+@media only screen and (pointer: fine) and (min-width: 1920px) and (max-width: 2199px) {
   $length-value: 2800px;
   $left-value: -1200px;
   $bottom-value: 300px;
 
-  .circle1 {
-    width: $length-value;
-    height: $length-value;
-    bottom: $bottom-value;
-    left: $left-value;
-    border-radius: 46%;
-  }
+  body {
+    .bodyContainer {
+      .circle1 {
+        width: $length-value;
+        height: $length-value;
+        bottom: $bottom-value;
+        left: $left-value;
+        border-radius: 46%;
+      }
 
-  .circle2 {
-    width: $length-value;
-    height: $length-value;
-    bottom: calc($bottom-value - 100px);
-    left: calc($left-value + 70px);
-    border-radius: 46%;
-  }
+      .circle2 {
+        width: $length-value;
+        height: $length-value;
+        bottom: calc($bottom-value - 100px);
+        left: calc($left-value + 70px);
+        border-radius: 46%;
+      }
 
-  .circle3 {
-    width: $length-value;
-    height: $length-value;
-    bottom: calc($bottom-value - 200px);
-    left: calc($left-value + 120px);
-    border-radius: 46%;
-  }
-}
-
-@media (min-width: 1280px) and (max-width: 1679px) {
-  .circle4 {
-    right: -8000px;
+      .circle3 {
+        width: $length-value;
+        height: $length-value;
+        bottom: calc($bottom-value - 200px);
+        left: calc($left-value + 120px);
+        border-radius: 46%;
+      }
+    }
   }
 }
 
-
-
-// Tablet (vertical mode)
-@media (min-width: 1024px) and (max-width: 1279px) and (min-height: 1366px) and (max-height: 1400px) {
-  $length-value: 3600px;
-  $left-value: -2300px;
+@media only screen and (pointer: fine) and (min-width: 2200px) and (max-width: 2399px) {
+  $length-value: 3200px;
+  $left-value: -1300px;
   $bottom-value: 300px;
 
-  .circle1 {
-    width: $length-value;
-    height: $length-value;
-    bottom: $bottom-value;
-    left: $left-value;
-    border-radius: 46%;
-  }
-
-  .circle2 {
-    width: $length-value;
-    height: $length-value;
-    bottom: calc($bottom-value - 100px);
-    left: calc($left-value + 70px);
-    border-radius: 46%;
-  }
-
-  .circle3 {
-    width: $length-value;
-    height: $length-value;
-    bottom: calc($bottom-value - 200px);
-    ;
-    left: calc($left-value + 120px);
-    border-radius: 46%;
-  }
-
-  .circle4 {
-    right: -5000px;
-    bottom: -6000px;
-  }
-
-  .mainContainer {
-    width: 90vw;
-    height: 93vh;
-
-    & .header {
-      height: 80px;
-
-      & .logo {
-        font-size: 30px;
-
-        & span {
-          margin-left: 20px;
-        }
+  body {
+    .bodyContainer {
+      .circle1 {
+        width: $length-value;
+        height: $length-value;
+        bottom: $bottom-value;
+        left: $left-value;
+        border-radius: 46%;
       }
 
-      & .headerBlock {
+      .circle2 {
+        width: $length-value;
+        height: $length-value;
+        bottom: calc($bottom-value - 100px);
+        left: calc($left-value + 70px);
+        border-radius: 46%;
+      }
 
-        & form {
-          width: 30%;
-          height: 50%;
-
-          & .searchBar {
-            & input {
-              width: 100%;
-              height: 40px;
-              font-size: 12px;
-              padding-left: 40px;
-            }
-
-            & .searchIconBox {
-              font-size: 20px;
-              transform: translate(30px, -5px);
-            }
-          }
-
-          & .clearBtn {
-            width: 20px;
-            height: 20px;
-
-            & .iconSet {
-              width: 10px;
-              height: 1px;
-            }
-          }
-        }
-
-        & .user {
-          width: 90px;
-          height: 40px;
-
-          & .icon {
-            font-size: 12px;
-          }
-
-          & span {
-            font-size: 12px;
-          }
-        }
-
-        & .darkModeBtn {
-          font-size: 20px;
-          width: 40px;
-          height: 40px;
-        }
-
-        & .logOutBtn {
-          margin: 0 10px;
-          font-size: 20px;
-          width: 40px;
-          height: 40px;
-
-          & span {
-            font-size: 12px;
-            width: 30px;
-            height: 40px;
-          }
-        }
+      .circle3 {
+        width: $length-value;
+        height: $length-value;
+        bottom: calc($bottom-value - 200px);
+        ;
+        left: calc($left-value + 120px);
+        border-radius: 46%;
       }
     }
+  }
+}
 
-    & .navbar {
-      top: 80px;
-      width: 80px;
-      height: calc(93vh - 80px);
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      flex-direction: column;
+@media only screen and (pointer: fine) and (min-width: 1280px) and (max-width: 2400px) {
+  body {
+    .bodyContainer {
+      .mainContainer {
+        width: 90vw;
+        height: 90vh;
 
-      & .menuSwitch {
-        display: flex;
-        margin-top: 10px;
-        font-size: 20px;
-        width: 40px;
-        height: 40px;
-        border-radius: 5px;
-        justify-content: center;
-        align-items: center;
-      }
+        & .navbar {
+          top: 100px;
+          height: calc(90vh - 100px);
 
-      & .menuSwitch:active {
-        background: var(--container-color);
-      }
-
-      & ul {
-        margin-top: 150%;
-
-        & li {
-          font-size: 20px;
-          width: 50px;
-          height: 50px;
-
-          & .icon {
-            top: -5px;
+          & ul {
+            display: flex;
           }
 
-          & span {
-            font-size: 10px;
+          & .switch {
+            display: block;
           }
         }
       }
@@ -808,155 +1223,52 @@ body {
   }
 }
 
-@media (min-width: 700px) and (max-width: 1023px) and (min-height: 1000px) and (max-height: 1365px) {
+@media only screen and (pointer: fine) and (min-width: 2400px) {
   $length-value: 3600px;
-  $left-value: -2300px;
+  $left-value: -1500px;
   $bottom-value: 300px;
 
-  .circle1 {
-    width: $length-value;
-    height: $length-value;
-    bottom: $bottom-value;
-    left: $left-value;
-    border-radius: 46%;
-  }
-
-  .circle2 {
-    width: $length-value;
-    height: $length-value;
-    bottom: calc($bottom-value - 100px);
-    left: calc($left-value + 70px);
-    border-radius: 46%;
-  }
-
-  .circle3 {
-    width: $length-value;
-    height: $length-value;
-    bottom: calc($bottom-value - 200px);
-    ;
-    left: calc($left-value + 120px);
-    border-radius: 46%;
-  }
-
-  .circle4 {
-    right: -2000px;
-    bottom: -6000px;
-  }
-
-  .mainContainer {
-    width: 90vw;
-    height: 93vh;
-
-    & .header {
-      height: 60px;
-
-      & .logo {
-        font-size: 20px;
+  body {
+    .bodyContainer {
+      .circle1 {
+        width: $length-value;
+        height: $length-value;
+        bottom: $bottom-value;
+        left: $left-value;
+        border-radius: 46%;
       }
 
-      & .headerBlock {
-
-        & form {
-          width: 30%;
-          height: 50%;
-
-          & .searchBar {
-            & input {
-              width: 100%;
-              height: 30px;
-              font-size: 10px;
-              padding-left: 30px;
-            }
-
-            & .clearBtn {
-              width: 20px;
-              height: 20px;
-
-              & .iconSet {
-                width: 10px;
-                height: 1px;
-              }
-            }
-
-            & .searchIconBox {
-              font-size: 15px;
-              transform: translate(30px, -10px);
-            }
-          }
-        }
-
-        & .user {
-          width: 70px;
-          height: 30px;
-
-          & .icon {
-            font-size: 10px;
-            margin-right: 10px;
-          }
-
-          & span {
-            font-size: 10px;
-          }
-        }
-
-        & .darkModeBtn {
-          margin-left: 20px;
-          width: 30px;
-          height: 30px;
-          font-size: 20px;
-        }
-
-        & .logOutBtn {
-          margin: 0 10px;
-          font-size: 20px;
-          width: 30px;
-          height: 30px;
-
-          & span {
-            font-size: 10px;
-            width: 30px;
-            height: 30px;
-          }
-        }
-      }
-    }
-
-    & .navbar {
-      top: 60px;
-      width: 60px;
-      height: calc(93vh - 60px);
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      flex-direction: column;
-
-      & .menuSwitch {
-        display: flex;
-        margin-top: 10px;
-        font-size: 20px;
-        width: 40px;
-        height: 40px;
-        border-radius: 5px;
-        justify-content: center;
-        align-items: center;
+      .circle2 {
+        width: $length-value;
+        height: $length-value;
+        bottom: calc($bottom-value - 100px);
+        left: calc($left-value + 70px);
+        border-radius: 46%;
       }
 
-      & .menuSwitch:active {
-        background: var(--container-color);
+      .circle3 {
+        width: $length-value;
+        height: $length-value;
+        bottom: calc($bottom-value - 200px);
+        ;
+        left: calc($left-value + 120px);
+        border-radius: 46%;
       }
 
-      & ul {
-        margin-top: 150%;
+      .mainContainer {
+        width: 90vw;
+        height: 90vh;
 
-        & li {
-          font-size: 15px;
-          width: 40px;
-          height: 40px;
+        & .navbar {
+          top: 100px;
+          height: calc(90vh - 100px);
 
-          & span {
-            font-size: 8px;
-            margin-top: 20px;
+          & ul {
+            display: flex;
+          }
+
+          & .switch {
+            display: block;
           }
         }
       }
