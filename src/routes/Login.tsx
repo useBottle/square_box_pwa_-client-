@@ -114,7 +114,7 @@ export default function LogIn(): JSX.Element {
             회원가입
           </button>
         </div>
-        {!idError && <strong>{MESSAGE.LOGIN.ID_ERROR}</strong>}
+        {idError && <strong>{MESSAGE.LOGIN.ID_ERROR}</strong>}
         {passwordError && <strong>{MESSAGE.LOGIN.PW_ERROR}</strong>}
       </form>
     </section>

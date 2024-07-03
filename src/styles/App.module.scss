@@ -2,15 +2,13 @@
 @import "./fonts.scss";
 
 $box-shadow: inset 0 0 50px #0000008f;
-$object-width: 2200px;
-$object-height: 2200px;
-$circle-radius: 1050px;
-$left: -800px;
-$main-container-width: 1300px;
-$main-container-height: 750px;
-$header-height: 750px;
-$darkModeBtn-width: 50px;
-$darkModeBtn-height: 50px;
+$circle-width: 150vw;
+$circle-height: 145vw;
+$circle-radius: 50%;
+$circle-bottom: 30vh;
+$left: -55vw;
+$main-container-width: 93vw;
+$main-container-height: 90vh;
 
 body {
 
@@ -27,81 +25,84 @@ body {
     overflow: hidden;
     height: -webkit-fill-available;
 
-    .circle1 {
-      position: absolute;
-      width: $object-width;
-      height: $object-height;
-      background: var(--circle1-gradient);
-      border-radius: $circle-radius;
-      bottom: 300px;
-      left: $left;
-      box-shadow: $box-shadow;
-      animation: wave 20s infinite linear;
-      z-index: 5;
-      transition: background 0.3s ease-in-out;
-    }
-
-    .circle2 {
-      position: absolute;
-      width: $object-width;
-      height: $object-height;
-      background: var(--circle2-gradient);
-      border-radius: $circle-radius;
-      bottom: 200px;
-      left: $left;
-      box-shadow: $box-shadow;
-      animation: wave 30s infinite linear;
-      z-index: 4;
-      transition: background 0.3s ease-in-out;
-    }
-
-    .circle3 {
-      position: absolute;
-      width: $object-width;
-      height: $object-height;
-      background: var(--circle3-gradient);
-      border-radius: $circle-radius;
-      bottom: 100px;
-      left: $left;
-      box-shadow: $box-shadow;
-      animation: wave 40s infinite linear;
-      z-index: 3;
-      transition: background 0.3s ease-in-out;
-    }
-
-    .circle4 {
-      position: absolute;
-      width: 800vw;
-      height: 1300vh;
-      border-radius: 50%;
-      background: var(--circle4-gradient);
-      animation: wave 10s infinite linear;
-      right: -9000px;
-      bottom: -5000px;
-      z-index: 2;
-      transition: background 0.3s ease-in-out;
-    }
-
-    .finalBackground {
-      position: absolute;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: var(--circle4-gradient);
-      z-index: 1;
-    }
-
-    @keyframes wave {
-      from {
-        transform: rotate(0deg);
+    & .backgroundSet {
+      .circle1 {
+        position: absolute;
+        width: $circle-width;
+        height: $circle-height;
+        background: var(--circle1-gradient);
+        border-radius: $circle-radius;
+        bottom: $circle-bottom;
+        left: $left;
+        box-shadow: $box-shadow;
+        animation: wave 20s infinite linear;
+        z-index: 5;
+        transition: background 0.3s ease-in-out;
       }
 
-      from {
-        transform: rotate(360deg);
+      .circle2 {
+        position: absolute;
+        width: $circle-width;
+        height: $circle-height;
+        background: var(--circle2-gradient);
+        border-radius: $circle-radius;
+        bottom: calc($circle-bottom - 10vh);
+        left: calc($left + 1vw);
+        box-shadow: $box-shadow;
+        animation: wave 30s infinite linear;
+        z-index: 4;
+        transition: background 0.3s ease-in-out;
+      }
+
+      .circle3 {
+        position: absolute;
+        width: $circle-width;
+        height: $circle-height;
+        background: var(--circle3-gradient);
+        border-radius: $circle-radius;
+        bottom: calc($circle-bottom - 20vh);
+        left: calc($left + 2vw);
+        box-shadow: $box-shadow;
+        animation: wave 40s infinite linear;
+        z-index: 3;
+        transition: background 0.3s ease-in-out;
+      }
+
+      .circle4 {
+        position: absolute;
+        width: 800vw;
+        height: 1300vh;
+        border-radius: 50%;
+        background: var(--circle4-gradient);
+        animation: wave 10s infinite linear;
+        right: -300vw;
+        bottom: -100vh;
+        z-index: 2;
+        transition: background 0.3s ease-in-out;
+      }
+
+      .finalBackground {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 200vw;
+        height: 200vh;
+        background: var(--circle4-gradient);
+        z-index: 1;
+      }
+
+      @keyframes wave {
+        from {
+          transform: rotate(0deg);
+        }
+
+        from {
+          transform: rotate(360deg);
+        }
       }
     }
 
-    .mainContainer {
+    & .mainContainer {
       color: var(--font-color);
       background: var(--container-color);
       position: fixed;
@@ -122,27 +123,27 @@ body {
         position: absolute;
         width: 100%;
         left: 0;
-        height: 100px;
+        height: 12vh;
         border-bottom: 0.5px solid var(--border-color);
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 30px;
+        padding: 0 2vw;
         box-sizing: border-box;
         user-select: none;
 
         & .logo {
           position: absolute;
           font-family: "Poiret One";
-          font-size: 40px;
+          font-size: 3vw;
           font-weight: 800;
-          margin: 30px 0;
           cursor: pointer;
           z-index: 999;
           display: flex;
+          margin: 0 0.5vw;
 
           & span {
-            margin-left: 30px;
+            margin-left: 2.2vw;
           }
         }
 
@@ -151,12 +152,10 @@ body {
           justify-content: flex-end;
           align-items: center;
           position: absolute;
-          right: 20px;
-          width: 60%;
+          right: 1vw;
 
           & form {
-            width: 280px;
-            height: 50px;
+            width: 20vw;
 
             & .searchBar {
               position: relative;
@@ -168,9 +167,9 @@ body {
                 position: relative;
                 right: 0;
                 width: 100%;
-                height: 50px;
-                padding-left: 55px;
-                padding-right: 40px;
+                height: 6vh;
+                padding-left: 4vw;
+                padding-right: 3vw;
                 border: none;
                 border-radius: 5px;
                 list-style: none;
@@ -197,11 +196,11 @@ body {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                transform: translateX(-10px);
+                transform: translateX(-0.5vw);
                 font-weight: 400;
                 cursor: pointer;
-                width: 25px;
-                height: 25px;
+                width: 2vw;
+                height: 2vw;
                 right: 0;
                 border-radius: 50%;
                 border: none;
@@ -214,8 +213,6 @@ body {
                   left: 50%;
                   transform: translate(-50%, -50%);
                   display: flex;
-                  width: 15px;
-                  height: 2px;
                   background: var(--font-color);
                   transition: background 0.3s ease-in-out;
                 }
@@ -225,8 +222,8 @@ body {
                   position: absolute;
                   top: 50%;
                   left: 50%;
-                  width: 15px;
-                  height: 2px;
+                  width: 1vw;
+                  height: 0.15vw;
                   background: var(--font-color);
                   transform-origin: center;
                 }
@@ -254,13 +251,13 @@ body {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                height: 50px;
+                height: 6vh;
                 top: 0;
-                left: -20px;
+                left: -1.5vw;
                 padding: 0;
                 border: none;
                 background: transparent;
-                font-size: 30px;
+                font-size: 2vw;
                 cursor: pointer;
 
                 & .searchIcon {
@@ -274,11 +271,11 @@ body {
           & .user {
             position: relative;
             font-family: "S-CoreDream-4Regular";
-            margin-left: 20px;
-            padding: 0 10px;
+            margin-left: 2vw;
+            padding: 0 0.5vw;
             background: var(--container-color);
-            height: 50px;
-            width: 130px;
+            height: 6vh;
+            width: 9vw;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -289,7 +286,7 @@ body {
             user-select: none;
 
             & .icon {
-              margin-right: 20px;
+              margin-right: 1vw;
             }
 
             & span {
@@ -298,10 +295,10 @@ body {
           }
 
           & .darkModeBtn {
-            font-size: 30px;
-            margin-left: 30px;
-            width: $darkModeBtn-width;
-            height: $darkModeBtn-height;
+            width: 3vw;
+            height: 6vh;
+            font-size: 2.2vw;
+            margin-left: 2vw;
             border-radius: 5px;
             display: flex;
             justify-content: center;
@@ -332,14 +329,14 @@ body {
 
 
           & .logOutBtn {
-            margin: 0 30px;
+            margin: 0 3vw;
             display: flex;
             justify-content: center;
             align-items: center;
             background: transparent;
             border: none;
             color: var(--font-color);
-            font-size: 30px;
+            font-size: 2.2vw;
             padding: 0;
             cursor: pointer;
 
@@ -355,9 +352,9 @@ body {
               display: flex;
               justify-content: center;
               align-items: center;
-              font-size: 15px;
-              width: 40px;
-              height: 50px;
+              font-size: 1vw;
+              width: 3vw;
+              height: 6vh;
               color: var(--point-color1);
               background: var(--container-color);
               border-radius: 5px;
@@ -382,8 +379,8 @@ body {
         position: absolute;
         bottom: 0;
         left: 0;
-        width: 100px;
-        height: calc(($main-container-height) - 100px);
+        width: 12vh;
+        height: calc(($main-container-height) - 12vh);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -406,14 +403,14 @@ body {
           z-index: 900;
 
           & li {
-            margin-top: 30px;
+            margin-top: 4vh;
             font-family: "Barlow Condensed";
             font-weight: 100;
-            font-size: 25px;
+            font-size: 1.7vw;
             background: transparent;
             border-radius: 5px;
-            width: 60px;
-            height: 60px;
+            width: 4.5vw;
+            height: 4.5vw;
             color: var(--font-color);
             position: relative;
             display: flex;
@@ -425,13 +422,13 @@ body {
 
             & div {
               position: relative;
-              top: -10px;
+              top: -1vh;
             }
 
             & span {
               position: absolute;
-              margin-top: 30px;
-              font-size: 15px;
+              margin-top: 4vh;
+              font-size: 1vw;
               opacity: 0;
               transition: opacity 0.3s ease-in-out;
               pointer-events: none;
@@ -517,761 +514,30 @@ body {
 // Cell Phone (vertical mode) 
 @media only screen and (orientation : portrait) and (pointer: coarse) and (min-device-width: 300px) {
   body {
-    .bodyContainer {
-
-      & .mainContainer {
-        width: 90vw;
-        height: 85vh;
-
-        & .header {
-          height: 80px;
-
-          & .logo {
-            font-size: 30px;
-
-            & span {
-              margin-left: 20px;
-            }
-          }
-
-          & .headerBlock {
-
-            & form {
-              width: 30%;
-              height: 50%;
-
-              & .searchBar {
-                & input {
-                  width: 100%;
-                  height: 40px;
-                  font-size: 12px;
-                  padding-left: 40px;
-                }
-
-                & .searchIconBox {
-                  font-size: 20px;
-                  transform: translate(30px, -5px);
-                }
-              }
-
-              & .clearBtn {
-                width: 20px;
-                height: 20px;
-
-                & .iconSet {
-                  width: 10px;
-                  height: 1px;
-                }
-              }
-            }
-
-            & .user {
-              width: 90px;
-              height: 40px;
-
-              & .icon {
-                font-size: 12px;
-              }
-
-              & span {
-                font-size: 12px;
-              }
-            }
-
-            & .darkModeBtn {
-              font-size: 20px;
-              width: 40px;
-              height: 40px;
-            }
-
-            & .logOutBtn {
-              margin: 0 10px;
-              font-size: 20px;
-              width: 40px;
-              height: 40px;
-
-              & span {
-                font-size: 12px;
-                width: 30px;
-                height: 40px;
-              }
-            }
-          }
-        }
-
-        & .navbar {
-          top: 80px;
-          width: 80px;
-          height: calc(93vh - 80px);
-          border: none;
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          flex-direction: column;
-
-          & .menuSwitch {
-            display: flex;
-            margin-top: 10px;
-            font-size: 20px;
-            width: 40px;
-            height: 40px;
-            border-radius: 5px;
-            justify-content: center;
-            align-items: center;
-          }
-
-          & .menuSwitch:active {
-            background: var(--container-color);
-          }
-
-          & ul {
-            margin-top: 150%;
-
-            & li {
-              font-size: 20px;
-              width: 50px;
-              height: 50px;
-
-              & .icon {
-                top: -5px;
-              }
-
-              & span {
-                font-size: 10px;
-              }
-            }
-          }
-        }
-      }
-    }
+    .bodyContainer {}
   }
 }
 
 // Cell Phone (horizontal mode)
-@media only screen and (orientation : landscape) and (pointer: coarse) and (min-device-width: 300px) {
-  body {
-    .bodyContainer {
-      & .mainContainer {
-        width: 90vw;
-        height: 85vh;
-
-        & .header {
-          height: 80px;
-
-          & .logo {
-            font-size: 30px;
-
-            & span {
-              margin-left: 20px;
-            }
-          }
-
-          & .headerBlock {
-
-            & form {
-              width: 30%;
-              height: 50%;
-
-              & .searchBar {
-                & input {
-                  width: 100%;
-                  height: 40px;
-                  font-size: 12px;
-                  padding-left: 40px;
-                }
-
-                & .searchIconBox {
-                  font-size: 20px;
-                  transform: translate(30px, -5px);
-                }
-              }
-
-              & .clearBtn {
-                width: 20px;
-                height: 20px;
-
-                & .iconSet {
-                  width: 10px;
-                  height: 1px;
-                }
-              }
-            }
-
-            & .user {
-              width: 90px;
-              height: 40px;
-
-              & .icon {
-                font-size: 12px;
-              }
-
-              & span {
-                font-size: 12px;
-              }
-            }
-
-            & .darkModeBtn {
-              font-size: 20px;
-              width: 40px;
-              height: 40px;
-            }
-
-            & .logOutBtn {
-              margin: 0 10px;
-              font-size: 20px;
-              width: 40px;
-              height: 40px;
-
-              & span {
-                font-size: 12px;
-                width: 30px;
-                height: 40px;
-              }
-            }
-          }
-        }
-
-        & .navbar {
-          top: 80px;
-          width: 80px;
-          height: calc(93vh - 80px);
-          border: none;
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          flex-direction: column;
-
-          & .menuSwitch {
-            display: flex;
-            margin-top: 10px;
-            font-size: 20px;
-            width: 40px;
-            height: 40px;
-            border-radius: 5px;
-            justify-content: center;
-            align-items: center;
-          }
-
-          & .menuSwitch:active {
-            background: var(--container-color);
-          }
-
-          & ul {
-            margin-top: 150%;
-
-            & li {
-              font-size: 20px;
-              width: 50px;
-              height: 50px;
-
-              & .icon {
-                top: -5px;
-              }
-
-              & span {
-                font-size: 10px;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
+@media only screen and (orientation : landscape) and (pointer: coarse) and (min-device-width: 300px) {}
 
 
 
 // Tablet (vertical mode) 
-@media only screen and (orientation : portrait) and (pointer: coarse) and (min-device-width : 768px) and (max-device-width : 1024px) {
-  $length-value: 3600px;
-  $left-value: -2100px;
-  $bottom-value: 300px;
-
-  body {
-
-    & .bodyContainer {
-
-      & .circle1 {
-        width: $length-value;
-        height: $length-value;
-        bottom: $bottom-value;
-        left: $left-value;
-        border-radius: 46%;
-      }
-
-      & .circle2 {
-        width: $length-value;
-        height: $length-value;
-        bottom: calc($bottom-value - 100px);
-        left: calc($left-value + 70px);
-        border-radius: 46%;
-      }
-
-      & .circle3 {
-        width: $length-value;
-        height: $length-value;
-        bottom: calc($bottom-value - 200px);
-        ;
-        left: calc($left-value + 120px);
-        border-radius: 46%;
-      }
-
-      & .circle4 {
-        right: -5000px;
-        bottom: -6000px;
-      }
-
-      & .mainContainer {
-        width: 95vw;
-        height: 90vh;
-
-        & .header {
-          height: 80px;
-
-          & .logo {
-            font-size: 30px;
-
-            & span {
-              margin-left: 20px;
-            }
-          }
-
-          & .headerBlock {
-
-            & form {
-              width: 30%;
-              height: 50%;
-
-              & .searchBar {
-                & input {
-                  width: 100%;
-                  height: 40px;
-                  font-size: 12px;
-                  padding-left: 40px;
-                }
-
-                & .searchIconBox {
-                  font-size: 20px;
-                  transform: translate(30px, -5px);
-                }
-              }
-
-              & .clearBtn {
-                width: 20px;
-                height: 20px;
-
-                & .iconSet {
-                  width: 10px;
-                  height: 1px;
-                }
-              }
-            }
-
-            & .user {
-              width: 90px;
-              height: 40px;
-
-              & .icon {
-                font-size: 12px;
-              }
-
-              & span {
-                font-size: 12px;
-              }
-            }
-
-            & .darkModeBtn {
-              font-size: 20px;
-              width: 40px;
-              height: 40px;
-            }
-
-            & .logOutBtn {
-              margin: 0 10px;
-              font-size: 20px;
-              width: 40px;
-              height: 40px;
-
-              & span {
-                font-size: 12px;
-                width: 30px;
-                height: 40px;
-              }
-            }
-          }
-        }
-
-        & .navbar {
-          top: 80px;
-          width: 80px;
-          height: calc(93vh - 80px);
-          border: none;
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          flex-direction: column;
-
-          & .menuSwitch {
-            display: flex;
-            margin-top: 10px;
-            font-size: 20px;
-            width: 40px;
-            height: 40px;
-            border-radius: 5px;
-            justify-content: center;
-            align-items: center;
-          }
-
-          & .menuSwitch:active {
-            background: var(--container-color);
-          }
-
-          & ul {
-            margin-top: 150%;
-
-            & li {
-              font-size: 20px;
-              width: 50px;
-              height: 50px;
-
-              & .icon {
-                top: -5px;
-              }
-
-              & span {
-                font-size: 10px;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
+@media only screen and (orientation : portrait) and (pointer: coarse) and (min-device-width : 700px) {}
 
 // Tablet (horizontal mode) 
-@media only screen and (orientation : landscape) and (pointer: coarse) and (min-device-width : 768px) and (max-device-width : 1024px) {
-  $length-value: 3600px;
-  $left-value: -2100px;
-  $bottom-value: 300px;
-
-  body {
-
-    & .bodyContainer {
-
-      & .circle1 {
-        width: $length-value;
-        height: $length-value;
-        bottom: $bottom-value;
-        left: $left-value;
-        border-radius: 46%;
-      }
-
-      & .circle2 {
-        width: $length-value;
-        height: $length-value;
-        bottom: calc($bottom-value - 100px);
-        left: calc($left-value + 70px);
-        border-radius: 46%;
-      }
-
-      & .circle3 {
-        width: $length-value;
-        height: $length-value;
-        bottom: calc($bottom-value - 200px);
-        ;
-        left: calc($left-value + 120px);
-        border-radius: 46%;
-      }
-
-      & .circle4 {
-        right: -5000px;
-        bottom: -6000px;
-      }
-
-      & .mainContainer {
-        width: 95vw;
-        height: 85vh;
-
-        & .header {
-          height: 80px;
-
-          & .logo {
-            font-size: 30px;
-
-            & span {
-              margin-left: 20px;
-            }
-          }
-
-          & .headerBlock {
-
-            & form {
-              width: 30%;
-              height: 50%;
-
-              & .searchBar {
-                & input {
-                  width: 100%;
-                  height: 40px;
-                  font-size: 12px;
-                  padding-left: 40px;
-                }
-
-                & .searchIconBox {
-                  font-size: 20px;
-                  transform: translate(30px, -5px);
-                }
-              }
-
-              & .clearBtn {
-                width: 20px;
-                height: 20px;
-
-                & .iconSet {
-                  width: 10px;
-                  height: 1px;
-                }
-              }
-            }
-
-            & .user {
-              width: 90px;
-              height: 40px;
-
-              & .icon {
-                font-size: 12px;
-              }
-
-              & span {
-                font-size: 12px;
-              }
-            }
-
-            & .darkModeBtn {
-              font-size: 20px;
-              width: 40px;
-              height: 40px;
-            }
-
-            & .logOutBtn {
-              margin: 0 10px;
-              font-size: 20px;
-              width: 40px;
-              height: 40px;
-
-              & span {
-                font-size: 12px;
-                width: 30px;
-                height: 40px;
-              }
-            }
-          }
-        }
-
-        & .navbar {
-          top: 80px;
-          width: 80px;
-          height: calc(93vh - 80px);
-          border: none;
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          flex-direction: column;
-
-          & .menuSwitch {
-            display: flex;
-            margin-top: 10px;
-            font-size: 20px;
-            width: 40px;
-            height: 40px;
-            border-radius: 5px;
-            justify-content: center;
-            align-items: center;
-          }
-
-          & .menuSwitch:active {
-            background: var(--container-color);
-          }
-
-          & ul {
-            margin-top: 150%;
-
-            & li {
-              font-size: 20px;
-              width: 50px;
-              height: 50px;
-
-              & .icon {
-                top: -5px;
-              }
-
-              & span {
-                font-size: 10px;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
+@media only screen and (orientation : landscape) and (pointer: coarse) and (min-device-width : 700px) {}
 
 
 
 // Desktop
-@media only screen and (pointer: fine) and (min-width: 1280px) {
-  body {
-    .bodyContainer {
-      .circle4 {
-        right: -8000px;
-      }
-    }
-  }
-}
+@media only screen and (pointer: fine) and (min-width: 1280px) {}
 
-@media only screen and (pointer: fine) and (min-width: 1920px) and (max-width: 2199px) {
-  $length-value: 2800px;
-  $left-value: -1200px;
-  $bottom-value: 300px;
+@media only screen and (pointer: fine) and (min-width: 1920px) and (max-width: 2199px) {}
 
-  body {
-    .bodyContainer {
-      .circle1 {
-        width: $length-value;
-        height: $length-value;
-        bottom: $bottom-value;
-        left: $left-value;
-        border-radius: 46%;
-      }
+@media only screen and (pointer: fine) and (min-width: 2200px) and (max-width: 2399px) {}
 
-      .circle2 {
-        width: $length-value;
-        height: $length-value;
-        bottom: calc($bottom-value - 100px);
-        left: calc($left-value + 70px);
-        border-radius: 46%;
-      }
+@media only screen and (pointer: fine) and (min-width: 1280px) and (max-width: 2400px) {}
 
-      .circle3 {
-        width: $length-value;
-        height: $length-value;
-        bottom: calc($bottom-value - 200px);
-        left: calc($left-value + 120px);
-        border-radius: 46%;
-      }
-    }
-  }
-}
-
-@media only screen and (pointer: fine) and (min-width: 2200px) and (max-width: 2399px) {
-  $length-value: 3200px;
-  $left-value: -1300px;
-  $bottom-value: 300px;
-
-  body {
-    .bodyContainer {
-      .circle1 {
-        width: $length-value;
-        height: $length-value;
-        bottom: $bottom-value;
-        left: $left-value;
-        border-radius: 46%;
-      }
-
-      .circle2 {
-        width: $length-value;
-        height: $length-value;
-        bottom: calc($bottom-value - 100px);
-        left: calc($left-value + 70px);
-        border-radius: 46%;
-      }
-
-      .circle3 {
-        width: $length-value;
-        height: $length-value;
-        bottom: calc($bottom-value - 200px);
-        ;
-        left: calc($left-value + 120px);
-        border-radius: 46%;
-      }
-    }
-  }
-}
-
-@media only screen and (pointer: fine) and (min-width: 1280px) and (max-width: 2400px) {
-  body {
-    .bodyContainer {
-      .mainContainer {
-        width: 90vw;
-        height: 90vh;
-
-        & .navbar {
-          top: 100px;
-          height: calc(90vh - 100px);
-
-          & ul {
-            display: flex;
-          }
-
-          & .switch {
-            display: block;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media only screen and (pointer: fine) and (min-width: 2400px) {
-  $length-value: 3600px;
-  $left-value: -1500px;
-  $bottom-value: 300px;
-
-  body {
-    .bodyContainer {
-      .circle1 {
-        width: $length-value;
-        height: $length-value;
-        bottom: $bottom-value;
-        left: $left-value;
-        border-radius: 46%;
-      }
-
-      .circle2 {
-        width: $length-value;
-        height: $length-value;
-        bottom: calc($bottom-value - 100px);
-        left: calc($left-value + 70px);
-        border-radius: 46%;
-      }
-
-      .circle3 {
-        width: $length-value;
-        height: $length-value;
-        bottom: calc($bottom-value - 200px);
-        ;
-        left: calc($left-value + 120px);
-        border-radius: 46%;
-      }
-
-      .mainContainer {
-        width: 90vw;
-        height: 90vh;
-
-        & .navbar {
-          top: 100px;
-          height: calc(90vh - 100px);
-
-          & ul {
-            display: flex;
-          }
-
-          & .switch {
-            display: block;
-          }
-        }
-      }
-    }
-  }
-}
+@media only screen and (pointer: fine) and (min-width: 2400px) {}

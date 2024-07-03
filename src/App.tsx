@@ -185,11 +185,13 @@ function App(): JSX.Element {
         <BookMarkLimitModal />
         <div className={styles.overlay} role="button" onClick={() => dispatch(setBookMarkLimitModalTrigger(false))} />
       </div>
-      <div className={styles.circle1} />
-      <div className={styles.circle2} />
-      <div className={styles.circle3} />
-      <div className={styles.circle4} />
-      <div className={styles.finalBackground} />
+      <div className={styles.backgroundSet}>
+        <div className={styles.circle1} />
+        <div className={styles.circle2} />
+        <div className={styles.circle3} />
+        <div className={styles.circle4} />
+        <div className={styles.finalBackground} />
+      </div>
       <div>
         <div className={styles.mainContainer}>
           {userCheck === true && (
@@ -264,7 +266,7 @@ function App(): JSX.Element {
                 >
                   <IoMenu />
                 </button>
-                <ul className={navSwitch ? "" : styles.switch}>
+                <ul className={!navSwitch ? "" : styles.switch}>
                   {menuItem.map((item, index) => {
                     return (
                       <li
