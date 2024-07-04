@@ -295,6 +295,7 @@ body {
             overflow: hidden;
             text-overflow: ellipsis;
             user-select: none;
+            transition: background 0.3s ease-in-out;
 
             & .icon {
               margin-right: 1vw;
@@ -346,6 +347,7 @@ body {
             align-items: center;
             background: transparent;
             border: none;
+            border-radius: 5px;
             color: var(--font-color);
             font-size: 2.2vw;
             padding: 0;
@@ -897,10 +899,218 @@ body {
 
 
 // Tablet (vertical mode) 
-@media only screen and (orientation : portrait) and (pointer: coarse) and (min-device-width : 700px) {}
+@media only screen and (orientation : portrait) and (pointer: coarse) and (min-device-width : 700px) {
+  $circle-width: 300vw;
+  $circle-height: 290vw;
+  $circle-radius: 50%;
+  $circle-bottom: 30vh;
+  $left: -180vw;
+
+  body {
+    & .bodyContainer {
+      & .backgroundSet {
+        & .circle1 {
+          width: $circle-width;
+          height: $circle-height;
+          left: $left;
+        }
+
+        & .circle2 {
+          width: $circle-width;
+          height: $circle-height;
+          left: calc($left + 1vw);
+        }
+
+        & .circle3 {
+          width: $circle-width;
+          height: $circle-height;
+          left: calc($left + 2vw);
+        }
+      }
+
+      & .mainContainer {
+        & .header {
+          height: 6vh;
+          z-index: 999;
+
+          & .logo {
+            font-size: 3vw;
+            margin: 0 2vw;
+          }
+
+          & .headerBlock {
+            & form {
+              & .searchBar {
+                display: flex;
+
+                & input {
+                  height: 3vh;
+                }
+
+                & .searchIconBox {
+                  left: -2.5vw;
+                  top: -1.5vh;
+                }
+              }
+            }
+
+            & .user {
+              display: flex;
+              height: 3vh;
+
+              & span {
+                font-size: 1.5vw;
+              }
+            }
+
+            & .darkModeBtn {
+              display: none;
+            }
+
+            & .logOutBtn {
+              display: none;
+            }
+
+            & .searchModalIcon {
+              display: none;
+            }
+
+            & .menuSwitch {
+              display: flex;
+              width: 8vw;
+              height: 3vh;
+              font-size: 2vw;
+              margin-left: 2vw;
+            }
+          }
+        }
+
+        & .navbar {
+          display: none;
+        }
+      }
+    }
+  }
+}
 
 // Tablet (horizontal mode) 
-@media only screen and (orientation : landscape) and (pointer: coarse) and (min-device-width : 700px) {}
+@media only screen and (orientation : landscape) and (pointer: coarse) and (min-device-width : 700px) {
+  $circle-width: 300vw;
+  $circle-height: 290vw;
+  $circle-radius: 50%;
+  $circle-bottom: 30vh;
+  $left: -180vw;
+
+  body {
+    & .bodyContainer {
+      & .backgroundSet {
+        & .circle1 {
+          width: $circle-width;
+          height: $circle-height;
+          left: $left;
+        }
+
+        & .circle2 {
+          width: $circle-width;
+          height: $circle-height;
+          left: calc($left + 1vw);
+        }
+
+        & .circle3 {
+          width: $circle-width;
+          height: $circle-height;
+          left: calc($left + 2vw);
+        }
+      }
+
+      & .mainContainer {
+        & .header {
+          height: 8vh;
+          z-index: 999;
+
+          & .logo {
+            font-size: 2.5vw;
+            margin: 0 0.5vw;
+          }
+
+          & .headerBlock {
+            & form {
+              width: 25vw;
+              height: 5vh;
+
+              & .searchBar {
+                width: 100%;
+                height: 100%;
+
+                & input {
+                  width: 100%;
+                  height: 100%;
+                  padding-left: 3.5vw;
+                  padding-right: 4vw;
+                  font-size: 1.8vw;
+                }
+
+                & .clearBtn {
+                  transform: translateX(-1vw);
+                  width: 3vw;
+                  height: 3vw;
+
+                  & .part1,
+                  & .part2 {
+                    width: 1.5vw;
+                  }
+                }
+
+                & .clearBtn:active {
+                  background: var(--container-color);
+
+                  & .iconSet {
+                    background: var(--sub-title);
+                  }
+                }
+
+                & .searchIconBox {
+                  top: 50%;
+                  transform: translate(2.5vw, -50%);
+                  font-size: 2vw;
+                }
+              }
+            }
+
+            & .user {
+              display: flex;
+              height: 5vh;
+            }
+
+            & .darkModeBtn {
+              display: none;
+            }
+
+            & .logOutBtn {
+              display: none;
+            }
+
+            & .searchModalIcon {
+              display: none;
+            }
+
+            & .menuSwitch {
+              display: flex;
+              font-size: 2vw;
+              width: 10vh;
+              height: 5vh;
+              margin-left: 2vw;
+            }
+          }
+        }
+
+        & .navbar {
+          display: none;
+        }
+      }
+    }
+  }
+}
 
 
 

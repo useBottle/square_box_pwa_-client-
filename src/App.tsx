@@ -54,7 +54,7 @@ function App(): JSX.Element {
   const { username } = useSelector((state: RootState) => state.verification);
   const { navSwitch } = useSelector((state: RootState) => state.userInterface);
 
-  const verifyToken = async () => {
+  const verifyToken = async (): Promise<Response | void> => {
     try {
       const response = await reissueToken();
       if (response.status === 200 && accessToken) {
@@ -87,7 +87,7 @@ function App(): JSX.Element {
     localStorage.getItem("theme") === "dark" ? dispatch(setDarkLight("dark")) : dispatch(setDarkLight("light"));
   }, [dispatch]);
 
-  const themeExchange = () => {
+  const themeExchange = (): void => {
     if (darkLightToggle === "dark") {
       dispatch(setDarkLight("light"));
       localStorage.setItem("theme", "light");

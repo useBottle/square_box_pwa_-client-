@@ -211,10 +211,6 @@
   animation: showUp 0.2s ease-in-out forwards;
 }
 
-.navOverlayHide {
-  animation: overlayHide 0.2s ease-in-out forwards
-}
-
 @keyframes showUp {
   0% {
     opacity: 0;
@@ -225,25 +221,12 @@
   }
 }
 
-@keyframes overlayHide {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
 
 
 // Cell Phone (vertical mode) 
 @media only screen and (orientation : portrait) and (pointer: coarse) and (min-device-width: 300px) {
   .mobileNav {
     display: flex;
-  }
-
-  .navOverlay {
-    display: block;
   }
 }
 
@@ -312,14 +295,164 @@
   }
 
   .navOverlay {
-    display: block;
     top: 12vh;
   }
 }
 
 
 // Tablet (vertical mode) 
-@media only screen and (orientation : portrait) and (pointer: coarse) and (min-device-width : 700px) {}
+@media only screen and (orientation : portrait) and (pointer: coarse) and (min-device-width : 700px) {
+  .mobileNav {
+    display: flex;
+    top: 6vh;
+    width: 30vw;
+    height: calc(90vh - 6vh);
+
+    & .userSet {
+      display: none;
+    }
+
+    & ul {
+      & li {
+        height: 6vh;
+        font-size: 2vw;
+
+        & .icon {
+          left: 10vw;
+        }
+
+        & span {
+          left: 15vw;
+          font-size: 2vw;
+        }
+
+        & .darkModeBtn {
+          & .darkModeIcon {
+            font-size: 2vw;
+          }
+        }
+
+        & .logOutBtn {
+          & .logOutIcon {
+            font-size: 2vw;
+          }
+        }
+      }
+
+      & li:nth-last-child(1) {
+        width: 4vh;
+        height: 4vh;
+        right: 5vw;
+      }
+
+      & li:nth-last-child(2) {
+        width: 4vh;
+        height: 4vh;
+        left: 5vw;
+      }
+    }
+  }
+
+  @keyframes navSlider {
+    0% {
+      left: 93vw;
+    }
+
+    100% {
+      left: 63vw;
+    }
+  }
+
+  @keyframes navHide {
+    0% {
+      left: 63vw;
+    }
+
+    100% {
+      left: 93vw;
+    }
+  }
+}
 
 // Tablet (horizontal mode) 
-@media only screen and (orientation : landscape) and (pointer: coarse) and (min-device-width : 700px) {}
+@media only screen and (orientation : landscape) and (pointer: coarse) and (min-device-width : 700px) {
+  .mobileNav {
+    display: flex;
+    height: calc(90vh - 8vh);
+    width: 20vw;
+    top: 8vh;
+    left: 73vw;
+
+    & h4 {
+      height: 10%;
+    }
+
+    & .userSet {
+      display: none;
+    }
+
+    & ul {
+      & li {
+        font-size: 1.5vw;
+        height: 8vh;
+
+        & .icon {
+          left: 6vw;
+        }
+
+        & span {
+          font-size: 1.5vw;
+          left: 9vw;
+        }
+
+        & .darkModeBtn {
+          & .darkModeIcon {
+            font-size: 1.5vw;
+          }
+        }
+
+        & .logOutBtn {
+          & .logOutIcon {
+            font-size: 1.5vw;
+          }
+        }
+      }
+
+      & li:nth-last-child(1) {
+        width: 6vh;
+        height: 6vh;
+        right: 3vw;
+      }
+
+      & li:nth-last-child(2) {
+        width: 6vh;
+        height: 6vh;
+        left: 3vw;
+      }
+    }
+  }
+
+  @keyframes navSlider {
+    0% {
+      left: 93vw;
+    }
+
+    100% {
+      left: 73vw;
+    }
+  }
+
+  @keyframes navHide {
+    0% {
+      left: 73vw;
+    }
+
+    100% {
+      left: 93vw;
+    }
+  }
+
+  .navOverlay {
+    top: 8vh;
+  }
+}

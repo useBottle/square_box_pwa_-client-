@@ -21,7 +21,7 @@ export default function MobileNav(): JSX.Element {
     { path: "/bookmark", icon: <FaBookmark />, label: "Bookmark" },
   ];
 
-  const themeExchange = () => {
+  const themeExchange = (): void => {
     if (darkLightToggle === "dark") {
       dispatch(setDarkLight("light"));
       localStorage.setItem("theme", "light");
@@ -33,7 +33,7 @@ export default function MobileNav(): JSX.Element {
 
   return (
     <div>
-      <nav className={`${styles.mobileNav} ${navSwitch && styles.navHide}`}>
+      <nav className={`${styles.mobileNav} ${!navSwitch && styles.navHide}`}>
         <h4>MENU</h4>
         <div className={styles.userSet}>
           <div className={styles.user}>
@@ -74,9 +74,10 @@ export default function MobileNav(): JSX.Element {
         </ul>
       </nav>
       <div
-        className={`${styles.navOverlay} ${navSwitch && styles.navOverlayHide}`}
+        className={styles.navOverlay}
         role="button"
         onClick={() => dispatch(navSwitch ? setNavSwitch(false) : setNavSwitch(true))}
+        style={navSwitch ? { display: "block" } : { display: "none" }}
       />
     </div>
   );
