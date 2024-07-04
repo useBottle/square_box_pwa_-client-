@@ -36,6 +36,7 @@ import BookMarkLimitModal from "./components/BookMarkLimitModal";
 import LogOutModal from "./components/LogOutModal";
 import SearchForm from "./components/SearchForm";
 import SearchBarModal from "./components/SearchBarModal";
+import MobileNav from "./components/MobileNav";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -184,12 +185,7 @@ function App(): JSX.Element {
                   </button>
                 </div>
               </header>
-              <nav className={`${styles.navbar} ${navSwitch && styles.navHide}`}>
-                <h4>MENU</h4>
-                <div className={styles.user}>
-                  <FaUser className={styles.icon} />
-                  <span>{username}</span>
-                </div>
+              <nav className={styles.navbar}>
                 <ul>
                   {menuItem.map((item, index) => {
                     return (
@@ -206,27 +202,9 @@ function App(): JSX.Element {
                       </li>
                     );
                   })}
-                  <li>
-                    <button className={styles.darkModeBtn} onClick={themeExchange}>
-                      {darkLightToggle === "dark" ? (
-                        <GoSun className={styles.darkModeIcon} />
-                      ) : (
-                        <GoMoon className={styles.darkModeIcon} />
-                      )}
-                    </button>
-                  </li>
-                  <li>
-                    <button className={styles.logOutBtn} onClick={() => dispatch(setLogOutModalTrigger(true))}>
-                      <GoSignOut className={styles.logOutIcon} />
-                    </button>
-                  </li>
                 </ul>
               </nav>
-              <div
-                className={`${styles.navOverlay} ${navSwitch && styles.navOverlayHide}`}
-                role="button"
-                onClick={() => dispatch(navSwitch ? setNavSwitch(false) : setNavSwitch(true))}
-              />
+              <MobileNav />
             </div>
           )}
 
