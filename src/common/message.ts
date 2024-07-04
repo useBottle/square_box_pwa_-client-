@@ -43,6 +43,10 @@ export const MESSAGE = {
     CONFIRM: "로그아웃 하시겠습니까?",
   },
 
+  SEARCH: {
+    INFO: "컨텐츠를 검색해보세요.",
+  },
+
   BOOKMARK: {
     DEFAULT_INFO: "북마크된 컨텐츠가 없습니다.",
     ADD_COMPLETE: "북마크에 추가했습니다.",

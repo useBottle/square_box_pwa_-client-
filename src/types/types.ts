@@ -24,6 +24,7 @@ export interface LoadingStatus {
 
 export interface ModalTrigger {
   searchModalTrigger: boolean;
+  searchBarTrigger: boolean;
   bookMarkModalTrigger: boolean;
   bookMarkLimitModalTrigger: boolean;
   logOutModalTrigger: boolean;

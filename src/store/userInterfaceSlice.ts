@@ -7,6 +7,7 @@ const initialState: userInterface = {
   navSwitch: false,
   modalTrigger: {
     searchModalTrigger: false,
+    searchBarTrigger: false,
     bookMarkModalTrigger: false,
     bookMarkLimitModalTrigger: false,
     logOutModalTrigger: false,
@@ -34,6 +35,9 @@ const userInterfaceSlice = createSlice({
     },
     setSearchModalTrigger(state, action: PayloadAction<boolean>) {
       state.modalTrigger.searchModalTrigger = action.payload;
+    },
+    setSearchBarTrigger(state, action: PayloadAction<boolean>) {
+      state.modalTrigger.searchBarTrigger = action.payload;
     },
     setBookMarkModalTrigger(state, action: PayloadAction<boolean>) {
       state.modalTrigger.bookMarkModalTrigger = action.payload;
@@ -64,6 +68,7 @@ export const {
   setMenuIndex,
   setNavSwitch,
   setSearchModalTrigger,
+  setSearchBarTrigger,
   setBookMarkModalTrigger,
   setBookMarkLimitModalTrigger,
   setLogOutModalTrigger,

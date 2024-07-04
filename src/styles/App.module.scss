@@ -384,6 +384,25 @@ body {
             }
           }
 
+          & .searchModalIcon {
+            display: none;
+            font-size: 5vw;
+            justify-content: center;
+            align-items: center;
+            margin-right: 2vw;
+            width: 8vh;
+            height: 5vh;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            box-sizing: border-box;
+            background: transparent;
+            color: var(--font-color);
+          }
+
+          & .searchModalIcon:active {
+            background: var(--container-color);
+          }
+
           & .menuSwitch {
             display: none;
             font-size: 5vw;
@@ -391,7 +410,7 @@ body {
             align-items: center;
             margin-right: 2vw;
             width: 8vh;
-            height: 4vh;
+            height: 5vh;
             border-radius: 5px;
             border: 1px solid var(--border-color);
             box-sizing: border-box;
@@ -414,15 +433,55 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
         border-right: 0.5px solid var(--border-color);
         box-sizing: border-box;
         user-select: none;
+        animation: navSlider 0.2s ease-out forwards;
+        overflow: hidden;
+
+        & .user {
+          position: relative;
+          font-family: "S-CoreDream-4Regular";
+          margin-top: 2vh;
+          margin-left: 2vw;
+          padding: 0 2vw;
+          background: var(--container-color);
+          height: 5vh;
+          width: 20vw;
+          display: none;
+          justify-content: center;
+          align-items: center;
+          border-radius: 5px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          user-select: none;
+
+          & .icon {
+            font-size: 3vw;
+            margin-right: 1vw;
+          }
+
+          & span {
+            font-size: 3vw;
+            color: var(--point-color1);
+          }
+        }
+
+        & h4 {
+          display: none;
+          justify-content: center;
+          align-items: center;
+          height: 8%;
+          width: 100%;
+          background: var(--icon-back);
+          border-bottom: 1px solid var(--border-color);
+        }
 
         & ul {
-          display: flex;
-          align-items: center;
-          flex-direction: column;
-          z-index: 900;
+          width: 100%;
+          height: 100%;
 
           & li {
             margin-top: 4vh;
@@ -509,6 +568,30 @@ body {
         }
       }
 
+      & .navHide {
+        animation: navHide 0.2s ease-in-out forwards;
+      }
+
+      @keyframes navSlider {
+        0% {
+          left: 93vw;
+        }
+
+        100% {
+          left: 43vw;
+        }
+      }
+
+      @keyframes navHide {
+        0% {
+          left: 43vw;
+        }
+
+        100% {
+          left: 93vw;
+        }
+      }
+
       & .navOverlay {
         display: none;
         z-index: 998;
@@ -519,11 +602,170 @@ body {
         left: 0;
         background: rgba(0, 0, 0, 0.14);
         backdrop-filter: blur(5px);
+        animation: showUp 0.2s ease-in-out forwards;
+      }
+
+      & .navOverlayHide {
+        animation: overlayHide 0.2s ease-in-out forwards
+      }
+
+      @keyframes showUp {
+        0% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes overlayHide {
+        0% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 0;
+        }
       }
     }
 
     & .modalSet {
       display: none;
+
+      & .overlay {
+        z-index: 998;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.14);
+        backdrop-filter: blur(5px);
+      }
+    }
+
+    & .searchBarModalSet {
+      display: none;
+
+      & form {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & .searchBar {
+          position: relative;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          width: 80%;
+
+          & input {
+            position: relative;
+            right: 0;
+            width: 100%;
+            height: 6vh;
+            padding-left: 10vw;
+            padding-right: 10vw;
+            border: none;
+            border-radius: 5px;
+            list-style: none;
+            outline: none;
+            background: var(--container-color);
+            color: var(--point-color2);
+            font-size: 4vw;
+            font-weight: 400;
+            box-sizing: border-box;
+            border: 1px solid transparent;
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
+          }
+
+          & input::placeholder {
+            color: var(--sub-title);
+          }
+
+          & input:focus {
+            border: 1px solid var(--font-color);
+          }
+
+          & .clearBtn {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-2vw);
+            font-weight: 400;
+            cursor: pointer;
+            width: 5vw;
+            height: 5vw;
+            right: 0;
+            border-radius: 50%;
+            border: none;
+            background: transparent;
+            transition: background 0.3s ease-in-out;
+
+            & .iconSet {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              display: flex;
+              background: var(--font-color);
+              transition: background 0.3s ease-in-out;
+            }
+
+            & .part1,
+            & .part2 {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              width: 3vw;
+              height: 0.3vw;
+              background: var(--font-color);
+              transform-origin: center;
+            }
+
+            & .part1 {
+              transform: translate(-50%, -50%) rotate(45deg);
+            }
+
+            & .part2 {
+              transform: translate(-50%, -50%) rotate(-45deg);
+            }
+          }
+
+          & .clearBtn:hover {
+            background: var(--container-color);
+
+            & .iconSet {
+              background: var(--sub-title);
+            }
+          }
+
+          & .searchIconBox {
+            position: absolute;
+            transform: translateX(35px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 6vh;
+            top: 0;
+            left: -7vw;
+            padding: 0;
+            border: none;
+            background: transparent;
+            font-size: 5vw;
+            cursor: pointer;
+
+            & .searchIcon {
+              color: var(--font-color);
+              transition: color 0.3s ease-in-out;
+            }
+          }
+        }
+      }
 
       & .overlay {
         z-index: 998;
@@ -587,11 +829,11 @@ body {
 
 // Cell Phone (vertical mode) 
 @media only screen and (orientation : portrait) and (pointer: coarse) and (min-device-width: 300px) {
-  $circle-width: 200vw;
-  $circle-height: 190vw;
+  $circle-width: 300vw;
+  $circle-height: 290vw;
   $circle-radius: 50%;
   $circle-bottom: 30vh;
-  $left: -85vw;
+  $left: -180vw;
 
   body {
     & .bodyContainer {
@@ -633,14 +875,7 @@ body {
             }
 
             & .user {
-              width: 20vw;
-              height: 4vh;
-              font-size: 3vw;
-              margin-right: 2vw;
-
-              & .icon {
-                margin-right: 2vw;
-              }
+              display: none;
             }
 
             & .darkModeBtn {
@@ -649,6 +884,10 @@ body {
 
             & .logOutBtn {
               display: none;
+            }
+
+            & .searchModalIcon {
+              display: flex;
             }
 
             & .menuSwitch {
@@ -660,7 +899,7 @@ body {
         & .navbar {
           z-index: 999;
           border: none;
-          left: 43vw;
+          left: 93vw;
           background: var(--navMenu-color);
           width: 50vw;
           height: calc(($main-container-height) - 8vh);
@@ -670,14 +909,23 @@ body {
           border-bottom-left-radius: 10px;
           border-left: 1px solid var(--border-color);
 
+          & h4 {
+            display: flex;
+          }
+
+          & .user {
+            display: flex;
+          }
+
           & ul {
-            width: 100%;
-            height: 100%;
+            height: 92%;
+            background: red;
 
             & li {
               display: flex;
               flex-direction: row;
               align-items: center;
+              border-radius: 0;
               font-size: 5vw;
               width: 100%;
               height: 4vh;
@@ -733,6 +981,7 @@ body {
               height: 8vh;
               right: 5vw;
               border: 1px solid var(--font-color);
+              border-radius: 5px;
               box-sizing: border-box;
             }
 
@@ -744,6 +993,7 @@ body {
               height: 8vh;
               left: 5vw;
               border: 1px solid var(--font-color);
+              border-radius: 5px;
               box-sizing: border-box;
             }
           }
@@ -758,7 +1008,208 @@ body {
 }
 
 // Cell Phone (horizontal mode)
-@media only screen and (orientation : landscape) and (pointer: coarse) and (min-device-width: 300px) {}
+@media only screen and (orientation : landscape) and (pointer: coarse) and (min-device-width: 300px) {
+  $circle-width: 300vw;
+  $circle-height: 290vw;
+  $circle-radius: 50%;
+  $circle-bottom: 30vh;
+  $left: -180vw;
+
+  body {
+    & .bodyContainer {
+      & .backgroundSet {
+        & .circle1 {
+          width: $circle-width;
+          height: $circle-height;
+          left: $left;
+        }
+
+        & .circle2 {
+          width: $circle-width;
+          height: $circle-height;
+          left: calc($left + 1vw);
+        }
+
+        & .circle3 {
+          width: $circle-width;
+          height: $circle-height;
+          left: calc($left + 2vw);
+        }
+      }
+
+      & .mainContainer {
+        & .header {
+          height: 8vh;
+          z-index: 999;
+
+          & .logo {
+            font-size: 2vw;
+            margin: 0 0.2vw;
+
+            & span {
+              margin-left: 1vw;
+            }
+          }
+
+          & .headerBlock {
+            & form {
+              & .searchBar {
+                display: none;
+              }
+            }
+
+            & .user {
+              width: 10vw;
+              height: 5vh;
+              font-size: 1.5vw;
+              margin-right: 2vw;
+
+              & .icon {
+                margin-right: 1vw;
+              }
+            }
+
+            & .darkModeBtn {
+              display: none;
+            }
+
+            & .logOutBtn {
+              display: none;
+            }
+
+            & .menuSwitch {
+              height: 5vh;
+              display: flex;
+            }
+          }
+        }
+
+        & .navbar {
+          z-index: 999;
+          border: none;
+          left: 93vw;
+          background: var(--navMenu-color);
+          width: 40vw;
+          height: calc(($main-container-height) - 8vh);
+          backdrop-filter: blur(10px);
+          box-shadow: 10px 10px 50px#0000008e;
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+          border-left: 1px solid var(--border-color);
+
+          & h4 {
+            display: flex;
+            height: 12%;
+          }
+
+          & ul {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            & li {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              font-size: 2.5vw;
+              width: 100%;
+              height: 7vh;
+              margin: 0;
+              padding: 2vh 0;
+              background: transparent;
+
+              & .icon {
+                position: absolute;
+                top: 50%;
+                left: 13vw;
+                transform: translate(-50%, -50%);
+              }
+
+              & span {
+                opacity: 1;
+                position: absolute;
+                left: 19vw;
+                margin: 0;
+                font-size: 2vw;
+              }
+
+              & button {
+                width: 8vh;
+                height: 8vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+
+              & .darkModeBtn {
+                & .darkModeIcon {
+                  font-size: 8vw;
+                }
+              }
+
+              & .logOutBtn {
+                & .logOutIcon {
+                  font-size: 8vw;
+                }
+              }
+            }
+
+            & li:first-child {
+              margin-top: 10vh;
+            }
+
+            & li:nth-last-child(1) {
+              display: flex;
+              position: absolute;
+              bottom: 3vh;
+              width: 12vh;
+              height: 12vh;
+              right: 5vw;
+              border: 1px solid var(--font-color);
+              box-sizing: border-box;
+            }
+
+            & li:nth-last-child(2) {
+              display: flex;
+              position: absolute;
+              bottom: 3vh;
+              width: 12vh;
+              height: 12vh;
+              left: 5vw;
+              border: 1px solid var(--font-color);
+              box-sizing: border-box;
+            }
+          }
+        }
+
+        & .navOverlay {
+          display: block;
+        }
+
+        @keyframes navSlider {
+          0% {
+            left: 93vw;
+          }
+
+          100% {
+            left: 53vw;
+          }
+        }
+
+        @keyframes navHide {
+          0% {
+            left: 53vw;
+          }
+
+          100% {
+            left: 93vw;
+          }
+        }
+
+      }
+    }
+  }
+}
 
 
 
