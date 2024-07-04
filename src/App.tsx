@@ -10,7 +10,7 @@ import BookMark from "./routes/BookMark";
 import LogIn from "./routes/LogIn";
 import { IoSearch, IoMenu } from "react-icons/io5";
 import { GoSun, GoMoon, GoSignOut } from "react-icons/go";
-import { FaHome, FaNewspaper, FaYoutube, FaBookmark, FaUser } from "react-icons/fa";
+import { FaUser, FaHome, FaNewspaper, FaYoutube, FaBookmark } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { setInputValue } from "./store/inputValueSlice";
@@ -24,6 +24,7 @@ import {
   setBookMarkLimitModalTrigger,
   setBookMarkModalTrigger,
   setDarkLight,
+  setLogOutModalTrigger,
   setMenuIndex,
   setNavSwitch,
   setNewsLoading,
@@ -36,6 +37,7 @@ import { jwtDecode } from "jwt-decode";
 import { TokenInfo } from "./types/types";
 import BookMarkModal from "./components/BookMarkModal";
 import BookMarkLimitModal from "./components/BookMarkLimitModal";
+import LogOutModal from "./components/LogOutModal";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -43,9 +45,10 @@ function App(): JSX.Element {
   const inputValue = useSelector((state: RootState) => state.inputValue);
   const refInputValue = useRef("");
   const { menuIndex } = useSelector((state: RootState) => state.userInterface);
-  const { searchModalTrigger } = useSelector((state: RootState) => state.userInterface);
-  const { bookMarkModalTrigger } = useSelector((state: RootState) => state.userInterface);
-  const { bookMarkLimitModalTrigger } = useSelector((state: RootState) => state.userInterface);
+  const { searchModalTrigger } = useSelector((state: RootState) => state.userInterface.modalTrigger);
+  const { bookMarkModalTrigger } = useSelector((state: RootState) => state.userInterface.modalTrigger);
+  const { bookMarkLimitModalTrigger } = useSelector((state: RootState) => state.userInterface.modalTrigger);
+  const { logOutModalTrigger } = useSelector((state: RootState) => state.userInterface.modalTrigger);
   const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
   const { userCheck } = useSelector((state: RootState) => state.verification);
   const accessToken = Cookies.get("accessToken");
@@ -141,20 +144,6 @@ function App(): JSX.Element {
     Promise.all([fetchNewsData(), fetchYoutubeData()]);
   };
 
-  const logOut = (): void => {
-    Cookies.remove("accessToken");
-    Cookies.remove("refreshToken");
-    dispatch(setUserCheck(false));
-    navigate("/");
-  };
-
-  const menuItem = [
-    { path: "/home", icon: <FaHome />, label: "Home" },
-    { path: "/news", icon: <FaNewspaper />, label: "News" },
-    { path: "/youtube", icon: <FaYoutube />, label: "Youtube" },
-    { path: "/bookmark", icon: <FaBookmark />, label: "Bookmark" },
-  ];
-
   const themeExchange = () => {
     if (darkLightToggle === "dark") {
       dispatch(setDarkLight("light"));
@@ -165,6 +154,13 @@ function App(): JSX.Element {
     }
   };
 
+  const menuItem = [
+    { path: "/home", icon: <FaHome />, label: "Home" },
+    { path: "/news", icon: <FaNewspaper />, label: "News" },
+    { path: "/youtube", icon: <FaYoutube />, label: "Youtube" },
+    { path: "/bookmark", icon: <FaBookmark />, label: "Bookmark" },
+  ];
+
   return (
     <div className={styles.bodyContainer}>
       <div className={styles.modalSet} style={searchModalTrigger === true ? { display: "block" } : { display: "none" }}>
@@ -173,17 +169,21 @@ function App(): JSX.Element {
       </div>
       <div
         className={styles.bookMarkModalSet}
-        style={bookMarkModalTrigger === true ? { display: "block" } : { display: "none" }}
+        style={bookMarkModalTrigger ? { display: "block" } : { display: "none" }}
       >
         <BookMarkModal />
         <div className={styles.overlay} role="button" onClick={() => dispatch(setBookMarkModalTrigger(false))} />
       </div>
       <div
         className={styles.bookMarkLimitModalSet}
-        style={bookMarkLimitModalTrigger === true ? { display: "block" } : { display: "none" }}
+        style={bookMarkLimitModalTrigger ? { display: "block" } : { display: "none" }}
       >
         <BookMarkLimitModal />
         <div className={styles.overlay} role="button" onClick={() => dispatch(setBookMarkLimitModalTrigger(false))} />
+      </div>
+      <div className={styles.logOutModalSet} style={logOutModalTrigger ? { display: "block" } : { display: "none" }}>
+        <LogOutModal />
+        <div className={styles.overlay} role="button" onClick={() => dispatch(setLogOutModalTrigger(false))} />
       </div>
       <div className={styles.backgroundSet}>
         <div className={styles.circle1} />
@@ -253,37 +253,62 @@ function App(): JSX.Element {
                     )}
                   </button>
 
-                  <button className={styles.logOutBtn} onClick={logOut}>
+                  <button className={styles.logOutBtn} onClick={() => dispatch(setLogOutModalTrigger(true))}>
                     <GoSignOut className={styles.logOutIcon} />
                     <span>Log Out</span>
                   </button>
+                  <button
+                    className={styles.menuSwitch}
+                    onClick={() => dispatch(navSwitch ? setNavSwitch(false) : setNavSwitch(true))}
+                  >
+                    <IoMenu />
+                  </button>
                 </div>
               </header>
-              <nav className={styles.navbar}>
-                <button
-                  className={styles.menuSwitch}
-                  onClick={() => dispatch(navSwitch ? setNavSwitch(false) : setNavSwitch(true))}
-                >
-                  <IoMenu />
-                </button>
-                <ul className={!navSwitch ? "" : styles.switch}>
-                  {menuItem.map((item, index) => {
-                    return (
-                      <li
-                        className={menuIndex === index ? `${styles.menuIcon}` : ""}
-                        key={index}
-                        onClick={() => {
-                          dispatch(setMenuIndex(index));
-                          navigate(`${item.path}`);
-                        }}
-                      >
-                        <div className={styles.icon}>{item.icon}</div>
-                        <span className={menuIndex === index ? `${styles.menuText}` : ""}>{item.label}</span>
+              {navSwitch ? (
+                ""
+              ) : (
+                <div>
+                  <nav className={styles.navbar}>
+                    <ul>
+                      {menuItem.map((item, index) => {
+                        return (
+                          <li
+                            className={menuIndex === index ? `${styles.menuIcon}` : ""}
+                            key={index}
+                            onClick={() => {
+                              dispatch(setMenuIndex(index));
+                              navigate(`${item.path}`);
+                            }}
+                          >
+                            <div className={styles.icon}>{item.icon}</div>
+                            <span className={menuIndex === index ? `${styles.menuText}` : ""}>{item.label}</span>
+                          </li>
+                        );
+                      })}
+                      <li>
+                        <button className={styles.darkModeBtn} onClick={themeExchange}>
+                          {darkLightToggle === "dark" ? (
+                            <GoSun className={styles.darkModeIcon} />
+                          ) : (
+                            <GoMoon className={styles.darkModeIcon} />
+                          )}
+                        </button>
                       </li>
-                    );
-                  })}
-                </ul>
-              </nav>
+                      <li>
+                        <button className={styles.logOutBtn} onClick={() => dispatch(setLogOutModalTrigger(true))}>
+                          <GoSignOut className={styles.logOutIcon} />
+                        </button>
+                      </li>
+                    </ul>
+                  </nav>
+                  <div
+                    className={styles.navOverlay}
+                    role="button"
+                    onClick={() => dispatch(navSwitch ? setNavSwitch(false) : setNavSwitch(true))}
+                  />
+                </div>
+              )}
             </div>
           )}
 

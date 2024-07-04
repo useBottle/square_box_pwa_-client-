@@ -10,10 +10,11 @@
   --border-color: #7177906e;
   --container-color: #10121b66;
   --modal-color: #10121ba6;
+  --navMenu-color: #0000001d;
   --circle1-gradient: linear-gradient(90deg, #362774 10%, #335cc5 60%, #637ffd 100%);
   --circle2-gradient: linear-gradient(70deg, #274b74, #382aa2, #8365d7);
   --circle3-gradient: linear-gradient(40deg, #274b74, #3533c5, #2963fd);
-  --circle4-gradient: linear-gradient(180deg, #5671c4, #3b51a0, #373388);
+  --circle4-gradient: linear-gradient(180deg, #5671c4, #344995, #3d389a);
 }
 
 [data-theme="light"] {
@@ -28,6 +29,7 @@
   --border-color: #ffffff59;
   --container-color: #ffffff4f;
   --modal-color: #ffffff4f;
+  --navMenu-color: #ffffff11;
   --circle1-gradient: linear-gradient(90deg, #fad961, #f76b1c);
   --circle2-gradient: linear-gradient(70deg, #f2d50f, #da0641);
   --circle3-gradient: linear-gradient(40deg, #f5515f, #a1051d);

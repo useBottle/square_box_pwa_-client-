@@ -39,6 +39,10 @@ export const MESSAGE = {
     PW_ERROR: "비밀번호가 일치하지 않습니다.",
   },
 
+  LOGOUT: {
+    CONFIRM: "로그아웃 하시겠습니까?",
+  },
+
   BOOKMARK: {
     DEFAULT_INFO: "북마크된 컨텐츠가 없습니다.",
     ADD_COMPLETE: "북마크에 추가했습니다.",

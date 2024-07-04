@@ -1,0 +1,51 @@
+.modalContainer {
+  position: absolute;
+  font-family: "S-CoreDream-4Regular";
+  z-index: 9999;
+  width: 70vw;
+  height: 20vh;
+  background: var(--modal-color);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 10px 10px 50px#0000008e;
+  overflow: hidden;
+
+  & h4 {
+    width: 100%;
+    height: 40%;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  & .btnSet {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & button {
+      background: var(--point-color2);
+      border: none;
+      border-radius: 5px;
+      width: 30%;
+      height: 50%;
+      margin: 0 5%;
+      color: var(--font-color);
+    }
+
+    & button:active {
+      background: var(--link-btn-hover);
+    }
+  }
+}

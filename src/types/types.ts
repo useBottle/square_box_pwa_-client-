@@ -22,13 +22,18 @@ export interface LoadingStatus {
   bookMarkLoading: boolean;
 }
 
+export interface ModalTrigger {
+  searchModalTrigger: boolean;
+  bookMarkModalTrigger: boolean;
+  bookMarkLimitModalTrigger: boolean;
+  logOutModalTrigger: boolean;
+}
+
 export interface userInterface {
   darkLightToggle: string;
   menuIndex: number;
   navSwitch: boolean;
-  searchModalTrigger: boolean;
-  bookMarkModalTrigger: boolean;
-  bookMarkLimitModalTrigger: boolean;
+  modalTrigger: ModalTrigger;
   loadingStatus: LoadingStatus;
 }
 

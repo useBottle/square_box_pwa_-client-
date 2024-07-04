@@ -5,9 +5,12 @@ const initialState: userInterface = {
   darkLightToggle: "dark",
   menuIndex: 0,
   navSwitch: false,
-  searchModalTrigger: false,
-  bookMarkModalTrigger: false,
-  bookMarkLimitModalTrigger: false,
+  modalTrigger: {
+    searchModalTrigger: false,
+    bookMarkModalTrigger: false,
+    bookMarkLimitModalTrigger: false,
+    logOutModalTrigger: false,
+  },
   loadingStatus: {
     newsLoading: false,
     youtubeLoading: false,
@@ -30,13 +33,16 @@ const userInterfaceSlice = createSlice({
       state.navSwitch = action.payload;
     },
     setSearchModalTrigger(state, action: PayloadAction<boolean>) {
-      state.searchModalTrigger = action.payload;
+      state.modalTrigger.searchModalTrigger = action.payload;
     },
     setBookMarkModalTrigger(state, action: PayloadAction<boolean>) {
-      state.bookMarkModalTrigger = action.payload;
+      state.modalTrigger.bookMarkModalTrigger = action.payload;
     },
     setBookMarkLimitModalTrigger(state, action: PayloadAction<boolean>) {
-      state.bookMarkLimitModalTrigger = action.payload;
+      state.modalTrigger.bookMarkLimitModalTrigger = action.payload;
+    },
+    setLogOutModalTrigger(state, action: PayloadAction<boolean>) {
+      state.modalTrigger.logOutModalTrigger = action.payload;
     },
     setNewsLoading(state, action: PayloadAction<boolean>) {
       state.loadingStatus.newsLoading = action.payload;
@@ -60,6 +66,7 @@ export const {
   setSearchModalTrigger,
   setBookMarkModalTrigger,
   setBookMarkLimitModalTrigger,
+  setLogOutModalTrigger,
   setNewsLoading,
   setYoutubeLoading,
   setSignUpLoading,
