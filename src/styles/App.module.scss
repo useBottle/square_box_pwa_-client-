@@ -134,7 +134,7 @@ body {
         position: absolute;
         width: 100%;
         left: 0;
-        height: 12vh;
+        height: 10vh;
         border-bottom: 0.5px solid var(--border-color);
         display: flex;
         justify-content: space-between;
@@ -146,7 +146,7 @@ body {
         & .logo {
           position: absolute;
           font-family: "Poiret One";
-          font-size: 3vw;
+          font-size: 2.5vw;
           font-weight: 800;
           cursor: pointer;
           z-index: 999;
@@ -173,13 +173,14 @@ body {
               box-sizing: border-box;
               display: flex;
               align-items: center;
+              width: 20vw;
 
               & input {
                 position: relative;
                 right: 0;
                 width: 100%;
-                height: 6vh;
-                padding-left: 4vw;
+                height: 5vh;
+                padding-left: 3vw;
                 padding-right: 3vw;
                 border: none;
                 border-radius: 5px;
@@ -187,7 +188,7 @@ body {
                 outline: none;
                 background: var(--container-color);
                 color: var(--point-color2);
-                font-size: 1.5vw;
+                font-size: 1vw;
                 font-weight: 400;
                 box-sizing: border-box;
                 border: 1px solid transparent;
@@ -262,13 +263,13 @@ body {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                height: 6vh;
+                height: 5vh;
                 top: 0;
                 left: -1.5vw;
                 padding: 0;
                 border: none;
                 background: transparent;
-                font-size: 2vw;
+                font-size: 1.5vw;
                 cursor: pointer;
 
                 & .searchIcon {
@@ -283,10 +284,10 @@ body {
             position: relative;
             font-family: "S-CoreDream-4Regular";
             margin-left: 2vw;
-            padding: 0 2vw;
+            padding: 0 1vw;
             background: var(--container-color);
-            height: 6vh;
-            width: 9vw;
+            height: 5vh;
+            width: 8vw;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -303,13 +304,14 @@ body {
 
             & span {
               color: var(--point-color1);
+              font-size: 1vw;
             }
           }
 
           & .darkModeBtn {
-            width: 3vw;
-            height: 6vh;
-            font-size: 2.2vw;
+            width: 5vh;
+            height: 5vh;
+            font-size: 2vw;
             margin-left: 2vw;
             border-radius: 5px;
             display: flex;
@@ -349,7 +351,7 @@ body {
             border: none;
             border-radius: 5px;
             color: var(--font-color);
-            font-size: 2.2vw;
+            font-size: 2vw;
             padding: 0;
             cursor: pointer;
 
@@ -366,8 +368,8 @@ body {
               justify-content: center;
               align-items: center;
               font-size: 1vw;
-              width: 3vw;
-              height: 6vh;
+              width: 5vh;
+              height: 5vh;
               color: var(--point-color1);
               background: var(--container-color);
               border-radius: 5px;
@@ -430,8 +432,8 @@ body {
         position: absolute;
         bottom: 0;
         left: 0;
-        width: 12vh;
-        height: calc(($main-container-height) - 12vh);
+        width: 10vh;
+        height: calc(($main-container-height) - 10vh);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -451,11 +453,11 @@ body {
             margin-top: 4vh;
             font-family: "Barlow Condensed";
             font-weight: 100;
-            font-size: 1.7vw;
+            font-size: 1.5vw;
             background: transparent;
             border-radius: 5px;
-            width: 4.5vw;
-            height: 4.5vw;
+            width: 4vw;
+            height: 4vw;
             color: var(--font-color);
             position: relative;
             display: flex;
@@ -472,7 +474,7 @@ body {
 
             & span {
               position: absolute;
-              margin-top: 4vh;
+              margin-top: 3vh;
               font-size: 1vw;
               opacity: 0;
               transition: opacity 0.3s ease-in-out;
