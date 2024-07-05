@@ -146,7 +146,7 @@ body {
         & .logo {
           position: absolute;
           font-family: "Poiret One";
-          font-size: 2.5vw;
+          font-size: 3vw;
           font-weight: 800;
           cursor: pointer;
           z-index: 999;
@@ -259,7 +259,7 @@ body {
 
               & .searchIconBox {
                 position: absolute;
-                transform: translateX(35px);
+                transform: translateX(2.5vw);
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -739,7 +739,7 @@ body {
           z-index: 999;
 
           & .logo {
-            font-size: 5vw;
+            font-size: 7vw;
             margin: 0 2vw;
           }
 
@@ -1031,7 +1031,7 @@ body {
           z-index: 999;
 
           & .logo {
-            font-size: 2.5vw;
+            font-size: 3vw;
             margin: 0 0.5vw;
           }
 

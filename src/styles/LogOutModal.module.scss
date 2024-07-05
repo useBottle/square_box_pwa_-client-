@@ -2,7 +2,7 @@
   position: absolute;
   font-family: "S-CoreDream-4Regular";
   z-index: 9999;
-  width: 70vw;
+  width: 20vw;
   height: 20vh;
   background: var(--modal-color);
   left: 50%;
@@ -42,6 +42,7 @@
       height: 50%;
       margin: 0 5%;
       color: #000;
+      cursor: pointer;
     }
 
     & button:active {
@@ -49,3 +50,27 @@
     }
   }
 }
+
+
+
+// Cell Phone (vertical mode) 
+@media only screen and (orientation : portrait) and (pointer: coarse) and (min-device-width: 300px) {
+  .modalContainer {
+    width: 70vw;
+  }
+}
+
+// Cell Phone (horizontal mode)
+@media only screen and (orientation : landscape) and (pointer: coarse) and (min-device-width: 300px) {
+  .modalContainer {
+    width: 50vw;
+    height: 40vh;
+  }
+}
+
+
+// Tablet (vertical mode) 
+@media only screen and (orientation : portrait) and (pointer: coarse) and (min-device-width : 700px) {}
+
+// Tablet (horizontal mode) 
+@media only screen and (orientation : landscape) and (pointer: coarse) and (min-device-width : 700px) {}
