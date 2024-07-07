@@ -162,29 +162,31 @@ export default function Home(): JSX.Element {
             <div className={styles.gauge} style={{ width: `${gauge}%` }} />
           </div>
         </div>
-        <ul className={styles.realTime}>
-          {realTimeSearchTerms && realTimeSearchTerms.top10 && realTimeSearchTerms.top10.length > 0 ? (
-            realTimeSearchTerms.top10.map((item, index) => {
-              return (
-                <li
-                  key={index}
-                  onClick={() => {
-                    dispatch(setInputValue(item.keyword as unknown as string));
-                    dispatch(setNewsLoading(true));
-                    dispatch(setSearchModalTrigger(true));
-                    clickTrigger === false ? setClickTrigger(true) : setClickTrigger(false);
-                  }}
-                >
-                  <span className={styles.rank}>{item.rank}</span>
-                  <span className={styles.text}>{item.keyword}</span>
-                  <KeywordIndicator indicator={item.state as string} />
-                </li>
-              );
-            })
-          ) : (
-            <p>Loading...</p>
-          )}
-        </ul>
+        <div className={styles.keywordsList}>
+          <ul className={styles.realTime}>
+            {realTimeSearchTerms && realTimeSearchTerms.top10 && realTimeSearchTerms.top10.length > 0 ? (
+              realTimeSearchTerms.top10.map((item, index) => {
+                return (
+                  <li
+                    key={index}
+                    onClick={() => {
+                      dispatch(setInputValue(item.keyword as unknown as string));
+                      dispatch(setNewsLoading(true));
+                      dispatch(setSearchModalTrigger(true));
+                      clickTrigger === false ? setClickTrigger(true) : setClickTrigger(false);
+                    }}
+                  >
+                    <span className={styles.rank}>{item.rank}</span>
+                    <span className={styles.text}>{item.keyword}</span>
+                    <KeywordIndicator indicator={item.state as string} />
+                  </li>
+                );
+              })
+            ) : (
+              <p>Loading...</p>
+            )}
+          </ul>
+        </div>
       </div>
       <p className={styles.notice}>{MESSAGE.INFO.EXTENSION_NOTICE}</p>
     </section>

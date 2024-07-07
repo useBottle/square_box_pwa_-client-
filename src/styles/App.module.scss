@@ -9,6 +9,8 @@ $circle-bottom: 30vh;
 $left: -55vw;
 $main-container-width: 93vw;
 $main-container-height: 90vh;
+$tablet-horizontal-width: 1440px;
+$phone-horizontal-width: 950px;
 
 body {
 
@@ -176,8 +178,28 @@ body {
               box-sizing: border-box;
               display: flex;
               align-items: center;
-              width: 20vw;
+              width: 100%;
               height: 100%;
+
+              & .searchIconBox {
+                z-index: 900;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 5vh;
+                transform: translateX(2.5vw);
+                padding: 0;
+                border: none;
+                background: transparent;
+                height: 100%;
+                font-size: 1.5vw;
+                cursor: pointer;
+
+                & .searchIcon {
+                  color: var(--font-color);
+                  transition: color 0.3s ease-in-out;
+                }
+              }
 
               & input {
                 position: relative;
@@ -259,26 +281,6 @@ body {
                   background: var(--sub-title);
                 }
               }
-
-              & .searchIconBox {
-                position: absolute;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 5vh;
-                left: 5%;
-                padding: 0;
-                border: none;
-                background: transparent;
-                height: 100%;
-                font-size: 1.5vw;
-                cursor: pointer;
-
-                & .searchIcon {
-                  color: var(--font-color);
-                  transition: color 0.3s ease-in-out;
-                }
-              }
             }
           }
 
@@ -294,20 +296,22 @@ body {
             justify-content: center;
             align-items: center;
             border-radius: 0.4vw;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
             user-select: none;
             transition: background 0.3s ease-in-out;
 
             & .icon {
               font-size: 1.2vw;
               margin-right: 1vw;
+              width: 20%;
             }
 
             & span {
               color: var(--point-color1);
               font-size: 1vw;
+              width: 80%;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
             }
           }
 
@@ -443,6 +447,17 @@ body {
         border-right: 0.05vw solid var(--border-color);
         box-sizing: border-box;
         user-select: none;
+        flex-direction: column;
+
+        & h4 {
+          display: none;
+          width: 100%;
+          color: var(--sub-title);
+          font-size: 1.2vw;
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+        }
 
         & ul {
           display: flex;
@@ -545,6 +560,26 @@ body {
           width: 100%;
           height: 100%;
 
+          & .searchIconBox {
+            z-index: 900;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 5vh;
+            transform: translateX(8vw);
+            padding: 0;
+            border: none;
+            background: transparent;
+            height: 100%;
+            font-size: 4vw;
+            cursor: pointer;
+
+            & .searchIcon {
+              color: var(--font-color);
+              transition: color 0.3s ease-in-out;
+            }
+          }
+
           & input {
             position: relative;
             right: 0;
@@ -625,26 +660,6 @@ body {
               background: var(--sub-title);
             }
           }
-
-          & .searchIconBox {
-            position: absolute;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 5vh;
-            left: 5%;
-            padding: 0;
-            border: none;
-            background: transparent;
-            height: 100%;
-            font-size: 4vw;
-            cursor: pointer;
-
-            & .searchIcon {
-              color: var(--font-color);
-              transition: color 0.3s ease-in-out;
-            }
-          }
         }
       }
 
@@ -708,8 +723,267 @@ body {
 }
 
 
+// Tablet (vertical mode) 
+@media all and (orientation: portrait) and (min-width: 551px) and (max-width: 1024px) and (max-height: 1440px) {
+  $circle-width: 300vw;
+  $circle-height: 290vw;
+  $circle-radius: 50%;
+  $circle-bottom: 30vh;
+  $left: -180vw;
+
+  body {
+    & .bodyContainer {
+      & .backgroundSet {
+        & .circle1 {
+          width: $circle-width;
+          height: $circle-height;
+          left: $left;
+        }
+
+        & .circle2 {
+          width: $circle-width;
+          height: $circle-height;
+          left: calc($left + 1vw);
+        }
+
+        & .circle3 {
+          width: $circle-width;
+          height: $circle-height;
+          left: calc($left + 2vw);
+        }
+      }
+
+      & .mainContainer {
+        & .header {
+          height: 6vh;
+          z-index: 999;
+
+          & .logo {
+            font-size: 3vw;
+            margin: 0 2vw;
+          }
+
+          & .headerBlock {
+            width: 60vw;
+
+            & form {
+              width: 25vw;
+              height: 3vh;
+
+              & .searchBar {
+                display: flex;
+
+                & .searchIconBox {
+                  transform: translateX(3vw);
+                  font-size: 2vw;
+                }
+
+                & input {
+                  height: 3vh;
+                  font-size: 2vw;
+                  padding-right: 12%;
+                }
+              }
+            }
+
+            & .user {
+              display: flex;
+              width: 14vw;
+              height: 3vh;
+
+              & span {
+                font-size: 1.5vw;
+              }
+            }
+
+            & .darkModeBtn {
+              display: flex;
+              width: 3vh;
+              height: 3vh;
+            }
+
+            & .logOutBtn {
+              display: flex;
+              width: 3vh;
+              height: 3vh;
+              margin: 0 2vw;
+
+              & span {
+                display: none;
+              }
+            }
+
+            & .searchModalIcon {
+              display: none;
+            }
+
+            & .menuSwitch {
+              display: none;
+            }
+          }
+        }
+
+        & .navbar {
+          display: flex;
+          border: none;
+          width: 25%;
+          height: 30vh;
+          margin-bottom: 3vh;
+          margin-left: 4.5vw;
+          z-index: 900;
+          justify-content: space-between;
+
+          & h4 {
+            display: flex;
+            font-size: 2vw;
+            height: 2vh;
+          }
+
+          & ul {
+            height: 27.5vh;
+            border-radius: 0.4vw;
+
+            & li {
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+              width: 100%;
+              height: 20%;
+              margin-top: 12%;
+              font-size: 2vw;
+              border-radius: 0.8vw;
+
+              & .icon {
+                top: 0;
+                margin-left: 6vw;
+              }
+
+              & span {
+                opacity: 1;
+                position: relative;
+                margin-top: 0;
+                margin-left: 2vw;
+                font-size: 2vw;
+              }
+            }
+
+            & li:first-child {
+              margin-top: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Tablet (horizontal mode) 
+@media all and (orientation: landscape) and (min-width: 551px) and (max-width: $tablet-horizontal-width) and (max-height: 1440px) {
+  $circle-width: 300vw;
+  $circle-height: 290vw;
+  $circle-radius: 50%;
+  $circle-bottom: 30vh;
+  $left: -180vw;
+
+  body {
+    & .bodyContainer {
+      & .backgroundSet {
+        & .circle1 {
+          width: $circle-width;
+          height: $circle-height;
+          left: $left;
+        }
+
+        & .circle2 {
+          width: $circle-width;
+          height: $circle-height;
+          left: calc($left + 1vw);
+        }
+
+        & .circle3 {
+          width: $circle-width;
+          height: $circle-height;
+          left: calc($left + 2vw);
+        }
+      }
+
+      & .mainContainer {
+        & .header {
+          height: 8vh;
+          z-index: 999;
+
+          & .logo {
+            font-size: 2.5vw;
+            margin: 0 0.5vw;
+          }
+
+          & .headerBlock {
+            width: 50vw;
+
+            & form {
+              width: 25vw;
+              height: 4vh;
+
+              & .searchBar {
+                display: flex;
+
+                & .searchIconBox {
+                  transform: translateX(3vw);
+                  font-size: 2vw;
+                }
+
+                & input {
+                  font-size: 1.5vw;
+                  padding-right: 12%;
+                }
+              }
+            }
+
+            & .user {
+              display: flex;
+              width: 10vw;
+              height: 4vh;
+
+              & span {
+                font-size: 1.2vw;
+              }
+            }
+
+            & .darkModeBtn {
+              display: none;
+            }
+
+            & .logOutBtn {
+              display: none;
+            }
+
+            & .searchModalIcon {
+              display: none;
+            }
+
+            & .menuSwitch {
+              display: flex;
+              width: 8vw;
+              height: 4vh;
+              font-size: 2vw;
+              margin-left: 2vw;
+              border-radius: 0.4vw;
+              border: 0.1vw solid var(--border-color);
+            }
+          }
+        }
+
+        & .navbar {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+
 // Cell Phone (vertical mode) 
-@media only screen and (orientation : portrait) and (pointer: coarse) and (min-device-width: 300px) {
+@media all and (orientation: portrait) and (min-width: 320px) and (max-width: 550px) and (max-height: 1440px) {
   $circle-width: 300vw;
   $circle-height: 290vw;
   $circle-radius: 50%;
@@ -786,7 +1060,7 @@ body {
 }
 
 // Cell Phone (horizontal mode)
-@media only screen and (orientation : landscape) and (pointer: coarse) and (min-device-width: 300px) {
+@media all and (orientation: landscape) and (min-width: 320px) and (max-width: $phone-horizontal-width) and (max-height: 1440px) {
   $circle-width: 300vw;
   $circle-height: 290vw;
   $circle-radius: 50%;
@@ -816,6 +1090,8 @@ body {
       }
 
       & .mainContainer {
+        height: calc($main-container-height - 4vh);
+
         & .header {
           height: 12vh;
           z-index: 999;
@@ -827,23 +1103,19 @@ body {
 
           & .headerBlock {
             & form {
-              width: 30vw;
+              width: 60%;
               height: 8vh;
 
               & .searchBar {
-                width: 100%;
-                height: 100%;
+                & .searchIconBox {
+                  font-size: 2vw;
+                }
 
                 & input {
-                  width: 100%;
-                  height: 100%;
-                  padding-left: 5vw;
-                  padding-right: 4vw;
                   font-size: 1.8vw;
                 }
 
                 & .clearBtn {
-                  transform: translateX(-1vw);
                   width: 3vw;
                   height: 3vw;
 
@@ -859,12 +1131,6 @@ body {
                   & .iconSet {
                     background: var(--sub-title);
                   }
-                }
-
-                & .searchIconBox {
-                  top: 50%;
-                  transform: translate(2.5vw, -50%);
-                  font-size: 3vw;
                 }
               }
             }
@@ -887,10 +1153,12 @@ body {
 
             & .menuSwitch {
               display: flex;
-              font-size: 3vw;
+              font-size: 2vw;
               width: 14vh;
               height: 8vh;
               margin: 1vw;
+              border: 0.2vw solid var(--border-color);
+              border-radius: 0.5vw;
             }
           }
         }
@@ -902,232 +1170,3 @@ body {
     }
   }
 }
-
-
-
-// Tablet (vertical mode) 
-@media only screen and (orientation : portrait) and (pointer: coarse) and (min-device-width : 700px) {
-  $circle-width: 300vw;
-  $circle-height: 290vw;
-  $circle-radius: 50%;
-  $circle-bottom: 30vh;
-  $left: -180vw;
-
-  body {
-    & .bodyContainer {
-      & .backgroundSet {
-        & .circle1 {
-          width: $circle-width;
-          height: $circle-height;
-          left: $left;
-        }
-
-        & .circle2 {
-          width: $circle-width;
-          height: $circle-height;
-          left: calc($left + 1vw);
-        }
-
-        & .circle3 {
-          width: $circle-width;
-          height: $circle-height;
-          left: calc($left + 2vw);
-        }
-      }
-
-      & .mainContainer {
-        & .header {
-          height: 6vh;
-          z-index: 999;
-
-          & .logo {
-            font-size: 3vw;
-            margin: 0 2vw;
-          }
-
-          & .headerBlock {
-            & form {
-              & .searchBar {
-                display: flex;
-
-                & input {
-                  height: 3vh;
-                }
-
-                & .searchIconBox {
-                  left: -2.5vw;
-                  top: -1.5vh;
-                }
-              }
-            }
-
-            & .user {
-              display: flex;
-              height: 3vh;
-
-              & span {
-                font-size: 1.5vw;
-              }
-            }
-
-            & .darkModeBtn {
-              display: none;
-            }
-
-            & .logOutBtn {
-              display: none;
-            }
-
-            & .searchModalIcon {
-              display: none;
-            }
-
-            & .menuSwitch {
-              display: flex;
-              width: 8vw;
-              height: 3vh;
-              font-size: 2vw;
-              margin-left: 2vw;
-            }
-          }
-        }
-
-        & .navbar {
-          display: none;
-        }
-      }
-    }
-  }
-}
-
-// Tablet (horizontal mode) 
-@media only screen and (orientation : landscape) and (pointer: coarse) and (min-device-width : 700px) {
-  $circle-width: 300vw;
-  $circle-height: 290vw;
-  $circle-radius: 50%;
-  $circle-bottom: 30vh;
-  $left: -180vw;
-
-  body {
-    & .bodyContainer {
-      & .backgroundSet {
-        & .circle1 {
-          width: $circle-width;
-          height: $circle-height;
-          left: $left;
-        }
-
-        & .circle2 {
-          width: $circle-width;
-          height: $circle-height;
-          left: calc($left + 1vw);
-        }
-
-        & .circle3 {
-          width: $circle-width;
-          height: $circle-height;
-          left: calc($left + 2vw);
-        }
-      }
-
-      & .mainContainer {
-        & .header {
-          height: 8vh;
-          z-index: 999;
-
-          & .logo {
-            font-size: 3vw;
-            margin: 0 0.5vw;
-          }
-
-          & .headerBlock {
-            & form {
-              width: 25vw;
-              height: 5vh;
-
-              & .searchBar {
-                width: 100%;
-                height: 100%;
-
-                & input {
-                  width: 100%;
-                  height: 100%;
-                  padding-left: 3.5vw;
-                  padding-right: 4vw;
-                  font-size: 1.8vw;
-                }
-
-                & .clearBtn {
-                  transform: translateX(-1vw);
-                  width: 3vw;
-                  height: 3vw;
-
-                  & .part1,
-                  & .part2 {
-                    width: 1.5vw;
-                  }
-                }
-
-                & .clearBtn:active {
-                  background: var(--container-color);
-
-                  & .iconSet {
-                    background: var(--sub-title);
-                  }
-                }
-
-                & .searchIconBox {
-                  top: 50%;
-                  transform: translate(2.5vw, -50%);
-                  font-size: 2vw;
-                }
-              }
-            }
-
-            & .user {
-              display: flex;
-              height: 5vh;
-            }
-
-            & .darkModeBtn {
-              display: none;
-            }
-
-            & .logOutBtn {
-              display: none;
-            }
-
-            & .searchModalIcon {
-              display: none;
-            }
-
-            & .menuSwitch {
-              display: flex;
-              font-size: 2vw;
-              width: 10vh;
-              height: 5vh;
-              margin-left: 2vw;
-            }
-          }
-        }
-
-        & .navbar {
-          display: none;
-        }
-      }
-    }
-  }
-}
-
-
-
-// Desktop
-@media only screen and (pointer: fine) and (min-width: 1280px) {}
-
-@media only screen and (pointer: fine) and (min-width: 1920px) and (max-width: 2199px) {}
-
-@media only screen and (pointer: fine) and (min-width: 2200px) and (max-width: 2399px) {}
-
-@media only screen and (pointer: fine) and (min-width: 1280px) and (max-width: 2400px) {}
-
-@media only screen and (pointer: fine) and (min-width: 2400px) {}

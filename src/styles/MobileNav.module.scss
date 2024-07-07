@@ -1,3 +1,5 @@
+@import "./App.module.scss";
+
 .mobileNav {
   z-index: 999;
   position: absolute;
@@ -5,7 +7,7 @@
   top: 8vh;
   left: 93vw;
   width: 50vw;
-  height: calc(90vh - 8vh);
+  height: calc(100% - 8vh);
   backdrop-filter: blur(10px);
   box-shadow: 10px 10px 50px #0000008e;
   border-top-left-radius: 10px;
@@ -224,17 +226,17 @@
 
 
 // Cell Phone (vertical mode) 
-@media only screen and (orientation : portrait) and (pointer: coarse) and (min-device-width: 300px) {
+@media only screen and (orientation : portrait) and (pointer: fine) and (min-device-width: 300px) {
   .mobileNav {
     display: flex;
   }
 }
 
 // Cell Phone (horizontal mode)
-@media only screen and (orientation : landscape) and (pointer: coarse) and (min-device-width: 300px) {
+@media only screen and (orientation : landscape) and (pointer: fine) and (min-device-width: 300px) {
   .mobileNav {
     display: flex;
-    height: calc(90vh - 12vh);
+    height: calc(100% - 12vh);
     top: 12vh;
 
     & h4 {

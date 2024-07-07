@@ -58,34 +58,3 @@
     }
   }
 }
-
-// Desktop
-@media (min-width: 1680px) {
-  .articleSlider {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-@media (min-width: 1280px) and (max-width: 1679px) and (min-height: 700px) and (max-height: 1440px) {
-  .articleSlider {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-
-// Tablet (vertical mode)
-@media (min-width: 1024px) and (max-width: 1279px) and (min-height: 1366px) and (max-height: 1400px) {
-  .articleSlider {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-@media (min-width: 700px) and (max-width: 1023px) and (min-height: 1000px) and (max-height: 1365px) {
-  .articleSlider {
-    width: 100%;
-    height: 100%;
-  }
-}

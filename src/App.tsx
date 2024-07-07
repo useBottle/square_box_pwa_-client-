@@ -141,7 +141,7 @@ function App(): JSX.Element {
       </div>
       <div>
         <div className={styles.mainContainer}>
-          {userCheck === true && (
+          {userCheck && (
             <div>
               <header className={styles.header}>
                 <h1
@@ -186,6 +186,7 @@ function App(): JSX.Element {
                 </div>
               </header>
               <nav className={styles.navbar}>
+                <h4>MENU</h4>
                 <ul>
                   {menuItem.map((item, index) => {
                     return (

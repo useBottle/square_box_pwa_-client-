@@ -56,10 +56,13 @@
       }
 
       & .infoText {
-        padding: 0 2vw;
+        padding: 6vh 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
         & p {
-          margin: 1vw;
+          margin: 1vw 2vw;
           font-size: 1vw;
           line-height: 2;
 
@@ -84,6 +87,7 @@
 
 
     & .realTimeHeader {
+      height: 3vh;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
@@ -107,81 +111,85 @@
       }
     }
 
-    & .realTime {
-      width: 100%;
-      height: 60vh;
-      background: var(--container-color);
-      border-radius: 0.8vw;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      overflow: hidden;
-
-      & li {
+    & .keywordsList {
+      & .realTime {
         width: 100%;
-        height: 10%;
+        height: 60vh;
+        background: var(--container-color);
         border-radius: 0.8vw;
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
 
-        & .rank {
-          font-family: "S-CoreDream-4Regular";
-          font-weight: 800;
-          font-size: 1.2vw;
+        & li {
+          width: 100%;
+          height: 10%;
+          border-radius: 0.8vw;
           display: flex;
-          justify-content: center;
           align-items: center;
-          width: 2vw;
-          height: 2vw;
-          margin-left: 1vw;
+          justify-content: space-between;
+
+          & .rank {
+            font-family: "S-CoreDream-4Regular";
+            font-weight: 800;
+            font-size: 1.2vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 2vw;
+            height: 2vw;
+            margin-left: 1vw;
+          }
+
+          & .text {
+            font-size: 1vw;
+            margin-left: -3vw;
+            width: 60%;
+            height: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: flex;
+            align-items: center;
+          }
+
+          & .indicator {
+            font-size: 1vw;
+            padding: 0.5vw;
+            background: var(--container-color);
+            border-radius: 0.3vw;
+            margin-right: 1.5vw;
+          }
+
+          & .new {
+            color: rgb(78, 203, 105);
+          }
+
+          & .stay {
+            color: var(--font-color);
+          }
+
+          & .up {
+            color: #fb3131;
+          }
+
+          & .down {
+            color: #4343ff;
+          }
         }
 
-        & .text {
-          font-size: 1vw;
-          margin-left: 1vw;
-          width: 60%;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-        & .indicator {
-          font-size: 1vw;
-          position: absolute;
-          right: 0;
-          margin-right: 1vw;
-          padding: 0.5vw;
+        & li:hover {
           background: var(--container-color);
-          border-radius: 0.3vw;
-        }
+          cursor: pointer;
 
-        & .new {
-          color: rgb(78, 203, 105);
-        }
+          & .rank {
+            color: var(--point-color2)
+          }
 
-        & .stay {
-          color: var(--font-color);
-        }
-
-        & .up {
-          color: #fb3131;
-        }
-
-        & .down {
-          color: #4343ff;
-        }
-      }
-
-      & li:hover {
-        background: var(--container-color);
-        cursor: pointer;
-
-        & .rank {
-          color: var(--point-color2)
-        }
-
-        & .text {
-          color: var(--point-color1);
+          & .text {
+            color: var(--point-color1);
+          }
         }
       }
     }
@@ -196,5 +204,329 @@
     transform: translateX(-50%);
     color: var(--sub-title);
     font-size: 1vw;
+  }
+}
+
+
+// Tablet (vertical mode) 
+@media all and (orientation: portrait) and (min-width: 551px) and (max-width: 1024px) and (max-height: 1440px) {
+  .homeContainer {
+    top: 6vh;
+    left: 0;
+    width: $main-container-width;
+    height: calc($main-container-height - 6vh);
+    flex-direction: column;
+    align-items: flex-end;
+
+    & .landingContainer {
+      margin-left: 0;
+      margin: 0 4.5vw;
+      width: 90%;
+      height: 55%;
+      margin-top: 3vh;
+
+      & .infoContainer {
+        & .iconSet {
+          top: 3vh;
+        }
+
+        & .infoText {
+          & p {
+            font-size: 1.5vw;
+            line-height: 3;
+          }
+
+          & p:first-child {
+            margin-top: 2vh;
+          }
+        }
+      }
+    }
+
+    & .realTimeContainer {
+      margin-right: 0;
+      margin: 0 4.5vw;
+      margin-bottom: 1vh;
+      width: 60%;
+      height: 30vh;
+
+      & .realTimeHeader {
+        height: 2vh;
+
+        & .realTimeTitle {
+          font-size: 2vw;
+        }
+
+        & .updateCounter {
+          height: 2vw;
+
+          & .gauge {
+            height: 2vw;
+          }
+        }
+      }
+
+      & .keywordsList {
+        height: 27.5vh;
+        overflow: scroll;
+
+        & .realTime {
+          height: 180%;
+
+          & li {
+            & .rank {
+              font-size: 2vw;
+            }
+
+            & .text {
+              font-size: 1.5vw;
+            }
+
+            & .indicator {
+              font-size: 1.5vw;
+            }
+          }
+        }
+      }
+    }
+
+    .notice {
+      display: none;
+    }
+  }
+}
+
+// Tablet (horizontal mode) 
+@media all and (orientation: landscape) and (min-width: 551px) and (max-width: $tablet-horizontal-width) and (max-height: 1440px) {
+  .homeContainer {
+    top: 8vh;
+    left: 0;
+    width: $main-container-width;
+    height: calc($main-container-height - 8vh);
+
+    & .landingContainer {
+      width: 50vw;
+      height: 68vh;
+      margin-left: 4vw;
+
+      & .infoContainer {
+        & .iconSet {
+          top: 7vh;
+        }
+
+        & .infoText {
+          & p {
+            font-size: 1.3vw;
+          }
+        }
+      }
+    }
+
+    & .realTimeContainer {
+      height: 71vh;
+      margin-right: 4vw;
+      transform: translateY(-1.5vh);
+
+      & .realTimeHeader {
+        height: 2vh;
+      }
+
+      & .keywordsList {
+        & .realTime {
+          height: 68vh;
+
+          & li {
+            & .rank {
+              font-size: 1.5vw;
+            }
+
+            & .text {
+              font-size: 1.3vw;
+            }
+
+            & .indicator {
+              font-size: 1.5vw;
+            }
+          }
+        }
+      }
+    }
+
+    & .notice {
+      display: none;
+    }
+  }
+}
+
+
+// Cell Phone (vertical mode) 
+@media all and (orientation: portrait) and (min-width: 320px) and (max-width: 550px) and (max-width: 1440px) {
+  .homeContainer {
+    top: 8vh;
+    left: 0;
+    width: $main-container-width;
+    height: calc($main-container-height - 8vh);
+    flex-direction: column;
+
+    & .landingContainer {
+      margin-left: 0;
+      margin-top: 3vh;
+      width: 90%;
+      height: 50%;
+
+      & .infoContainer {
+        & .iconSet {
+          top: 3vh;
+          width: 5vw;
+          height: 5vh;
+
+          & .infoIcon {
+            font-size: 5vw;
+          }
+        }
+
+        & .infoText {
+          overflow: scroll;
+          justify-content: flex-start;
+          padding: 2vh 0;
+
+          & p {
+            font-size: 3.5vw;
+            line-height: 1.5;
+            margin: 2vh 3vw;
+          }
+        }
+
+      }
+    }
+
+    & .realTimeContainer {
+      margin-right: 0;
+      margin-bottom: 1vh;
+      width: 90%;
+      height: 40%;
+
+      & .realTimeHeader {
+        margin-bottom: 1vh;
+
+        & .realTimeTitle {
+          font-size: 3vw;
+        }
+
+        & .updateCounter {
+          width: 20vw;
+        }
+      }
+
+      & .keywordsList {
+        overflow: scroll;
+
+        & .realTime {
+          & li {
+            height: 20%;
+
+            & .rank {
+              font-size: 4vw;
+              margin-left: 3vw;
+            }
+
+            & .text {
+              font-size: 3vw;
+              margin-left: -15vw;
+            }
+
+            & .indicator {
+              font-size: 3vw;
+              margin-right: 3vw;
+            }
+          }
+        }
+      }
+    }
+
+    & .notice {
+      display: none;
+    }
+  }
+}
+
+// Cell Phone (horizontal mode)
+@media all and (orientation: landscape) and (min-width: 320px) and (max-width: $phone-horizontal-width) and (max-height: 1440) {
+  .homeContainer {
+    top: 12vh;
+    left: 0;
+    width: $main-container-width;
+    height: calc($main-container-height - 12vh);
+
+    & .landingContainer {
+      width: 60%;
+      height: 85%;
+      margin-left: 2vw;
+
+      & .infoContainer {
+        & .iconSet {
+          top: 6vh;
+        }
+
+        & .infoText {
+          overflow: scroll;
+          padding: 4vh 2vw;
+
+          & p {
+            font-size: 0.8rem;
+            line-height: 1.5;
+            margin: 4vh 0;
+          }
+        }
+      }
+    }
+
+    & .realTimeContainer {
+      width: 34%;
+      height: 90%;
+      margin-right: 2vw;
+
+      & .realTimeHeader {
+        margin-bottom: 1vh;
+
+        & .realTimeTitle {
+          font-size: 1.5vw;
+        }
+
+        & .updateCounter {
+          height: 3vh;
+
+          & .gauge {
+            height: 3vh;
+          }
+        }
+      }
+
+      & .keywordsList {
+        overflow: scroll;
+
+        & .realTime {
+          height: 100vh;
+
+          & li {
+            height: 20%;
+
+            & .rank {
+              font-size: 1rem;
+            }
+
+            & .text {
+              margin-left: 1vw;
+              font-size: 0.8rem;
+              width: 73%;
+            }
+          }
+        }
+      }
+    }
+
+    & .notice {
+      display: none;
+    }
   }
 }

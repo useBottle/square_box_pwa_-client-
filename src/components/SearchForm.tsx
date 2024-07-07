@@ -84,6 +84,9 @@ export default function SearchForm(): JSX.Element {
       }
     >
       <div className={styles.searchBar}>
+        <button className={styles.searchIconBox} type="submit">
+          <IoSearch className={styles.searchIcon} />
+        </button>
         <input
           type="text"
           onChange={onChange}
@@ -101,9 +104,6 @@ export default function SearchForm(): JSX.Element {
           <span className={`${styles.iconSet} ${styles.part1}`}></span>
           <span className={`${styles.iconSet} ${styles.part2}`}></span>
         </div>
-        <button className={styles.searchIconBox} type="submit">
-          <IoSearch className={styles.searchIcon} />
-        </button>
       </div>
     </form>
   );

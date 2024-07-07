@@ -106,101 +106,8 @@
 }
 
 
-
-// Cell Phone (vertical mode) 
-@media only screen and (orientation : portrait) and (pointer: coarse) and (min-device-width: 300px) {
-  .loginView {
-    & .formContainer {
-      width: 90%;
-      height: 93%;
-
-      & .viewHead {
-        & .icon {
-          font-size: 20vw;
-        }
-
-        & h1 {
-          font-size: 8vw;
-        }
-      }
-
-      & .inputSet {
-        & input {
-          width: 40vw;
-          font-size: 3vw;
-        }
-      }
-
-      & .btnSet {
-        & .logInBtn {
-          width: 20vw;
-          font-size: 4vw;
-        }
-
-        & .signUpBtn {
-          width: 20vw;
-          font-size: 3vw;
-        }
-      }
-
-      & strong {
-        font-size: 3vw;
-        bottom: 5vh;
-      }
-    }
-  }
-}
-
-// Cell Phone (horizontal mode)
-@media only screen and (orientation : landscape) and (pointer: coarse) and (min-device-width: 300px) {
-  .loginView {
-    & .formContainer {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin: 0;
-
-      & .viewHead {
-        transform: translateX(-6vw);
-      }
-
-      & .inputSet {
-        margin-right: 8vw;
-
-        & input {
-          margin-top: 0;
-          margin-bottom: 3vh;
-        }
-      }
-
-      & .btnSet {
-
-        & .logInBtn {
-          margin-top: 0;
-          margin-bottom: 3vh;
-          height: 8vh;
-          font-size: 1.5vw;
-        }
-
-        & .signUpBtn {
-          margin-top: 0;
-          margin-bottom: 3vh;
-          height: 8vh;
-        }
-      }
-
-      & strong {
-        font-size: 1.5vw;
-      }
-    }
-  }
-}
-
-
-
-
 // Tablet (vertical mode)
-@media only screen and (orientation : portrait) and (pointer: coarse) and (min-device-width: 700px) {
+@media only screen and (orientation : portrait) and (min-device-width: 700px) {
   .loginView {
     & .formContainer {
       width: 90%;
@@ -244,7 +151,7 @@
 }
 
 // Tablet (horizontal mode)
-@media only screen and (orientation : landscape) and (pointer: coarse) and (min-device-width: 700px) {
+@media only screen and (orientation : landscape) and (min-device-width: 700px) {
   .loginView {
     & .formContainer {
       display: flex;
@@ -275,6 +182,96 @@
         & .signUpBtn {
           margin-top: 0;
           margin-bottom: 3vh
+        }
+      }
+
+      & strong {
+        font-size: 1.5vw;
+      }
+    }
+  }
+}
+
+
+// Cell Phone (vertical mode) 
+@media only screen and (orientation : portrait) and (min-device-width: 300px) {
+  .loginView {
+    & .formContainer {
+      width: 90%;
+      height: 93%;
+
+      & .viewHead {
+        & .icon {
+          font-size: 20vw;
+        }
+
+        & h1 {
+          font-size: 8vw;
+        }
+      }
+
+      & .inputSet {
+        & input {
+          width: 40vw;
+          font-size: 3vw;
+        }
+      }
+
+      & .btnSet {
+        & .logInBtn {
+          width: 20vw;
+          font-size: 4vw;
+        }
+
+        & .signUpBtn {
+          width: 20vw;
+          font-size: 3vw;
+        }
+      }
+
+      & strong {
+        font-size: 3vw;
+        bottom: 5vh;
+      }
+    }
+  }
+}
+
+// Cell Phone (horizontal mode)
+@media only screen and (orientation : landscape) and (min-device-width: 300px) {
+  .loginView {
+    & .formContainer {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 0;
+
+      & .viewHead {
+        transform: translateX(-6vw);
+      }
+
+      & .inputSet {
+        margin-right: 8vw;
+
+        & input {
+          margin-top: 0;
+          margin-bottom: 3vh;
+        }
+      }
+
+      & .btnSet {
+
+        & .logInBtn {
+          margin-top: 0;
+          margin-bottom: 3vh;
+          height: 8vh;
+          font-size: 1.5vw;
+        }
+
+        & .signUpBtn {
+          margin-top: 0;
+          margin-bottom: 3vh;
+          height: 8vh;
         }
       }
 
