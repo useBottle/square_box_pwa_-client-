@@ -403,14 +403,56 @@
       flex-direction: row;
 
       & .previewContainer {
-        width: 60%;
-        height: 85%;
-        margin-left: 2vw;
+        width: 62%;
+        height: 90%;
+        margin-left: 1vw;
+        justify-content: flex-start;
 
         & .previewTitle {
+          display: none;
+          font-size: 1.5vw;
           margin-bottom: 1vh;
         }
+
+        & .defaultPreview {
+          & img {
+            height: 52vh;
+          }
+
+          & h3 {
+            font-size: 2.5vw;
+          }
+
+          & p {
+            font-size: 1.5vw;
+          }
+        }
       }
+
+      & .contentsContainer {
+        width: 34%;
+        height: 90%;
+        margin-right: 1vw;
+        justify-content: flex-start;
+
+        & .contentsTitle {
+          display: none;
+          margin-bottom: 1vh;
+          font-size: 1.5vw;
+        }
+
+        & .articleList {
+          height: 100%;
+
+          & .text {
+            font-size: 1.5vw;
+          }
+        }
+      }
+    }
+
+    & .notice {
+      display: none;
     }
   }
 }

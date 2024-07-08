@@ -609,20 +609,21 @@
     left: 0;
     width: $main-container-width;
     height: calc($main-container-height - 12vh);
-    flex-direction: row;
 
     & .landingContainer {
-      width: 60%;
-      height: 85%;
-      margin-left: 2vw;
+      width: 62%;
+      height: 90%;
+      margin-left: 1vw;
+      margin-bottom: 4vh;
 
       & .infoContainer {
         & .iconSet {
-          top: 6vh;
+          display: none;
         }
 
         & .infoText {
           overflow: scroll;
+          justify-content: flex-start;
           padding: 4vh 2vw;
 
           & p {
@@ -637,22 +638,10 @@
     & .realTimeContainer {
       width: 34%;
       height: 90%;
-      margin-right: 2vw;
+      margin-right: 1vw;
 
       & .realTimeHeader {
-        margin-bottom: 1vh;
-
-        & .realTimeTitle {
-          font-size: 1.5vw;
-        }
-
-        & .updateCounter {
-          height: 3vh;
-
-          & .gauge {
-            height: 3vh;
-          }
-        }
+        display: none;
       }
 
       & .keywordsList {
