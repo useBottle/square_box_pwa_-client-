@@ -4,93 +4,95 @@
 .youtubeContainer {
   font-family: "S-CoreDream-4Regular";
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background: var(--container-color);
-  padding: 0 30px;
-  top: 100px;
-  left: 100px;
-  width: 1200px;
-  height: 650px;
+  top: 10vh;
+  left: 10vh;
+  width: calc($main-container-width - 10vh);
+  height: calc($main-container-height - 10vh);
   box-sizing: border-box;
   transition: background 0.3s ease-in-out;
 
   & .innerFrame {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     & .playerContainer {
-      position: absolute;
-      top: 0;
-      left: 100px;
-      width: 550px;
-      height: 600px;
-      box-sizing: border-box;
+      width: 40vw;
+      height: 64vh;
+      margin-left: 6vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transform: translateY(-2vh);
 
       & .playerTitle {
-        position: relative;
-        top: 50px;
-        left: 0;
         color: var(--sub-title);
+        height: 3vh;
+        display: flex;
+        align-items: flex-end;
+        font-size: 1.2vw;
       }
 
       & .defaultPlayer {
-        position: absolute;
-        top: 75px;
+        width: 100%;
+        height: 60vh;
 
         & img {
-          position: relative;
-          width: 550px;
-          height: 367px;
-          border-radius: 10px;
+          width: 100%;
+          height: 48vh;
+          border-radius: 0.8vw;
           user-select: none;
         }
 
         & h3 {
-          position: relative;
-          margin-top: 30px;
-          font-size: 30px;
+          margin-top: 3vh;
+          font-size: 3vh;
         }
 
         & p {
-          position: relative;
-          margin-top: 30px;
+          margin-top: 3vh;
+          font-size: 1vw;
           font-weight: 100;
         }
       }
     }
 
     & .videosContainer {
-      position: absolute;
-      top: 0;
-      right: 100px;
-      width: 400px;
-      height: 650px;
+      width: 30vw;
+      height: 64vh;
       box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transform: translateY(-2vh);
+      margin-right: 6vw;
 
       & .videosTitle {
-        position: absolute;
-        top: 50px;
-        left: 0;
+        height: 3vh;
+        display: flex;
+        align-items: flex-end;
+        font-size: 1.2vw;
         color: var(--sub-title);
       }
 
       & .videoList {
-        position: absolute;
         font-family: "S-CoreDream-4Regular";
-        font-size: 20px;
         font-weight: 400;
-        width: 400px;
-        height: 500px;
-        top: 75px;
+        width: 100%;
+        height: 60vh;
         display: flex;
         justify-content: center;
         align-items: center;
         background: var(--container-color);
-        border-radius: 10px;
+        border-radius: 0.8vw;
         box-sizing: border-box;
         transition: background 0.3s ease-in-out;
 
         & .text {
-          font-size: 15px;
+          font-size: 1vw;
           pointer-events: none;
         }
       }
@@ -101,11 +103,11 @@
 
       @keyframes blinkBorder {
         0% {
-          border: 3px solid transparent;
+          border: 0.3vw solid transparent;
         }
 
         100% {
-          border: 3px solid var(--font-color);
+          border: 0.3vw solid var(--font-color);
         }
       }
     }
@@ -115,27 +117,355 @@
     font-family: "S-CoreDream-1Thin";
     z-index: 900;
     position: absolute;
-    bottom: 20px;
+    bottom: 2vh;
+    left: 50%;
+    transform: translateX(-50%);
     color: var(--sub-title);
-    font-size: 14px;
+    font-size: 1vw;
   }
 }
 
 
 // Tablet vertical mode
-@media all and (min-width: 551px) and (max-width: 1024px) and (min-height: 1024px) and (max-height: 1366px) {}
+@media all and (min-width: 551px) and (max-width: 1024px) and (min-height: 1024px) and (max-height: 1366px) {
+  .youtubeContainer {
+    top: 6vh;
+    left: 0;
+    width: $main-container-width;
+    height: calc($main-container-height - 6vh);
+
+    & .innerFrame {
+      flex-direction: column;
+      align-items: flex-end;
+
+      & .playerContainer {
+        margin-left: 0;
+        margin: 0 4.5vw;
+        width: 90%;
+        height: 45vh;
+        margin-top: 5vh;
+
+        & .playerTitle {
+          display: none;
+        }
+
+        & .defaultPlayer {
+          height: 44vh;
+
+          & img {
+            height: 75%;
+          }
+
+          & p {
+            font-size: 1.5vw;
+          }
+        }
+      }
+
+      & .videosContainer {
+        margin-right: 0;
+        margin: 0 4.5vw;
+        margin-bottom: 1vh;
+        width: 60%;
+        height: 30vh;
+
+        & .videosTitle {
+          height: 2vh;
+          font-size: 2vw;
+        }
+
+        & .videoList {
+          height: 27.5vh;
+
+          & .text {
+            font-size: 1.5vw;
+          }
+        }
+      }
+    }
+
+    & .notice {
+      display: none;
+    }
+  }
+}
 
 // Desktop (Tablet vertical mode size)
-@media all and (min-width: 551px) and (max-width: 768px) and (min-height: 768px) and (max-height: 1024px) {}
+@media all and (min-width: 551px) and (max-width: 768px) and (min-height: 768px) and (max-height: 1024px) {
+  .youtubeContainer {
+    top: 6vh;
+    left: 0;
+    width: $main-container-width;
+    height: calc($main-container-height - 6vh);
+
+    & .innerFrame {
+      flex-direction: column;
+      align-items: flex-end;
+
+      & .playerContainer {
+        margin-left: 0;
+        margin: 0 4.5vw;
+        width: 90%;
+        height: 45vh;
+        margin-top: 5vh;
+
+        & .playerTitle {
+          display: none;
+        }
+
+        & .defaultPlayer {
+          height: 44vh;
+
+          & img {
+            height: 75%;
+          }
+
+          & p {
+            font-size: 1.5vw;
+          }
+        }
+      }
+
+      & .videosContainer {
+        margin-right: 0;
+        margin: 0 4.5vw;
+        margin-bottom: 1vh;
+        width: 60%;
+        height: 30vh;
+
+        & .videosTitle {
+          height: 2vh;
+          font-size: 2vw;
+        }
+
+        & .videoList {
+          height: 27.5vh;
+
+          & .text {
+            font-size: 1.5vw;
+          }
+        }
+      }
+    }
+
+    & .notice {
+      display: none;
+    }
+  }
+}
 
 // Tablet horizontal mode
-@media all and (min-width: 1024px) and (max-width: 1366px) and (min-height: 768px) and (max-height: 1024px) {}
+@media all and (min-width: 1024px) and (max-width: 1366px) and (min-height: 768px) and (max-height: 1024px) {
+  .youtubeContainer {
+    top: 8vh;
+    left: 0;
+    width: $main-container-width;
+    height: calc($main-container-height - 8vh);
+
+    & .innerFrame {
+      & .playerContainer {
+        width: 50vw;
+        height: 71vh;
+        margin-left: 4vw;
+        transform: translateY(-1.5vh);
+
+        & .playerTitle {
+          height: 2vh;
+        }
+
+        & .defaultPlayer {
+          height: 68vh;
+        }
+      }
+
+      & .videosContainer {
+        height: 71vh;
+        margin-right: 4vw;
+        transform: translateY(-1.5vh);
+
+        & .videosTitle {
+          height: 2vh;
+        }
+
+        & .videoList {
+          height: 68vh;
+        }
+      }
+    }
+
+    & .notice {
+      display: none;
+    }
+  }
+}
 
 // Desktop (Tablet horizontal mode size)
-@media all and (min-width: 768px) and (max-width: 1024px) and (min-height: 768px) and (max-height: 1000px) {}
+@media all and (min-width: 768px) and (max-width: 1024px) and (min-height: 768px) and (max-height: 1000px) {
+  .youtubeContainer {
+    top: 8vh;
+    left: 0;
+    width: $main-container-width;
+    height: calc($main-container-height - 8vh);
+
+    & .innerFrame {
+      & .playerContainer {
+        width: 50vw;
+        height: 71vh;
+        margin-left: 4vw;
+        transform: translateY(-1.5vh);
+
+        & .playerTitle {
+          height: 2vh;
+        }
+
+        & .defaultPlayer {
+          height: 68vh;
+        }
+      }
+
+      & .videosContainer {
+        height: 71vh;
+        margin-right: 4vw;
+        transform: translateY(-1.5vh);
+
+        & .videosTitle {
+          height: 2vh;
+        }
+
+        & .videoList {
+          height: 68vh;
+        }
+      }
+    }
+
+    & .notice {
+      display: none;
+    }
+  }
+}
 
 // Cell Phone vertical mode
-@media all and (max-width: 550px) and (max-height: 1067px) {}
+@media all and (max-width: 550px) and (max-height: 1067px) {
+  $main-container-height: 86vh;
+
+  .youtubeContainer {
+    top: 8vh;
+    left: 0;
+    width: $main-container-width;
+    height: calc($main-container-height - 8vh);
+
+    & .innerFrame {
+      flex-direction: column;
+
+      & .playerContainer {
+        margin-left: 0;
+        margin-top: 5vh;
+        width: 90%;
+        height: 50%;
+
+        & .playerTitle {
+          display: none;
+        }
+
+        & .defaultPlayer {
+          overflow: scroll;
+
+          & img {
+            height: 28vh;
+          }
+
+          & p {
+            font-size: 3vw;
+          }
+        }
+      }
+
+      & .videosContainer {
+        margin-right: 0;
+        margin-bottom: 1vh;
+        width: 90%;
+        height: 28vh;
+
+        & .videosTitle {
+          font-size: 3vw;
+          height: 2vh;
+        }
+
+        & .videoList {
+          height: 25vh;
+
+          & .text {
+            font-size: 3vw;
+          }
+        }
+      }
+    }
+
+    & .notice {
+      display: none;
+    }
+  }
+}
 
 // Cell Phone horizontal mode
-@media all and (max-width: 1067px) and (max-height: 550px) {}
+@media all and (max-width: 1067px) and (max-height: 550px) {
+  $main-container-height: 86vh;
+
+  .youtubeContainer {
+    top: 8vh;
+    left: 0;
+    width: $main-container-width;
+    height: calc($main-container-height - 8vh);
+
+    & .innerFrame {
+      flex-direction: column;
+
+      & .playerContainer {
+        margin-left: 0;
+        margin-top: 5vh;
+        width: 90%;
+        height: 50%;
+
+        & .playerTitle {
+          display: none;
+        }
+
+        & .defaultPlayer {
+          overflow: scroll;
+
+          & img {
+            height: 28vh;
+          }
+
+          & p {
+            font-size: 3vw;
+          }
+        }
+      }
+
+      & .videosContainer {
+        margin-right: 0;
+        margin-bottom: 1vh;
+        width: 90%;
+        height: 28vh;
+
+        & .videosTitle {
+          font-size: 3vw;
+          height: 2vh;
+        }
+
+        & .videoList {
+          height: 25vh;
+
+          & .text {
+            font-size: 3vw;
+          }
+        }
+      }
+    }
+
+    & .notice {
+      display: none;
+    }
+  }
+}

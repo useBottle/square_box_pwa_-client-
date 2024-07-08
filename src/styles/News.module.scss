@@ -154,6 +154,10 @@
           & img {
             height: 75%;
           }
+
+          & p {
+            font-size: 1.5vw;
+          }
         }
       }
 
@@ -171,11 +175,15 @@
 
         & .articleList {
           height: 27.5vh;
+
+          & .text {
+            font-size: 1.5vw;
+          }
         }
       }
     }
 
-    .notice {
+    & .notice {
       display: none;
     }
   }
@@ -210,6 +218,10 @@
           & img {
             height: 75%;
           }
+
+          & p {
+            font-size: 1.5vw;
+          }
         }
       }
 
@@ -227,6 +239,10 @@
 
         & .articleList {
           height: 27.5vh;
+
+          & .text {
+            font-size: 1.5vw;
+          }
         }
       }
     }
@@ -238,7 +254,7 @@
 }
 
 // Tablet horizontal mode
-@media all and (min-width: 551px) and (max-width: 1366px) and (min-height: 800px) and (max-height: 1024px) {
+@media all and (min-width: 1024px) and (max-width: 1366px) and (min-height: 800px) and (max-height: 1024px) {
   .newsContainer {
     top: 8vh;
     left: 0;
