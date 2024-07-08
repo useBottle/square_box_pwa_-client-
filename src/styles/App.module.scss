@@ -9,8 +9,6 @@ $circle-bottom: 30vh;
 $left: -55vw;
 $main-container-width: 93vw;
 $main-container-height: 90vh;
-$tablet-horizontal-width: 1440px;
-$phone-horizontal-width: 950px;
 
 body {
 
@@ -350,13 +348,15 @@ body {
 
 
           & .logOutBtn {
+            width: 5vh;
+            height: 5vh;
             margin: 0 3vw;
             display: flex;
             justify-content: center;
             align-items: center;
             background: transparent;
             border: none;
-            border-radius: 0.5vw;
+            border-radius: 0.4vw;
             color: var(--font-color);
             font-size: 2vw;
             padding: 0;
@@ -454,7 +454,6 @@ body {
           width: 100%;
           color: var(--sub-title);
           font-size: 1.2vw;
-          display: flex;
           justify-content: center;
           align-items: flex-end;
         }
@@ -723,8 +722,8 @@ body {
 }
 
 
-// Tablet (vertical mode) 
-@media all and (orientation: portrait) and (min-width: 551px) and (max-width: 1024px) and (max-height: 1440px) {
+// Tablet vertical mode
+@media all and (min-width: 551px) and (max-width: 1024px) and (min-height: 1024px) and (max-height: 1366px) {
   $circle-width: 300vw;
   $circle-height: 290vw;
   $circle-radius: 50%;
@@ -834,6 +833,7 @@ body {
           justify-content: space-between;
 
           & h4 {
+            font-family: "S-CoreDream-4Regular";
             display: flex;
             font-size: 2vw;
             height: 2vh;
@@ -842,6 +842,7 @@ body {
           & ul {
             height: 27.5vh;
             border-radius: 0.4vw;
+            justify-content: space-between;
 
             & li {
               display: flex;
@@ -877,8 +878,164 @@ body {
   }
 }
 
-// Tablet (horizontal mode) 
-@media all and (orientation: landscape) and (min-width: 551px) and (max-width: $tablet-horizontal-width) and (max-height: 1440px) {
+// Desktop (Tablet vertical mode size)
+@media all and (min-width: 551px) and (max-width: 768px) and (min-height: 768px) and (max-height: 1024px) {
+  $circle-width: 300vw;
+  $circle-height: 290vw;
+  $circle-radius: 50%;
+  $circle-bottom: 30vh;
+  $left: -180vw;
+
+  body {
+    & .bodyContainer {
+      & .backgroundSet {
+        & .circle1 {
+          width: $circle-width;
+          height: $circle-height;
+          left: $left;
+        }
+
+        & .circle2 {
+          width: $circle-width;
+          height: $circle-height;
+          left: calc($left + 1vw);
+        }
+
+        & .circle3 {
+          width: $circle-width;
+          height: $circle-height;
+          left: calc($left + 2vw);
+        }
+      }
+
+      & .mainContainer {
+        & .header {
+          height: 6vh;
+          z-index: 999;
+
+          & .logo {
+            font-size: 3vw;
+            margin: 0 2vw;
+          }
+
+          & .headerBlock {
+            width: 60vw;
+
+            & form {
+              width: 25vw;
+              height: 3vh;
+
+              & .searchBar {
+                display: flex;
+
+                & .searchIconBox {
+                  transform: translateX(3vw);
+                  font-size: 2vw;
+                }
+
+                & input {
+                  height: 3vh;
+                  font-size: 2vw;
+                  padding-right: 12%;
+                }
+              }
+            }
+
+            & .user {
+              display: flex;
+              width: 14vw;
+              height: 3vh;
+
+              & span {
+                font-size: 1.5vw;
+              }
+            }
+
+            & .darkModeBtn {
+              display: flex;
+              width: 3vh;
+              height: 3vh;
+            }
+
+            & .logOutBtn {
+              display: flex;
+              width: 3vh;
+              height: 3vh;
+              margin: 0 2vw;
+
+              & span {
+                display: none;
+              }
+            }
+
+            & .searchModalIcon {
+              display: none;
+            }
+
+            & .menuSwitch {
+              display: none;
+            }
+          }
+        }
+
+        & .navbar {
+          display: flex;
+          border: none;
+          width: 25%;
+          height: 30vh;
+          margin-bottom: 3vh;
+          margin-left: 4.5vw;
+          z-index: 900;
+          justify-content: space-between;
+
+          & h4 {
+            font-family: "S-CoreDream-4Regular";
+            display: flex;
+            font-size: 2vw;
+            height: 2vh;
+          }
+
+          & ul {
+            height: 27.5vh;
+            border-radius: 0.4vw;
+            justify-content: space-between;
+
+            & li {
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+              width: 100%;
+              height: 20%;
+              margin-top: 12%;
+              font-size: 2vw;
+              border-radius: 0.8vw;
+
+              & .icon {
+                top: 0;
+                margin-left: 6vw;
+              }
+
+              & span {
+                opacity: 1;
+                position: relative;
+                margin-top: 0;
+                margin-left: 2vw;
+                font-size: 2vw;
+              }
+            }
+
+            & li:first-child {
+              margin-top: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Tablet horizontal mode
+@media all and (min-width: 1024px) and (max-width: 1366px) and (min-height: 768px) and (max-height: 1024px) {
   $circle-width: 300vw;
   $circle-height: 290vw;
   $circle-radius: 50%;
@@ -981,9 +1138,8 @@ body {
   }
 }
 
-
-// Cell Phone (vertical mode) 
-@media all and (orientation: portrait) and (min-width: 320px) and (max-width: 550px) and (max-height: 1440px) {
+// Desktop (Tablet horizontal mode size)
+@media all and (min-width: 768px) and (max-width: 1024px) and (min-height: 768px) and (max-height: 1000px) {
   $circle-width: 300vw;
   $circle-height: 290vw;
   $circle-radius: 50%;
@@ -1013,6 +1169,113 @@ body {
       }
 
       & .mainContainer {
+        & .header {
+          height: 8vh;
+          z-index: 999;
+
+          & .logo {
+            font-size: 2.5vw;
+            margin: 0 0.5vw;
+          }
+
+          & .headerBlock {
+            width: 50vw;
+
+            & form {
+              width: 25vw;
+              height: 4vh;
+
+              & .searchBar {
+                display: flex;
+
+                & .searchIconBox {
+                  transform: translateX(3vw);
+                  font-size: 2vw;
+                }
+
+                & input {
+                  font-size: 1.5vw;
+                  padding-right: 12%;
+                }
+              }
+            }
+
+            & .user {
+              display: flex;
+              width: 10vw;
+              height: 4vh;
+
+              & span {
+                font-size: 1.2vw;
+              }
+            }
+
+            & .darkModeBtn {
+              display: none;
+            }
+
+            & .logOutBtn {
+              display: none;
+            }
+
+            & .searchModalIcon {
+              display: none;
+            }
+
+            & .menuSwitch {
+              display: flex;
+              width: 8vw;
+              height: 4vh;
+              font-size: 2vw;
+              margin-left: 2vw;
+              border-radius: 0.4vw;
+              border: 0.1vw solid var(--border-color);
+            }
+          }
+        }
+
+        & .navbar {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// Cell Phone vertical mode
+@media all and (max-width: 550px) and (max-height: 1067px) {
+  $circle-width: 300vw;
+  $circle-height: 290vw;
+  $circle-radius: 50%;
+  $circle-bottom: 30vh;
+  $left: -180vw;
+  $main-container-height: 86vh;
+
+  body {
+    & .bodyContainer {
+      & .backgroundSet {
+        & .circle1 {
+          width: $circle-width;
+          height: $circle-height;
+          left: $left;
+        }
+
+        & .circle2 {
+          width: $circle-width;
+          height: $circle-height;
+          left: calc($left + 1vw);
+        }
+
+        & .circle3 {
+          width: $circle-width;
+          height: $circle-height;
+          left: calc($left + 2vw);
+        }
+      }
+
+      & .mainContainer {
+        height: $main-container-height;
+
         & .header {
           height: 8vh;
           z-index: 999;
@@ -1059,8 +1322,8 @@ body {
   }
 }
 
-// Cell Phone (horizontal mode)
-@media all and (orientation: landscape) and (min-width: 320px) and (max-width: $phone-horizontal-width) and (max-height: 1440px) {
+// Cell Phone horizontal mode
+@media all and (max-width: 1067px) and (max-height: 550px) {
   $circle-width: 300vw;
   $circle-height: 290vw;
   $circle-radius: 50%;
