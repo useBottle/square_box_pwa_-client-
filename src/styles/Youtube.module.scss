@@ -409,56 +409,59 @@
 
 // Cell Phone horizontal mode
 @media all and (max-width: 1067px) and (max-height: 550px) {
-  $main-container-height: 86vh;
-
   .youtubeContainer {
-    top: 8vh;
+    top: 12vh;
     left: 0;
     width: $main-container-width;
-    height: calc($main-container-height - 8vh);
+    height: calc($main-container-height - 12vh);
 
     & .innerFrame {
-      flex-direction: column;
+      flex-direction: row;
 
       & .playerContainer {
-        margin-left: 0;
-        margin-top: 5vh;
-        width: 90%;
-        height: 50%;
+        width: 62%;
+        height: 90%;
+        margin-left: 1vw;
+        justify-content: flex-start;
 
         & .playerTitle {
           display: none;
+          font-size: 1.5vw;
+          margin-bottom: 1vh;
         }
 
         & .defaultPlayer {
-          overflow: scroll;
-
           & img {
-            height: 28vh;
+            height: 52vh;
+          }
+
+          & h3 {
+            font-size: 2.5vw;
           }
 
           & p {
-            font-size: 3vw;
+            font-size: 1.5vw;
           }
         }
       }
 
       & .videosContainer {
-        margin-right: 0;
-        margin-bottom: 1vh;
-        width: 90%;
-        height: 28vh;
+        width: 34%;
+        height: 90%;
+        margin-right: 1vw;
+        justify-content: flex-start;
 
         & .videosTitle {
-          font-size: 3vw;
-          height: 2vh;
+          display: none;
+          margin-bottom: 1vh;
+          font-size: 1.5vw;
         }
 
         & .videoList {
-          height: 25vh;
+          height: 100%;
 
           & .text {
-            font-size: 3vw;
+            font-size: 1.5vw;
           }
         }
       }
