@@ -3,54 +3,53 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  top: 75px;
-  width: 550px;
-  height: 500px;
-  border-radius: 10px;
-  color: var(--font-color);
+  top: 4vh;
+  width: 40vw;
+  height: 60vh;
+  border-radius: 0.8vw;
+  overflow: scroll;
 
   & .defaultView {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 550px;
-    height: 500px;
+    width: 40vw;
+    height: 60vh;
     border: transparent;
-    border-radius: 10px;
+    border-radius: 0.8vw;
     box-sizing: border-box;
     background: var(--container-color);
     animation: blinkBorder 3s infinite alternate ease-in-out;
-    font-size: 16px;
+    font-size: 1vw;
     font-weight: 400;
   }
 
   @keyframes blinkBorder {
     0% {
-      border: 3px solid transparent;
+      border: 0.3vw solid transparent;
     }
 
     100% {
-      border: 3px solid var(--font-color);
+      border: 0.3vw solid var(--font-color);
     }
   }
 
   & .videoSlider {
     color: var(--font-color);
     position: relative;
-    width: 550px;
+    width: 40vw;
     height: auto;
-    border-radius: 10px;
+    border-radius: 0.8vw;
     overflow: scroll;
 
     & iframe {
-      border-radius: 10px;
+      border-radius: 0.8vw;
     }
 
     & h3 {
       position: relative;
-      top: 0;
-      margin-top: 30px;
-      font-size: 30px;
+      margin-top: 3vh;
+      font-size: 2vw;
       line-height: 1.2;
       color: var(--point-color1);
       transition: color 0.3s ease-in-out;
@@ -58,31 +57,30 @@
     }
 
     & .contentInfo {
-      flex-direction: column;
-
-      margin-top: 20px;
+      margin-top: 2vh;
+      display: flex;
 
       & .detailInfoSet {
-        right: 0;
-        font-size: 14px;
         display: flex;
-        align-items: center;
+        align-items: flex-end;
+        justify-content: space-between;
+        width: 100%;
 
         & .channel {
-          margin-top: 20px;
+          margin-top: 2vh;
           display: flex;
           align-items: center;
           background: var(--container-color);
           color: var(--font-color);
-          padding: 10px 20px;
+          padding: 1.5vh 1.5vw;
           border: none;
-          border-radius: 10px;
-          font-size: 15px;
+          border-radius: 0.8vw;
+          font-size: 1.3vw;
           font-weight: 800;
           cursor: pointer;
 
           & img {
-            width: 40px;
+            width: 3vw;
             border-radius: 50%;
           }
 
@@ -92,15 +90,14 @@
         }
 
         & .bookMarkRemover {
-          position: absolute;
-          right: 0;
-          padding: 10px;
-          font-size: 20px;
+          width: 5vh;
+          height: 5vh;
+          font-size: 1.2vw;
           background: var(--container-color);
           color: var(--font-color);
           border: none;
           box-sizing: border-box;
-          border-radius: 5px;
+          border-radius: 0.4vw;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -116,5 +113,258 @@
 
   & .videoSlider::-webkit-scrollbar {
     display: none;
+  }
+}
+
+
+// Tablet vertical mode
+@media all and (min-width: 551px) and (max-width: 1024px) and (min-height: 1024px) and (max-height: 1366px) {
+  .youtubeView {
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    & .defaultView {
+      width: 100%;
+      height: 100%;
+      font-size: 2vw;
+    }
+
+    & img {
+      width: 100%;
+    }
+
+    & .videoSlider {
+      width: 100%;
+      height: 100%;
+
+      & iframe {
+        width: 100%;
+      }
+
+      & h3 {
+        font-size: 3vw;
+      }
+
+      & .contentInfo {
+
+        & .detailInfoSet {
+          & .bookMarkRemover {
+            width: 3vh;
+            height: 3vh;
+            font-size: 1.5vw;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Desktop (Tablet vertical mode size)
+@media all and (min-width: 551px) and (max-width: 768px) and (min-height: 768px) and (max-height: 1024px) {
+  .youtubeView {
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    & .defaultView {
+      width: 100%;
+      height: 100%;
+      font-size: 2vw;
+    }
+
+    & img {
+      width: 100%;
+    }
+
+    & .videoSlider {
+      width: 100%;
+      height: 100%;
+
+      & iframe {
+        width: 100%;
+      }
+
+      & h3 {
+        font-size: 3vw;
+      }
+
+      & .contentInfo {
+
+        & .detailInfoSet {
+          & .bookMarkRemover {
+            width: 3vh;
+            height: 3vh;
+            font-size: 1.5vw;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Tablet horizontal mode
+@media all and (min-width: 1024px) and (max-width: 1366px) and (min-height: 768px) and (max-height: 1024px) {
+  .youtubeView {
+    top: 3vh;
+    width: 100%;
+    height: 68vh;
+    flex-direction: row;
+    align-items: flex-start;
+
+    & .defaultView {
+      width: 100%;
+      height: 68vh;
+      font-size: 1.5vw;
+    }
+
+    & .videoSlider {
+      width: 100%;
+      height: 68vh;
+
+      & h3 {
+        font-size: 3vw;
+      }
+
+      & .contentInfo {
+        & .detailInfoSet {
+          & .bookMarkRemover {
+            width: 4vh;
+            height: 4vh;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Desktop (Tablet horizontal mode size)
+@media all and (min-width: 768px) and (max-width: 1024px) and (min-height: 768px) and (max-height: 1000px) {
+  .youtubeView {
+    top: 3vh;
+    width: 100%;
+    height: 68vh;
+    flex-direction: row;
+    align-items: flex-start;
+
+    & .defaultView {
+      width: 100%;
+      height: 68vh;
+      font-size: 1.5vw;
+    }
+
+    & .videoSlider {
+      width: 100%;
+      height: 68vh;
+
+      & h3 {
+        font-size: 3vw;
+      }
+
+      & .contentInfo {
+        & .detailInfoSet {
+          & .bookMarkRemover {
+            width: 4vh;
+            height: 4vh;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Cell Phone vertical mode
+@media all and (max-width: 550px) and (max-height: 1067px) {
+  .youtubeView {
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    & .defaultView {
+      width: 100%;
+      height: 100%;
+      font-size: 2vw;
+    }
+
+    & .videoSlider {
+      width: 100%;
+      height: 100%;
+
+      & iframe {
+        width: 100%;
+        height: 45vh;
+      }
+
+      & h3 {
+        font-size: 5vw;
+      }
+
+      & .contentInfo {
+        & .detailInfoSet {
+          & .channel {
+            font-size: 3vw;
+
+
+            & img {
+              width: 8vw;
+            }
+          }
+
+          & .bookMarkRemover {
+            width: 5vh;
+            height: 5vh;
+            font-size: 3vw;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Cell Phone horizontal mode
+@media all and (max-width: 1067px) and (max-height: 550px) {
+  .youtubeView {
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    & .defaultView {
+      width: 100%;
+      height: 100%;
+      font-size: 2vw;
+    }
+
+    & .videoSlider {
+      width: 100%;
+      height: 100%;
+
+      & iframe {
+        width: 100%;
+        height: 60vh;
+      }
+
+      & h3 {
+        font-size: 3vw;
+      }
+
+      & .contentInfo {
+        & .detailInfoSet {
+          & .channel {
+            font-size: 2vw;
+
+
+            & img {
+              width: 3vw;
+            }
+          }
+
+          & .bookMarkRemover {
+            width: 7vh;
+            height: 7vh;
+            font-size: 2vw;
+          }
+        }
+      }
+    }
   }
 }

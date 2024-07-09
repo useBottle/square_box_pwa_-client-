@@ -274,6 +274,14 @@
 
         & .defaultPreview {
           height: 68vh;
+
+          & h3 {
+            font-size: 3.5vw;
+          }
+
+          & p {
+            font-size: 1.3vw;
+          }
         }
       }
 
@@ -288,6 +296,10 @@
 
         & .articleList {
           height: 68vh;
+
+          & .text {
+            font-size: 1.3vw;
+          }
         }
       }
     }
@@ -319,6 +331,14 @@
 
         & .defaultPreview {
           height: 68vh;
+
+          & h3 {
+            font-size: 3.5vw;
+          }
+
+          & p {
+            font-size: 1.3vw;
+          }
         }
       }
 
@@ -333,6 +353,10 @@
 
         & .articleList {
           height: 68vh;
+
+          & .text {
+            font-size: 1.3vw;
+          }
         }
       }
     }
@@ -426,8 +450,6 @@
 
         & .previewTitle {
           display: none;
-          font-size: 1.5vw;
-          margin-bottom: 1vh;
         }
 
         & .defaultPreview {

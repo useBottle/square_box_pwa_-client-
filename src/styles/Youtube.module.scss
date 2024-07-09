@@ -275,6 +275,14 @@
 
         & .defaultPlayer {
           height: 68vh;
+
+          & h3 {
+            font-size: 4vh;
+          }
+
+          & p {
+            font-size: 1.3vw;
+          }
         }
       }
 
@@ -289,6 +297,10 @@
 
         & .videoList {
           height: 68vh;
+
+          & .text {
+            font-size: 1.3vw;
+          }
         }
       }
     }
@@ -320,6 +332,14 @@
 
         & .defaultPlayer {
           height: 68vh;
+
+          & h3 {
+            font-size: 3.5vw;
+          }
+
+          & p {
+            font-size: 1.3vw;
+          }
         }
       }
 
@@ -334,6 +354,10 @@
 
         & .videoList {
           height: 68vh;
+
+          & .text {
+            font-size: 1.3vw;
+          }
         }
       }
     }
