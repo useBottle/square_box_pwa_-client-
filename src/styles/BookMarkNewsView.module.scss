@@ -94,8 +94,8 @@
     margin-top: 2vh;
     color: var(--font-color);
     background: var(--link-btn);
-    width: 5vw;
-    height: 5vh;
+    font-size: 1vw;
+    padding: 1vh 1vw;
     border: none;
     border-radius: 0.4vw;
     cursor: pointer;
@@ -154,8 +154,7 @@
     }
 
     & .originalLink {
-      width: 10vw;
-      height: 3vh;
+      font-size: 1.5vw;
     }
 
     & p {
@@ -197,8 +196,7 @@
     }
 
     & .originalLink {
-      width: 10vw;
-      height: 3vh;
+      font-size: 1.5vw;
     }
 
     & p {
@@ -242,8 +240,7 @@
     }
 
     & .originalLink {
-      width: 8vw;
-      height: 4vh;
+      font-size: 1.5vw;
     }
 
     & p {
@@ -287,8 +284,7 @@
     }
 
     & .originalLink {
-      width: 8vw;
-      height: 4vh;
+      font-size: 1.5vw;
     }
 
     & p {
@@ -332,8 +328,8 @@
     }
 
     & .originalLink {
-      width: 20vw;
-      height: 5vh;
+      padding: 1vh 2vw;
+      font-size: 3vw;
     }
 
     & p {
@@ -376,8 +372,8 @@
     }
 
     & .originalLink {
-      width: 10vw;
-      height: 7vh;
+      padding: 1vh 2vw;
+      font-size: 2vw;
     }
 
     & p {
