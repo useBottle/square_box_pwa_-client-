@@ -361,13 +361,13 @@
         margin-right: 0;
         margin-bottom: 1vh;
         width: 85vw;
-        height: 28vh;
+        height: 29vh;
 
         & .listHeader {
           height: 3vh;
 
           & .listTitle {
-            font-size: 4vw;
+            font-size: 3vw;
           }
 
           & .selectBtn {
@@ -381,7 +381,7 @@
 
         & .contentList {
           width: 100%;
-          height: 24vh;
+          height: 25vh;
         }
       }
     }
