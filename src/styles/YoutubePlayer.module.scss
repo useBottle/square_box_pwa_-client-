@@ -44,8 +44,16 @@
         justify-content: space-between;
         align-items: center;
 
-        & .views {
-          margin-right: 20vw;
+        & .block {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          font-size: 1vw;
+
+          & span {
+            margin: 1vh 0;
+          }
         }
 
         & .bookMark {
@@ -120,10 +128,6 @@
 
       & .contentInfo {
         & .detailInfoSet {
-          & .views {
-            margin-right: 40vw;
-          }
-
           & .bookMark {
             width: 3vh;
             height: 3vh;
@@ -156,10 +160,6 @@
 
       & .contentInfo {
         & .detailInfoSet {
-          & .views {
-            margin-right: 40vw;
-          }
-
           & .bookMark {
             width: 3vh;
             height: 3vh;
@@ -251,8 +251,10 @@
 
       & .contentInfo {
         & .detailInfoSet {
-          & span {
-            font-size: 3vw;
+          & .block {
+            & span {
+              font-size: 3vw;
+            }
           }
 
           & .bookMark {

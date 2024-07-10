@@ -350,7 +350,7 @@ body {
           & .logOutBtn {
             width: 5vh;
             height: 5vh;
-            margin: 0 3vw;
+            margin: 0 2vw;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -825,6 +825,7 @@ body {
         & .navbar {
           display: flex;
           border: none;
+          border-radius: 0.8vw;
           width: 25%;
           height: 30vh;
           margin-bottom: 3vh;
@@ -840,6 +841,7 @@ body {
           }
 
           & ul {
+            background: var(--container-color);
             height: 27.5vh;
             border-radius: 0.4vw;
             justify-content: space-between;
@@ -996,6 +998,7 @@ body {
           }
 
           & ul {
+            background: var(--container-color);
             height: 27.5vh;
             border-radius: 0.4vw;
             justify-content: space-between;
