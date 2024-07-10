@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
 import { setCurrentYoutube } from "../store/youtubeSlice";
-import YouTube from "react-youtube";
+import YouTube, { YouTubeEvent } from "react-youtube";
 import defaultImage from "../assets/images/youtube_logo.webp";
 import { FaBookmark } from "react-icons/fa6";
 import axios from "axios";
@@ -81,8 +81,7 @@ export default function YoutubePreview(): JSX.Element {
                 modestbranding: 1, // 컨트롤 바에 youtube 로고를 표시하지 않음
               },
             }}
-            // 이벤트 리스너
-            onEnd={(e) => {
+            onEnd={(e: YouTubeEvent) => {
               e.target.stopVideo(0);
             }}
           />
