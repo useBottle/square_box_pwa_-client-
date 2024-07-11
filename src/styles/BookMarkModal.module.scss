@@ -2,13 +2,13 @@
   position: absolute;
   font-family: "S-CoreDream-1Thin";
   z-index: 9999;
-  width: 400px;
+  width: 30vw;
   background: var(--modal-color);
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   backdrop-filter: blur(10px);
-  border-radius: 10px;
+  border-radius: 0.8vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,12 +26,12 @@
       justify-content: center;
       align-items: center;
       margin: 20% 0;
-      padding: 10px 10px;
-      font-size: 50px;
-      border: 3px solid var(--font-color);
-      border-radius: 5px;
-      width: 60px;
-      height: 60px;
+      padding: 1vw 1vw;
+      font-size: 3vw;
+      border: 0.3vw solid var(--font-color);
+      border-radius: 0.8vw;
+      width: 6vw;
+      height: 6vw;
       box-sizing: border-box;
     }
 
@@ -42,14 +42,60 @@
 
   & .confirmBtn {
     margin: 10% 0;
-    padding: 10px 20px;
+    padding: 1vw 2vw;
     background: var(--point-color2);
     border: none;
-    border-radius: 5px;
+    border-radius: 0.8vw;
     cursor: pointer;
   }
 
   & .confirmBtn:hover {
     background: var(--point-color3);
   }
+}
+
+
+// Tablet vertical mode
+@media all and (min-width: 551px) and (max-width: 1024px) and (min-height: 1024px) and (max-height: 1366px) {
+  // 설정 필요 없음
+}
+
+// Desktop (Tablet vertical mode size)
+@media all and (min-width: 551px) and (max-width: 768px) and (min-height: 768px) and (max-height: 1024px) {
+  // 설정 필요 없음
+}
+
+// Tablet horizontal mode
+@media all and (min-width: 1024px) and (max-width: 1366px) and (min-height: 768px) and (max-height: 1024px) {
+  // 설정 필요 없음
+}
+
+// Desktop (Tablet horizontal mode size)
+@media all and (min-width: 768px) and (max-width: 1024px) and (min-height: 768px) and (max-height: 1000px) {
+  // 설정 필요 없음
+}
+
+// Cell Phone vertical mode
+@media all and (max-width: 550px) and (max-height: 1067px) {
+  .modalContainer {
+    width: 80vw;
+
+    & .modalContents {
+      & .infoIcon {
+        width: 15vw;
+        height: 15vw;
+        font-size: 10vw;
+        border: 0.5vw solid var(--font-color);
+      }
+    }
+
+    & .confirmBtn {
+      padding: 2vh 5vw;
+    }
+  }
+}
+
+// Cell Phone horizontal mode
+@media all and (max-width: 1067px) and (max-height: 550px) {
+  // 설정 필요 없음
 }

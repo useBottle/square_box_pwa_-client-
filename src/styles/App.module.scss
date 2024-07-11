@@ -1321,6 +1321,18 @@ body {
           display: none;
         }
       }
+
+      & .searchBarModalSet {
+        & form {
+          height: 20%;
+
+          & .searchBar {
+            & input {
+              border-radius: 0.8vw;
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -1432,6 +1444,33 @@ body {
 
         & .navbar {
           display: none;
+        }
+      }
+
+      & .searchBarModalSet {
+        & form {
+          height: 20%;
+
+          & .searchBar {
+            & .searchIconBox {
+              font-size: 3vw;
+              transform: translateX(5vw);
+            }
+
+            & input {
+              border-radius: 0.4vw;
+              font-size: 2vw;
+            }
+
+            & .clearBtn {
+              right: 1vw;
+
+              & .part1,
+              & .part2 {
+                width: 2vw;
+              }
+            }
+          }
         }
       }
     }

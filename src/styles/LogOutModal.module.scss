@@ -9,7 +9,7 @@
   top: 50%;
   transform: translate(-50%, -50%);
   backdrop-filter: blur(10px);
-  border-radius: 10px;
+  border-radius: 0.8vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,7 +37,7 @@
     & button {
       background: var(--point-color2);
       border: none;
-      border-radius: 5px;
+      border-radius: 0.4vw;
       width: 30%;
       height: 50%;
       margin: 0 5%;
@@ -52,25 +52,48 @@
 }
 
 
+// Tablet vertical mode
+@media all and (min-width: 551px) and (max-width: 1024px) and (min-height: 1024px) and (max-height: 1366px) {
+  .modalContainer {
+    width: 40vw;
+    height: 15vh;
+  }
+}
 
-// Cell Phone (vertical mode) 
-@media only screen and (orientation : portrait) and (min-device-width: 300px) {
+// Desktop (Tablet vertical mode size)
+@media all and (min-width: 551px) and (max-width: 768px) and (min-height: 768px) and (max-height: 1024px) {
+  .modalContainer {
+    width: 40vw;
+    height: 15vh;
+  }
+}
+
+// Tablet horizontal mode
+@media all and (min-width: 1024px) and (max-width: 1366px) and (min-height: 768px) and (max-height: 1024px) {
+  .modalContainer {
+    width: 30vw;
+  }
+}
+
+// Desktop (Tablet horizontal mode size)
+@media all and (min-width: 768px) and (max-width: 1024px) and (min-height: 768px) and (max-height: 1000px) {
+  .modalContainer {
+    width: 30vw;
+  }
+}
+
+// Cell Phone vertical mode
+@media all and (max-width: 550px) and (max-height: 1067px) {
   .modalContainer {
     width: 70vw;
+    height: 15vh;
   }
 }
 
-// Cell Phone (horizontal mode)
-@media only screen and (orientation : landscape) and (min-device-width: 300px) {
+// Cell Phone horizontal mode
+@media all and (max-width: 1067px) and (max-height: 550px) {
   .modalContainer {
-    width: 50vw;
-    height: 40vh;
+    width: 30vw;
+    height: 30vh;
   }
 }
-
-
-// Tablet (vertical mode) 
-@media only screen and (orientation : portrait) and (min-device-width : 700px) {}
-
-// Tablet (horizontal mode) 
-@media only screen and (orientation : landscape) and (min-device-width : 700px) {}
