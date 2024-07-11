@@ -106,7 +106,7 @@ function App(): JSX.Element {
 
   return (
     <div className={styles.bodyContainer}>
-      <div className={styles.modalSet} style={searchModalTrigger === true ? { display: "block" } : { display: "none" }}>
+      <div className={styles.modalSet} style={searchModalTrigger ? { display: "block" } : { display: "none" }}>
         <SearchModal />
         <div className={styles.overlay} role="button" onClick={() => dispatch(setSearchModalTrigger(false))} />
       </div>
