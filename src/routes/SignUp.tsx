@@ -6,7 +6,7 @@ import { MESSAGE } from "../common/message";
 import { useNavigate } from "react-router-dom";
 import { FormValues, IdCheck } from "../types/types";
 import axios, { isAxiosError } from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSignUpCheck } from "../store/verificationSlice";
 import { AppDispatch, RootState } from "../store/store";
@@ -19,6 +19,7 @@ export default function SignUp(): JSX.Element {
 
   const { register, handleSubmit, watch } = useForm<FormValues>();
   const [idValue, passwordValue, confirmValue] = watch(["id", "password", "confirm"]);
+  const [prevIdValue, setPrevIdValue] = useState<string>();
   const { signUpLoading } = useSelector((state: RootState) => state.userInterface.loadingStatus);
 
   const idPattern = /^[A-Za-z0-9]{6,20}$/;
@@ -90,13 +91,15 @@ export default function SignUp(): JSX.Element {
     return;
   };
 
+  useEffect(() => {
+    prevIdValue !== idValue && setUserDuplication("default");
+  }, [idValue]);
+
   const IdText = () => {
     if (!idValue) {
       return (
         <span>
-          <button className={styles.duplicateBtn} onClick={() => checkId()}>
-            중복 확인
-          </button>
+          <button className={styles.duplicateBtn}>중복 확인</button>
           {MESSAGE.SIGNUP.ID.INFO}
         </span>
       );
@@ -105,7 +108,13 @@ export default function SignUp(): JSX.Element {
     } else if (idValue && isIdValid && userDuplication === "default") {
       return (
         <span className={styles.warning}>
-          <button className={styles.duplicateBtn} onClick={() => checkId()}>
+          <button
+            className={styles.duplicateBtn}
+            onClick={() => {
+              setPrevIdValue(idValue);
+              checkId();
+            }}
+          >
             중복 확인
           </button>
           {MESSAGE.SIGNUP.ID.CHECK}
@@ -114,9 +123,7 @@ export default function SignUp(): JSX.Element {
     } else if (idValue && isIdValid && userDuplication === "duplication") {
       return (
         <span className={styles.warning}>
-          <button className={styles.duplicateBtn} onClick={() => checkId()}>
-            중복 확인
-          </button>
+          <button className={styles.duplicateBtn}>중복 확인</button>
           {MESSAGE.SIGNUP.ID.DUPLICATION}
         </span>
       );
