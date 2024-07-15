@@ -50,66 +50,78 @@
     position: absolute;
     top: 30vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
+    height: 25vh;
 
-    & .category {
+    // 공통 스타일
+    & .title {
+      width: 6vw;
+      margin-right: 4vw;
+      display: flex;
+      justify-content: flex-end;
       font-family: "S-CoreDream-4Regular";
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      margin-right: 3vw;
-      user-select: none;
+      font-size: 1vw;
+    }
 
-      & span {
-        height: 5vh;
-        margin-bottom: 3vh;
-        box-sizing: border-box;
-        font-size: 1vw;
+    & input {
+      border: 0.2vw solid transparent;
+      border-radius: 0.4vw;
+      background: var(--container-color);
+      color: var(--point-color2);
+      width: 15vw;
+      height: 5vh;
+      font-size: 1.3vw;
+      outline: none;
+      padding: 0 0.5vw;
+      box-sizing: border-box;
+      transition: border 0.3s ease-in-out;
+    }
+
+    & input:focus {
+      border: 0.2vw solid var(--font-color);
+    }
+
+    & .warning {
+      color: var(--point-color1);
+      font-family: "S-CoreDream-4Regular";
+    }
+
+    & .pass {
+      color: var(--point-color2);
+      font-family: "S-CoreDream-4Regular";
+    }
+
+    & .checkIcon {
+      color: #6fff80;
+      font-size: 1.5vw;
+      width: 2vw;
+      margin: 0 1vw;
+    }
+
+    & .blank {
+      width: 2vw;
+      margin: 0 1vw;
+    }
+
+    // 여기서부터 각 필드 카테고리 스타일
+    & .idCategory {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & .idField {
         display: flex;
         align-items: center;
       }
 
-    }
-
-    & .inputFields {
-      display: flex;
-      flex-direction: column;
-      margin-right: 3vw;
-
-      & input {
-        border: 0.2vw solid transparent;
-        border-radius: 0.4vw;
-        background: var(--container-color);
-        color: var(--point-color2);
-        width: 15vw;
-        height: 5vh;
-        font-size: 1.3vw;
-        outline: none;
-        padding: 0 0.5vw;
-        margin-bottom: 3vh;
-        box-sizing: border-box;
-        transition: border 0.3s ease-in-out;
-      }
-
-      & input:focus {
-        border: 0.2vw solid var(--font-color);
-      }
-    }
-
-    & .inputDescription {
-      display: flex;
-      flex-direction: column;
-      width: 35vw;
-      user-select: none;
-
       & span {
-        height: 5vh;
-        margin-bottom: 3vh;
-        font-size: 1vw;
+        width: 25vw;
         display: flex;
-        align-items: center;
         justify-content: flex-start;
+        align-items: center;
+        font-size: 1vw;
 
         & .duplicateBtn {
           font-family: "S-CoreDream-4Regular";
@@ -123,48 +135,56 @@
           border-radius: 0.4vw;
           cursor: pointer;
         }
-      }
 
-      & .warning {
-        color: var(--point-color1);
-        font-family: "S-CoreDream-4Regular";
-      }
+        & .infoText {
+          display: flex;
+          flex-direction: column;
 
-      & .pass {
-        color: var(--point-color2);
-        font-family: "S-CoreDream-4Regular";
+          & div:first-child {
+            margin-bottom: 1vw;
+          }
+        }
       }
     }
 
-    & .checkIconSet {
+    & .passwordCategory {
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
-      & .checkIcon {
-        color: #6fff80;
-        height: 5vh;
-        margin-bottom: 3vh;
-        font-size: 1.5vw;
+      & .passwordField {
+        display: flex;
+        align-items: center;
       }
 
-      & .blank {
-        height: 5vh;
-        margin-bottom: 3vh;
+      & span {
+        display: flex;
+        flex-direction: column;
+        width: 25vw;
+        font-size: 1vw;
+
+        & div:first-child {
+          margin-bottom: 1vw;
+        }
       }
     }
 
-    & .joinBtn {
-      position: absolute;
-      bottom: -20vh;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 10vw;
-      height: 5vh;
-      border: none;
-      border-radius: 0.4vw;
-      background: var(--point-color2);
-      font-size: 1.3vw;
-      cursor: pointer;
+    & .confirmCategory {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & .confirmField {
+        display: flex;
+        align-items: center;
+      }
+
+      & span {
+        width: 25vw;
+        display: flex;
+        justify-content: flex-start;
+        font-size: 1vw;
+      }
     }
 
     & .disableBtn {
@@ -183,26 +203,418 @@
       justify-content: center;
       align-items: center;
     }
+
+    & .joinBtn {
+      position: absolute;
+      bottom: -20vh;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 10vw;
+      height: 5vh;
+      border: none;
+      border-radius: 0.4vw;
+      background: var(--point-color2);
+      font-size: 1.3vw;
+      cursor: pointer;
+    }
   }
 }
 
 
 // Tablet vertical mode
 @media all and (min-width: 551px) and (max-width: 1024px) and (min-height: 1024px) and (max-height: 1366px) {
-  .signUpContainer {}
+  .signUpContainer {
+    & .viewHead {
+      top: 5vh;
+
+      & .icon {
+        font-size: 8vw;
+      }
+
+      & h1 {
+        font-size: 6vw;
+      }
+    }
+
+    & .formContainer {
+      top: 20vh;
+      height: 40vh;
+
+      & .title {
+        font-size: 2vw;
+      }
+
+      & input {
+        width: 20vw;
+        height: 4vh;
+        font-size: 2vw;
+      }
+
+      & .checkIcon {
+        margin-left: 4vw;
+      }
+
+      & .blank {
+        margin-left: 4vw;
+      }
+
+      & .idCategory {
+        flex-direction: column;
+
+        & .idField {
+          justify-content: center;
+        }
+
+        & span {
+          display: flex;
+          margin-top: 2vh;
+          width: auto;
+          font-size: 2vw;
+
+          & .duplicateBtn {
+            width: 10vw;
+            height: 4vh;
+            margin-right: 1vw;
+          }
+        }
+      }
+
+      & .passwordCategory {
+        flex-direction: column;
+
+        & .passwordField {
+          justify-content: center;
+        }
+
+        & span {
+          margin-top: 2vh;
+          width: auto;
+          font-size: 2vw;
+        }
+      }
+
+      & .confirmCategory {
+        flex-direction: column;
+
+        & .confirmField {
+          justify-content: center;
+        }
+
+        & span {
+          margin-top: 2vh;
+          width: auto;
+          font-size: 2vw;
+        }
+      }
+
+      & .disableBtn {
+        height: 4vh;
+        font-size: 1.5vw;
+        bottom: -15vh;
+      }
+
+      & .joinBtn {
+        height: 4vh;
+        font-size: 1.5vw;
+        bottom: -15vh;
+      }
+    }
+  }
 }
 
 // Desktop (Tablet vertical mode size)
-@media all and (min-width: 551px) and (max-width: 768px) and (min-height: 768px) and (max-height: 1024px) {}
+@media all and (min-width: 551px) and (max-width: 768px) and (min-height: 768px) and (max-height: 1024px) {
+  .signUpContainer {
+    & .viewHead {
+      top: 5vh;
+
+      & .title {
+        font-size: 2vw;
+      }
+
+      & .icon {
+        font-size: 8vw;
+      }
+
+      & h1 {
+        font-size: 6vw;
+      }
+    }
+
+    & .formContainer {
+      top: 20vh;
+      height: 40vh;
+
+      & input {
+        width: 20vw;
+        height: 4vh;
+        font-size: 2vw;
+      }
+
+      & .checkIcon {
+        margin-left: 4vw;
+      }
+
+      & .blank {
+        margin-left: 4vw;
+      }
+
+      & .idCategory {
+        flex-direction: column;
+
+        & .idField {
+          justify-content: center;
+        }
+
+        & span {
+          display: flex;
+          margin-top: 2vh;
+          width: auto;
+          font-size: 2vw;
+
+          & .duplicateBtn {
+            width: 10vw;
+            height: 4vh;
+            margin-right: 1vw;
+          }
+        }
+      }
+
+      & .passwordCategory {
+        flex-direction: column;
+
+        & .passwordField {
+          justify-content: center;
+        }
+
+        & span {
+          margin-top: 2vh;
+          width: auto;
+          font-size: 2vw;
+        }
+      }
+
+      & .confirmCategory {
+        flex-direction: column;
+
+        & .confirmField {
+          justify-content: center;
+        }
+
+        & span {
+          margin-top: 2vh;
+          width: auto;
+          font-size: 2vw;
+        }
+      }
+
+      & .disableBtn {
+        width: 20vw;
+        height: 4vh;
+        font-size: 2vw;
+        bottom: -15vh;
+      }
+
+      & .joinBtn {
+        height: 4vh;
+        font-size: 2vw;
+        bottom: -15vh;
+      }
+    }
+  }
+}
 
 // Tablet horizontal mode
-@media all and (min-width: 1024px) and (max-width: 1366px) and (min-height: 768px) and (max-height: 1024px) {}
+@media all and (min-width: 1024px) and (max-width: 1366px) and (min-height: 768px) and (max-height: 1024px) {
+  // 설정 필요 없음
+}
 
 // Desktop (Tablet horizontal mode size)
-@media all and (min-width: 768px) and (max-width: 1024px) and (min-height: 768px) and (max-height: 1000px) {}
+@media all and (min-width: 768px) and (max-width: 1024px) and (min-height: 768px) and (max-height: 1000px) {
+  // 설정 필요 없음
+}
 
 // Cell Phone vertical mode
-@media all and (max-width: 550px) and (max-height: 1067px) {}
+@media all and (max-width: 550px) and (max-height: 1067px) {
+  .signUpContainer {
+    & .backArrow {
+      font-size: 5vw;
+    }
+
+    & .viewHead {
+      top: 5vh;
+
+      & .icon {
+        font-size: 8vw;
+      }
+
+      & h1 {
+        font-size: 6vw;
+      }
+    }
+
+    & .formContainer {
+      top: 20vh;
+      height: 40vh;
+
+      & .title {
+        font-size: 3vw;
+      }
+
+      & input {
+        width: 30vw;
+        height: 4vh;
+        font-size: 3vw;
+      }
+
+      & .checkIcon {
+        width: 3vw;
+        font-size: 3vw;
+        margin-left: 4vw;
+      }
+
+      & .blank {
+        width: 3vw;
+        font-size: 3vw;
+        margin-left: 4vw;
+      }
+
+      & .idCategory {
+        flex-direction: column;
+
+        & .idField {
+          justify-content: center;
+        }
+
+        & span {
+          display: flex;
+          margin-top: 2vh;
+          width: auto;
+          font-size: 3vw;
+
+          & .duplicateBtn {
+            width: 10vw;
+            height: 4vh;
+            margin-right: 1vw;
+          }
+        }
+      }
+
+      & .passwordCategory {
+        flex-direction: column;
+
+        & .passwordField {
+          justify-content: center;
+        }
+
+        & span {
+          margin-top: 2vh;
+          width: auto;
+          font-size: 3vw;
+        }
+      }
+
+      & .confirmCategory {
+        flex-direction: column;
+
+        & .confirmField {
+          justify-content: center;
+        }
+
+        & span {
+          margin-top: 2vh;
+          width: auto;
+          font-size: 3vw;
+        }
+      }
+
+      & .disableBtn {
+        width: 30vw;
+        height: 4vh;
+        font-size: 3vw;
+        bottom: -15vh;
+      }
+
+      & .joinBtn {
+        width: 20vw;
+        height: 4vh;
+        font-size: 3vw;
+        bottom: -15vh;
+      }
+    }
+  }
+}
 
 // Cell Phone horizontal mode
-@media all and (max-width: 1067px) and (max-height: 550px) {}
+@media all and (max-width: 1067px) and (max-height: 550px) {
+  .signUpContainer {
+    & .backArrow {
+      font-size: 3vw;
+    }
+
+    & .viewHead {
+      top: 6vh;
+    }
+
+    & .formContainer {
+      top: 20vh;
+      height: 40vh;
+      // padding: 5vh 0;
+
+      & .title {
+        font-size: 1.5vw;
+      }
+
+      & input {
+        height: 8vh;
+        font-size: 2vw;
+      }
+
+      & .checkIcon {
+        font-size: 2vw;
+        margin: 0 2vw;
+      }
+
+      & .blank {
+        margin: 0 2vw;
+      }
+
+      & .idCategory {
+        & span {
+          font-size: 1.5vw;
+          width: 35vw;
+
+          & .duplicateBtn {
+            width: 10vw;
+            height: 8vh;
+            font-size: 1.5vw;
+          }
+        }
+      }
+
+      & .passwordCategory {
+        & span {
+          width: 35vw;
+          font-size: 1.5vw;
+        }
+      }
+
+      & .confirmCategory {
+        & span {
+          width: 35vw;
+          font-size: 1.5vw;
+        }
+      }
+
+      & .disableBtn {
+        font-size: 1.5vw;
+        height: 8vh;
+      }
+
+      & .joinBtn {
+        font-size: 1.5vw;
+        height: 8vh;
+      }
+    }
+  }
+}
