@@ -21,6 +21,7 @@ export default function Home(): JSX.Element {
   const navigate = useNavigate();
   const { realTimeSearchTerms } = useSelector((state: RootState) => state.data);
   const inputValue = useSelector((state: RootState) => state.inputValue);
+  const { userCheck } = useSelector((state: RootState) => state.verification);
   const [gauge, setGauge] = useState<number>(0);
   const [clickTrigger, setClickTrigger] = useState<boolean>(false);
   const refreshToken = Cookies.get("refreshToken");
@@ -79,7 +80,7 @@ export default function Home(): JSX.Element {
     return () => {
       clearInterval(countInterval);
     };
-  }, []);
+  }, [userCheck, dispatch, navigate]);
 
   const fetchNewsData = async (): Promise<void> => {
     dispatch(setNewsLoading(true));

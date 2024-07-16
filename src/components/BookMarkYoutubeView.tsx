@@ -1,4 +1,4 @@
-import YouTube from "react-youtube";
+import YouTube, { YouTubeEvent } from "react-youtube";
 import styles from "../styles/BookMarkYoutubeView.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
@@ -54,7 +54,7 @@ export default function BookMarkYoutubeView(): JSX.Element {
               },
             }}
             // 이벤트 리스너
-            onEnd={(e) => {
+            onEnd={(e: YouTubeEvent) => {
               e.target.stopVideo(0);
             }}
           />

@@ -15,7 +15,7 @@ export default function BookMarkYoutubeList(): JSX.Element {
 
   useEffect(() => {
     dispatch(setYoutubeId(mouseOnYoutube._id));
-  }, [mouseOnYoutube]);
+  }, [mouseOnYoutube, dispatch]);
 
   const removeBookMark = async (): Promise<void> => {
     const removedYoutubeArray = markedYoutube.filter((item) => item.videoId !== mouseOnYoutube.videoId);

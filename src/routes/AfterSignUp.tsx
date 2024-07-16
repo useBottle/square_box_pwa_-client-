@@ -13,7 +13,7 @@ export default function ExportSignUp(): JSX.Element {
     if (!signUpCheck) {
       navigate("/signup", { replace: true });
     }
-  });
+  }, [navigate]);
 
   return (
     <section className={styles.mainContainer}>

@@ -77,7 +77,7 @@ function App(): JSX.Element {
       const decodedToken = jwtDecode<TokenInfo>(accessToken);
       dispatch(setUsername(decodedToken.username));
     }
-  }, []);
+  }, [userCheck, dispatch, navigate]);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", darkLightToggle);

@@ -15,7 +15,7 @@ export default function BookMarkNewsList(): JSX.Element {
 
   useEffect(() => {
     dispatch(setNewsId(mouseOnNews._id));
-  }, [mouseOnNews]);
+  }, [mouseOnNews, dispatch]);
 
   const removeBookMark = async (): Promise<void> => {
     const removedNewsArray = markedNews.filter((item) => item.originallink !== mouseOnNews.originallink);
