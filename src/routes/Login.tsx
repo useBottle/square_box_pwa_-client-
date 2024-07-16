@@ -26,6 +26,8 @@ export default function LogIn(): JSX.Element {
         if (response.status === 200) {
           dispatch(setUserCheck(true));
           navigate("/home");
+        } else {
+          dispatch(setUserCheck(false));
         }
       }
     } catch (error) {
@@ -63,10 +65,12 @@ export default function LogIn(): JSX.Element {
           },
         },
       );
-      dispatch(setUserCheck(true));
       response.status === 404 && setIdError(true);
       response.status === 401 && setPasswordError(true);
-      response.status === 200 && navigate("/home");
+      if (response.status === 200) {
+        dispatch(setUserCheck(true));
+        navigate("/home");
+      }
     } catch (error) {
       console.error("Login failed.", error);
     }
@@ -79,35 +83,39 @@ export default function LogIn(): JSX.Element {
           <BsBox className={styles.icon} />
           <h1>Square Box</h1>
         </div>
-        <input
-          {...register("id", {
-            required: "ID 입력은 필수 입니다.",
-            pattern: {
-              value: /^[A-Za-z0-9]{6,20}$/,
-              message: "ID 형식에 맞지 않습니다.",
-            },
-          })}
-          spellCheck="false"
-          placeholder="ID"
-          autoComplete="off"
-        />
-        <input
-          type="password"
-          {...register("password", {
-            required: "Password 입력은 필수 입니다.",
-          })}
-          spellCheck="false"
-          placeholder="Password"
-          autoComplete="off"
-        />
-        {idError === true && <strong>{MESSAGE.LOGIN.ID_ERROR}</strong>}
-        {passwordError === true && <strong>{MESSAGE.LOGIN.PW_ERROR}</strong>}
-        <button className={styles.loginBtn} type="submit">
-          Login
-        </button>
-        <button className={styles.signUpBtn} onClick={() => navigate("/signup")}>
-          회원가입
-        </button>
+        <div className={styles.inputSet}>
+          <input
+            {...register("id", {
+              required: "ID 입력은 필수 입니다.",
+              pattern: {
+                value: /^[A-Za-z0-9]{6,20}$/,
+                message: "ID 형식에 맞지 않습니다.",
+              },
+            })}
+            spellCheck="false"
+            placeholder="ID"
+            autoComplete="off"
+          />
+          <input
+            type="password"
+            {...register("password", {
+              required: "Password 입력은 필수 입니다.",
+            })}
+            spellCheck="false"
+            placeholder="Password"
+            autoComplete="off"
+          />
+        </div>
+        <div className={styles.btnSet}>
+          <button className={styles.logInBtn} type="submit">
+            Login
+          </button>
+          <button className={styles.signUpBtn} onClick={() => navigate("/signup")}>
+            회원가입
+          </button>
+        </div>
+        {idError && <strong>{MESSAGE.LOGIN.ID_ERROR}</strong>}
+        {passwordError && <strong>{MESSAGE.LOGIN.PW_ERROR}</strong>}
       </form>
     </section>
   );

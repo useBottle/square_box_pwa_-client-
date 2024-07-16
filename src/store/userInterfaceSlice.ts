@@ -4,9 +4,14 @@ import { userInterface } from "../types/types";
 const initialState: userInterface = {
   darkLightToggle: "dark",
   menuIndex: 0,
-  searchModalTrigger: false,
-  bookMarkModalTrigger: false,
-  bookMarkLimitModalTrigger: false,
+  navSwitch: false,
+  modalTrigger: {
+    searchModalTrigger: false,
+    searchBarTrigger: false,
+    bookMarkModalTrigger: false,
+    bookMarkLimitModalTrigger: false,
+    logOutModalTrigger: false,
+  },
   loadingStatus: {
     newsLoading: false,
     youtubeLoading: false,
@@ -25,14 +30,23 @@ const userInterfaceSlice = createSlice({
     setMenuIndex(state, action: PayloadAction<number>) {
       state.menuIndex = action.payload;
     },
+    setNavSwitch(state, action: PayloadAction<boolean>) {
+      state.navSwitch = action.payload;
+    },
     setSearchModalTrigger(state, action: PayloadAction<boolean>) {
-      state.searchModalTrigger = action.payload;
+      state.modalTrigger.searchModalTrigger = action.payload;
+    },
+    setSearchBarTrigger(state, action: PayloadAction<boolean>) {
+      state.modalTrigger.searchBarTrigger = action.payload;
     },
     setBookMarkModalTrigger(state, action: PayloadAction<boolean>) {
-      state.bookMarkModalTrigger = action.payload;
+      state.modalTrigger.bookMarkModalTrigger = action.payload;
     },
     setBookMarkLimitModalTrigger(state, action: PayloadAction<boolean>) {
-      state.bookMarkLimitModalTrigger = action.payload;
+      state.modalTrigger.bookMarkLimitModalTrigger = action.payload;
+    },
+    setLogOutModalTrigger(state, action: PayloadAction<boolean>) {
+      state.modalTrigger.logOutModalTrigger = action.payload;
     },
     setNewsLoading(state, action: PayloadAction<boolean>) {
       state.loadingStatus.newsLoading = action.payload;
@@ -52,9 +66,12 @@ const userInterfaceSlice = createSlice({
 export const {
   setDarkLight,
   setMenuIndex,
+  setNavSwitch,
   setSearchModalTrigger,
+  setSearchBarTrigger,
   setBookMarkModalTrigger,
   setBookMarkLimitModalTrigger,
+  setLogOutModalTrigger,
   setNewsLoading,
   setYoutubeLoading,
   setSignUpLoading,

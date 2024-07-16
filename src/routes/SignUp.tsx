@@ -6,7 +6,7 @@ import { MESSAGE } from "../common/message";
 import { useNavigate } from "react-router-dom";
 import { FormValues, IdCheck } from "../types/types";
 import axios, { isAxiosError } from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSignUpCheck } from "../store/verificationSlice";
 import { AppDispatch, RootState } from "../store/store";
@@ -19,6 +19,7 @@ export default function SignUp(): JSX.Element {
 
   const { register, handleSubmit, watch } = useForm<FormValues>();
   const [idValue, passwordValue, confirmValue] = watch(["id", "password", "confirm"]);
+  const [prevIdValue, setPrevIdValue] = useState<string>();
   const { signUpLoading } = useSelector((state: RootState) => state.userInterface.loadingStatus);
 
   const idPattern = /^[A-Za-z0-9]{6,20}$/;
@@ -51,7 +52,6 @@ export default function SignUp(): JSX.Element {
       } else if (result.status !== 200) {
         navigate("/signup_error");
       }
-      console.log("sign up result : ", result);
     } catch (error: unknown) {
       if (isAxiosError(error)) {
         console.error("An error occurred during ID check:", error);
@@ -90,14 +90,20 @@ export default function SignUp(): JSX.Element {
     return;
   };
 
+  // 이전 입력 id 와 현재 입력 id 가 다르면 중복 확인 버튼 활성화.
+  useEffect(() => {
+    prevIdValue !== idValue && setUserDuplication("default");
+  }, [idValue]);
+
   const IdText = () => {
     if (!idValue) {
       return (
         <span>
-          <button className={styles.duplicateBtn} onClick={() => checkId()}>
-            중복 확인
-          </button>
-          {MESSAGE.SIGNUP.ID.INFO}
+          <button className={styles.duplicateBtn}>중복 확인</button>
+          <div className={styles.infoText}>
+            <div>{MESSAGE.SIGNUP.ID.INFO}</div>
+            <div>{MESSAGE.SIGNUP.ID.INFO_SUB}</div>
+          </div>
         </span>
       );
     } else if (idValue && !isIdValid) {
@@ -105,7 +111,13 @@ export default function SignUp(): JSX.Element {
     } else if (idValue && isIdValid && userDuplication === "default") {
       return (
         <span className={styles.warning}>
-          <button className={styles.duplicateBtn} onClick={() => checkId()}>
+          <button
+            className={styles.duplicateBtn}
+            onClick={() => {
+              setPrevIdValue(idValue);
+              checkId();
+            }}
+          >
             중복 확인
           </button>
           {MESSAGE.SIGNUP.ID.CHECK}
@@ -114,9 +126,7 @@ export default function SignUp(): JSX.Element {
     } else if (idValue && isIdValid && userDuplication === "duplication") {
       return (
         <span className={styles.warning}>
-          <button className={styles.duplicateBtn} onClick={() => checkId()}>
-            중복 확인
-          </button>
+          <button className={styles.duplicateBtn}>중복 확인</button>
           {MESSAGE.SIGNUP.ID.DUPLICATION}
         </span>
       );
@@ -127,7 +137,12 @@ export default function SignUp(): JSX.Element {
 
   const PasswordText = () => {
     if (!passwordValue) {
-      return <span>{MESSAGE.SIGNUP.PASSWORD.INFO}</span>;
+      return (
+        <span>
+          <div>{MESSAGE.SIGNUP.PASSWORD.INFO}</div>
+          <div>{MESSAGE.SIGNUP.PASSWORD.INFO_SUB}</div>
+        </span>
+      );
     } else if (passwordValue && !isPasswordValid) {
       return <span className={styles.warning}>{MESSAGE.SIGNUP.PASSWORD.WRONG}</span>;
     } else if (isPasswordValid) {
@@ -163,52 +178,55 @@ export default function SignUp(): JSX.Element {
             <h1>Square Box</h1>
           </div>
           <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
-            <div className={styles.checkIconSet}>
-              {idValue && isIdValid && userDuplication === "not-duplication" ? (
-                <FaCheck className={styles.checkIcon} />
-              ) : (
-                <span className={styles.blank} />
-              )}
-              {isPasswordValid && <FaCheck className={styles.checkIcon} />}
-              {confirmCondition && <FaCheck className={styles.checkIcon} />}
-            </div>
-            <div className={styles.category}>
-              <span>ID</span>
-              <span>Password</span>
-              <span>Confirm</span>
-            </div>
-            <div className={styles.inputFields}>
-              <input
-                {...register("id", {
-                  required: MESSAGE.SIGNUP.ID.REQUIRED,
-                  pattern: { value: idPattern, message: MESSAGE.SIGNUP.ID.WRONG },
-                })}
-                type="text"
-                spellCheck="false"
-                autoComplete="off"
-              />
-              <input
-                {...register("password", {
-                  required: MESSAGE.SIGNUP.PASSWORD.REQUIRED,
-                  pattern: { value: passwordPattern, message: MESSAGE.SIGNUP.PASSWORD.WRONG },
-                })}
-                type="password"
-                spellCheck="false"
-                autoComplete="off"
-              />
-              <input
-                {...register("confirm", {
-                  required: MESSAGE.SIGNUP.CONFIRM.REQUIRED,
-                })}
-                type="password"
-                spellCheck="false"
-                autoComplete="off"
-              />
-            </div>
-
-            <div className={styles.inputDescription}>
+            <div className={styles.idCategory}>
+              <div className={styles.idField}>
+                <div className={styles.title}>ID</div>
+                <input
+                  {...register("id", {
+                    required: MESSAGE.SIGNUP.ID.REQUIRED,
+                    pattern: { value: idPattern, message: MESSAGE.SIGNUP.ID.WRONG },
+                  })}
+                  type="text"
+                  spellCheck="false"
+                  autoComplete="off"
+                />
+                {idValue && isIdValid && userDuplication === "not-duplication" ? (
+                  <FaCheck className={styles.checkIcon} />
+                ) : (
+                  <div className={styles.blank} />
+                )}
+              </div>
               <IdText />
+            </div>
+            <div className={styles.passwordCategory}>
+              <div className={styles.passwordField}>
+                <div className={styles.title}>Password</div>
+                <input
+                  {...register("password", {
+                    required: MESSAGE.SIGNUP.PASSWORD.REQUIRED,
+                    pattern: { value: passwordPattern, message: MESSAGE.SIGNUP.PASSWORD.WRONG },
+                  })}
+                  type="password"
+                  spellCheck="false"
+                  autoComplete="off"
+                />
+                {isPasswordValid ? <FaCheck className={styles.checkIcon} /> : <div className={styles.blank} />}
+              </div>
               <PasswordText />
+            </div>
+            <div className={styles.confirmCategory}>
+              <div className={styles.confirmField}>
+                <div className={styles.title}>Confirm</div>
+                <input
+                  {...register("confirm", {
+                    required: MESSAGE.SIGNUP.CONFIRM.REQUIRED,
+                  })}
+                  type="password"
+                  spellCheck="false"
+                  autoComplete="off"
+                />
+                {confirmCondition ? <FaCheck className={styles.checkIcon} /> : <div className={styles.blank} />}
+              </div>
               <ConfirmText />
             </div>
             {isIdValid && isPasswordValid && isPasswordConfirmed && userDuplication === "not-duplication" ? (

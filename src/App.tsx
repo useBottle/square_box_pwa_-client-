@@ -8,26 +8,24 @@ import AfterSignUp from "./routes/AfterSignUp";
 import SignUpError from "./routes/SignUpError";
 import BookMark from "./routes/BookMark";
 import LogIn from "./routes/LogIn";
-import { IoSearch } from "react-icons/io5";
+import { IoMenu, IoSearch } from "react-icons/io5";
 import { GoSun, GoMoon, GoSignOut } from "react-icons/go";
-import { FaHome, FaNewspaper, FaYoutube, FaBookmark, FaUser } from "react-icons/fa";
+import { FaUser, FaHome, FaNewspaper, FaYoutube, FaBookmark } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
-import { setInputValue } from "./store/inputValueSlice";
-import { setNewsData, setYoutubeData } from "./store/dataSlice";
 import { setUserCheck, setUsername } from "./store/verificationSlice";
-import { FormEvent, useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { BsBox } from "react-icons/bs";
 import SearchModal from "./components/SearchModal";
-import axios from "axios";
 import {
   setBookMarkLimitModalTrigger,
   setBookMarkModalTrigger,
   setDarkLight,
+  setLogOutModalTrigger,
   setMenuIndex,
-  setNewsLoading,
+  setNavSwitch,
+  setSearchBarTrigger,
   setSearchModalTrigger,
-  setYoutubeLoading,
 } from "./store/userInterfaceSlice";
 import Cookies from "js-cookie";
 import reissueToken from "./module/reissueToken";
@@ -35,23 +33,28 @@ import { jwtDecode } from "jwt-decode";
 import { TokenInfo } from "./types/types";
 import BookMarkModal from "./components/BookMarkModal";
 import BookMarkLimitModal from "./components/BookMarkLimitModal";
+import LogOutModal from "./components/LogOutModal";
+import SearchForm from "./components/SearchForm";
+import SearchBarModal from "./components/SearchBarModal";
+import MobileNav from "./components/MobileNav";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  const inputValue = useSelector((state: RootState) => state.inputValue);
-  const refInputValue = useRef("");
   const { menuIndex } = useSelector((state: RootState) => state.userInterface);
-  const { searchModalTrigger } = useSelector((state: RootState) => state.userInterface);
-  const { bookMarkModalTrigger } = useSelector((state: RootState) => state.userInterface);
-  const { bookMarkLimitModalTrigger } = useSelector((state: RootState) => state.userInterface);
+  const { searchModalTrigger } = useSelector((state: RootState) => state.userInterface.modalTrigger);
+  const { searchBarTrigger } = useSelector((state: RootState) => state.userInterface.modalTrigger);
+  const { bookMarkModalTrigger } = useSelector((state: RootState) => state.userInterface.modalTrigger);
+  const { bookMarkLimitModalTrigger } = useSelector((state: RootState) => state.userInterface.modalTrigger);
+  const { logOutModalTrigger } = useSelector((state: RootState) => state.userInterface.modalTrigger);
   const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
-  const userCheck = useSelector((state: RootState) => state.verification.userCheck);
+  const { userCheck } = useSelector((state: RootState) => state.verification);
   const accessToken = Cookies.get("accessToken");
   const refreshToken = Cookies.get("refreshToken");
-  const username = useSelector((state: RootState) => state.verification.username);
+  const { username } = useSelector((state: RootState) => state.verification);
+  const { navSwitch } = useSelector((state: RootState) => state.userInterface);
 
-  const verifyToken = async () => {
+  const verifyToken = async (): Promise<Response | void> => {
     try {
       const response = await reissueToken();
       if (response.status === 200 && accessToken) {
@@ -74,7 +77,7 @@ function App(): JSX.Element {
       const decodedToken = jwtDecode<TokenInfo>(accessToken);
       dispatch(setUsername(decodedToken.username));
     }
-  }, []);
+  }, [userCheck, dispatch, navigate]);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", darkLightToggle);
@@ -84,76 +87,7 @@ function App(): JSX.Element {
     localStorage.getItem("theme") === "dark" ? dispatch(setDarkLight("dark")) : dispatch(setDarkLight("light"));
   }, [dispatch]);
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    dispatch(setInputValue(e.target.value));
-  };
-
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    dispatch(setNewsLoading(true));
-    dispatch(setYoutubeLoading(true));
-    refInputValue.current = inputValue;
-
-    menuIndex === 0 && dispatch(setSearchModalTrigger(true));
-    e.preventDefault();
-
-    const fetchNewsData = async (): Promise<void> => {
-      try {
-        const response = await axios.put(
-          process.env.REACT_APP_GET_NEWS_API_URL as string,
-          { inputValue },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          },
-        );
-        const result = response.data;
-
-        dispatch(setNewsData(result));
-        dispatch(setNewsLoading(false));
-      } catch (error: unknown) {
-        console.error("Error fetching news data: ", error);
-      }
-    };
-
-    const fetchYoutubeData = async (): Promise<void> => {
-      try {
-        const response = await axios.put(
-          process.env.REACT_APP_GET_YOUTUBE_API_URL as string,
-          { inputValue },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          },
-        );
-        const result = response.data.items;
-
-        dispatch(setYoutubeData(result));
-        dispatch(setYoutubeLoading(false));
-      } catch (error: unknown) {
-        console.error("Error fetching youtube data: ", error);
-      }
-    };
-
-    Promise.all([fetchNewsData(), fetchYoutubeData()]);
-  };
-
-  const logOut = (): void => {
-    Cookies.remove("accessToken");
-    Cookies.remove("refreshToken");
-    dispatch(setUserCheck(false));
-    navigate("/");
-  };
-
-  const menuItem = [
-    { path: "/home", icon: <FaHome />, label: "Home" },
-    { path: "/news", icon: <FaNewspaper />, label: "News" },
-    { path: "/youtube", icon: <FaYoutube />, label: "Youtube" },
-    { path: "/bookmark", icon: <FaBookmark />, label: "Bookmark" },
-  ];
-
-  const themeExchange = () => {
+  const themeExchange = (): void => {
     if (darkLightToggle === "dark") {
       dispatch(setDarkLight("light"));
       localStorage.setItem("theme", "light");
@@ -163,34 +97,51 @@ function App(): JSX.Element {
     }
   };
 
+  const menuItem = [
+    { path: "/home", icon: <FaHome />, label: "Home" },
+    { path: "/news", icon: <FaNewspaper />, label: "News" },
+    { path: "/youtube", icon: <FaYoutube />, label: "Youtube" },
+    { path: "/bookmark", icon: <FaBookmark />, label: "Bookmark" },
+  ];
+
   return (
-    <div>
-      <div className={styles.modalSet} style={searchModalTrigger === true ? { display: "block" } : { display: "none" }}>
+    <div className={styles.bodyContainer}>
+      <div className={styles.modalSet} style={searchModalTrigger ? { display: "block" } : { display: "none" }}>
         <SearchModal />
         <div className={styles.overlay} role="button" onClick={() => dispatch(setSearchModalTrigger(false))} />
       </div>
+      <div className={styles.searchBarModalSet} style={searchBarTrigger ? { display: "block" } : { display: "none" }}>
+        <SearchBarModal />
+        <div className={styles.overlay} role="button" onClick={() => dispatch(setSearchBarTrigger(false))} />
+      </div>
       <div
         className={styles.bookMarkModalSet}
-        style={bookMarkModalTrigger === true ? { display: "block" } : { display: "none" }}
+        style={bookMarkModalTrigger ? { display: "block" } : { display: "none" }}
       >
         <BookMarkModal />
         <div className={styles.overlay} role="button" onClick={() => dispatch(setBookMarkModalTrigger(false))} />
       </div>
       <div
         className={styles.bookMarkLimitModalSet}
-        style={bookMarkLimitModalTrigger === true ? { display: "block" } : { display: "none" }}
+        style={bookMarkLimitModalTrigger ? { display: "block" } : { display: "none" }}
       >
         <BookMarkLimitModal />
         <div className={styles.overlay} role="button" onClick={() => dispatch(setBookMarkLimitModalTrigger(false))} />
       </div>
-      <div className={styles.circle1} />
-      <div className={styles.circle2} />
-      <div className={styles.circle3} />
-      <div className={styles.circle4} />
-      <div className={styles.finalBackground} />
+      <div className={styles.logOutModalSet} style={logOutModalTrigger ? { display: "block" } : { display: "none" }}>
+        <LogOutModal />
+        <div className={styles.overlay} role="button" onClick={() => dispatch(setLogOutModalTrigger(false))} />
+      </div>
+      <div className={styles.backgroundSet}>
+        <div className={styles.circle1} />
+        <div className={styles.circle2} />
+        <div className={styles.circle3} />
+        <div className={styles.circle4} />
+        <div className={styles.finalBackground} />
+      </div>
       <div>
         <div className={styles.mainContainer}>
-          {userCheck === true && (
+          {userCheck && (
             <div>
               <header className={styles.header}>
                 <h1
@@ -204,56 +155,38 @@ function App(): JSX.Element {
                   <span>Square Box</span>
                 </h1>
 
-                <div className={styles.welcome}>
-                  <FaUser className={styles.icon} />
-                  <span>{username}</span>
-                </div>
-
-                <form
-                  onSubmit={
-                    inputValue && refInputValue.current !== inputValue
-                      ? onSubmit
-                      : (e: FormEvent<HTMLFormElement>) => e.preventDefault()
-                  }
-                >
-                  <div className={styles.searchBar}>
-                    <input
-                      type="text"
-                      onChange={onChange}
-                      value={inputValue}
-                      placeholder="Search"
-                      spellCheck="false"
-                      autoComplete="off"
-                    />
-                    <div
-                      role="button"
-                      className={styles.clearBtn}
-                      onClick={() => dispatch(setInputValue(""))}
-                      style={inputValue === "" ? { display: "none" } : { display: "block" }}
-                    >
-                      <span className={`${styles.iconSet} ${styles.part1}`}></span>
-                      <span className={`${styles.iconSet} ${styles.part2}`}></span>
-                    </div>
-                    <button className={styles.searchIconBox} type="submit">
-                      <IoSearch className={styles.searchIcon} />
-                    </button>
+                <div className={styles.headerBlock}>
+                  <SearchForm />
+                  <div className={styles.user}>
+                    <FaUser className={styles.icon} />
+                    <span>{username}</span>
                   </div>
-                </form>
 
-                <button className={styles.darkModeBtn} onClick={themeExchange}>
-                  {darkLightToggle === "dark" ? (
-                    <GoSun className={styles.darkModeIcon} />
-                  ) : (
-                    <GoMoon className={styles.darkModeIcon} />
-                  )}
-                </button>
+                  <button className={styles.darkModeBtn} onClick={themeExchange}>
+                    {darkLightToggle === "dark" ? (
+                      <GoSun className={styles.darkModeIcon} />
+                    ) : (
+                      <GoMoon className={styles.darkModeIcon} />
+                    )}
+                  </button>
 
-                <button className={styles.signInBtn} onClick={logOut}>
-                  <GoSignOut className={styles.signInIcon} />
-                  <span>Log Out</span>
-                </button>
+                  <button className={styles.logOutBtn} onClick={() => dispatch(setLogOutModalTrigger(true))}>
+                    <GoSignOut className={styles.logOutIcon} />
+                    <span>Log Out</span>
+                  </button>
+                  <button className={styles.searchModalIcon} onClick={() => dispatch(setSearchBarTrigger(true))}>
+                    <IoSearch />
+                  </button>
+                  <button
+                    className={styles.menuSwitch}
+                    onClick={() => dispatch(navSwitch ? setNavSwitch(false) : setNavSwitch(true))}
+                  >
+                    <IoMenu />
+                  </button>
+                </div>
               </header>
               <nav className={styles.navbar}>
+                <h4>MENU</h4>
                 <ul>
                   {menuItem.map((item, index) => {
                     return (
@@ -265,13 +198,14 @@ function App(): JSX.Element {
                           navigate(`${item.path}`);
                         }}
                       >
-                        <div>{item.icon}</div>
+                        <div className={styles.icon}>{item.icon}</div>
                         <span className={menuIndex === index ? `${styles.menuText}` : ""}>{item.label}</span>
                       </li>
                     );
                   })}
                 </ul>
               </nav>
+              <MobileNav />
             </div>
           )}
 

@@ -8,7 +8,7 @@ import { TokenInfo } from "../types/types";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { MESSAGE } from "../common/message";
-import { RootState } from "../store/store";
+import { AppDispatch, RootState } from "../store/store";
 import { setMarkedNews, setMarkedYoutube, setSelector } from "../store/bookMarkSlice";
 import BookMarkNewsList from "../components/BookMarkNewsList";
 import axios from "axios";
@@ -16,17 +16,18 @@ import BookMarkYoutubeList from "../components/BookMarkYoutubeList";
 import BookMarkNewsView from "../components/BookMarkNewsView";
 import BookMarkYoutubeView from "../components/BookMarkYoutubeView";
 import { FaNewspaper, FaYoutube } from "react-icons/fa";
-import { setBookMarkLoading } from "../store/userInterfaceSlice";
+import { setBookMarkLoading, setMenuIndex } from "../store/userInterfaceSlice";
 import Loading from "../components/Loading";
 
 export default function BookMark(): JSX.Element {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const refreshToken = Cookies.get("refreshToken");
   const accessToken = Cookies.get("accessToken");
-  const selector = useSelector((state: RootState) => state.bookMark.selector);
-  const username = useSelector((state: RootState) => state.verification.username);
+  const { selector } = useSelector((state: RootState) => state.bookMark);
+  const { username } = useSelector((state: RootState) => state.verification);
   const { bookMarkLoading } = useSelector((state: RootState) => state.userInterface.loadingStatus);
+  const { userCheck } = useSelector((state: RootState) => state.verification);
 
   const verifyToken = async () => {
     try {
@@ -71,14 +72,15 @@ export default function BookMark(): JSX.Element {
       const decodedToken = jwtDecode<TokenInfo>(accessToken);
       dispatch(setUserCheck(true));
       dispatch(setUsername(decodedToken.username));
+      getBookMarkData();
+      dispatch(setMenuIndex(3));
     }
-    getBookMarkData();
-  }, []);
+  }, [userCheck, dispatch, navigate]);
 
   return (
-    <section className={styles.BookMarkContainer}>
+    <section className={styles.bookMarkContainer}>
       {bookMarkLoading === false ? (
-        <div>
+        <div className={styles.innerFrame}>
           <div className={styles.viewContainer}>
             <h4 className={styles.viewTitle}>View</h4>
             {selector === "news" ? <BookMarkNewsView /> : <BookMarkYoutubeView />}

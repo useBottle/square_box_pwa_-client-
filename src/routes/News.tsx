@@ -13,12 +13,14 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import { TokenInfo } from "../types/types";
+import { setMenuIndex } from "../store/userInterfaceSlice";
 
 export default function News(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const { newsData } = useSelector((state: RootState) => state.data);
   const { newsLoading } = useSelector((state: RootState) => state.userInterface.loadingStatus);
+  const { userCheck } = useSelector((state: RootState) => state.verification);
   const refreshToken = Cookies.get("refreshToken");
   const accessToken = Cookies.get("accessToken");
 
@@ -46,12 +48,13 @@ export default function News(): JSX.Element {
       dispatch(setUserCheck(true));
       dispatch(setUsername(decodedToken.username));
     }
-  }, []);
+    dispatch(setMenuIndex(1));
+  }, [userCheck, dispatch, navigate]);
 
   return (
     <section className={styles.newsContainer}>
       {newsLoading === false ? (
-        <div>
+        <div className={styles.innerFrame}>
           <div className={styles.previewContainer}>
             <h4 className={styles.previewTitle}>Preview</h4>
             {newsData.length !== 0 ? (

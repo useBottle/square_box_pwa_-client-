@@ -22,12 +22,19 @@ export interface LoadingStatus {
   bookMarkLoading: boolean;
 }
 
+export interface ModalTrigger {
+  searchModalTrigger: boolean;
+  searchBarTrigger: boolean;
+  bookMarkModalTrigger: boolean;
+  bookMarkLimitModalTrigger: boolean;
+  logOutModalTrigger: boolean;
+}
+
 export interface userInterface {
   darkLightToggle: string;
   menuIndex: number;
-  searchModalTrigger: boolean;
-  bookMarkModalTrigger: boolean;
-  bookMarkLimitModalTrigger: boolean;
+  navSwitch: boolean;
+  modalTrigger: ModalTrigger;
   loadingStatus: LoadingStatus;
 }
 

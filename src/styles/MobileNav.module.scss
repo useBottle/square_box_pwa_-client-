@@ -1,0 +1,417 @@
+@import "./App.module.scss";
+
+.mobileNav {
+  z-index: 999;
+  position: absolute;
+  border: none;
+  top: 8vh;
+  width: 20vw;
+  left: 123vw;
+  height: calc(100% - 8vh);
+  backdrop-filter: blur(10px);
+  box-shadow: 10px 10px 50px #0000008e;
+  border-top-left-radius: 0.8vw;
+  border-bottom-left-radius: 0.8vw;
+  background: var(--navMenu-color);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  animation: navSlider 0.2s ease-out forwards;
+  overflow: hidden;
+
+  & h4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8%;
+    width: 100%;
+    font-size: 1.5vw;
+    background: var(--icon-back);
+    border-bottom: 0.1vw solid var(--border-color);
+  }
+
+  & .userSet {
+    width: 100%;
+    height: 8vh;
+    border-bottom: 0.1vw solid var(--border-color);
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+
+    & .user {
+      font-family: "S-CoreDream-4Regular";
+      padding: 0 2vw;
+      background: var(--container-color);
+      height: 4vh;
+      width: 20vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.8vw;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      & .icon {
+        font-size: 3vw;
+        margin-right: 2vw;
+      }
+
+      & span {
+        font-size: 3vw;
+        color: var(--point-color1);
+      }
+    }
+  }
+
+  & ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & li {
+      font-family: "Barlow Condensed";
+      background: transparent;
+      width: 100%;
+      height: 6vh;
+      color: var(--font-color);
+      position: relative;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+
+      & .icon {
+        position: absolute;
+        font-size: 1.5vw;
+        top: 50%;
+        left: 6vw;
+        transform: translate(-50%, -50%);
+      }
+
+      & span {
+        opacity: 1;
+        position: absolute;
+        left: 8vw;
+        margin: 0;
+        font-size: 1.5vw;
+        font-weight: 100;
+      }
+
+      & button {
+        background: transparent;
+        border: none;
+        color: var(--font-color);
+      }
+
+      & .darkModeBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & .darkModeIcon {
+          font-size: 2.5vw;
+        }
+      }
+
+      & .logOutBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & .logOutIcon {
+          font-size: 2.5vw;
+        }
+      }
+    }
+
+    & li:hover {
+      background: var(--container-color);
+
+      & span {
+        opacity: 1;
+      }
+    }
+
+    & li:nth-last-child(1) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      bottom: 3vh;
+      width: 6vh;
+      height: 6vh;
+      right: 2vw;
+      border-radius: 0.4vw;
+      border: 0.1vw solid var(--font-color);
+      box-sizing: border-box;
+    }
+
+    & li:nth-last-child(2) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      bottom: 3vh;
+      width: 6vh;
+      height: 6vh;
+      left: 2vw;
+      border-radius: 0.4vw;
+      border: 0.1vw solid var(--font-color);
+      box-sizing: border-box;
+    }
+
+    & .menuIcon {
+      background: var(--container-color);
+      color: var(--point-color2);
+
+      & .menuText {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.navHide {
+  animation: navHide 0.2s ease-in-out forwards;
+}
+
+@keyframes navSlider {
+  0% {
+    left: 123vw;
+  }
+
+  100% {
+    left: 73vw;
+  }
+}
+
+@keyframes navHide {
+  0% {
+    left: 73vw;
+  }
+
+  100% {
+    left: 123vw;
+  }
+}
+
+.navOverlay {
+  display: none;
+  z-index: 998;
+  position: fixed;
+  width: 100%;
+  height: calc(100% - 8vh);
+  top: 8vh;
+  left: 0;
+  background: rgba(0, 0, 0, 0.14);
+  backdrop-filter: blur(5px);
+  animation: showUp 0.2s ease-in-out forwards;
+}
+
+@keyframes showUp {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+// Tablet vertical mode
+@media all and (min-width: 551px) and (max-width: 1024px) and (min-height: 1024px) and (max-height: 1366px) {
+  // 설정 필요 없음
+}
+
+// Desktop (Tablet vertical mode size)
+@media all and (min-width: 551px) and (max-width: 768px) and (min-height: 768px) and (max-height: 1024px) {
+  // 설정 필요 없음
+}
+
+// Tablet horizontal mode
+@media all and (min-width: 1024px) and (max-width: 1366px) and (min-height: 768px) and (max-height: 1024px) {
+  .mobileNav {
+    display: flex;
+  }
+}
+
+// Desktop (Tablet horizontal mode size)
+@media all and (min-width: 768px) and (max-width: 1024px) and (min-height: 768px) and (max-height: 1000px) {
+  .mobileNav {
+    display: flex;
+  }
+}
+
+// Cell Phone vertical mode
+@media all and (max-width: 550px) and (max-height: 1067px) {
+  .mobileNav {
+    display: flex;
+    width: 50vw;
+
+    & h4 {
+      font-size: 3vw;
+    }
+
+    & .userSet {
+      display: flex;
+    }
+
+    & ul {
+      & li {
+        height: 8vh;
+
+        & .icon {
+          font-size: 4vw;
+          left: 17vw;
+        }
+
+        & span {
+          font-size: 4vw;
+          left: 21vw;
+        }
+
+        & .darkModeBtn {
+          & .darkModeIcon {
+            font-size: 5vw;
+          }
+        }
+
+        & .logOutBtn {
+          & .logOutIcon {
+            font-size: 5vw;
+          }
+        }
+      }
+
+      & li:nth-last-child(1) {
+        right: 5vw;
+      }
+
+      & li:nth-last-child(2) {
+        left: 5vw;
+      }
+    }
+  }
+
+  @keyframes navSlider {
+    0% {
+      left: 93vw;
+    }
+
+    100% {
+      left: 43vw;
+    }
+  }
+
+  @keyframes navHide {
+    0% {
+      left: 43vw;
+    }
+
+    100% {
+      left: 93vw;
+    }
+  }
+}
+
+// Cell Phone horizontal mode
+@media all and (max-width: 1067px) and (max-height: 550px) {
+  .mobileNav {
+    display: flex;
+    top: 12vh;
+    height: calc(100% - 12vh);
+    width: 40vw;
+
+    & h4 {
+      height: 10%;
+    }
+
+    & .userSet {
+      display: flex;
+      height: 10vh;
+
+      & .user {
+        height: 6vh;
+
+        & .icon {
+          font-size: 1.5vw;
+        }
+
+        & span {
+          font-size: 1.5vw;
+        }
+      }
+    }
+
+    & ul {
+      & li {
+        height: 12vh;
+
+        & .icon {
+          font-size: 2vw;
+          left: 15.5vw;
+        }
+
+        & span {
+          font-size: 2vw;
+          left: 18.5vw;
+        }
+
+        & .darkModeBtn {
+          & .darkModeIcon {
+            font-size: 3vw;
+          }
+        }
+
+        & .logOutBtn {
+          & .logOutIcon {
+            font-size: 3vw;
+          }
+        }
+      }
+
+      & li:nth-last-child(1) {
+        width: 8vh;
+        height: 8vh;
+        bottom: 2vh;
+      }
+
+      & li:nth-last-child(2) {
+        width: 8vh;
+        height: 8vh;
+        bottom: 2vh;
+      }
+    }
+  }
+
+  @keyframes navSlider {
+    0% {
+      left: 103vw;
+    }
+
+    100% {
+      left: 53vw;
+    }
+  }
+
+  @keyframes navHide {
+    0% {
+      left: 53vw;
+    }
+
+    100% {
+      left: 103vw;
+    }
+  }
+
+  .navOverlay {
+    height: calc(100% - 12vh);
+    top: 12vh;
+  }
+}

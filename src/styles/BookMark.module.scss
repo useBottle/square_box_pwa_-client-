@@ -1,104 +1,105 @@
 @import "./fonts.scss";
+@import "./App.module.scss";
 
-.BookMarkContainer {
+.bookMarkContainer {
   font-family: "S-CoreDream-4Regular";
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background: var(--container-color);
-  padding: 0 30px;
-  top: 100px;
-  left: 100px;
-  width: 1200px;
-  height: 650px;
+  top: 10vh;
+  left: 10vh;
+  width: calc($main-container-width - 10vh);
+  height: calc($main-container-height - 10vh);
   box-sizing: border-box;
   transition: background 0.3s ease-in-out;
 
-  & .viewContainer {
-    position: absolute;
-    top: 0;
-    left: 100px;
-    width: 550px;
-    height: 600px;
-    box-sizing: border-box;
+  & .innerFrame {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    & .viewTitle {
-      position: relative;
-      top: 50px;
-      left: 0;
-      color: var(--sub-title);
-    }
-  }
-
-  & .listContainer {
-    position: absolute;
-    top: 0;
-    right: 100px;
-    width: 400px;
-    height: 650px;
-    box-sizing: border-box;
-
-    & .listHeader {
-      position: absolute;
-      top: 50px;
+    & .viewContainer {
+      width: 40vw;
+      height: 64vh;
+      margin-left: 6vw;
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
-      align-items: flex-end;
-      width: 100%;
+      transform: translateY(-2vh);
 
-      & .listTitle {
+      & .viewTitle {
         color: var(--sub-title);
-      }
-
-      & .selectBtn {
-        position: absolute;
+        height: 3vh;
         display: flex;
-        right: 0;
-
-        & button {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          border: none;
-          border-radius: 5px;
-          right: 0;
-          height: 40px;
-          width: 40px;
-          font-size: 20px;
-          padding: 5px 10px;
-          margin-left: 10px;
-          box-sizing: border-box;
-          color: var(--font-color);
-          background: var(--container-color);
-          cursor: pointer;
-        }
-
-        & button:hover {
-          color: var(--point-color2);
-        }
-
-        & .selectedBtn {
-          color: var(--point-color2);
-        }
+        align-items: flex-end;
+        font-size: 1.2vw;
       }
     }
 
-    & .contentList {
-      position: absolute;
-      font-family: "S-CoreDream-4Regular";
-      font-size: 20px;
-      font-weight: 400;
-      width: 400px;
-      height: 500px;
-      top: 75px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: var(--container-color);
-      border-radius: 10px;
+    & .listContainer {
+      width: 30vw;
+      height: 64vh;
       box-sizing: border-box;
-      transition: background 0.3s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transform: translateY(-2vh);
+      margin-right: 6vw;
+
+      & .listHeader {
+        height: 3vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        & .listTitle {
+          font-size: 1.2vw;
+          color: var(--sub-title);
+        }
+
+        & .selectBtn {
+          display: flex;
+
+          & button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            border-radius: 0.4vw;
+            height: 3vw;
+            width: 3vw;
+            font-size: 1.5vw;
+            margin-left: 1vw;
+            box-sizing: border-box;
+            color: var(--font-color);
+            background: var(--container-color);
+            cursor: pointer;
+          }
+
+          & button:hover {
+            color: var(--point-color2);
+          }
+
+          & .selectedBtn {
+            color: var(--point-color2);
+          }
+        }
+      }
+
+      & .contentList {
+        font-family: "S-CoreDream-4Regular";
+        font-weight: 400;
+        width: 100%;
+        height: 60vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--container-color);
+        border-radius: 0.8vw;
+        box-sizing: border-box;
+        transition: background 0.3s ease-in-out;
+      }
     }
   }
 
@@ -106,7 +107,354 @@
     font-family: "S-CoreDream-1Thin";
     z-index: 900;
     position: absolute;
-    bottom: 20px;
+    bottom: 2vh;
+    left: 50%;
+    transform: translateX(-50%);
     color: var(--sub-title);
+    font-size: 1vw;
+  }
+}
+
+
+// Tablet vertical mode
+@media all and (min-width: 551px) and (max-width: 1024px) and (min-height: 1024px) and (max-height: 1366px) {
+  .bookMarkContainer {
+    top: 6vh;
+    left: 0;
+    width: $main-container-width;
+    height: calc($main-container-height - 6vh);
+    flex-direction: column;
+    align-items: flex-end;
+
+    & .innerFrame {
+      flex-direction: column;
+      align-items: flex-end;
+
+      & .viewContainer {
+        margin-left: 0;
+        margin: 0 4.5vw;
+        width: 90%;
+        height: 45vh;
+        margin-top: 5vh;
+
+        & .viewTitle {
+          display: none;
+        }
+      }
+
+      & .listContainer {
+        margin-right: 0;
+        margin: 0 4.5vw;
+        margin-bottom: 1vh;
+        width: 57vw;
+        height: 30vh;
+
+        & .listHeader {
+          height: 2vh;
+
+          & .listTitle {
+            font-size: 2vw;
+          }
+
+          & .selectBtn {
+            & button {
+              width: 5vw;
+              height: 5vw;
+              font-size: 2vw;
+            }
+          }
+        }
+
+        & .contentList {
+          width: 100%;
+          height: 27.5vh;
+        }
+      }
+    }
+
+    & .notice {
+      display: none;
+    }
+  }
+}
+
+// Desktop (Tablet vertical mode size)
+@media all and (min-width: 551px) and (max-width: 768px) and (min-height: 768px) and (max-height: 1024px) {
+  .bookMarkContainer {
+    top: 6vh;
+    left: 0;
+    width: $main-container-width;
+    height: calc($main-container-height - 6vh);
+    flex-direction: column;
+    align-items: flex-end;
+
+    & .innerFrame {
+      flex-direction: column;
+      align-items: flex-end;
+
+      & .viewContainer {
+        margin-left: 0;
+        margin: 0 4.5vw;
+        width: 90%;
+        height: 45vh;
+        margin-top: 5vh;
+
+        & .viewTitle {
+          display: none;
+        }
+      }
+
+      & .listContainer {
+        margin-right: 0;
+        margin: 0 4.5vw;
+        margin-bottom: 1vh;
+        width: 57vw;
+        height: 30vh;
+
+        & .listHeader {
+          height: 2vh;
+
+          & .listTitle {
+            font-size: 2vw;
+          }
+
+          & .selectBtn {
+            & button {
+              width: 5vw;
+              height: 5vw;
+              font-size: 2vw;
+            }
+          }
+        }
+
+        & .contentList {
+          width: 100%;
+          height: 27.5vh;
+        }
+      }
+    }
+
+    & .notice {
+      display: none;
+    }
+  }
+}
+
+// Tablet horizontal mode
+@media all and (min-width: 1024px) and (max-width: 1366px) and (min-height: 768px) and (max-height: 1024px) {
+  .bookMarkContainer {
+    top: 8vh;
+    left: 0;
+    width: $main-container-width;
+    height: calc($main-container-height - 8vh);
+
+    & .innerFrame {
+      & .viewContainer {
+        width: 50vw;
+        height: 71vh;
+        margin-left: 4vw;
+        transform: translateY(-1.5vh);
+
+        & .viewTitle {
+          height: 2vh;
+        }
+      }
+
+      & .listContainer {
+        width: 30vw;
+        height: 71vh;
+        margin-right: 4vw;
+        transform: translateY(-1.5vh);
+
+        & .listHeader {
+          height: 2vh;
+
+          & .listTitle {
+            font-size: 1.2vw;
+          }
+        }
+
+        & .contentList {
+          width: 100%;
+          height: 68vh;
+        }
+      }
+    }
+
+    & .notice {
+      display: none;
+    }
+  }
+}
+
+// Desktop (Tablet horizontal mode size)
+@media all and (min-width: 768px) and (max-width: 1024px) and (min-height: 768px) and (max-height: 1000px) {
+  .bookMarkContainer {
+    top: 8vh;
+    left: 0;
+    width: $main-container-width;
+    height: calc($main-container-height - 8vh);
+
+    & .innerFrame {
+      & .viewContainer {
+        width: 50vw;
+        height: 71vh;
+        margin-left: 4vw;
+        transform: translateY(-1.5vh);
+
+        & .viewTitle {
+          height: 2vh;
+        }
+      }
+
+      & .listContainer {
+        height: 71vh;
+        margin-right: 4vw;
+        transform: translateY(-1.5vh);
+
+        & .listHeader {
+          height: 2vh;
+
+          & .listTitle {
+            font-size: 1.2vw;
+          }
+        }
+
+        & .contentList {
+          width: 100%;
+          height: 68vh;
+        }
+      }
+    }
+
+    & .notice {
+      display: none;
+    }
+  }
+}
+
+// Cell Phone vertical mode
+@media all and (max-width: 550px) and (max-height: 1067px) {
+  $main-container-height: 86vh;
+
+  .bookMarkContainer {
+    top: 8vh;
+    left: 0;
+    width: $main-container-width;
+    height: calc($main-container-height - 8vh);
+
+    & .innerFrame {
+      flex-direction: column;
+
+      & .viewContainer {
+        margin-left: 0;
+        margin-top: 5vh;
+        width: 85vw;
+        height: 40vh;
+
+        & .viewTitle {
+          display: none;
+        }
+      }
+
+      & .listContainer {
+        margin-right: 0;
+        margin-bottom: 1vh;
+        width: 85vw;
+        height: 29vh;
+
+        & .listHeader {
+          height: 3vh;
+
+          & .listTitle {
+            font-size: 3vw;
+          }
+
+          & .selectBtn {
+            & button {
+              width: 10vw;
+              height: 10vw;
+              font-size: 5vw;
+            }
+          }
+        }
+
+        & .contentList {
+          width: 100%;
+          height: 25vh;
+        }
+      }
+    }
+
+    & .notice {
+      display: none;
+    }
+  }
+}
+
+// Cell Phone horizontal mode
+@media all and (max-width: 1067px) and (max-height: 550px) {
+  $main-container-height: 86vh;
+
+  .bookMarkContainer {
+    top: 12vh;
+    left: 0;
+    width: $main-container-width;
+    height: calc($main-container-height - 12vh);
+
+    & .innerFrame {
+      flex-direction: row;
+
+      & .viewContainer {
+        width: 62%;
+        height: 95%;
+        margin-left: 1vw;
+        justify-content: flex-start;
+        transform: translateY(0);
+
+        & .viewTitle {
+          display: none;
+        }
+      }
+
+      & .listContainer {
+        width: 34%;
+        height: 95%;
+        margin-right: 1vw;
+        justify-content: space-between;
+        transform: translateY(0);
+
+        & .listHeader {
+          display: flex;
+          align-items: flex-start;
+          height: 15%;
+
+          & .listTitle {
+            display: none;
+          }
+
+          & .selectBtn {
+            width: 100%;
+            justify-content: space-between;
+
+            & button {
+              width: 15vw;
+              height: 8vh;
+              margin-left: 0;
+              font-size: 3vw;
+            }
+          }
+        }
+
+        & .contentList {
+          width: 100%;
+          height: 85%;
+        }
+      }
+    }
+
+    & .notice {
+      display: none;
+    }
   }
 }

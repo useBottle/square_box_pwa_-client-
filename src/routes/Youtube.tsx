@@ -13,12 +13,14 @@ import { setUserCheck, setUsername } from "../store/verificationSlice";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import { TokenInfo } from "../types/types";
+import { setMenuIndex } from "../store/userInterfaceSlice";
 
 export default function Youtube(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const { youtubeData } = useSelector((state: RootState) => state.data);
   const { youtubeLoading } = useSelector((state: RootState) => state.userInterface.loadingStatus);
+  const { userCheck } = useSelector((state: RootState) => state.verification);
   const refreshToken = Cookies.get("refreshToken");
   const accessToken = Cookies.get("accessToken");
 
@@ -46,12 +48,13 @@ export default function Youtube(): JSX.Element {
       dispatch(setUserCheck(true));
       dispatch(setUsername(decodedToken.username));
     }
-  }, []);
+    dispatch(setMenuIndex(2));
+  }, [userCheck, dispatch, navigate]);
 
   return (
     <section className={styles.youtubeContainer}>
       {youtubeLoading === false ? (
-        <div>
+        <div className={styles.innerFrame}>
           <div className={styles.playerContainer}>
             <h4 className={styles.playerTitle}>Player</h4>
             {youtubeData.length !== 0 ? (
