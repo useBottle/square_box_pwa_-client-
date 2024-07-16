@@ -49,6 +49,7 @@ export default function MobileNav(): JSX.Element {
                 key={index}
                 onClick={() => {
                   dispatch(setMenuIndex(index));
+                  dispatch(setNavSwitch(false));
                   navigate(`${item.path}`);
                 }}
               >

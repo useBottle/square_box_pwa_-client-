@@ -38,6 +38,7 @@
         position: relative;
         font-size: 1vw;
         color: var(--point-color3);
+        margin-top: 1vh;
         transition: color 0.3s ease-in-out;
       }
     }
@@ -110,7 +111,6 @@
 
         & p {
           font-size: 2.5vw;
-          margin-top: 1vh;
         }
       }
     }
