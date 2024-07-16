@@ -1482,6 +1482,11 @@
   resolved "https://registry.yarnpkg.com/@eslint/object-schema/-/object-schema-2.1.4.tgz#9e69f8bb4031e11df79e03db09f9dbbae1740843"
   integrity sha512-BsWiH1yFGjXXS2yvrf5LyuoSIIbPrGUWob917o+BTKuZ7qJdxX8aJLRxs1fS9n6r7vESrq1OUqb68dANcFXuQQ==
 
+"@fontsource/prompt@^5.0.14":
+  version "5.0.14"
+  resolved "https://registry.yarnpkg.com/@fontsource/prompt/-/prompt-5.0.14.tgz#90c625ada64bd4da098f73f1e50c61c181f216b7"
+  integrity sha512-62qsomeqmBypufjRO0g034ipZCnXB9UcBKvL4kwVpFNFNs9YJF3nlT9U6dOmxW8uv0b+PSKzXsIYmci/q8jegw==
+
 "@humanwhocodes/config-array@^0.11.14":
   version "0.11.14"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.14.tgz#d78e481a039f7566ecc9660b4ea7fe6b1fec442b"

@@ -5,6 +5,7 @@
   "author": "Byung Ho Jung (AvenueDev)",
   "license": "MIT",
   "dependencies": {
+    "@fontsource/prompt": "^5.0.14",
     "@reduxjs/toolkit": "^2.2.3",
     "@tanstack/react-query": "^5.40.1",
     "@testing-library/jest-dom": "^5.16.1",
