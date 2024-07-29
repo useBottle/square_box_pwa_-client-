@@ -73,7 +73,7 @@ export default function YoutubePreview(): JSX.Element {
           <YouTube
             videoId={currentYoutube.id.videoId}
             opts={{
-              width: "550",
+              width: "100%",
               height: "350",
               playerVars: {
                 autoplay: 0, // 자동재생 O
