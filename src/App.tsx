@@ -53,6 +53,7 @@ function App(): JSX.Element {
   const refreshToken = Cookies.get("refreshToken");
   const { username } = useSelector((state: RootState) => state.verification);
   const { navSwitch } = useSelector((state: RootState) => state.userInterface);
+  const signUpTrigger = useSelector((state: RootState) => state.signUpTrigger);
 
   const verifyToken = async (): Promise<Response | void> => {
     try {
@@ -70,7 +71,7 @@ function App(): JSX.Element {
   useEffect(() => {
     if (!accessToken && refreshToken) {
       verifyToken();
-    } else if (!accessToken && !refreshToken) {
+    } else if (!accessToken && !refreshToken && !signUpTrigger) {
       dispatch(setUserCheck(false));
       navigate("/");
     } else if (accessToken) {

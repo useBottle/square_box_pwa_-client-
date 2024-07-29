@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { setUserCheck } from "../store/verificationSlice";
 import tokenVerification from "../module/tokenVerification";
 import { AppDispatch } from "../store/store";
+import { setSignUpTrigger } from "../store/signUpTriggerSlice";
 
 export default function LogIn(): JSX.Element {
   const { register, handleSubmit, getValues } = useForm();
@@ -110,7 +111,13 @@ export default function LogIn(): JSX.Element {
           <button className={styles.logInBtn} type="submit">
             Login
           </button>
-          <button className={styles.signUpBtn} onClick={() => navigate("/signup")}>
+          <button
+            className={styles.signUpBtn}
+            onClick={() => {
+              dispatch(setSignUpTrigger(true));
+              navigate("/signup");
+            }}
+          >
             회원가입
           </button>
         </div>

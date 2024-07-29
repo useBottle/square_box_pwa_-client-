@@ -6,6 +6,7 @@ import userInterfaceReducer from "./userInterfaceSlice";
 import youtubeReducer from "./youtubeSlice";
 import verificationReducer from "./verificationSlice";
 import bookMarkReducer from "./bookMarkSlice";
+import signUpTriggerReducer from "./signUpTriggerSlice";
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     userInterface: userInterfaceReducer,
     verification: verificationReducer,
     bookMark: bookMarkReducer,
+    signUpTrigger: signUpTriggerReducer,
   },
 });
 
