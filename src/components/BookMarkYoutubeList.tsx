@@ -13,14 +13,18 @@ export default function BookMarkYoutubeList(): JSX.Element {
   const { mouseOnYoutube } = useSelector((state: RootState) => state.bookMark);
   const youtubeId = useSelector((state: RootState) => state.bookMark.youtubeId);
 
+  // 리스트에서 onMouse 된 요소의 ID 값 저장.
   useEffect(() => {
     dispatch(setYoutubeId(mouseOnYoutube._id));
   }, [mouseOnYoutube, dispatch]);
 
+  // 북마크 유튜브 데이터 제거.
   const removeBookMark = async (): Promise<void> => {
+    // UI 에서 즉시 제거.
     const removedYoutubeArray = markedYoutube.filter((item) => item.videoId !== mouseOnYoutube.videoId);
     dispatch(setMarkedYoutube(removedYoutubeArray));
 
+    // DB 에 저장된 북마크된 뉴스 데이터에서 제거할 수 있도록 해당 youtubeId 전송.
     try {
       await axios.put(
         process.env.REACT_APP_DELETE_YOUTUBE as string,
