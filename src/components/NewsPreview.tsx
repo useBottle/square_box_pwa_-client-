@@ -16,6 +16,7 @@ export default function NewsPreview(): JSX.Element {
   const { newsData } = useSelector((state: RootState) => state.data);
   const username = useSelector((state: RootState) => state.verification.username);
 
+  // 뉴스 데이터가 있을 경우 초기 로드 시엔 가장 처음 데이터 보여주기.
   useEffect(() => {
     newsData.length !== 0 ? dispatch(setCurrentNews(newsData[0])) : null;
   }, [newsData, dispatch]);
@@ -49,6 +50,7 @@ export default function NewsPreview(): JSX.Element {
 
   const addToBookMark = async (): Promise<void> => {
     try {
+      // 해당 유저 이름으로 북마크된 데이터 검색 요청.
       const result = await axios.put(
         process.env.REACT_APP_FIND_DATA as string,
         { username },
@@ -59,6 +61,7 @@ export default function NewsPreview(): JSX.Element {
         },
       );
 
+      // 북마크된 데이터 10개 미만인 경우 북마크 추가.
       if (result.data.newsData.length < 10) {
         const response = await axios.post(
           process.env.REACT_APP_ADD_NEWS_DATA,
