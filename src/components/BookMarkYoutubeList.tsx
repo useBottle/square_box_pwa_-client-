@@ -24,7 +24,7 @@ export default function BookMarkYoutubeList(): JSX.Element {
     const removedYoutubeArray = markedYoutube.filter((item) => item.videoId !== mouseOnYoutube.videoId);
     dispatch(setMarkedYoutube(removedYoutubeArray));
 
-    // DB 에 저장된 북마크된 뉴스 데이터에서 제거할 수 있도록 해당 youtubeId 전송.
+    // DB 에 저장된 북마크된 유튜브 데이터에서 제거할 수 있도록 해당 youtubeId 전송.
     try {
       await axios.put(
         process.env.REACT_APP_DELETE_YOUTUBE as string,

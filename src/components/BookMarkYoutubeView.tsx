@@ -14,6 +14,7 @@ export default function BookMarkYoutubeView(): JSX.Element {
   const { mouseOnYoutube } = useSelector((state: RootState) => state.bookMark);
   const youtubeId = useSelector((state: RootState) => state.bookMark.youtubeId);
 
+  // 북마크된 유튜브 데이터가 있을 경우 초기 로드 시엔 가장 처음 데이터 보여주기.
   useEffect(() => {
     markedYoutube.length !== 0 ? dispatch(setMouseOnYoutube(markedYoutube[0])) : null;
   }, [markedYoutube, dispatch]);
@@ -23,10 +24,13 @@ export default function BookMarkYoutubeView(): JSX.Element {
     window.open(url, "_blank", "noopener, noreferrer");
   };
 
+  // 북마크 유튜브 데이터 제거.
   const removeBookMark = async (): Promise<void> => {
+    // UI 에서 즉시 제거.
     const removedYoutubeArray = markedYoutube.filter((item) => item.videoId !== mouseOnYoutube.videoId);
     dispatch(setMarkedYoutube(removedYoutubeArray));
 
+    // DB 에 저장된 북마크된 유튜브 데이터에서 제거할 수 있도록 해당 newsId 전송.
     try {
       await axios.put(
         process.env.REACT_APP_DELETE_YOUTUBE as string,
