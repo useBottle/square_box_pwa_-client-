@@ -17,10 +17,13 @@ export default function BookMarkNewsList(): JSX.Element {
     dispatch(setNewsId(mouseOnNews._id));
   }, [mouseOnNews, dispatch]);
 
+  // 북마크 뉴스 데이터 제거.
   const removeBookMark = async (): Promise<void> => {
+    // UI 에서 즉시 제거.
     const removedNewsArray = markedNews.filter((item) => item.originallink !== mouseOnNews.originallink);
     dispatch(setMarkedNews(removedNewsArray));
 
+    // DB 에 저장된 북마크된 뉴스 데이터에서 제거할 수 있도록 해당 newsId 전송.
     try {
       await axios.put(
         process.env.REACT_APP_DELETE_NEWS as string,
