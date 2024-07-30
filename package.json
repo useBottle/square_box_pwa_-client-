@@ -2,7 +2,7 @@
   "name": "square_box_pwa",
   "version": "0.1.0",
   "private": true,
-  "author": "Byung Ho Jung (AvenueDev)",
+  "author": "Byung Ho Jung (useBottle)",
   "license": "MIT",
   "dependencies": {
     "@fontsource/prompt": "^5.0.14",
