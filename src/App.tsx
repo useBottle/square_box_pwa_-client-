@@ -55,6 +55,7 @@ function App(): JSX.Element {
   const { navSwitch } = useSelector((state: RootState) => state.userInterface);
   const signUpTrigger = useSelector((state: RootState) => state.signUpTrigger);
 
+  // 엑세스 토큰 재발급 후 인증 처리.
   const verifyToken = async (): Promise<Response | void> => {
     try {
       const response = await reissueToken();
@@ -68,6 +69,7 @@ function App(): JSX.Element {
     }
   };
 
+  // 기본 경로 접속 시 보유한 토큰에 따라 인증 처리.
   useEffect(() => {
     if (!accessToken && refreshToken) {
       verifyToken();
@@ -80,14 +82,17 @@ function App(): JSX.Element {
     }
   }, [userCheck, dispatch, navigate]);
 
+  // 다크모드 버튼 클릭 시 모든 HTML 요소에 현재 모드의 어트리뷰트 설정.
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", darkLightToggle);
   }, [darkLightToggle]);
 
+  // 로컬 스토리지에 저장된 값에 따라 다크모드 적용.
   useEffect(() => {
     localStorage.getItem("theme") === "dark" ? dispatch(setDarkLight("dark")) : dispatch(setDarkLight("light"));
   }, [dispatch]);
 
+  // 다크모드 토글 버튼 클릭 시 테마 체인지 및 로컬스토리지에 저장.
   const themeExchange = (): void => {
     if (darkLightToggle === "dark") {
       dispatch(setDarkLight("light"));
@@ -107,6 +112,7 @@ function App(): JSX.Element {
 
   return (
     <div className={styles.bodyContainer}>
+      {/* 각종 모달 창 세트 */}
       <div className={styles.modalSet} style={searchModalTrigger ? { display: "block" } : { display: "none" }}>
         <SearchModal />
         <div className={styles.overlay} role="button" onClick={() => dispatch(setSearchModalTrigger(false))} />
@@ -133,6 +139,7 @@ function App(): JSX.Element {
         <LogOutModal />
         <div className={styles.overlay} role="button" onClick={() => dispatch(setLogOutModalTrigger(false))} />
       </div>
+
       <div className={styles.backgroundSet}>
         <div className={styles.circle1} />
         <div className={styles.circle2} />
@@ -140,6 +147,7 @@ function App(): JSX.Element {
         <div className={styles.circle4} />
         <div className={styles.finalBackground} />
       </div>
+
       <div>
         <div className={styles.mainContainer}>
           {userCheck && (
@@ -155,14 +163,12 @@ function App(): JSX.Element {
                   <BsBox />
                   <span>Square Box</span>
                 </h1>
-
                 <div className={styles.headerBlock}>
                   <SearchForm />
                   <div className={styles.user}>
                     <FaUser className={styles.icon} />
                     <span>{username}</span>
                   </div>
-
                   <button className={styles.darkModeBtn} onClick={themeExchange}>
                     {darkLightToggle === "dark" ? (
                       <GoSun className={styles.darkModeIcon} />
@@ -170,7 +176,6 @@ function App(): JSX.Element {
                       <GoMoon className={styles.darkModeIcon} />
                     )}
                   </button>
-
                   <button className={styles.logOutBtn} onClick={() => dispatch(setLogOutModalTrigger(true))}>
                     <GoSignOut className={styles.logOutIcon} />
                     <span>Log Out</span>
