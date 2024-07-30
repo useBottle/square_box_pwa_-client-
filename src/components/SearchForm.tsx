@@ -29,9 +29,11 @@ export default function SearchForm(): JSX.Element {
     dispatch(setSearchBarTrigger(false));
     refInputValue.current = inputValue;
 
+    // Home 메뉴 활성화되어 있을 경우, onSubmit 시 SearchModal 띄우기.
     menuIndex === 0 && dispatch(setSearchModalTrigger(true));
     e.preventDefault();
 
+    // 뉴스 데이터 가져오기.
     const fetchNewsData = async (): Promise<void> => {
       try {
         const response = await axios.put(
@@ -52,6 +54,7 @@ export default function SearchForm(): JSX.Element {
       }
     };
 
+    // 유튜브 데이터 가져오기
     const fetchYoutubeData = async (): Promise<void> => {
       try {
         const response = await axios.put(
