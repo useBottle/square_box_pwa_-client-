@@ -16,7 +16,7 @@ export default function NewsPreview(): JSX.Element {
   const { newsData } = useSelector((state: RootState) => state.data);
   const username = useSelector((state: RootState) => state.verification.username);
 
-  // 뉴스 데이터가 있을 경우 초기 로드 시엔 가장 처음 데이터 보여주기.
+  // 뉴스 데이터가 있을 경우 초기 로드 시에 가장 처음 데이터 보여주기.
   useEffect(() => {
     newsData.length !== 0 ? dispatch(setCurrentNews(newsData[0])) : null;
   }, [newsData, dispatch]);

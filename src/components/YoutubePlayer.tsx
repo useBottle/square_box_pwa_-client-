@@ -18,6 +18,7 @@ export default function YoutubePreview(): JSX.Element {
   const channelTitle = currentYoutube.snippet.channelTitle;
   const username = useSelector((state: RootState) => state.verification.username);
 
+  // 유튜브 데이터가 있을 경우, 초기 로드 시에 가장 처음 데이터 보여주기.
   useEffect(() => {
     youtubeData.length !== 0 ? dispatch(setCurrentYoutube(youtubeData[0])) : null;
   }, [youtubeData, dispatch]);
@@ -28,6 +29,7 @@ export default function YoutubePreview(): JSX.Element {
   };
 
   const addToBookMark = async () => {
+    // 해당 유저 이름으로 데이터 검색 요청.
     try {
       const result = await axios.put(
         process.env.REACT_APP_FIND_DATA as string,
@@ -39,6 +41,7 @@ export default function YoutubePreview(): JSX.Element {
         },
       );
 
+      // 북마크된 데이터 10개 미만인 경우 북마크 추가.
       if (result.data.youtubeData.length < 10) {
         const response = await axios.post(
           process.env.REACT_APP_ADD_YOUTUBE_DATA,

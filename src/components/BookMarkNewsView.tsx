@@ -13,7 +13,7 @@ export default function BookMarkNewsView(): JSX.Element {
   const { mouseOnNews } = useSelector((state: RootState) => state.bookMark);
   const newsId = useSelector((state: RootState) => state.bookMark.newsId);
 
-  // 북마크된 뉴스 데이터가 있을 경우 초기 로드 시엔 가장 처음 데이터 보여주기.
+  // 북마크된 뉴스 데이터가 있을 경우 초기 로드 시에 가장 처음 데이터 보여주기.
   useEffect(() => {
     markedNews.length !== 0 ? dispatch(setMouseOnNews(markedNews[0])) : null;
   }, [markedNews, dispatch]);

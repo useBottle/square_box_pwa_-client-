@@ -14,7 +14,7 @@ export default function BookMarkYoutubeView(): JSX.Element {
   const { mouseOnYoutube } = useSelector((state: RootState) => state.bookMark);
   const youtubeId = useSelector((state: RootState) => state.bookMark.youtubeId);
 
-  // 북마크된 유튜브 데이터가 있을 경우 초기 로드 시엔 가장 처음 데이터 보여주기.
+  // 북마크된 유튜브 데이터가 있을 경우 초기 로드 시에 가장 처음 데이터 보여주기.
   useEffect(() => {
     markedYoutube.length !== 0 ? dispatch(setMouseOnYoutube(markedYoutube[0])) : null;
   }, [markedYoutube, dispatch]);
