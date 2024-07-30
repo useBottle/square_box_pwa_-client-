@@ -29,6 +29,7 @@ export default function BookMark(): JSX.Element {
   const { bookMarkLoading } = useSelector((state: RootState) => state.userInterface.loadingStatus);
   const { userCheck } = useSelector((state: RootState) => state.verification);
 
+  // 엑세스 토큰 재발급
   const verifyToken = async () => {
     try {
       const response = await reissueToken();
@@ -42,6 +43,7 @@ export default function BookMark(): JSX.Element {
     }
   };
 
+  // 북마크한 데이터 가져오기.
   const getBookMarkData = async (): Promise<void> => {
     try {
       dispatch(setBookMarkLoading(true));
@@ -62,6 +64,7 @@ export default function BookMark(): JSX.Element {
     }
   };
 
+  // 보유한 토큰에 따라 인증 처리 및 리디렉션.
   useEffect(() => {
     if (!accessToken && refreshToken) {
       verifyToken();

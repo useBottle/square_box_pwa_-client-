@@ -69,7 +69,7 @@ function App(): JSX.Element {
     }
   };
 
-  // 기본 경로 접속 시 보유한 토큰에 따라 인증 처리.
+  // 보유한 토큰에 따라 인증 처리 및 리디렉션.
   useEffect(() => {
     if (!accessToken && refreshToken) {
       verifyToken();
