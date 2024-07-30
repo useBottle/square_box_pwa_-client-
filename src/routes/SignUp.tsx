@@ -32,6 +32,7 @@ export default function SignUp(): JSX.Element {
   const confirmCondition = isPasswordConfirmed && !emptyPassword && isPasswordValid;
   const [userDuplication, setUserDuplication] = useState<IdCheck>("default");
 
+  // ID, password 로 회원 가입 요청.
   const onSubmit = async (): Promise<void> => {
     dispatch(setSignUpLoading(true));
 
@@ -61,6 +62,7 @@ export default function SignUp(): JSX.Element {
     }
   };
 
+  // ID 중복 검사.
   const checkId = async (): Promise<void> => {
     if (idValue && isIdValid) {
       try {
@@ -90,11 +92,12 @@ export default function SignUp(): JSX.Element {
     return;
   };
 
-  // 이전 입력 id 와 현재 입력 id 가 다르면 중복 확인 버튼 활성화.
+  // 이전 입력 ID 와 현재 입력 ID 가 다르면 중복 확인 버튼 활성화.
   useEffect(() => {
     prevIdValue !== idValue && setUserDuplication("default");
   }, [idValue]);
 
+  // ID 유효성 검사 결과에 따른 메세지 출력.
   const IdText = () => {
     if (!idValue) {
       return (
@@ -135,6 +138,7 @@ export default function SignUp(): JSX.Element {
     }
   };
 
+  // password 유효성 검사 결과에 따른 메세지 출력.
   const PasswordText = () => {
     if (!passwordValue) {
       return (
@@ -152,6 +156,7 @@ export default function SignUp(): JSX.Element {
     }
   };
 
+  // password 확인 유효성 검사 결과에 따른 메세지 출력.
   const ConfirmText = () => {
     if (!confirmValue) {
       return <span>{MESSAGE.SIGNUP.CONFIRM.INFO}</span>;
