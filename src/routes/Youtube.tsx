@@ -24,6 +24,7 @@ export default function Youtube(): JSX.Element {
   const refreshToken = Cookies.get("refreshToken");
   const accessToken = Cookies.get("accessToken");
 
+  // 엑세스 토큰 재발급.
   const verifyToken = async () => {
     try {
       const response = await reissueToken();
@@ -37,6 +38,7 @@ export default function Youtube(): JSX.Element {
     }
   };
 
+  // 보유한 토큰에 따라 인증 처리 및 리디렉션.
   useEffect(() => {
     if (!accessToken && refreshToken) {
       verifyToken();
