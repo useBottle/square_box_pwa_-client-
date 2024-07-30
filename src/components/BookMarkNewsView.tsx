@@ -13,6 +13,7 @@ export default function BookMarkNewsView(): JSX.Element {
   const { mouseOnNews } = useSelector((state: RootState) => state.bookMark);
   const newsId = useSelector((state: RootState) => state.bookMark.newsId);
 
+  // 북마크된 뉴스 데이터가 있을 경우 초기 로드 시엔 가장 처음 데이터 보여주기.
   useEffect(() => {
     markedNews.length !== 0 ? dispatch(setMouseOnNews(markedNews[0])) : null;
   }, [markedNews, dispatch]);
@@ -22,10 +23,13 @@ export default function BookMarkNewsView(): JSX.Element {
     window.open(url, "_blank", "noopener, noreferrer");
   };
 
+  // 북마크 뉴스 데이터 제거
   const removeBookMark = async (): Promise<void> => {
+    // UI 에서 즉시 제거.
     const removedNewsArray = markedNews.filter((item) => item.originallink !== mouseOnNews.originallink);
     dispatch(setMarkedNews(removedNewsArray));
 
+    // DB 에 저장된 북마크된 뉴스 데이터에서 제거할 수 있도록 해당 newsId 전송.
     try {
       await axios.put(
         process.env.REACT_APP_DELETE_NEWS as string,
