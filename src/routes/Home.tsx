@@ -27,6 +27,7 @@ export default function Home(): JSX.Element {
   const refreshToken = Cookies.get("refreshToken");
   const accessToken = Cookies.get("accessToken");
 
+  // 실시간 검색어 데이터 요청.
   const fetchKeyword = async (): Promise<void> => {
     try {
       const response = await axios.get(process.env.REACT_APP_GET_KEYWORDS_API_URL);
@@ -37,6 +38,7 @@ export default function Home(): JSX.Element {
     }
   };
 
+  // 엑세스 토큰 재발급.
   const verifyToken = async () => {
     try {
       const response = await reissueToken();
@@ -50,7 +52,9 @@ export default function Home(): JSX.Element {
     }
   };
 
+  // Home 에 초기 접속 시 실행 로직.
   useEffect(() => {
+    // 보유한 토큰에 따라 인증 처리 및 리디렉션.
     if (!accessToken && refreshToken) {
       verifyToken();
     } else if (!accessToken && !refreshToken) {
@@ -82,6 +86,7 @@ export default function Home(): JSX.Element {
     };
   }, [userCheck, dispatch, navigate]);
 
+  // 뉴스 데이터 가져오기.
   const fetchNewsData = async (): Promise<void> => {
     dispatch(setNewsLoading(true));
     try {
@@ -103,6 +108,7 @@ export default function Home(): JSX.Element {
     }
   };
 
+  // 유튜브 데이터 가져오기.
   const fetchYoutubeData = async (): Promise<void> => {
     dispatch(setYoutubeLoading(true));
     try {
@@ -123,6 +129,7 @@ export default function Home(): JSX.Element {
     }
   };
 
+  // 실시간 검색어 클릭 시 뉴스 및 유튜브 데이터 검색 요청.
   useEffect(() => {
     if (inputValue !== "") {
       Promise.all([fetchNewsData(), fetchYoutubeData()]);
