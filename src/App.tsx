@@ -89,7 +89,13 @@ function App(): JSX.Element {
 
   // 로컬 스토리지에 저장된 값에 따라 다크모드 적용.
   useEffect(() => {
-    localStorage.getItem("theme") === "dark" ? dispatch(setDarkLight("dark")) : dispatch(setDarkLight("light"));
+    if (localStorage.getItem("theme") === null) {
+      dispatch(setDarkLight("dark"));
+    } else if (localStorage.getItem("theme") === "dark") {
+      dispatch(setDarkLight("dark"));
+    } else if (localStorage.getItem("theme") === "light") {
+      dispatch(setDarkLight("light"));
+    }
   }, [dispatch]);
 
   // 다크모드 토글 버튼 클릭 시 테마 체인지 및 로컬스토리지에 저장.
