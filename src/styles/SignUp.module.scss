@@ -124,6 +124,7 @@
         font-size: 1vw;
 
         & .duplicateBtn {
+          text-decoration: none;
           font-family: "S-CoreDream-4Regular";
           font-weight: 500;
           position: relative;
@@ -426,12 +427,32 @@
 
 // Tablet horizontal mode
 @media all and (min-width: 1024px) and (max-width: 1366px) and (min-height: 768px) and (max-height: 1024px) {
-  // 설정 필요 없음
+  .signUpContainer {
+    & .formContainer {
+      & .idCategory {
+        & span {
+          & .duplicateBtn {
+            width: 8vw;
+          }
+        }
+      }
+    }
+  }
 }
 
 // Desktop (Tablet horizontal mode size)
 @media all and (min-width: 768px) and (max-width: 1024px) and (min-height: 768px) and (max-height: 1000px) {
-  // 설정 필요 없음
+  .signUpContainer {
+    & .formContainer {
+      & .idCategory {
+        & span {
+          & .duplicateBtn {
+            width: 8vw;
+          }
+        }
+      }
+    }
+  }
 }
 
 // Cell Phone vertical mode
@@ -493,9 +514,9 @@
           font-size: 3vw;
 
           & .duplicateBtn {
-            width: 10vw;
+            width: 20vw;
             height: 4vh;
-            margin-right: 1vw;
+            margin-right: 4vw;
           }
         }
       }
