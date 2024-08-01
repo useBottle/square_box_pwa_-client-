@@ -26,7 +26,9 @@
     <script>
       (function() {
         const theme = localStorage.getItem("theme");
-        if (theme === "dark") {
+        if (theme === null) {
+          document.documentElement.setAttribute("data-theme", "");
+        } else if (theme === "dark") {
           document.documentElement.setAttribute("data-theme", "");
         } else if (theme === "light") {
           document.documentElement.setAttribute("data-theme", "light");
