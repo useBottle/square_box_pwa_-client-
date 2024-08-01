@@ -16,7 +16,7 @@ body {
     width: 100vw;
     height: 100vh;
     color: var(--font-color);
-    font-family: "S-CoreDream-1Thin";
+    font-family: "S-CoreDream-1Thin" !important;
     font-weight: 600;
     display: flex;
     justify-content: center;
@@ -144,7 +144,7 @@ body {
 
         & .logo {
           position: absolute;
-          font-family: "Prompt", sans-serif;
+          font-family: "Prompt", sans-serif !important;
           font-size: 3vw;
           font-weight: 300;
           cursor: pointer;
