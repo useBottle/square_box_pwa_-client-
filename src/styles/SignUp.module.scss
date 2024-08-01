@@ -13,6 +13,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  color: var(--font-color);
 
   & .backArrow {
     position: absolute;
@@ -125,7 +126,6 @@
 
         & .duplicateBtn {
           text-decoration: none;
-          color: var(--font-color);
           font-family: "S-CoreDream-4Regular";
           font-weight: 500;
           position: relative;

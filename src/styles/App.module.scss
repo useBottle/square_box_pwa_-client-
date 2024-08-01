@@ -16,7 +16,7 @@ body {
     width: 100vw;
     height: 100vh;
     color: var(--font-color);
-    font-family: "S-CoreDream-1Thin" !important;
+    font-family: "S-CoreDream-1Thin";
     font-weight: 600;
     display: flex;
     justify-content: center;
@@ -144,7 +144,7 @@ body {
 
         & .logo {
           position: absolute;
-          font-family: "Prompt", sans-serif !important;
+          font-family: "Prompt", sans-serif;
           font-size: 3vw;
           font-weight: 300;
           cursor: pointer;
@@ -731,6 +731,8 @@ body {
 
   body {
     & .bodyContainer {
+      font-family: "S-CoreDream-1Thin" !important;
+
       & .backgroundSet {
         & .circle1 {
           width: $circle-width;
@@ -757,6 +759,7 @@ body {
           z-index: 999;
 
           & .logo {
+            font-family: "Prompt", sans-serif !important;
             font-size: 3vw;
             margin: 0 2vw;
           }
@@ -889,6 +892,8 @@ body {
 
   body {
     & .bodyContainer {
+      font-family: "S-CoreDream-1Thin" !important;
+
       & .backgroundSet {
         & .circle1 {
           width: $circle-width;
@@ -915,6 +920,7 @@ body {
           z-index: 999;
 
           & .logo {
+            font-family: "Prompt", sans-serif !important;
             font-size: 3vw;
             margin: 0 2vw;
           }
@@ -1046,6 +1052,8 @@ body {
 
   body {
     & .bodyContainer {
+      font-family: "S-CoreDream-1Thin" !important;
+
       & .backgroundSet {
         & .circle1 {
           width: $circle-width;
@@ -1072,6 +1080,7 @@ body {
           z-index: 999;
 
           & .logo {
+            font-family: "Prompt", sans-serif !important;
             font-size: 2.5vw;
             margin: 0 0.5vw;
           }
@@ -1150,6 +1159,8 @@ body {
 
   body {
     & .bodyContainer {
+      font-family: "S-CoreDream-1Thin" !important;
+
       & .backgroundSet {
         & .circle1 {
           width: $circle-width;
@@ -1176,6 +1187,7 @@ body {
           z-index: 999;
 
           & .logo {
+            font-family: "Prompt", sans-serif !important;
             font-size: 2.5vw;
             margin: 0 0.5vw;
           }
@@ -1255,6 +1267,8 @@ body {
 
   body {
     & .bodyContainer {
+      font-family: "S-CoreDream-1Thin" !important;
+
       & .backgroundSet {
         & .circle1 {
           width: $circle-width;
@@ -1283,6 +1297,7 @@ body {
           z-index: 999;
 
           & .logo {
+            font-family: "Prompt", sans-serif !important;
             font-size: 7vw;
             margin: 0 2vw;
           }
@@ -1346,6 +1361,8 @@ body {
 
   body {
     & .bodyContainer {
+      font-family: "S-CoreDream-1Thin" !important;
+
       & .backgroundSet {
         & .circle1 {
           width: $circle-width;
@@ -1374,6 +1391,7 @@ body {
           z-index: 999;
 
           & .logo {
+            font-family: "Prompt", sans-serif !important;
             font-size: 3vw;
             margin: 0 1vw;
           }
