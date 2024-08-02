@@ -39,6 +39,7 @@ export default function LogIn(): JSX.Element {
 
   // 페이지 초기 로드 시 엑세스 토큰 검증.
   useEffect(() => {
+    console.log(process.env.REACT_APP_LOGIN);
     if (accessToken) {
       verifyToken();
     }
@@ -47,7 +48,6 @@ export default function LogIn(): JSX.Element {
 
   // id, password, accessToken 으로 로그인 요청.
   const onSubmit = async (): Promise<void> => {
-    console.log(process.env.REACT_APP_LOGIN);
     const [idValue, passwordValue] = getValues(["id", "password"]);
 
     try {
