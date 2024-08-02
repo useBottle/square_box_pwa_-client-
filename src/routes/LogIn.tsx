@@ -47,6 +47,10 @@ export default function LogIn(): JSX.Element {
     return;
   }, []);
 
+  useEffect(() => {
+    console.log("accessToken: ", accessToken);
+  }, [accessToken]);
+
   // id, password, accessToken 으로 로그인 요청.
   const onSubmit = async (): Promise<void> => {
     const [idValue, passwordValue] = getValues(["id", "password"]);
