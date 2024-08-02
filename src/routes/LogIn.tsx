@@ -18,7 +18,8 @@ export default function LogIn(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const [idError, setIdError] = useState<boolean>(false);
   const [passwordError, setPasswordError] = useState<boolean>(false);
-  const accessToken = Cookies.get("accessToken");
+  const [accessToken, setAccessToken] = useState<string | undefined>(undefined);
+  // const accessToken = Cookies.get("accessToken");
 
   // 엑세스 토큰이 이미 있으면 /home 으로 리디렉션.
   const verifyToken = async () => {
@@ -39,15 +40,12 @@ export default function LogIn(): JSX.Element {
 
   // 페이지 초기 로드 시 엑세스 토큰 검증.
   useEffect(() => {
+    setAccessToken(Cookies.get("accessToken"));
     if (accessToken) {
       verifyToken();
     }
     return;
   }, []);
-
-  useEffect(() => {
-    console.log("accessToken: ", accessToken);
-  }, [accessToken]);
 
   // id, password, accessToken 으로 로그인 요청.
   const onSubmit = async (): Promise<void> => {
@@ -77,7 +75,6 @@ export default function LogIn(): JSX.Element {
       response.status === 401 && setPasswordError(true);
       if (response.status === 200) {
         dispatch(setUserCheck(true));
-        console.log("confirm navigate function condition");
         navigate("/home");
       }
     } catch (error) {
