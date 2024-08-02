@@ -20,9 +20,6 @@ export default function LogIn(): JSX.Element {
   const [passwordError, setPasswordError] = useState<boolean>(false);
   const accessToken = Cookies.get("accessToken");
 
-  const envVariable = process.env.REACT_APP_LOGIN;
-  console.log(envVariable);
-
   // 엑세스 토큰이 이미 있으면 /home 으로 리디렉션.
   const verifyToken = async () => {
     try {

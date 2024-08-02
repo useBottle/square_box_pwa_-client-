@@ -80,7 +80,6 @@ export default function SignUp(): JSX.Element {
         } else if (result.status === 201) {
           setUserDuplication("duplication");
         }
-        console.log("id check result : ", result);
       } catch (error: unknown) {
         if (isAxiosError(error)) {
           console.error("An error occurred during ID check:", error);
