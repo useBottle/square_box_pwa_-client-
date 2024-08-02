@@ -55,6 +55,9 @@ function App(): JSX.Element {
   const { navSwitch } = useSelector((state: RootState) => state.userInterface);
   const signUpTrigger = useSelector((state: RootState) => state.signUpTrigger);
 
+  console.log("accessToken: ", accessToken);
+  console.log("refreshToken: ", refreshToken);
+
   // 엑세스 토큰 재발급 후 인증 처리.
   const verifyToken = async (): Promise<Response | void> => {
     try {

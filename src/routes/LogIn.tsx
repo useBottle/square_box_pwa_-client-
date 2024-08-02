@@ -73,6 +73,7 @@ export default function LogIn(): JSX.Element {
       response.status === 401 && setPasswordError(true);
       if (response.status === 200) {
         dispatch(setUserCheck(true));
+        console.log("confirm navigate function condition");
         navigate("/home");
       }
     } catch (error) {
