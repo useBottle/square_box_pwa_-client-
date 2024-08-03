@@ -1,5 +1,6 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
-import styles from "../src/styles/App.module.scss";
+// import styles from "../src/styles/App.module.scss";
+import styles from "./styles/Test.module.scss";
 import Home from "./routes/Home";
 import News from "./routes/News";
 import Youtube from "./routes/Youtube";
