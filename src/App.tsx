@@ -7,7 +7,6 @@ import SignUp from "./routes/SignUp";
 import AfterSignUp from "./routes/AfterSignUp";
 import SignUpError from "./routes/SignUpError";
 import BookMark from "./routes/BookMark";
-import LogIn from "./routes/LogIn";
 import { IoMenu, IoSearch } from "react-icons/io5";
 import { GoSun, GoMoon, GoSignOut } from "react-icons/go";
 import { FaUser, FaHome, FaNewspaper, FaYoutube, FaBookmark } from "react-icons/fa";
@@ -34,6 +33,7 @@ import LogOutModal from "./components/LogOutModal";
 import SearchForm from "./components/SearchForm";
 import SearchBarModal from "./components/SearchBarModal";
 import MobileNav from "./components/MobileNav";
+import SignIn from "./routes/SignIn";
 
 function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -209,7 +209,7 @@ function App(): JSX.Element {
           )}
 
           <Routes>
-            <Route path="/" element={<LogIn />} />
+            <Route path="/" element={<SignIn />} />
             <Route path="/home" element={<Home />} />
             <Route path="/news" element={<News />} />
             <Route path="/youtube" element={<Youtube />} />

@@ -11,7 +11,7 @@ import tokenVerification from "../module/tokenVerification";
 import { AppDispatch } from "../store/store";
 import { setSignUpTrigger } from "../store/signUpTriggerSlice";
 
-export default function LogIn(): JSX.Element {
+export default function SignIn(): JSX.Element {
   const { register, handleSubmit, getValues } = useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
