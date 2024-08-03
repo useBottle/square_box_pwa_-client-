@@ -1,12 +1,6 @@
-import Cookies from "js-cookie";
 import styles from "../styles/BookMark.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import reissueToken from "../module/reissueToken";
-import { setUserCheck, setUsername } from "../store/verificationSlice";
-import { jwtDecode } from "jwt-decode";
-import { TokenInfo } from "../types/types";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { MESSAGE } from "../common/message";
 import { AppDispatch, RootState } from "../store/store";
 import { setMarkedNews, setMarkedYoutube, setSelector } from "../store/bookMarkSlice";
@@ -21,27 +15,9 @@ import Loading from "../components/Loading";
 
 export default function BookMark(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
-  const refreshToken = Cookies.get("refreshToken");
-  const accessToken = Cookies.get("accessToken");
   const { selector } = useSelector((state: RootState) => state.bookMark);
   const { username } = useSelector((state: RootState) => state.verification);
   const { bookMarkLoading } = useSelector((state: RootState) => state.userInterface.loadingStatus);
-  const { userCheck } = useSelector((state: RootState) => state.verification);
-
-  // 엑세스 토큰 재발급
-  const verifyToken = async () => {
-    try {
-      const response = await reissueToken();
-      if (response.status === 200 && accessToken) {
-        const decodedToken = jwtDecode<TokenInfo>(accessToken);
-        dispatch(setUserCheck(true));
-        dispatch(setUsername(decodedToken.username));
-      }
-    } catch (error) {
-      console.error("Token reissue failed.", error);
-    }
-  };
 
   // 북마크한 데이터 가져오기.
   const getBookMarkData = async (): Promise<void> => {
@@ -64,21 +40,10 @@ export default function BookMark(): JSX.Element {
     }
   };
 
-  // 보유한 토큰에 따라 인증 처리 및 리디렉션.
   useEffect(() => {
-    if (!accessToken && refreshToken) {
-      verifyToken();
-    } else if (!accessToken && !refreshToken) {
-      dispatch(setUserCheck(false));
-      navigate("/");
-    } else if (accessToken) {
-      const decodedToken = jwtDecode<TokenInfo>(accessToken);
-      dispatch(setUserCheck(true));
-      dispatch(setUsername(decodedToken.username));
-      getBookMarkData();
-      dispatch(setMenuIndex(3));
-    }
-  }, [userCheck, dispatch, navigate]);
+    dispatch(setMenuIndex(3));
+    getBookMarkData();
+  }, []);
 
   return (
     <section className={styles.bookMarkContainer}>

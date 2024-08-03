@@ -27,10 +27,7 @@ import {
   setSearchBarTrigger,
   setSearchModalTrigger,
 } from "./store/userInterfaceSlice";
-import Cookies from "js-cookie";
 import reissueToken from "./module/reissueToken";
-import { jwtDecode } from "jwt-decode";
-import { TokenInfo } from "./types/types";
 import BookMarkModal from "./components/BookMarkModal";
 import BookMarkLimitModal from "./components/BookMarkLimitModal";
 import LogOutModal from "./components/LogOutModal";
@@ -49,37 +46,27 @@ function App(): JSX.Element {
   const { logOutModalTrigger } = useSelector((state: RootState) => state.userInterface.modalTrigger);
   const { darkLightToggle } = useSelector((state: RootState) => state.userInterface);
   const { userCheck } = useSelector((state: RootState) => state.verification);
-  const accessToken = Cookies.get("accessToken");
-  const refreshToken = Cookies.get("refreshToken");
   const { username } = useSelector((state: RootState) => state.verification);
   const { navSwitch } = useSelector((state: RootState) => state.userInterface);
   const signUpTrigger = useSelector((state: RootState) => state.signUpTrigger);
 
   // 엑세스 토큰 재발급 후 인증 처리.
-  const verifyToken = async (): Promise<Response | void> => {
-    try {
-      const response = await reissueToken();
-      if (response.status === 200 && accessToken) {
-        const decodedToken = jwtDecode<TokenInfo>(accessToken);
-        dispatch(setUserCheck(true));
-        dispatch(setUsername(decodedToken.username));
-      }
-    } catch (error) {
-      console.error("Token reissue failed.", error);
-    }
-  };
-
-  // 보유한 토큰에 따라 인증 처리 및 리디렉션.
   useEffect(() => {
-    if (!accessToken && refreshToken) {
-      verifyToken();
-    } else if (!accessToken && !refreshToken && !signUpTrigger) {
-      dispatch(setUserCheck(false));
-      // navigate("/");
-    } else if (accessToken) {
-      const decodedToken = jwtDecode<TokenInfo>(accessToken);
-      dispatch(setUsername(decodedToken.username));
-    }
+    const verifyToken = async (): Promise<Response | void> => {
+      try {
+        const response = await reissueToken();
+        if (response.status === 200) {
+          dispatch(setUserCheck(true));
+          dispatch(setUsername(response.data.username));
+        } else if (response.status === 401 && !signUpTrigger) {
+          dispatch(setUserCheck(false));
+          navigate("/");
+        }
+      } catch (error) {
+        console.error("Token reissue failed.", error);
+      }
+    };
+    verifyToken();
   }, [userCheck, dispatch, navigate]);
 
   // 다크모드 버튼 클릭 시 모든 HTML 요소에 현재 모드의 어트리뷰트 설정.

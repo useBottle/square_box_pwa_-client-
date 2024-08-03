@@ -57,12 +57,16 @@
 
 // Tablet vertical mode
 @media all and (min-width: 551px) and (max-width: 1024px) and (min-height: 1024px) and (max-height: 1366px) {
-  // 설정 필요 없음
+  .modalContainer {
+    width: 40vw;
+  }
 }
 
 // Desktop (Tablet vertical mode size)
 @media all and (min-width: 551px) and (max-width: 768px) and (min-height: 768px) and (max-height: 1024px) {
-  // 설정 필요 없음
+  .modalContainer {
+    width: 40vw;
+  }
 }
 
 // Tablet horizontal mode

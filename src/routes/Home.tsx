@@ -6,15 +6,10 @@ import { AppDispatch, RootState } from "../store/store";
 import KeywordIndicator from "../components/KeywordIndicator";
 import { setInputValue } from "../store/inputValueSlice";
 import { setNewsData, setRealTimeSearchTerms, setYoutubeData } from "../store/dataSlice";
-import { setNewsLoading, setSearchModalTrigger, setYoutubeLoading } from "../store/userInterfaceSlice";
+import { setMenuIndex, setNewsLoading, setSearchModalTrigger, setYoutubeLoading } from "../store/userInterfaceSlice";
 import { MESSAGE } from "../common/message";
 import { FaInfoCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import reissueToken from "../module/reissueToken";
-import { setUserCheck, setUsername } from "../store/verificationSlice";
-import Cookies from "js-cookie";
-import { jwtDecode } from "jwt-decode";
-import { TokenInfo } from "../types/types";
 
 export default function Home(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -24,8 +19,6 @@ export default function Home(): JSX.Element {
   const { userCheck } = useSelector((state: RootState) => state.verification);
   const [gauge, setGauge] = useState<number>(0);
   const [clickTrigger, setClickTrigger] = useState<boolean>(false);
-  const refreshToken = Cookies.get("refreshToken");
-  const accessToken = Cookies.get("accessToken");
 
   // 실시간 검색어 데이터 요청.
   const fetchKeyword = async (): Promise<void> => {
@@ -38,33 +31,9 @@ export default function Home(): JSX.Element {
     }
   };
 
-  // 엑세스 토큰 재발급.
-  const verifyToken = async () => {
-    try {
-      const response = await reissueToken();
-      if (response.status === 200 && accessToken) {
-        const decodedToken = jwtDecode<TokenInfo>(accessToken);
-        dispatch(setUserCheck(true));
-        dispatch(setUsername(decodedToken.username));
-      }
-    } catch (error) {
-      console.error("Token reissue failed.", error);
-    }
-  };
-
   // Home 에 초기 접속 시 실행 로직.
   useEffect(() => {
-    // 보유한 토큰에 따라 인증 처리 및 리디렉션.
-    if (!accessToken && refreshToken) {
-      verifyToken();
-    } else if (!accessToken && !refreshToken) {
-      dispatch(setUserCheck(false));
-      navigate("/");
-    } else if (accessToken) {
-      const decodedToken = jwtDecode<TokenInfo>(accessToken);
-      dispatch(setUserCheck(true));
-      dispatch(setUsername(decodedToken.username));
-    }
+    dispatch(setMenuIndex(0));
     fetchKeyword();
     dispatch(setInputValue(""));
 
