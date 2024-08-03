@@ -3,21 +3,28 @@ import { MESSAGE } from "../common/message";
 import styles from "../styles/LogOutModal.module.scss";
 import { AppDispatch } from "../store/store";
 import { setLogOutModalTrigger, setNavSwitch } from "../store/userInterfaceSlice";
-import Cookies from "js-cookie";
 import { setUserCheck } from "../store/verificationSlice";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function LogOutModal(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const logOut = (): void => {
-    Cookies.remove("accessToken");
-    Cookies.remove("refreshToken");
-    dispatch(setUserCheck(false));
-    dispatch(setLogOutModalTrigger(false));
-    dispatch(setNavSwitch(false));
-    navigate("/");
+  const logOut = async () => {
+    try {
+      const response = await axios.get(process.env.REACT_APP_DELETE_TOKEN, {
+        withCredentials: true,
+      });
+      if (response.status === 200) {
+        dispatch(setUserCheck(false));
+        dispatch(setLogOutModalTrigger(false));
+        dispatch(setNavSwitch(false));
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Tokens are invalid.", error);
+    }
   };
 
   return (

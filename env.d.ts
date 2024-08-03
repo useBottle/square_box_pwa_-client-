@@ -14,5 +14,6 @@ declare namespace NodeJS {
     REACT_APP_FIND_DATA: string;
     REACT_APP_DELETE_NEWS: string;
     REACT_APP_DELETE_YOUTUBE: string;
+    REACT_APP_DELETE_TOKEN: string;
   }
 }
