@@ -85,6 +85,10 @@
   }
 }
 
+.videoSlider::-webkit-scrollbar {
+  display: none;
+}
+
 .defaultView {
   display: flex;
   justify-content: center;

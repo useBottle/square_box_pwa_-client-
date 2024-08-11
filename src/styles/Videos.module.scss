@@ -98,6 +98,10 @@
   }
 }
 
+.videoSlider::-webkit-scrollbar {
+  display: none;
+}
+
 
 // Tablet vertical mode
 @media all and (min-width: 551px) and (max-width: 1024px) and (min-height: 1024px) and (max-height: 1366px) {
