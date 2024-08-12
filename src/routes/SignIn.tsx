@@ -54,9 +54,13 @@ export default function SignIn(): JSX.Element {
           },
         },
       );
-      response.status === 404 && setIdError(true);
-      response.status === 401 && setPasswordError(true);
-      if (response.status === 200) {
+      if (response.status === 404) {
+        setIdError(true);
+        setPasswordError(false);
+      } else if (response.status === 401) {
+        setIdError(false);
+        setPasswordError(true);
+      } else if (response.status === 200) {
         dispatch(setUserCheck(true));
         navigate("/home");
       }
