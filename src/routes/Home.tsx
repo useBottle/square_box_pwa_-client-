@@ -57,6 +57,7 @@ export default function Home(): JSX.Element {
 
   // 뉴스 데이터 가져오기.
   const fetchNewsData = async (): Promise<void> => {
+    dispatch(setNewsData([]));
     dispatch(setNewsLoading(true));
     try {
       const response = await axios.put(
@@ -79,6 +80,7 @@ export default function Home(): JSX.Element {
 
   // 유튜브 데이터 가져오기.
   const fetchYoutubeData = async (): Promise<void> => {
+    dispatch(setYoutubeData([]));
     dispatch(setYoutubeLoading(true));
     try {
       const response = await axios.put(

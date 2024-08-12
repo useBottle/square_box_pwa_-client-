@@ -23,6 +23,10 @@ export default function YoutubePreview(): JSX.Element {
     youtubeData.length !== 0 ? dispatch(setCurrentYoutube(youtubeData[0])) : null;
   }, [youtubeData, dispatch]);
 
+  useEffect(() => {
+    console.log(currentYoutube.id.videoId);
+  }, [currentYoutube]);
+
   // a 태그 대신 사용. 브라우저 하단에 URL 미리보기 나타나는 것 방지하기 위한 용도.
   const openNewTab = (url: string): void => {
     window.open(url, "_blank", "noopener, noreferrer");
@@ -72,8 +76,9 @@ export default function YoutubePreview(): JSX.Element {
   return (
     <div className={styles.youtubePreview}>
       <div className={styles.videoSlider}>
-        {currentYoutube && currentYoutube.id ? (
+        {currentYoutube && currentYoutube.id.videoId ? (
           <YouTube
+            key={currentYoutube.id.videoId}
             videoId={currentYoutube.id.videoId}
             opts={{
               width: "100%",

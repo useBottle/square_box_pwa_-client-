@@ -24,6 +24,8 @@ export default function SearchForm(): JSX.Element {
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    dispatch(setNewsData([]));
+    dispatch(setYoutubeData([]));
     dispatch(setNewsLoading(true));
     dispatch(setYoutubeLoading(true));
     dispatch(setSearchBarTrigger(false));
