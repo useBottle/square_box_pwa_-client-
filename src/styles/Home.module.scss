@@ -72,6 +72,10 @@
           }
         }
       }
+
+      & .infoText::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
 
@@ -192,6 +196,10 @@
           }
         }
       }
+    }
+
+    & .keywordsList::-webkit-scrollbar {
+      display: none;
     }
   }
 
