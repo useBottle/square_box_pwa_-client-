@@ -37,7 +37,7 @@ https://square-box.vercel.app/
 
 ## 사용한 기술
 #### Front-end
-<img src="https://img.shields.io/badge/javascript-f7df1e?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/typescript-3178c6?style=for-the-badge&logo=typescript&logoColor=white"> <img src="https://img.shields.io/badge/react-61dafb?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/redux toolkit-764abc?style=for-the-badge&logo=redux&logoColor=white"> <img src="https://img.shields.io/badge/sass-cc6699?style=for-the-badge&logo=sass&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-f7df1e?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/typescript-3178c6?style=for-the-badge&logo=typescript&logoColor=white"> <img src="https://img.shields.io/badge/react-61dafb?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/redux toolkit-764abc?style=for-the-badge&logo=redux&logoColor=white"> <img src="https://img.shields.io/badge/scss-cc6699?style=for-the-badge&logo=sass&logoColor=white">
 
 </br>
 
