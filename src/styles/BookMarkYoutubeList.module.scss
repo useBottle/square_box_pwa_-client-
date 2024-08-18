@@ -86,16 +86,7 @@
 }
 
 .videoSlider::-webkit-scrollbar {
-  width: 0px;
-  height: 0px;
-}
-
-.videoSlider::-webkit-scrollbar-thumb {
-  background: transparent;
-}
-
-.videoSlider::-webkit-scrollbar-track {
-  background: transparent;
+  display: none !important;
 }
 
 .defaultView {

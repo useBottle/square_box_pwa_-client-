@@ -80,16 +80,7 @@
 }
 
 .newsSlider::-webkit-scrollbar {
-  width: 0px;
-  height: 0px;
-}
-
-.newsSlider::-webkit-scrollbar-thumb {
-  background: transparent;
-}
-
-.newsSlider::-webkit-scrollbar-track {
-  background: transparent;
+  display: none !important;
 }
 
 .defaultView {

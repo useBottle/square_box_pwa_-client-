@@ -58,16 +58,7 @@
 }
 
 .articleSlider::-webkit-scrollbar {
-  width: 0px;
-  height: 0px;
-}
-
-.articleSlider::-webkit-scrollbar-thumb {
-  background: transparent;
-}
-
-.articleSlider::-webkit-scrollbar-track {
-  background: transparent;
+  display: none !important;
 }
 
 
