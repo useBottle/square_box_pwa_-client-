@@ -276,7 +276,7 @@
 
       & .keywordsList {
         height: 27.5vh;
-        overflow: scroll;
+        overflow: auto;
 
         & .realTime {
           height: 180%;
@@ -364,7 +364,7 @@
 
       & .keywordsList {
         height: 27.5vh;
-        overflow: scroll;
+        overflow: auto;
 
         & .realTime {
           height: 180%;
@@ -579,7 +579,7 @@
       }
 
       & .keywordsList {
-        overflow: scroll;
+        overflow: auto;
 
         & .realTime {
           & li {
@@ -630,7 +630,7 @@
         }
 
         & .infoText {
-          overflow: scroll;
+          overflow: auto;
           justify-content: flex-start;
           padding: 4vh 2vw;
 
@@ -653,7 +653,7 @@
       }
 
       & .keywordsList {
-        overflow: scroll;
+        overflow: auto;
 
         & .realTime {
           height: 100vh;
