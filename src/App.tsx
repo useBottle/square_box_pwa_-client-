@@ -159,7 +159,9 @@ function App(): JSX.Element {
                 <div className={styles.headerBlock}>
                   <SearchForm />
                   <div className={styles.user}>
-                    <FaUser className={styles.icon} />
+                    <div className={styles.iconBox}>
+                      <FaUser className={styles.icon} />
+                    </div>
                     <span>{username}</span>
                   </div>
                   <button className={styles.darkModeBtn} onClick={themeExchange}>

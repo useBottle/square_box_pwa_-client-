@@ -294,17 +294,23 @@ body {
             user-select: none;
             transition: background 0.3s ease-in-out;
 
-            & .icon {
-              font-size: 1.2vw;
-              margin-right: 1vw;
+            & .iconBox {
               width: 20%;
+              display: flex;
+              align-items: center;
+
+              & .icon {
+                font-size: 1.2vw;
+              }
             }
 
             & span {
               color: var(--point-color1);
               font-size: 1vw;
               width: 80%;
-              white-space: nowrap;
+              height: 100%;
+              display: flex;
+              align-items: center;
               overflow: hidden;
               text-overflow: ellipsis;
             }
