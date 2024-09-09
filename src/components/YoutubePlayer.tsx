@@ -1,5 +1,5 @@
 import styles from "../styles/YoutubePlayer.module.scss";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
 import { setCurrentYoutube } from "../store/youtubeSlice";
@@ -24,11 +24,11 @@ export default function YoutubePreview(): JSX.Element {
   }, [youtubeData, dispatch]);
 
   // a 태그 대신 사용. 브라우저 하단에 URL 미리보기 나타나는 것 방지하기 위한 용도.
-  const openNewTab = (url: string): void => {
+  const openNewTab = useCallback((url: string): void => {
     window.open(url, "_blank", "noopener, noreferrer");
-  };
+  }, []);
 
-  const addToBookMark = async () => {
+  const addToBookMark = useCallback(async () => {
     // 해당 유저 이름으로 데이터 검색 요청.
     try {
       const result = await axios.put(
@@ -67,7 +67,7 @@ export default function YoutubePreview(): JSX.Element {
     } catch (error) {
       console.error("Youtube data upload fail.");
     }
-  };
+  }, [dispatch, username, currentYoutube]);
 
   return (
     <div className={styles.youtubePreview}>

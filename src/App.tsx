@@ -35,7 +35,7 @@ import SearchBarModal from "./components/SearchBarModal";
 import MobileNav from "./components/MobileNav";
 import SignIn from "./routes/SignIn";
 
-function App(): JSX.Element {
+export default function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const { menuIndex } = useSelector((state: RootState) => state.userInterface);
@@ -225,5 +225,3 @@ function App(): JSX.Element {
     </div>
   );
 }
-
-export default App;
