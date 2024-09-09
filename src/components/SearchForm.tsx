@@ -2,7 +2,7 @@ import styles from "../styles/App.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
 import { IoSearch } from "react-icons/io5";
-import { FormEvent, useRef } from "react";
+import { FormEvent, useCallback, useRef } from "react";
 import { setInputValue } from "../store/inputValueSlice";
 import {
   setNewsLoading,
@@ -19,66 +19,72 @@ export default function SearchForm(): JSX.Element {
   const inputValue = useSelector((state: RootState) => state.inputValue);
   const { menuIndex } = useSelector((state: RootState) => state.userInterface);
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    dispatch(setInputValue(e.target.value));
-  };
+  const onChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>): void => {
+      dispatch(setInputValue(e.target.value));
+    },
+    [dispatch],
+  );
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    dispatch(setNewsData([]));
-    dispatch(setYoutubeData([]));
-    dispatch(setNewsLoading(true));
-    dispatch(setYoutubeLoading(true));
-    dispatch(setSearchBarTrigger(false));
-    refInputValue.current = inputValue;
+  const onSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>): void => {
+      dispatch(setNewsData([]));
+      dispatch(setYoutubeData([]));
+      dispatch(setNewsLoading(true));
+      dispatch(setYoutubeLoading(true));
+      dispatch(setSearchBarTrigger(false));
+      refInputValue.current = inputValue;
 
-    // Home 메뉴 활성화되어 있을 경우, onSubmit 시 SearchModal 띄우기.
-    menuIndex === 0 && dispatch(setSearchModalTrigger(true));
-    e.preventDefault();
+      // Home 메뉴 활성화되어 있을 경우, onSubmit 시 SearchModal 띄우기.
+      menuIndex === 0 && dispatch(setSearchModalTrigger(true));
+      e.preventDefault();
 
-    // 뉴스 데이터 가져오기.
-    const fetchNewsData = async (): Promise<void> => {
-      try {
-        const response = await axios.put(
-          process.env.REACT_APP_GET_NEWS_API_URL as string,
-          { inputValue },
-          {
-            headers: {
-              "Content-Type": "application/json",
+      // 뉴스 데이터 가져오기.
+      const fetchNewsData = async (): Promise<void> => {
+        try {
+          const response = await axios.put(
+            process.env.REACT_APP_GET_NEWS_API_URL as string,
+            { inputValue },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
             },
-          },
-        );
-        const result = response.data;
+          );
+          const result = response.data;
 
-        dispatch(setNewsData(result));
-        dispatch(setNewsLoading(false));
-      } catch (error: unknown) {
-        console.error("Error fetching news data: ", error);
-      }
-    };
+          dispatch(setNewsData(result));
+          dispatch(setNewsLoading(false));
+        } catch (error: unknown) {
+          console.error("Error fetching news data: ", error);
+        }
+      };
 
-    // 유튜브 데이터 가져오기
-    const fetchYoutubeData = async (): Promise<void> => {
-      try {
-        const response = await axios.put(
-          process.env.REACT_APP_GET_YOUTUBE_API_URL as string,
-          { inputValue },
-          {
-            headers: {
-              "Content-Type": "application/json",
+      // 유튜브 데이터 가져오기
+      const fetchYoutubeData = async (): Promise<void> => {
+        try {
+          const response = await axios.put(
+            process.env.REACT_APP_GET_YOUTUBE_API_URL as string,
+            { inputValue },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
             },
-          },
-        );
-        const result = response.data.items;
+          );
+          const result = response.data.items;
 
-        dispatch(setYoutubeData(result));
-        dispatch(setYoutubeLoading(false));
-      } catch (error: unknown) {
-        console.error("Error fetching youtube data: ", error);
-      }
-    };
+          dispatch(setYoutubeData(result));
+          dispatch(setYoutubeLoading(false));
+        } catch (error: unknown) {
+          console.error("Error fetching youtube data: ", error);
+        }
+      };
 
-    Promise.all([fetchNewsData(), fetchYoutubeData()]);
-  };
+      Promise.all([fetchNewsData(), fetchYoutubeData()]);
+    },
+    [dispatch, inputValue],
+  );
 
   return (
     <form
