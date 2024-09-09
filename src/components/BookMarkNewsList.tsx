@@ -5,7 +5,7 @@ import { setMarkedNews, setMouseOnNews, setNewsId } from "../store/bookMarkSlice
 import { MESSAGE } from "../common/message";
 import { FaTrash } from "react-icons/fa";
 import axios from "axios";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
 export default function BookMarkNewsList(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -18,7 +18,7 @@ export default function BookMarkNewsList(): JSX.Element {
   }, [mouseOnNews, dispatch]);
 
   // 북마크 뉴스 데이터 제거.
-  const removeBookMark = async (): Promise<void> => {
+  const removeBookMark = useCallback(async (): Promise<void> => {
     // UI 에서 즉시 제거.
     const removedNewsArray = markedNews.filter((item) => item.originallink !== mouseOnNews.originallink);
     dispatch(setMarkedNews(removedNewsArray));
@@ -33,7 +33,7 @@ export default function BookMarkNewsList(): JSX.Element {
     } catch (error) {
       console.error("Data remove request is failed.", error);
     }
-  };
+  }, [dispatch, mouseOnNews, newsId]);
 
   return (
     <div>

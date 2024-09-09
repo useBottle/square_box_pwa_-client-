@@ -1,5 +1,5 @@
 import styles from "../styles/BookMarkNewsView.module.scss";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
 import { setMarkedNews, setMouseOnNews } from "../store/bookMarkSlice";
@@ -19,12 +19,12 @@ export default function BookMarkNewsView(): JSX.Element {
   }, [markedNews, dispatch]);
 
   // a 태그 대신 사용. 브라우저 하단에 URL 미리보기 나타나는 것 방지하기 위한 용도.
-  const openNewTab = (url: string): void => {
+  const openNewTab = useCallback((url: string): void => {
     window.open(url, "_blank", "noopener, noreferrer");
-  };
+  }, []);
 
   // 북마크 뉴스 데이터 제거
-  const removeBookMark = async (): Promise<void> => {
+  const removeBookMark = useCallback(async (): Promise<void> => {
     // UI 에서 즉시 제거.
     const removedNewsArray = markedNews.filter((item) => item.originallink !== mouseOnNews.originallink);
     dispatch(setMarkedNews(removedNewsArray));
@@ -39,7 +39,7 @@ export default function BookMarkNewsView(): JSX.Element {
     } catch (error) {
       console.error("Data remove request is failed.", error);
     }
-  };
+  }, [dispatch, mouseOnNews, newsId]);
 
   return (
     <div className={styles.newsView}>

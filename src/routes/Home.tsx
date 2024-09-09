@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "../styles/Home.module.scss";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,7 +21,7 @@ export default function Home(): JSX.Element {
   const [clickTrigger, setClickTrigger] = useState<boolean>(false);
 
   // 실시간 검색어 데이터 요청.
-  const fetchKeyword = async (): Promise<void> => {
+  const fetchKeyword = useCallback(async (): Promise<void> => {
     try {
       const response = await axios.get(process.env.REACT_APP_GET_KEYWORDS_API_URL);
       const result = response.data;
@@ -29,7 +29,7 @@ export default function Home(): JSX.Element {
     } catch (error) {
       console.error("Failed fetching keyword data.", error);
     }
-  };
+  }, [dispatch]);
 
   // Home 에 초기 접속 시 실행 로직.
   useEffect(() => {

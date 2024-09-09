@@ -2,7 +2,7 @@ import YouTube, { YouTubeEvent } from "react-youtube";
 import styles from "../styles/BookMarkYoutubeView.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { setMarkedYoutube, setMouseOnYoutube } from "../store/bookMarkSlice";
 import { FaTrash } from "react-icons/fa";
 import axios from "axios";
@@ -20,12 +20,12 @@ export default function BookMarkYoutubeView(): JSX.Element {
   }, [markedYoutube, dispatch]);
 
   // a 태그 대신 사용. 브라우저 하단에 URL 미리보기 나타나는 것 방지하기 위한 용도.
-  const openNewTab = (url: string): void => {
+  const openNewTab = useCallback((url: string): void => {
     window.open(url, "_blank", "noopener, noreferrer");
-  };
+  }, []);
 
   // 북마크 유튜브 데이터 제거.
-  const removeBookMark = async (): Promise<void> => {
+  const removeBookMark = useCallback(async (): Promise<void> => {
     // UI 에서 즉시 제거.
     const removedYoutubeArray = markedYoutube.filter((item) => item.videoId !== mouseOnYoutube.videoId);
     dispatch(setMarkedYoutube(removedYoutubeArray));
@@ -40,7 +40,7 @@ export default function BookMarkYoutubeView(): JSX.Element {
     } catch (error) {
       console.error("Data remove request is failed.", error);
     }
-  };
+  }, [dispatch, mouseOnYoutube, youtubeId]);
 
   return (
     <div className={styles.youtubeView}>
