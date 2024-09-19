@@ -116,11 +116,30 @@ https://square-box.vercel.app/
 </br></br>
 
 ### 다크 모드
+<p align="center"><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fphce1%2FbtsJGkGvN4S%2FJNqhcNHmflk6fsC7kukZB0%2Fimg.png" width="600px" /></p>
+(라이트 테마를 적용한 모습)
+
+</br>
+
 - 로컬 스토리지를 사용하여 브라우저 종료 후 재접속 시에도 사용자가 마지막에 설정한 테마로 자동 적용합니다.
 
 </br></br>
 
 ### 반응형 웹
+<p align="center"><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbY8NUg%2FbtsJGmEj27q%2FjUosjbEaGHATewqtnp4xyK%2Fimg.png" width="300px" /></p>
+
+<p align="center">태블릿 세로모드 뷰</p>
+
+</br>
+
+<p align="center"><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FT6lCa%2FbtsJEFd822O%2F3HmgtgtOhq3UXkiaS2wt51%2Fimg.png" width="200px" /></p>
+
+</br>
+
+<p align="center">모바일 세로모드 뷰</p>
+
+</br>
+
 - 여러 사이즈의 뷰포트에 반응하여 최적화된 UI 를 제공합니다.
 
 </br></br>
