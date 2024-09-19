@@ -117,6 +117,9 @@ https://square-box.vercel.app/
 
 ### 다크 모드
 <p align="center"><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fphce1%2FbtsJGkGvN4S%2FJNqhcNHmflk6fsC7kukZB0%2Fimg.png" width="600px" /></p>
+
+</br>
+
 (라이트 테마를 적용한 모습)
 
 </br>
