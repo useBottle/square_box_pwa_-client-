@@ -3,7 +3,6 @@ import styles from "../styles/Videos.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentYoutube } from "../store/youtubeSlice";
 import { YouTubeVideo } from "../types/types";
-import { useEffect } from "react";
 
 export default function Videos(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
