@@ -158,9 +158,8 @@ export interface markedYoutube {
   videoId: string;
   thumbnail: string;
   title: string;
-  channelHandle: string;
-  channelThumbnail: string;
   channelTitle: string;
+  description: string;
   _id: string;
 }
 

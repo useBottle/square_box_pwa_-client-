@@ -19,11 +19,6 @@ export default function BookMarkYoutubeView(): JSX.Element {
     markedYoutube.length !== 0 ? dispatch(setMouseOnYoutube(markedYoutube[0])) : null;
   }, [markedYoutube, dispatch]);
 
-  // a 태그 대신 사용. 브라우저 하단에 URL 미리보기 나타나는 것 방지하기 위한 용도.
-  const openNewTab = useCallback((url: string): void => {
-    window.open(url, "_blank", "noopener, noreferrer");
-  }, []);
-
   // 북마크 유튜브 데이터 제거.
   const removeBookMark = useCallback(async (): Promise<void> => {
     // UI 에서 즉시 제거.
@@ -66,17 +61,12 @@ export default function BookMarkYoutubeView(): JSX.Element {
           <h3>{mouseOnYoutube.title}</h3>
           <div className={styles.contentInfo}>
             <div className={styles.detailInfoSet}>
-              <button
-                className={styles.channel}
-                onClick={() => openNewTab("https://www.youtube.com/" + mouseOnYoutube.channelHandle)}
-              >
-                <img src={mouseOnYoutube.channelThumbnail} alt="channelId" />
-                <span>{mouseOnYoutube.channelTitle}</span>
-              </button>
+              <div className={styles.channel}>{mouseOnYoutube.channelTitle}</div>
               <button className={styles.bookMarkRemover} onClick={removeBookMark}>
                 <FaTrash />
               </button>
             </div>
+            <div className={styles.description}>{mouseOnYoutube.description}</div>
           </div>
         </div>
       ) : (

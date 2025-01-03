@@ -58,6 +58,7 @@ export default function BookMarkYoutubeList(): JSX.Element {
                         <FaTrash className={styles.bookMarkRemover} />
                       </button>
                     </div>
+                    <div className={styles.description}>{item.description}</div>
                   </div>
                 </div>
               </div>

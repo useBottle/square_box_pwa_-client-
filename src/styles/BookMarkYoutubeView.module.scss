@@ -59,6 +59,7 @@
     & .contentInfo {
       margin-top: 2vh;
       display: flex;
+      flex-direction: column;
 
       & .detailInfoSet {
         display: flex;
@@ -107,6 +108,12 @@
         & .bookMarkRemover:hover {
           color: var(--point-color2);
         }
+      }
+
+      & .description {
+        font-size: 1.2vw;
+        margin: 4vh 0;
+        line-height: 1.5;
       }
     }
   }
@@ -316,6 +323,10 @@
             font-size: 3vw;
           }
         }
+
+        & .description {
+          font-size: 3vw;
+        }
       }
     }
   }
@@ -363,6 +374,10 @@
             height: 7vh;
             font-size: 2vw;
           }
+        }
+
+        & .description {
+          font-size: 2vw;
         }
       }
     }
