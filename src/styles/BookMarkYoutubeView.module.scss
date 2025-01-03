@@ -44,6 +44,7 @@
 
     & iframe {
       border-radius: 0.8vw;
+      width: 100%;
     }
 
     & h3 {
@@ -123,7 +124,6 @@
   }
 }
 
-
 // Tablet vertical mode
 @media all and (min-width: 551px) and (max-width: 1024px) and (min-height: 1024px) and (max-height: 1366px) {
   .youtubeView {
@@ -154,7 +154,6 @@
       }
 
       & .contentInfo {
-
         & .detailInfoSet {
           & .bookMarkRemover {
             width: 3vh;
@@ -197,7 +196,6 @@
       }
 
       & .contentInfo {
-
         & .detailInfoSet {
           & .bookMarkRemover {
             width: 3vh;
@@ -362,7 +360,6 @@
         & .detailInfoSet {
           & .channel {
             font-size: 2vw;
-
 
             & img {
               width: 3vw;

@@ -26,28 +26,34 @@
 
       & img {
         border-radius: 0.8vw;
+        width: 100%;
       }
 
-      & h3 {
-        position: relative;
-        margin-top: 1vh;
-        font-family: "S-CoreDream-4Regular";
-        font-size: 1.5vw;
-        line-height: 1.3;
-        cursor: default;
-        transition: color 0.3s ease-in-out;
-      }
-
-      & .block2 {
+      & .block {
         display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
+        flex-direction: column;
+
+        & h3 {
+          position: relative;
+          margin-top: 1vh;
+          font-family: "S-CoreDream-4Regular";
+          font-size: 1.5vw;
+          line-height: 1.3;
+          cursor: default;
+          transition: color 0.3s ease-in-out;
+        }
 
         & p {
           position: relative;
           font-size: 1vw;
           color: var(--point-color3);
           transition: color 0.3s ease-in-out;
+          margin: 1vh 0;
+        }
+
+        & .description {
+          font-size: 1vw;
+          margin: 2vw 0;
         }
 
         & button {
@@ -57,6 +63,7 @@
           border-radius: 0.3vw;
           padding: 1vh 1vw;
           cursor: pointer;
+          margin-left: auto;
 
           & .bookMarkRemover {
             font-size: 1vw;
@@ -113,7 +120,6 @@
   }
 }
 
-
 // Tablet vertical mode
 @media all and (min-width: 551px) and (max-width: 1024px) and (min-height: 1024px) and (max-height: 1366px) {
   .videoSlider {
@@ -123,12 +129,16 @@
 
     & .videoList {
       & .video {
-        & h3 {
-          font-size: 1.5vw;
-        }
+        & .block {
+          & h3 {
+            font-size: 1.5vw;
+          }
 
-        & .block2 {
           & p {
+            font-size: 2vw;
+          }
+
+          & .description {
             font-size: 2vw;
           }
 
@@ -159,12 +169,16 @@
 
     & .videoList {
       & .video {
-        & h3 {
-          font-size: 1.5vw;
-        }
+        & .block {
+          & h3 {
+            font-size: 1.5vw;
+          }
 
-        & .block2 {
           & p {
+            font-size: 2vw;
+          }
+
+          & .descriptionj {
             font-size: 2vw;
           }
 
@@ -225,12 +239,16 @@
 
     & .videoList {
       & .video {
-        & h3 {
-          font-size: 3.5vw;
-        }
+        & .block {
+          & h3 {
+            font-size: 3.5vw;
+          }
 
-        & .block2 {
           & p {
+            font-size: 2.5vw;
+          }
+
+          & .description {
             font-size: 2.5vw;
           }
 
@@ -265,12 +283,16 @@
       height: 100%;
 
       & .video {
-        & h3 {
-          font-size: 2vw;
-        }
+        & .block {
+          & h3 {
+            font-size: 2vw;
+          }
 
-        & .block2 {
           & p {
+            font-size: 1.5vw;
+          }
+
+          & .description {
             font-size: 1.5vw;
           }
 
