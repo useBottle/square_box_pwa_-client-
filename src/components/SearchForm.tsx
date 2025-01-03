@@ -29,7 +29,18 @@ export default function SearchForm(): JSX.Element {
   const onSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>): void => {
       dispatch(setNewsData([]));
-      dispatch(setYoutubeData([]));
+      dispatch(
+        setYoutubeData({
+          kind: "",
+          etag: "",
+          items: [],
+          nextPageToken: "",
+          pageInfo: {
+            totalResults: 0,
+            resultsPerPage: 0,
+          },
+        }),
+      );
       dispatch(setNewsLoading(true));
       dispatch(setYoutubeLoading(true));
       dispatch(setSearchBarTrigger(false));

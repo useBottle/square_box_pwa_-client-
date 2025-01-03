@@ -12,7 +12,7 @@ export interface NewsState {
 }
 
 export interface YoutubeState {
-  currentYoutube: YoutubeData;
+  currentYoutube: YouTubeVideo;
 }
 
 export interface LoadingStatus {
@@ -50,44 +50,77 @@ export interface Indicator {
   indicator: string;
 }
 
-export interface YoutubeData {
+export interface PageInfo {
+  totalResults: number;
+  resultsPerPage: number;
+}
+
+export interface Snippet {
+  publishedAt: string;
+  channelId: string;
+  title: string;
+  description: string;
+  thumbnails: {
+    default: {
+      url: string;
+      width: number;
+      height: number;
+    };
+    medium: {
+      url: string;
+      width: number;
+      height: number;
+    };
+    high: {
+      url: string;
+      width: number;
+      height: number;
+    };
+    standard: {
+      url: string;
+      width: number;
+      height: number;
+    };
+    maxres: {
+      url: string;
+      width: number;
+      height: number;
+    };
+  };
+  channelTitle: string;
+  tags: string[];
+  categoryId: string;
+  liveBroadcastContent: string;
+  localized: {
+    title: string;
+    description: string;
+  };
+  defaultAudioLanguage: string;
+}
+
+export interface YouTubeVideo {
   kind: string;
   etag: string;
   id: {
-    kind: string;
     videoId: string;
+    kind: string;
   };
-  snippet: {
-    channelId: string;
-    title: string;
-    thumbnails: [
-      {
-        url: string;
-        width: number;
-        height: number;
-      },
-    ];
-    channelTitle: string;
-    channelHandle: string;
-    timestamp: string;
-    duration: string;
-    views: string;
-    badges: string[];
-    channelApproval: null | unknown;
-    channelThumbnails: [{ url: string; width: number; height: number }];
-    detailedMetadataSnippet: [
-      {
-        test: string;
-      },
-    ];
-    chapters: [];
-  };
+  snippet: Snippet;
+}
+
+export interface youtubeApiResult {
+  _id?: string;
+  kind: string;
+  etag: string;
+  items: YouTubeVideo[];
+  nextPageToken: string;
+  pageInfo: PageInfo;
 }
 
 export interface Data {
   realTimeSearchTerms: KeywordsType;
   newsData: NewsData[];
-  youtubeData: YoutubeData[];
+  youtubeData: youtubeApiResult;
 }
 
 export interface FormValues {

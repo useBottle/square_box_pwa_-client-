@@ -9,7 +9,7 @@ export default function Videos(): JSX.Element {
 
   return (
     <div className={styles.videoSlider}>
-      {youtubeData.map((item, index) => {
+      {youtubeData.items.map((item, index) => {
         const onMouseEnter = (): void => {
           dispatch(setCurrentYoutube(item));
         };
@@ -23,12 +23,11 @@ export default function Videos(): JSX.Element {
             }}
           >
             <div onMouseEnter={onMouseEnter} className={styles.video}>
-              <img src={item.snippet.thumbnails[0].url} alt="thumbnail" />
+              <img src={item.snippet.thumbnails.high.url} alt="thumbnail" />
               <div className={styles.videoText}>
                 <h3>{item.snippet.title}</h3>
                 <div className={styles.block}>
-                  <span className={styles.timeStamp}>{item.snippet.timestamp}</span>
-                  <span className={styles.views}>{item.snippet.views} views</span>
+                  <span className={styles.timeStamp}>{item.snippet.publishedAt}</span>
                 </div>
                 <span className={styles.channelTitle}>{item.snippet.channelTitle}</span>
               </div>

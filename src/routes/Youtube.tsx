@@ -24,7 +24,7 @@ export default function Youtube(): JSX.Element {
         <div className={styles.innerFrame}>
           <div className={styles.playerContainer}>
             <h4 className={styles.playerTitle}>Player</h4>
-            {youtubeData.length !== 0 ? (
+            {youtubeData.items.length !== 0 ? (
               <YoutubePlayer />
             ) : (
               <div className={styles.defaultPlayer}>
@@ -36,7 +36,7 @@ export default function Youtube(): JSX.Element {
           </div>
           <div className={styles.videosContainer}>
             <h4 className={styles.videosTitle}>Videos</h4>{" "}
-            {youtubeData.length !== 0 ? (
+            {youtubeData.items.length !== 0 ? (
               <div className={styles.videoList}>
                 <Videos />
               </div>

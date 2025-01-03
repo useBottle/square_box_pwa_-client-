@@ -1,38 +1,55 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { YoutubeData, YoutubeState } from "../types/types";
+import { YoutubeState, YouTubeVideo } from "../types/types";
 
 const initialState: YoutubeState = {
   currentYoutube: {
     kind: "",
     etag: "",
     id: {
-      kind: "",
       videoId: "",
+      kind: "",
     },
     snippet: {
+      publishedAt: "",
       channelId: "",
       title: "",
-      thumbnails: [
-        {
+      description: "",
+      thumbnails: {
+        default: {
           url: "",
           width: 0,
           height: 0,
         },
-      ],
-      channelTitle: "",
-      channelHandle: "",
-      timestamp: "",
-      duration: "",
-      views: "",
-      badges: [],
-      channelApproval: null,
-      channelThumbnails: [{ url: "", width: 0, height: 0 }],
-      detailedMetadataSnippet: [
-        {
-          test: "",
+        medium: {
+          url: "",
+          width: 0,
+          height: 0,
         },
-      ],
-      chapters: [],
+        high: {
+          url: "",
+          width: 0,
+          height: 0,
+        },
+        standard: {
+          url: "",
+          width: 0,
+          height: 0,
+        },
+        maxres: {
+          url: "",
+          width: 0,
+          height: 0,
+        },
+      },
+      channelTitle: "",
+      tags: [],
+      categoryId: "",
+      liveBroadcastContent: "",
+      localized: {
+        title: "",
+        description: "",
+      },
+      defaultAudioLanguage: "",
     },
   },
 };
@@ -41,7 +58,7 @@ export const youtubeSlice = createSlice({
   name: "newsState",
   initialState,
   reducers: {
-    setCurrentYoutube(state, action: PayloadAction<YoutubeData>) {
+    setCurrentYoutube(state, action: PayloadAction<YouTubeVideo>) {
       state.currentYoutube = action.payload;
     },
   },

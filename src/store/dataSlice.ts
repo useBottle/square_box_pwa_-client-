@@ -1,10 +1,19 @@
-import { Data, KeywordsType, NewsData, YoutubeData } from "./../types/types";
+import { Data, KeywordsType, NewsData, youtubeApiResult } from "./../types/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState: Data = {
   realTimeSearchTerms: {},
   newsData: [],
-  youtubeData: [],
+  youtubeData: {
+    kind: "",
+    etag: "",
+    items: [],
+    nextPageToken: "",
+    pageInfo: {
+      totalResults: 0,
+      resultsPerPage: 0,
+    },
+  },
 };
 
 const dataSlice = createSlice({
@@ -17,7 +26,7 @@ const dataSlice = createSlice({
     setNewsData(state, action: PayloadAction<NewsData[]>) {
       state.newsData = action.payload;
     },
-    setYoutubeData(state, action: PayloadAction<YoutubeData[]>) {
+    setYoutubeData(state, action: PayloadAction<youtubeApiResult>) {
       state.youtubeData = action.payload;
     },
   },
