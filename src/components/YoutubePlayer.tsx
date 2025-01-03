@@ -14,7 +14,6 @@ export default function YoutubePreview(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const { currentYoutube } = useSelector((state: RootState) => state.youtube);
   const { youtubeData } = useSelector((state: RootState) => state.data);
-  const channelThumbnails = currentYoutube.snippet.thumbnails.high.url;
   const channelTitle = currentYoutube.snippet.channelTitle;
   const username = useSelector((state: RootState) => state.verification.username);
 
@@ -22,11 +21,6 @@ export default function YoutubePreview(): JSX.Element {
   useEffect(() => {
     youtubeData.length !== 0 ? dispatch(setCurrentYoutube(youtubeData[0])) : null;
   }, [youtubeData, dispatch]);
-
-  // a 태그 대신 사용. 브라우저 하단에 URL 미리보기 나타나는 것 방지하기 위한 용도.
-  const openNewTab = useCallback((url: string): void => {
-    window.open(url, "_blank", "noopener, noreferrer");
-  }, []);
 
   const addToBookMark = useCallback(async () => {
     // 해당 유저 이름으로 데이터 검색 요청.
@@ -95,20 +89,13 @@ export default function YoutubePreview(): JSX.Element {
         <h3>{currentYoutube.snippet.title}</h3>
         <div className={styles.contentInfo}>
           <div className={styles.detailInfoSet}>
-            <div className={styles.block}>
-              <span className={styles.timestamp}>{currentYoutube.snippet.publishedAt}</span>
-            </div>
+            <div className={styles.timestamp}>{currentYoutube.snippet.publishedAt}</div>
             <button className={styles.bookMark} onClick={addToBookMark}>
               <FaBookmark />
             </button>
           </div>
-          <button
-            className={styles.channel}
-            onClick={() => openNewTab("https://www.youtube.com/" + currentYoutube.snippet.channelId)}
-          >
-            <img src={channelThumbnails} alt="channelId" />
-            <span>{channelTitle}</span>
-          </button>
+          <div className={styles.channel}>{channelTitle}</div>
+          <div className={styles.description}>{currentYoutube.snippet.description}</div>
         </div>
       </div>
     </div>

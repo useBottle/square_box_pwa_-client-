@@ -44,16 +44,8 @@
         justify-content: space-between;
         align-items: center;
 
-        & .block {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          justify-content: center;
-          font-size: 1vw;
-
-          & span {
-            margin: 1vh 0;
-          }
+        & .timestamp {
+          font-size: 2vw;
         }
 
         & .bookMark {
@@ -77,6 +69,7 @@
       }
 
       & .channel {
+        width: fit-content;
         margin-top: 2vh;
         display: flex;
         align-items: center;
@@ -87,16 +80,12 @@
         border-radius: 0.8vw;
         font-size: 1.3vw;
         font-weight: 800;
-        cursor: pointer;
+      }
 
-        & img {
-          width: 3vw;
-          border-radius: 50%;
-        }
-
-        & span {
-          margin-left: 0.8vw;
-        }
+      & .description {
+        margin-top: 2vh;
+        font-size: 1.2vw;
+        line-height: 1.5;
       }
     }
   }
@@ -251,10 +240,8 @@
 
       & .contentInfo {
         & .detailInfoSet {
-          & .block {
-            & span {
-              font-size: 3vw;
-            }
+          & .timestamp {
+            font-size: 3vw;
           }
 
           & .bookMark {
@@ -267,10 +254,10 @@
         & .channel {
           padding: 1.5vh 3vw;
           font-size: 3vw;
+        }
 
-          & img {
-            width: 8vw;
-          }
+        & .description {
+          font-size: 3vw;
         }
       }
     }
