@@ -6,6 +6,7 @@ import { MESSAGE } from "../common/message";
 import { FaTrash } from "react-icons/fa";
 import { useCallback, useEffect } from "react";
 import axios from "axios";
+import { markedYoutube } from "../types/types";
 
 export default function BookMarkYoutubeList(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -36,24 +37,18 @@ export default function BookMarkYoutubeList(): JSX.Element {
     }
   }, [dispatch, mouseOnYoutube, youtubeId]);
 
+  const onMouseEnter = (item: markedYoutube): void => {
+    dispatch(setMouseOnYoutube(item));
+  };
+
   return (
     <div>
       {markedYoutube.length !== 0 ? (
         <div className={styles.videoSlider}>
           {markedYoutube.map((item, index) => {
-            const onMouseEnter = (): void => {
-              dispatch(setMouseOnYoutube(item));
-            };
-
             return (
-              <div
-                key={index}
-                className={styles.videoList}
-                onMouseEnter={() => {
-                  dispatch(setMouseOnYoutube(item));
-                }}
-              >
-                <div onMouseEnter={onMouseEnter} className={styles.video}>
+              <div key={index} className={styles.videoList}>
+                <div onMouseEnter={() => onMouseEnter(item)} className={styles.video}>
                   <img src={item.thumbnail} alt="thumbnail" />
                   <div className={styles.block1}>
                     <h3>{item.title}</h3>

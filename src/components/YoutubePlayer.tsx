@@ -42,7 +42,7 @@ export default function YoutubePreview(): JSX.Element {
       );
 
       // 북마크된 데이터 10개 미만인 경우 북마크 추가.
-      if (result.data.youtubeData.length < 10) {
+      if (result.data.youtubeData.items.length < 10) {
         const response = await axios.post(
           process.env.REACT_APP_ADD_YOUTUBE_DATA,
           { currentYoutube, username },
