@@ -23,8 +23,9 @@ export default function Videos(): JSX.Element {
                 <h3>{item.snippet.title}</h3>
                 <div className={styles.block}>
                   <span className={styles.timeStamp}>{item.snippet.publishedAt}</span>
+                  <span className={styles.channelTitle}>{item.snippet.channelTitle}</span>
+                  <span className={styles.description}>{item.snippet.description}</span>
                 </div>
-                <span className={styles.channelTitle}>{item.snippet.channelTitle}</span>
               </div>
             </div>
           </div>

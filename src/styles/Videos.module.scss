@@ -55,13 +55,19 @@
             transition: color 0.3s ease-in-out;
             margin-bottom: 1vh;
           }
-        }
 
-        & .channelTitle {
-          color: var(--point-color3);
-          transition: color 0.3s ease-in-out;
-          position: relative;
-          font-size: 1vw;
+          & .channelTitle {
+            color: var(--point-color3);
+            transition: color 0.3s ease-in-out;
+            position: relative;
+            font-size: 1vw;
+          }
+
+          & .description {
+            margin: 2vh 0;
+            font-size: 1vw;
+            line-height: 1.5;
+          }
         }
       }
     }
@@ -181,13 +187,13 @@
               font-size: 3vw;
             }
 
-            & .views {
+            & .channelTitle {
               font-size: 3vw;
             }
-          }
 
-          & .channelTitle {
-            font-size: 3vw;
+            & .description {
+              font-size: 3vw;
+            }
           }
         }
       }
@@ -214,13 +220,13 @@
               font-size: 1.5vw;
             }
 
-            & .views {
+            & .channelTitle {
               font-size: 1.5vw;
             }
-          }
 
-          & .channelTitle {
-            font-size: 1.5vw;
+            & .description {
+              font-size: 1.5vw;
+            }
           }
         }
       }
