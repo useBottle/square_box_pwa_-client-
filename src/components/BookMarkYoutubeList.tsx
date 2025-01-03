@@ -49,7 +49,7 @@ export default function BookMarkYoutubeList(): JSX.Element {
             return (
               <div key={index} className={styles.videoList}>
                 <div onMouseEnter={() => onMouseEnter(item)} className={styles.video}>
-                  <img src={item.thumbnail} alt="thumbnail" />
+                  <img src={item.thumbnail !== undefined ? item.thumbnail : ""} alt="thumbnail" />
                   <div className={styles.block}>
                     <h3>{item.title}</h3>
                     <p>{item.channelTitle}</p>
