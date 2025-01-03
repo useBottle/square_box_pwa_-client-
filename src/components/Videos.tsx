@@ -14,7 +14,7 @@ export default function Videos(): JSX.Element {
 
   return (
     <div className={styles.videoSlider}>
-      {youtubeData.items.map((item, index) => {
+      {youtubeData.map((item, index) => {
         return (
           <div key={index} className={styles.videoList}>
             <div onMouseEnter={() => onMouseEnter(item)} className={styles.video}>

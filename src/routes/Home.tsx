@@ -80,18 +80,7 @@ export default function Home(): JSX.Element {
 
   // 유튜브 데이터 가져오기.
   const fetchYoutubeData = async (): Promise<void> => {
-    dispatch(
-      setYoutubeData({
-        kind: "",
-        etag: "",
-        items: [],
-        nextPageToken: "",
-        pageInfo: {
-          totalResults: 0,
-          resultsPerPage: 0,
-        },
-      }),
-    );
+    dispatch(setYoutubeData([]));
     dispatch(setYoutubeLoading(true));
     try {
       const response = await axios.put(

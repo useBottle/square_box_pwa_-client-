@@ -120,7 +120,7 @@ export interface youtubeApiResult {
 export interface Data {
   realTimeSearchTerms: KeywordsType;
   newsData: NewsData[];
-  youtubeData: youtubeApiResult;
+  youtubeData: YouTubeVideo[];
 }
 
 export interface FormValues {

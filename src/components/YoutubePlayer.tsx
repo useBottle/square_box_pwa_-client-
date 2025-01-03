@@ -20,7 +20,7 @@ export default function YoutubePreview(): JSX.Element {
 
   // 유튜브 데이터가 있을 경우, 초기 로드 시에 가장 처음 데이터 보여주기.
   useEffect(() => {
-    youtubeData.items.length !== 0 ? dispatch(setCurrentYoutube(youtubeData.items[0])) : null;
+    youtubeData.length !== 0 ? dispatch(setCurrentYoutube(youtubeData[0])) : null;
   }, [youtubeData, dispatch]);
 
   // a 태그 대신 사용. 브라우저 하단에 URL 미리보기 나타나는 것 방지하기 위한 용도.
