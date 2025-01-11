@@ -5,10 +5,10 @@ import { BsBox } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { MESSAGE } from "../common/message";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUserCheck, setUsername } from "../store/verificationSlice";
 import tokenVerification from "../module/tokenVerification";
-import { AppDispatch } from "../store/store";
+import { AppDispatch, RootState } from "../store/store";
 import { setSignUpTrigger } from "../store/signUpTriggerSlice";
 
 export default function SignIn(): JSX.Element {
@@ -17,6 +17,7 @@ export default function SignIn(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const [idError, setIdError] = useState<boolean>(false);
   const [passwordError, setPasswordError] = useState<boolean>(false);
+  const { userCheck } = useSelector((state: RootState) => state.verification);
 
   // 페이지 초기 로드 시 엑세스 토큰 검증.
   // 엑세스 토큰이 이미 있으면 /home 으로 리디렉션.
@@ -69,7 +70,7 @@ export default function SignIn(): JSX.Element {
     }
   };
 
-  return (
+  return !userCheck ? (
     <section className={styles.loginView}>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
         <div className={styles.viewHead}>
@@ -118,5 +119,7 @@ export default function SignIn(): JSX.Element {
         {passwordError && <strong>{MESSAGE.LOGIN.PW_ERROR}</strong>}
       </form>
     </section>
+  ) : (
+    <></>
   );
 }
