@@ -107,7 +107,7 @@ export default function Home(): JSX.Element {
     }
   }, [clickTrigger]);
 
-  return (
+  return userCheck ? (
     <section className={styles.homeContainer}>
       <div className={styles.landingContainer}>
         <div className={styles.infoContainer}>
@@ -169,5 +169,7 @@ export default function Home(): JSX.Element {
       </div>
       <p className={styles.notice}>{MESSAGE.INFO.EXTENSION_NOTICE}</p>
     </section>
+  ) : (
+    <></>
   );
 }
