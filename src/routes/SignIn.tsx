@@ -27,7 +27,6 @@ export default function SignIn(): JSX.Element {
         const response = await tokenVerification();
         if (response && response.status === 200) {
           dispatch(setUserCheck(true));
-          navigate("/home");
         } else {
           dispatch(setUserCheck(false));
         }
@@ -38,6 +37,11 @@ export default function SignIn(): JSX.Element {
     verifyToken();
     return;
   }, []);
+
+  // user 토큰이 존재하면 home 으로 리디렉션.
+  useEffect(() => {
+    userCheck && navigate("/home");
+  }, [userCheck]);
 
   // id, password, JWT 로 로그인 요청.
   const onSubmit = async (): Promise<void> => {
