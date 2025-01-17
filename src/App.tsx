@@ -142,8 +142,8 @@ export default function App(): JSX.Element {
       </div>
 
       <div>
-        {userCheck && (
-          <div className={styles.mainContainer}>
+        <div className={styles.mainContainer}>
+          {userCheck && (
             <div>
               <header className={styles.header}>
                 <h1
@@ -208,19 +208,19 @@ export default function App(): JSX.Element {
               </nav>
               <MobileNav />
             </div>
+          )}
 
-            <Routes>
-              <Route path="/" element={<SignIn />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/news" element={<News />} />
-              <Route path="/youtube" element={<Youtube />} />
-              <Route path="/bookmark" element={<BookMark />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/welcome" element={<AfterSignUp />} />
-              <Route path="/signup_error" element={<SignUpError />} />
-            </Routes>
-          </div>
-        )}
+          <Routes>
+            <Route path="/" element={<SignIn />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/youtube" element={<Youtube />} />
+            <Route path="/bookmark" element={<BookMark />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/welcome" element={<AfterSignUp />} />
+            <Route path="/signup_error" element={<SignUpError />} />
+          </Routes>
+        </div>
       </div>
     </div>
   );
