@@ -20,7 +20,6 @@ export default function SignIn(): JSX.Element {
   const { userCheck } = useSelector((state: RootState) => state.verification);
 
   // 페이지 초기 로드 시 엑세스 토큰 검증.
-  // 엑세스 토큰이 이미 있으면 /home 으로 리디렉션.
   useEffect(() => {
     const verifyToken = async () => {
       try {
