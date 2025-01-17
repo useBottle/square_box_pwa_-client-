@@ -33,7 +33,7 @@ export default function Home(): JSX.Element {
 
   // Home 에 초기 접속 시 실행 로직.
   useEffect(() => {
-    !userCheck && navigate("/signin");
+    !userCheck && navigate("/");
     dispatch(setMenuIndex(0));
     fetchKeyword();
     dispatch(setInputValue(""));
