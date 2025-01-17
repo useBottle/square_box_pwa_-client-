@@ -67,7 +67,6 @@ export default function SignIn(): JSX.Element {
         setPasswordError(true);
       } else if (response.status === 200) {
         dispatch(setUserCheck(true));
-        navigate("/home");
       }
     } catch (error) {
       console.error("Login failed.", error);
