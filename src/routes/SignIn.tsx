@@ -72,7 +72,7 @@ export default function SignIn(): JSX.Element {
     }
   };
 
-  return !userCheck ? (
+  return (
     <section className={styles.loginView}>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
         <div className={styles.viewHead}>
@@ -121,7 +121,5 @@ export default function SignIn(): JSX.Element {
         {passwordError && <strong>{MESSAGE.LOGIN.PW_ERROR}</strong>}
       </form>
     </section>
-  ) : (
-    <></>
   );
 }
