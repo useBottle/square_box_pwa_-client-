@@ -35,25 +35,33 @@ https://square-box.vercel.app/
 
 #### Front-end
 
-<img src="https://img.shields.io/badge/javascript-f7df1e?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/typescript-3178c6?style=for-the-badge&logo=typescript&logoColor=white"> <img src="https://img.shields.io/badge/react-61dafb?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/redux toolkit-764abc?style=for-the-badge&logo=redux&logoColor=white"> <img src="https://img.shields.io/badge/scss-cc6699?style=for-the-badge&logo=sass&logoColor=white">
+- JavaScript (ES6+)
+- TypeScript
+- React
+- Redux-toolkit
+- SCSS
 
 </br>
 
 #### Back-end
 
-<img src="https://img.shields.io/badge/node.js-5fa04e?style=for-the-badge&logo=node.js&logoColor=white"> <img src="https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white"> <img src="https://img.shields.io/badge/mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white"> <img src="https://img.shields.io/badge/mongodb-47a248?style=for-the-badge&logo=mongodb&logoColor=white">
+- Node.js
+- Express
+- Mongoose
+- MongoDB
 
 </br>
 
 #### Config
 
-<img src="https://img.shields.io/badge/yarn-2C8EBB?style=for-the-badge&logo=yarn&logoColor=white">
+- yarn
 
 </br>
 
 #### Deployment
 
-<img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white"> <img src="https://img.shields.io/badge/cloudtype-ffffff?style=for-the-badge&logoColor=black">
+- Vercel
+- Cloudtype
 
 </br></br></br></br>
 
