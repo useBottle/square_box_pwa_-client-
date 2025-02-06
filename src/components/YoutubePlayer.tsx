@@ -1,5 +1,5 @@
 import styles from "../styles/YoutubePlayer.module.scss";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
 import { setCurrentYoutube } from "../store/youtubeSlice";
@@ -22,7 +22,7 @@ export default function YoutubePreview(): JSX.Element {
     youtubeData.length !== 0 ? dispatch(setCurrentYoutube(youtubeData[0])) : null;
   }, [youtubeData, dispatch]);
 
-  const addToBookMark = useCallback(async () => {
+  const addToBookMark = async () => {
     // 해당 유저 이름으로 데이터 검색 요청.
     try {
       const result = await axios.put(
@@ -62,7 +62,7 @@ export default function YoutubePreview(): JSX.Element {
     } catch (error) {
       console.error("Youtube data upload fail.");
     }
-  }, [dispatch, username, currentYoutube]);
+  };
 
   return (
     <div className={styles.youtubePreview}>
