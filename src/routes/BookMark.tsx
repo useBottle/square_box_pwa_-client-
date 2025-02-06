@@ -1,6 +1,6 @@
 import styles from "../styles/BookMark.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import { MESSAGE } from "../common/message";
 import { AppDispatch, RootState } from "../store/store";
 import { setMarkedNews, setMarkedYoutube, setSelector } from "../store/bookMarkSlice";
@@ -20,7 +20,7 @@ export default function BookMark(): JSX.Element {
   const { bookMarkLoading } = useSelector((state: RootState) => state.userInterface.loadingStatus);
 
   // 북마크한 데이터 가져오기.
-  const getBookMarkData = useCallback(async (): Promise<void> => {
+  const getBookMarkData = async (): Promise<void> => {
     try {
       dispatch(setBookMarkLoading(true));
       const result = await axios.put(
@@ -38,7 +38,7 @@ export default function BookMark(): JSX.Element {
     } catch (error) {
       console.error("Data request failed.", error);
     }
-  }, [dispatch, username]);
+  };
 
   useEffect(() => {
     dispatch(setMenuIndex(3));
