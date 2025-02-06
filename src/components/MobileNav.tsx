@@ -5,7 +5,6 @@ import { FaUser, FaHome, FaNewspaper, FaYoutube, FaBookmark } from "react-icons/
 import { setDarkLight, setLogOutModalTrigger, setMenuIndex, setNavSwitch } from "../store/userInterfaceSlice";
 import { GoSun, GoMoon, GoSignOut } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
-import { useCallback } from "react";
 
 export default function MobileNav(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -22,7 +21,7 @@ export default function MobileNav(): JSX.Element {
     { path: "/bookmark", icon: <FaBookmark />, label: "Bookmark" },
   ];
 
-  const themeExchange = useCallback((): void => {
+  const themeExchange = (): void => {
     if (darkLightToggle === "dark") {
       dispatch(setDarkLight("light"));
       localStorage.setItem("theme", "light");
@@ -30,7 +29,7 @@ export default function MobileNav(): JSX.Element {
       dispatch(setDarkLight("dark"));
       localStorage.setItem("theme", "dark");
     }
-  }, [dispatch, darkLightToggle]);
+  };
 
   return (
     <div>
