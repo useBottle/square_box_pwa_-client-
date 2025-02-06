@@ -4,7 +4,7 @@ import { AppDispatch, RootState } from "../store/store";
 import { setMarkedYoutube, setMouseOnYoutube, setYoutubeId } from "../store/bookMarkSlice";
 import { MESSAGE } from "../common/message";
 import { FaTrash } from "react-icons/fa";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { markedYoutube } from "../types/types";
 
@@ -20,7 +20,7 @@ export default function BookMarkYoutubeList(): JSX.Element {
   }, [mouseOnYoutube, dispatch]);
 
   // 북마크 유튜브 데이터 제거.
-  const removeBookMark = useCallback(async (): Promise<void> => {
+  const removeBookMark = async (): Promise<void> => {
     // UI 에서 즉시 제거.
     const removedYoutubeArray = markedYoutube.filter((item) => item.videoId !== mouseOnYoutube.videoId);
     dispatch(setMarkedYoutube(removedYoutubeArray));
@@ -35,7 +35,7 @@ export default function BookMarkYoutubeList(): JSX.Element {
     } catch (error) {
       console.error("Data remove request is failed.", error);
     }
-  }, [dispatch, mouseOnYoutube, youtubeId]);
+  };
 
   const onMouseEnter = (item: markedYoutube): void => {
     dispatch(setMouseOnYoutube(item));
